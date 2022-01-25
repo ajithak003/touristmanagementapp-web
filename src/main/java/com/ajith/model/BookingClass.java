@@ -9,10 +9,10 @@ import java.util.Objects;
 public class BookingClass {
 	
 	private int bookingId;
-	private int userId;
-	private int packageIid;
-	private int flightNo;
-	private int hotelId;
+	private UserClass user;
+	private PackageModeClass packages;
+	private FlightClass flight;
+	private HotelClass hotel;
 	private int noOfPerson;
 	private LocalDate startDate;
 	private LocalDate endDate;
@@ -27,14 +27,15 @@ public class BookingClass {
 	private double noOfRoom;
 	
 	
-	public BookingClass(int bookingId, int userId, int packageIid, int flightNo, int hotelId, int noOfPerson, LocalDate startDate, LocalDate endDate, double totalPrice, String status, LocalDateTime bookingDate,String flightClass,String hotelRoomType, String daysPlan,String packageName,String payment,double noOfRoom) {
+	public BookingClass(int bookingId, UserClass user, PackageModeClass packages, FlightClass flight, HotelClass hotel, int noOfPerson, LocalDate startDate, LocalDate endDate, double totalPrice, String status, 
+			LocalDateTime bookingDate,String flightClass,String hotelRoomType, String daysPlan,String packageName,String payment,double noOfRoom) {
 		super();
 		// TODO Auto-generated constructor stub
 		this.bookingId = bookingId;
-		this.userId = userId;
-		this.packageIid = packageIid;
-		this.flightNo = flightNo;
-		this.hotelId = hotelId;
+		this.user = user;
+		this.packages = packages;
+		this.flight = flight;
+		this.hotel = hotel;
 		this.noOfPerson = noOfPerson;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -51,12 +52,12 @@ public class BookingClass {
 	}
 
 
-	public BookingClass(int userId, int packageIid, int flightNo, int hotelId, int noOfPerson, LocalDate startDate, double totalPrice,String flightClass,String hotelRoomType, String daysPlan,String packageName, double noOfRoom) {
+	public BookingClass(UserClass user, PackageModeClass packages, FlightClass flight, HotelClass hotel, int noOfPerson, LocalDate startDate, double totalPrice,String flightClass,String hotelRoomType, String daysPlan,String packageName, double noOfRoom) {
 		super();
-		this.userId = userId;
-		this.packageIid = packageIid;
-		this.flightNo = flightNo;
-		this.hotelId = hotelId;
+		this.user = user;
+		this.packages = packages;
+		this.flight = flight;
+		this.hotel = hotel;
 		this.noOfPerson = noOfPerson;
 		this.startDate = startDate;
 		this.totalPrice = totalPrice;
@@ -67,68 +68,8 @@ public class BookingClass {
 		this.noOfRoom = noOfRoom;
 		
 	}
+
 	
-	
-	
-	public double getNoOfRoom() {
-		return noOfRoom;
-	}
-
-
-	public void setNoOfRoom(double noOfRoom) {
-		this.noOfRoom = noOfRoom;
-	}
-
-
-	public String getPayment() {
-		return payment;
-	}
-
-
-	public void setPayment(String payment) {
-		this.payment = payment;
-	}
-
-
-	public String getPackageName() {
-		return packageName;
-	}
-
-
-	public void setPackageName(String packageName) {
-		this.packageName = packageName;
-	}
-
-
-	public String getDaysPlan() {
-		return daysPlan;
-	}
-
-
-	public void setDaysPlan(String daysPlan) {
-		this.daysPlan = daysPlan;
-	}
-
-
-	public String getFlightClass() {
-		return flightClass;
-	}
-
-
-	public void setFlightClass(String flightClass) {
-		this.flightClass = flightClass;
-	}
-
-
-	public String getHotelRoomType() {
-		return hotelRoomType;
-	}
-
-
-	public void setHotelRoomType(String hotelRoomType) {
-		this.hotelRoomType = hotelRoomType;
-	}
-
 
 	public int getBookingId() {
 		return bookingId;
@@ -140,43 +81,43 @@ public class BookingClass {
 	}
 
 
-	public int getUserId() {
-		return userId;
+	public UserClass getUser() {
+		return user;
 	}
 
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(UserClass user) {
+		this.user = user;
 	}
 
 
-	public int getPackageIid() {
-		return packageIid;
+	public PackageModeClass getPackages() {
+		return packages;
 	}
 
 
-	public void setPackageIid(int packageIid) {
-		this.packageIid = packageIid;
+	public void setPackages(PackageModeClass packages) {
+		this.packages = packages;
 	}
 
 
-	public int getFlightNo() {
-		return flightNo;
+	public FlightClass getFlight() {
+		return flight;
 	}
 
 
-	public void setFlightNo(int flightNo) {
-		this.flightNo = flightNo;
+	public void setFlight(FlightClass flight) {
+		this.flight = flight;
 	}
 
 
-	public int getHotelId() {
-		return hotelId;
+	public HotelClass getHotel() {
+		return hotel;
 	}
 
 
-	public void setHotelId(int hotelId) {
-		this.hotelId = hotelId;
+	public void setHotel(HotelClass hotel) {
+		this.hotel = hotel;
 	}
 
 
@@ -240,20 +181,76 @@ public class BookingClass {
 	}
 
 
-	
-	
-	
+	public String getFlightClass() {
+		return flightClass;
+	}
 
-	
 
-	@Override
-	public String toString() {
-		return "BookingClass \n\n Tourist Location="+packageName+"\n startDate=" + startDate + "\n endDate=" + endDate
-				+ "\n totalPrice=" + totalPrice + "\n noOfPerson=" + noOfPerson + "\n status=" + status + "\n bookingDate=" + bookingDate
-				+ "\n flightClass=" + flightClass + "\n hotelRoomType=" + hotelRoomType + "\n daysPlan=" + daysPlan+"\n Payment Status :  "+payment;
+	public void setFlightClass(String flightClass) {
+		this.flightClass = flightClass;
+	}
+
+
+	public String getHotelRoomType() {
+		return hotelRoomType;
+	}
+
+
+	public void setHotelRoomType(String hotelRoomType) {
+		this.hotelRoomType = hotelRoomType;
+	}
+
+
+	public String getDaysPlan() {
+		return daysPlan;
+	}
+
+
+	public void setDaysPlan(String daysPlan) {
+		this.daysPlan = daysPlan;
+	}
+
+
+	public String getPackageName() {
+		return packageName;
+	}
+
+
+	public void setPackageName(String packageName) {
+		this.packageName = packageName;
+	}
+
+
+	public String getPayment() {
+		return payment;
+	}
+
+
+	public void setPayment(String payment) {
+		this.payment = payment;
+	}
+
+
+	public double getNoOfRoom() {
+		return noOfRoom;
+	}
+
+
+	public void setNoOfRoom(double noOfRoom) {
+		this.noOfRoom = noOfRoom;
 	}
 	
 	
+	@Override
+	public String toString() {
+		return "BookingClass [bookingId=" + bookingId + ", user=" + user + ", packages=" + packages + ", flight="
+				+ flight + ", hotel=" + hotel + ", noOfPerson=" + noOfPerson + ", startDate=" + startDate + ", endDate="
+				+ endDate + ", totalPrice=" + totalPrice + ", status=" + status + ", bookingDate=" + bookingDate
+				+ ", flightClass=" + flightClass + ", hotelRoomType=" + hotelRoomType + ", daysPlan=" + daysPlan
+				+ ", packageName=" + packageName + ", payment=" + payment + ", noOfRoom=" + noOfRoom + "]";
+	}
+
+
 	public String toString1(BookingClass booking) {
 		return "BookingClass \n\n Tourist Location="+packageName+"\n startDate=" + startDate + "\n endDate=" + endDate
 				+ "\n totalPrice=" + totalPrice + "\n noOfPerson=" + noOfPerson + "\n status=" + "confirmed" + 
@@ -280,10 +277,11 @@ public class BookingClass {
 	}
 
 
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(bookingDate, bookingId, daysPlan, endDate, flightClass, flightNo, hotelId, hotelRoomType,
-				noOfPerson, packageIid, packageName, startDate, status, totalPrice, userId);
+		return Objects.hash(bookingDate, bookingId, daysPlan, endDate, flight, flightClass, hotel, hotelRoomType,
+				noOfPerson, noOfRoom, packageName, packages, payment, startDate, status, totalPrice, user);
 	}
 
 
@@ -298,21 +296,23 @@ public class BookingClass {
 		BookingClass other = (BookingClass) obj;
 		return Objects.equals(bookingDate, other.bookingDate) && bookingId == other.bookingId
 				&& Objects.equals(daysPlan, other.daysPlan) && Objects.equals(endDate, other.endDate)
-				&& Objects.equals(flightClass, other.flightClass) && flightNo == other.flightNo
-				&& hotelId == other.hotelId && Objects.equals(hotelRoomType, other.hotelRoomType)
-				&& noOfPerson == other.noOfPerson && packageIid == other.packageIid
-				&& Objects.equals(packageName, other.packageName) && Objects.equals(startDate, other.startDate)
+				&& Objects.equals(flight, other.flight) && Objects.equals(flightClass, other.flightClass)
+				&& Objects.equals(hotel, other.hotel) && Objects.equals(hotelRoomType, other.hotelRoomType)
+				&& noOfPerson == other.noOfPerson
+				&& Double.doubleToLongBits(noOfRoom) == Double.doubleToLongBits(other.noOfRoom)
+				&& Objects.equals(packageName, other.packageName) && Objects.equals(packages, other.packages)
+				&& Objects.equals(payment, other.payment) && Objects.equals(startDate, other.startDate)
 				&& Objects.equals(status, other.status)
 				&& Double.doubleToLongBits(totalPrice) == Double.doubleToLongBits(other.totalPrice)
-				&& userId == other.userId;
+				&& Objects.equals(user, other.user);
 	}
 
 
-	public BookingClass(int bookingId, int userId, int flightNo, LocalDate startDate) {
+	public BookingClass(int bookingId, UserClass user, FlightClass flight, LocalDate startDate) {
 		super();
 		this.bookingId = bookingId;
-		this.userId = userId;
-		this.flightNo = flightNo;
+		this.user = user;
+		this.flight = flight;
 		this.startDate = startDate;
 		
 	}

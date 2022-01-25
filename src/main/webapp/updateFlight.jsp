@@ -111,11 +111,11 @@ button{
     </tr>
       <tr>
      <td> <label for="">Business Class Fare  :</label></td>
-      <td><input type="text" name="businessclassfare" id="businessclassfare" value="<%=flight.getBusinessClassFare()%>" pattern="[0-9]{2,10}" title="must contain number only"></td>
+      <td><input type="text" name="businessclassfare" id="businessclassfare" value="<%=flight.getBusinessClassFare()%>" pattern="[0-9 .]{2,10}" title="must contain number only"></td>
       </tr>
       <tr>
         <td> <label for="">Economic Class Fare  :</label></td>
-         <td><input type="text" name="economicclassfare" id="economicclassfare" value="<%=flight.getEconomicClassFare()%>" pattern="[0-9]{2,10}" title="must contain number only"></td>
+         <td><input type="text" name="economicclassfare" id="economicclassfare" value="<%=flight.getEconomicClassFare()%>" pattern="[0-9 .]{2,10}" title="must contain number only"></td>
          </tr>
 
       <tr>

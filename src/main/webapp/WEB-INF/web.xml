@@ -8,13 +8,7 @@
   	<servlet-name>ShowAllUserList</servlet-name>
   	<servlet-class>com.ajith.controler.ShowAllUserList</servlet-class>
   </servlet>
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>sdfghb</display-name>
-  	<servlet-name>sdfghb</servlet-name>
-  	<servlet-class>com.ajith.controler.sdfghb</servlet-class>
-  </servlet>
+  
   <servlet>
   	<description>
   	</description>
@@ -26,10 +20,7 @@
   	<servlet-name>ShowAllUserList</servlet-name>
   	<url-pattern>/ShowAllUserList</url-pattern>
   </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>sdfghb</servlet-name>
-  	<url-pattern>/sdfghb</url-pattern>
-  </servlet-mapping>
+ 
   <servlet-mapping>
   	<servlet-name>AdminRating</servlet-name>
   	<url-pattern>/AdminRating</url-pattern>

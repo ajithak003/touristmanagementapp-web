@@ -224,7 +224,7 @@ label{
 	</form>
 	
 	<%
-	BookingClass booking = new  BookingClass( userId, packageId,  0,  0,  0,null ,totalPrice, "", "", "",place,0); 
+	BookingClass booking = new  BookingClass( user, packages,  null,  null,  0,null ,totalPrice, "", "", "",place,0); 
     //System.out.println("singlepackage"+booking);
 	session.setAttribute("booking",booking);
 	%>

@@ -15,7 +15,7 @@ import com.ajith.daoImplement.PackageModeClassDaoImplement;
 import com.ajith.model.FlightClass;
 import com.ajith.model.PackageModeClass;
 
-@WebServlet(urlPatterns = "/addflight")
+@WebServlet("/addflight")
 public class AddFlight extends HttpServlet {
 
 	public void doGet(HttpServletRequest req, HttpServletResponse res)  {

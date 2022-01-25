@@ -135,7 +135,7 @@
             <td><%=user.getName() %></td>
         
         <tr>
-            <td>User Emailid : </td>
+            <td>User Email Id : </td>
             <td><%=user.getEmail() %></td>
             
         </tr>
@@ -229,8 +229,8 @@
 
 <% 
  
-BookingClass bookings = new BookingClass(user.getId(), packages.getPackageId(),
-			flight.getFlightNo(), hotel.getHotelId(), booking.getNoOfPerson(),booking.getStartDate(), totalPrice,
+BookingClass bookings = new BookingClass(user, packages,
+			flight, hotel, booking.getNoOfPerson(),booking.getStartDate(), totalPrice,
 			booking.getFlightClass(),room,booking.getDaysPlan(),booking.getPackageName(),noOfHotelRooms);
 	
 	session.setAttribute("confirmbooking", bookings);

@@ -16,10 +16,9 @@ import com.ajith.exception.UserDefineException;
 import com.ajith.model.PackageModeClass;
 
 
-@WebServlet(urlPatterns = "/addpackage")
+@WebServlet("/addpackage")
 public class addPackage extends HttpServlet {
 
-	Scanner sc = new Scanner(System.in);
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException  {
 	
@@ -51,7 +50,7 @@ try {
 		
 		HttpSession session = req.getSession();
 		PrintWriter out = res.getWriter();
-		if(pack==true) {
+		if(pack) {
 			
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Successfully Added');");
@@ -64,14 +63,12 @@ try {
 			throw new UserDefineException();
 		}
 		} catch (UserDefineException e) {
-			// TODO Auto-generated catch block
 			HttpSession session = req.getSession();
 			//System.out.println("error");
 			session.setAttribute("addpackageerror", e.addPackage());
 			try {
 				res.sendRedirect("addPackage.jsp");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		

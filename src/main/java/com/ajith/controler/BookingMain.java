@@ -175,8 +175,8 @@ public class BookingMain {
 				BookingTableDaoImplement bookDao = new BookingTableDaoImplement();
 				BookingClass booking = null;
 				
-				booking = new BookingClass(userDetails.getId(), singlePackage.getPackageId(),
-						singleFlight.getFlightNo(), singleHotel.getHotelId(), noOfPerson, startDate, totalPrice,
+				booking = new BookingClass(userDetails, singlePackage,
+						singleFlight, singleHotel, noOfPerson, startDate, totalPrice,
 						flightClass, hotelRoom, days, location,0);
 				System.out.println(booking.toString1(booking));
 				boolean book = bookDao.insertbooking(booking, daysPlan,businessClassSeats,economicClassSeats);

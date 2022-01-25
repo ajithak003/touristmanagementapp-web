@@ -50,9 +50,10 @@
 <body>
 
 <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+  <h2><a href="AdminPage.jsp">Go To Home</a></h2>
 
     <h1>Show All Booking</h1> 
-    <span><h2><a href="AdminPage.jsp">Go To Home</a></h2></span>
+  
     <br><br>
     
     
@@ -70,7 +71,7 @@
         <th>Hotel Name</th>
         <th>Hotel Room Type</th>
         <th>Total Price</th>
-        <th>Payament Details</th>
+        <th>Payment Details</th>
         <th>Booking Status</th>
 
 
@@ -84,19 +85,19 @@ DateTimeFormatter.ofPattern("dd-MM-yy");
          
     	   BookingClass booking = bookings.get(i); 
     	   
-    	   UserTableDaoImplement userDao = new UserTableDaoImplement(); 
-    	   UserClass user = userDao.getSingleUserById(booking.getUserId());
+    	   /* UserTableDaoImplement userDao = new UserTableDaoImplement(); 
+    	   UserClass user = userDao.getSingleUserById(booking.getUser().getId()); */
            
-    	   HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-           HotelClass hotel = hotelDao.getSingleHotel(booking.getHotelId());
+    	   /* HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
+           HotelClass hotel = hotelDao.getSingleHotel(booking.getHotel().getHotelId()); */
            
     %>
     
 
 
         <tr>
-            <td><%=booking.getUserId() %></td>
-            <td><%=user.getName() %></td>
+            <td><%=booking.getUser().getId() %></td>
+            <td><%=booking.getUser().getName() %></td>
             <td><%=booking.getPackageName() %></td>
             <td><%=booking.getStartDate() %></td>
             <td><%=booking.getEndDate() %></td>
@@ -104,7 +105,7 @@ DateTimeFormatter.ofPattern("dd-MM-yy");
             <td><%=booking.getDaysPlan() %></td>
             <td><%=booking.getBookingDate()		.format(formatter) %></td>
             <td><%=booking.getFlightClass() %></td>
-            <td><%=hotel.getHotelName() %></td>
+            <td><%=booking.getHotel().getHotelName() %></td>
             <td><%=booking.getHotelRoomType() %></td>
             <td><%=booking.getTotalPrice() %></td>
             <td><%=booking.getPayment() %></td>

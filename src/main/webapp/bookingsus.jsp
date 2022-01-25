@@ -57,8 +57,8 @@ if (user.getWallet() >=booking.getTotalPrice() ) {
 	BookingTableDaoImplement bookDao = new BookingTableDaoImplement();
 	BookingClass bookings = null;
 	
-	BookingClass confirmBooking = new BookingClass(user.getId(), booking.getPackageIid(),
-			booking.getFlightNo(), booking.getHotelId(), booking.getNoOfPerson(),booking.getStartDate(), booking.getTotalPrice(),
+	BookingClass confirmBooking = new BookingClass(user, booking.getPackages(),
+			booking.getFlight(), booking.getHotel(), booking.getNoOfPerson(),booking.getStartDate(), booking.getTotalPrice(),
 			booking.getFlightClass(),booking.getHotelRoomType(),booking.getDaysPlan(),booking.getPackageName(),booking.getNoOfRoom());
 	//System.out.println(booking.toString1(booking));
 	  int businessClassSeats = flight.getBusinessClassSeat();

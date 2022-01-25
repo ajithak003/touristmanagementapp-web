@@ -137,20 +137,20 @@ DateTimeFormatter formatter =
 
 	FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
 	
-	FlightClass singleFlight = flightDao.getSingleFlight(bookingpackage.getFlightNo());
+	//FlightClass singleFlight = flightDao.getSingleFlight(bookingpackage.getFlightNo());
 	double oldFlightPrice = 0.0;
-	int bseats = singleFlight.getBusinessClassSeat();
+	int bseats = bookingpackage.getFlight().getBusinessClassSeat();
 	//System.out.println("bseats"+singleFlight.getBusinessClassSeat()+""+singleFlight.getFlightNo());
-	int eseats =singleFlight.getEconomicClassSeat();
+	int eseats =bookingpackage.getFlight().getEconomicClassSeat();
 	
 	if(bookingpackage.getFlightClass().equalsIgnoreCase("business class")){
-		oldFlightPrice =  singleFlight.getBusinessClassFare()*bookingpackage.getNoOfPerson();
-		bseats = singleFlight.getBusinessClassSeat()+bookingpackage.getNoOfPerson();
+		oldFlightPrice =  bookingpackage.getFlight().getBusinessClassFare()*bookingpackage.getNoOfPerson();
+		bseats = bookingpackage.getFlight().getBusinessClassSeat()+bookingpackage.getNoOfPerson();
 		//System.out.println("bseats"+bseats);
 	}
 	else if(bookingpackage.getFlightClass().equalsIgnoreCase("economic class")){
-		oldFlightPrice = singleFlight.getEconomicClassFare()*bookingpackage.getNoOfPerson();
-		eseats = singleFlight.getEconomicClassSeat()+bookingpackage.getNoOfPerson();
+		oldFlightPrice = bookingpackage.getFlight().getEconomicClassFare()*bookingpackage.getNoOfPerson();
+		eseats = bookingpackage.getFlight().getEconomicClassSeat()+bookingpackage.getNoOfPerson();
 		//System.out.println("eseats"+eseats);
 	}
 	
@@ -216,7 +216,7 @@ DateTimeFormatter formatter =
 		}	 %>
  <% 
       
-      BookingClass bookings = new  BookingClass( bookingpackage.getUserId(),bookingpackage.getPackageIid(),bookingpackage.getFlightNo(),bookingpackage.getHotelId(),bookingpackage.getNoOfPerson(),
+      BookingClass bookings = new  BookingClass( bookingpackage.getUser(),bookingpackage.getPackages(),bookingpackage.getFlight(),bookingpackage.getHotel(),bookingpackage.getNoOfPerson(),
     		  startDate,bookingpackage.getTotalPrice(),bookingpackage.getFlightClass(),bookingpackage.getHotelRoomType(),bookingpackage.getDaysPlan(),bookingpackage.getPackageName(),bookingpackage.getNoOfRoom()); 
 		session.setAttribute("datechangebookings",bookings); 
 		

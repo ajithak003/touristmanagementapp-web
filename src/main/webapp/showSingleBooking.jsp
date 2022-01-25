@@ -27,7 +27,7 @@
         }
         .container{
            
-            margin-left: 30%;
+            margin-left: 33%;
             height: 1550px;
         }
         h1{
@@ -80,32 +80,32 @@
    
        
         
-        HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-        HotelClass hotel = hotelDao.getSingleHotel(booking.getHotelId());
+       /*  HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
+        HotelClass hotel = hotelDao.getSingleHotel(booking.getHotelId());*/
         double hotelfare = 0.0;
         if(booking.getHotelRoomType().equalsIgnoreCase("premimum room")){
-        	hotelfare = hotel.getPremiumPrice();
+        	hotelfare = booking.getHotel().getPremiumPrice();
         }
         else{
-        	hotelfare = hotel.getMidRangePrice();
+        	hotelfare = booking.getHotel().getMidRangePrice();
         }
       
-        UserTableDaoImplement userDao = new UserTableDaoImplement();
-        UserClass user = userDao.getSingleUserById(booking.getUserId());
+        /* UserTableDaoImplement userDao = new UserTableDaoImplement();
+        UserClass user = userDao.getSingleUserById(booking.getUser()); */
       //  System.out.println(user);
       //System.out.println(user.getWallet());
-        PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-        PackageModeClass packages = packageDao.getPackageByNo(booking.getPackageName());
+        //PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
+       // PackageModeClass packages = packageDao.getPackageByNo(booking.getPackageName());
       //  System.out.println(packages);
-        FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-        FlightClass flight = flightDao.getSingleFlight(booking.getFlightNo());
+        //FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
+        //FlightClass flight = flightDao.getSingleFlight(booking.getFlightNo());
        // System.out.println(flight);
       double flightfare =0.0;
        if(booking.getFlightClass().equalsIgnoreCase("economic class")){
-    	   flightfare = flight.getEconomicClassFare();
+    	   flightfare = booking.getFlight().getEconomicClassFare();
        }
        else{
-    	   flightfare = flight.getBusinessClassFare();
+    	   flightfare = booking.getFlight().getBusinessClassFare();
        }
        
        int noOfHotelRooms = (int) booking.getNoOfRoom();
@@ -122,11 +122,11 @@
        <br>
  
             <td>User Name : </td>
-            <td><%=user.getName() %></td>
+            <td><%=booking.getUser().getName() %></td>
         
         <tr>
             <td>User Email Id : </td>
-            <td><%=user.getEmail() %></td>
+            <td><%=booking.getUser().getEmail() %></td>
             
         </tr>
             
@@ -135,11 +135,11 @@
                     </tr>
              <br>
             <td>Tour place : </td>
-            <td><%=packages.getName() %></td>
+            <td><%=booking.getPackages().getName() %></td>
         </tr>
         <tr>
             <td>one Day Night Price / person : </td>
-            <td><%=packages.getPriceOneDays() %></td>
+            <td><%=booking.getPackages().getPriceOneDays() %></td>
         </tr>
         <tr>
             <td>No Of Person : </td>
@@ -159,23 +159,23 @@
            </tr>
            <br>
             <td>Flight Name : </td>
-            <td><%=flight.getFlightName() %></td>
+            <td><%=booking.getFlight().getFlightName() %></td>
         </tr>
         <tr>
             <td>departure place : </td>
-            <td><%=flight.getDepature() %></td>
+            <td><%=booking.getFlight().getDepature() %></td>
         </tr>
         <tr>
             <td>destination place : </td>
-            <td><%=flight.getDestination() %></td>
+            <td><%=booking.getFlight().getDestination() %></td>
         </tr>
         <tr>
             <td>Departure Date And Time Name : </td>
-            <td><%=flight.getDepatureDateTime().format(formatter) %></td>
+            <td><%=booking.getFlight().getDepatureDateTime().format(formatter) %></td>
         </tr>
         <tr>
             <td>Arrival Date And Time Name : </td>
-            <td><%=flight.getArrivalDateTime().format(formatter) %></td>
+            <td><%=booking.getFlight().getArrivalDateTime().format(formatter) %></td>
         </tr>
         <tr>
             <td>Class : </td>
@@ -190,12 +190,12 @@
           <th>  <h2>Hotel Details</h2></th>
           </tr>
             <td>Hotel Name : </td>
-            <td><%=hotel.getHotelName() %></td>
+            <td><%=booking.getHotel().getHotelName() %></td>
         </tr>
         <tr>
       <td>Hotel Location : </td>
        
-            <td><%=hotel.getLocation() %></td>
+            <td><%=booking.getHotel().getLocation() %></td>
         </tr>
         <tr>
             <td>Room Type : </td>

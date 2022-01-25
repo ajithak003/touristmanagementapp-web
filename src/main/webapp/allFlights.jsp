@@ -218,7 +218,7 @@ body{
 		%>
  <% 
       
-      BookingClass bookings = new  BookingClass( booking.getUserId(),booking.getPackageIid(),0,0,noOfPerson,depatureTimeDate,totalPrice,flightClass,"",daysPlane,booking.getPackageName(),0); 
+      BookingClass bookings = new  BookingClass( booking.getUser(),booking.getPackages(),null,null,noOfPerson,depatureTimeDate,totalPrice,flightClass,"",daysPlane,booking.getPackageName(),0); 
 		session.setAttribute("bookings",bookings);
 		
 		//System.out.println("allflights "+bookings); 

@@ -17,10 +17,8 @@ public class AdminTableDaoImplement implements AdminDaoInterface {
 	
 	@Override
 	public AdminClass validateAdmin(String emailId, String password)  {
-		// TODO Auto-generated method stub
 		String validateQuery = "select admin_id,name,email_id,mobile_no,password from admin_details where email_id=? and password=?";
 		Connection con = ConnectionUtil.getDBConnect();
-		//System.out.println(validateQuery);
 		AdminClass AdminClass=null;
 		try {
 			PreparedStatement pstmt = con.prepareStatement(validateQuery);

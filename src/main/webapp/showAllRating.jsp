@@ -64,9 +64,10 @@
 <body>
      
      <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-    
+      
+      
      <h1 class="title">Ratings</h1>
-      <h3><a href="index.jsp">Go To Home</a></h3>
+    <h3><a href="index.jsp">Go To Home</a></h3>
      <br>
      <% RatingDaoImplement ratingDao = new RatingDaoImplement();
      UserTableDaoImplement userDao = new UserTableDaoImplement();

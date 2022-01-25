@@ -48,9 +48,10 @@
 
 
 <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+<h2><a href="AdminPage.jsp">Go To Home</a></h2>
 
     <h1>Show All Users</h1> 
-    <span><h2><a href="AdminPage.jsp">Go To Home</a></h2></span>
+  
     <br><br>
     
     

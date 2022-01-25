@@ -43,11 +43,11 @@ public class BookingShowMain {
 		//System.out.println(pakages);
 		
 		FlightTableDaoImplement flights = new FlightTableDaoImplement();
-		FlightClass flight = flights.getSingleFlight(booking.getFlightNo());
+		FlightClass flight = flights.getSingleFlight(booking.getFlight().getFlightNo());
 		//System.out.println(flight);
 		
 		HotelTableDaoImplement hotels = new HotelTableDaoImplement();
-		HotelClass hotel = hotels.getSingleHotel(booking.getHotelId());
+		HotelClass hotel = hotels.getSingleHotel(booking.getHotel().getHotelId());
 		//System.out.println(hotel);
 		
 		System.out.println(booking.toStringbook(userDetails, pakages, flight, hotel));
@@ -84,7 +84,7 @@ public class BookingShowMain {
 				double refundPrice =  user.getWallet()+ book.getTotalPrice();
 				refundPrice = (refundPrice/100)*10;
 				FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-			    FlightClass flight = flightDao.getSingleFlight(book.getFlightNo());
+			    FlightClass flight = flightDao.getSingleFlight(book.getFlight().getFlightNo());
 			    int businessSeats = flight.getBusinessClassSeat() ;
 			    int economicSeats =flight.getEconomicClassSeat();
 			    if(book.getFlightClass().equalsIgnoreCase("business class")) {
@@ -94,7 +94,7 @@ public class BookingShowMain {
 			    	economicSeats += +book.getNoOfPerson();
 			    }
 			    
-				boolean cancelBooking = cancel.updatebooking(user.getId(), startDate,refundPrice,businessSeats,economicSeats,book.getFlightNo(),book.getBookingId());
+				boolean cancelBooking = cancel.updatebooking(user.getId(), startDate,refundPrice,businessSeats,economicSeats,book.getFlight().getFlightNo(),book.getBookingId());
 				
 				
 				if(cancelBooking==true) {
@@ -173,7 +173,7 @@ public class BookingShowMain {
         try {
 		for (BookingClass b:booking) {
              
-			int userId=b.getUserId();
+			int userId=b.getUser().getId();
 			AdminTableDaoImplement admin =new AdminTableDaoImplement();
 			//System.out.println(userId);
 		    UserClass user = admin.getUserById(userId);

@@ -182,7 +182,7 @@ for (int i = 0; i < hotels.size(); i++) {
 			 
 			 
 			// System.out.println(totalPrice);
-      BookingClass bookings = new  BookingClass( booking.getUserId(),booking.getPackageIid(),booking.getFlightNo(),0,booking.getNoOfPerson(),booking.getStartDate(),totalPrice,flightClass,"",booking.getDaysPlan(),booking.getPackageName(),0); 
+      BookingClass bookings = new  BookingClass( booking.getUser(),booking.getPackages(),booking.getFlight(),null,booking.getNoOfPerson(),booking.getStartDate(),totalPrice,flightClass,"",booking.getDaysPlan(),booking.getPackageName(),0); 
 		session.setAttribute("bookingsflight",bookings);
 		
 		//System.out.println("hotelpage "+bookings); %>

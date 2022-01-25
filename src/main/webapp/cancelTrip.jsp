@@ -70,7 +70,7 @@ h2,a{
 		//refundPrice = (refundPrice/100)*10;
 		
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-	    FlightClass flight = flightDao.getSingleFlight(book.getFlightNo());
+	    FlightClass flight = flightDao.getSingleFlight(book.getFlight().getFlightNo());
 	 
 	    int businessSeats = flight.getBusinessClassSeat() ;
 	    int economicSeats =flight.getEconomicClassSeat();
@@ -81,7 +81,7 @@ h2,a{
 	    	economicSeats += +book.getNoOfPerson();
 	    }
 	    
-		boolean cancelBooking = cancel.updatebooking(user.getId(),book.getStartDate(),refundPrice,businessSeats,economicSeats,book.getFlightNo(),book.getBookingId());
+		boolean cancelBooking = cancel.updatebooking(user.getId(),book.getStartDate(),refundPrice,businessSeats,economicSeats,book.getFlight().getFlightNo(),book.getBookingId());
 		
 		
 		if(cancelBooking==true) {

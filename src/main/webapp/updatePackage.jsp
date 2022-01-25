@@ -94,7 +94,7 @@ button{
      
       <tr>
      <td> <label for="price">Package one day night price : </label></td>
-     <td> <input type="text" name="packageonedayprice" id="packageonedayprice" value="<%=packages.getPriceOneDays() %>" required pattern="[0-9]{2,}" title="must contain numbers only"></td>
+     <td> <input type="text" name="packageonedayprice" id="packageonedayprice" value="<%=packages.getPriceOneDays() %>" required pattern="[0-9 .]{2,}" title="must contain numbers only"></td>
      </tr>
       <tr>
 <td><label for="season">current season :</label></td>

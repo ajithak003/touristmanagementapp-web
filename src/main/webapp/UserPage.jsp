@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,10 +12,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel = "icon" type = "" href = "Assets/logo.png">
     <title>user Page</title>
-
-<!-- <script>
-    history.forward();
-</script> -->
 
     <style>
     *{
@@ -117,14 +116,10 @@ span{
 
 <body>
 
-<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
        <h1>Tourist Management</h1><span>welcome
-      <% String error=(String)session.getAttribute("welcom");
-            if(error!=null) {%>
-           <%=session.getAttribute("welcom") %>
-           
-            <%} %>
+      
+      <c:out value="${sessionScope.welcom }"/>  
+      
        </span>
        <br>
 

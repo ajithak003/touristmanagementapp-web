@@ -37,7 +37,7 @@ public class RatingMain {
 		
 			System.out.println("How would you describe the amzing experience?");
 			String describe = sc.nextLine();
-			UserFeedbackClass feedBack = new UserFeedbackClass(booking.getBookingId(),user.getId(),booking.getPackageIid(),user.getName(),booking.getPackageName(),point,describe);
+			UserFeedbackClass feedBack = new UserFeedbackClass(booking.getBookingId(),user.getId(),booking.getPackages().getPackageId(),user.getName(),booking.getPackageName(),point,describe);
 		
 				boolean insert = rating.insertFeedback(feedBack);
 			if(insert==true) {

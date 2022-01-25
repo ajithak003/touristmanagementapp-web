@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <!DOCTYPE html>
 <html lang="en">
@@ -67,21 +69,16 @@ button{
 </head>
 <body>
 
-<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
 <form action="addhotel" method="get">
     <h1>Add Hotels</h1>
         <h2><a href="AdminPage.jsp">Go To Home</a></h2>
     <br><br><br>
     
-    <%          
-      String error = (String) session.getAttribute("addHotelerror");
-     if(error!=null){ 
-   %>
+   <c:if test="${sessionScope.addHotelerror !=null}">  
      <script type="text/javascript">
      alert("This Hotel Already Added");
      </script>  
-<%} %>
+</c:if>
     
     
 <div class="container">
@@ -113,8 +110,5 @@ button{
     </div>
 </div>
 </form>
-<%session.setAttribute("addHotelerror", null);
- 
-  %>
 </body>
 </html>

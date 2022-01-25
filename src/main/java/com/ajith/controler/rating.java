@@ -38,7 +38,7 @@ public class rating extends HttpServlet {
 			
 			String describrion = req.getParameter("describe");
 			
-			UserFeedbackClass userRating = new UserFeedbackClass(bookingId,user.getId(),booking.getPackageIid(),user.getName(),booking.getPackageName(),rating,describrion);
+			UserFeedbackClass userRating = new UserFeedbackClass(bookingId,user.getId(),booking.getPackages().getPackageId(),user.getName(),booking.getPackageName(),rating,describrion);
 			boolean rate  = ratingDao.insertFeedback(userRating);
 			PrintWriter out = res.getWriter();
 			if(rate==true) {

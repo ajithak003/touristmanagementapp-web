@@ -168,12 +168,10 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 		
 		List<FlightClass> flightDetails = new ArrayList<FlightClass>();
 		Connection con = null;
-		//System.out.println("connection");
-		String query = "select flight_no,flight_name,depature,destination,depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,"
-				+ "status,business_class_seat_status,economic_class_seat_status from flights_details where status=?";
-		//String query = "select flight_no, flight_name,depature,destination, depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,status from flights_details";
-		//select flight_no, flight_name,depature,destination,to_char(depature_date_time,'dd-mm-yyyy hh:mm') as depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,status from flights_details ;
+		String query = "select flight_no,flight_name,depature,destination,depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,status,business_class_seat_status,economic_class_seat_status from flights_details where status=?";
+		
 		PreparedStatement pstmt = null;
+		
 		
 		try {
 			con = ConnectionUtil.getDBConnect();

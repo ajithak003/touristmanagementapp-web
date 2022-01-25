@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,30 +17,30 @@ import com.ajith.exception.UserDefineException;
 import com.ajith.model.HotelClass;
 
 
-@WebServlet(urlPatterns = "/addhotel")
+@WebServlet("/addhotel")
 public class AddHotel extends HttpServlet {
 
 	
-	public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException  {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException  {
 		
 		
 		
 		try {
 			HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
 		
-		String hotelname = req.getParameter("hotelname");
+		String hotelname = request.getParameter("hotelname");
 		//System.out.println(hotelname);
 		
-		String hotelLocation = req.getParameter("hotellocation");
+		String hotelLocation = request.getParameter("hotellocation");
 		//System.out.println(hotelLocation);
 		
-	   double normalRoom = Double.parseDouble(req.getParameter("standardprice"));
+	   double normalRoom = Double.parseDouble(request.getParameter("standardprice"));
 		//System.out.println(normalRoom);
 		
-		double premiumRoom = Double.parseDouble (req.getParameter("premiumprice"));
+		double premiumRoom = Double.parseDouble (request.getParameter("premiumprice"));
 		//System.out.println(premiumRoom);
 		
-		String image = req.getParameter("hotelimage");
+		String image = request.getParameter("hotelimage");
 		
 		
 		HotelClass hotel = new HotelClass(hotelname,hotelLocation,normalRoom,premiumRoom,image);
@@ -48,9 +49,10 @@ public class AddHotel extends HttpServlet {
 		
 			hotels = hotelDao.insertHotel(hotel);
 		
-		HttpSession session = req.getSession();
-		PrintWriter out = res.getWriter();
-		if(hotels==true) {
+		HttpSession session = request.getSession();
+		
+		PrintWriter out =  response.getWriter();
+		if(hotels) {
 			//System.out.println("insert success");
 			
 
@@ -66,14 +68,12 @@ public class AddHotel extends HttpServlet {
 			throw new UserDefineException();
 		}
 		} catch (UserDefineException | ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			//System.out.println("error");
 			session.setAttribute("addHotelerror", ((UserDefineException) e).addhotel());
 			try {
-				res.sendRedirect("addHotel.jsp");
+				response.sendRedirect("addHotel.jsp");
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 		

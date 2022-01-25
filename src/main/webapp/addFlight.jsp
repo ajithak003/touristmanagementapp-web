@@ -74,9 +74,10 @@ button{
     <h1>Add Flight</h1>
       <h2><a href="AdminPage.jsp">Go To Home</a></h2>
     <br><br><br>
-
+	
     <div class="addpackage">
         <table cellspacing="20px" cellpadding="30px">  
+        
             <tr>
      <td><label for="location">Flight Name : </label></td> 
      <td> <input type="text" name="flightname" id="flightname" required pattern="[Aa-Zz 0-9 ]{2,}" title="must contain  and numbers only" autofocus></td> 

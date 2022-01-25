@@ -42,9 +42,9 @@
 <body>
 
 <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
+<h2><a href="AdminPage.jsp">Go To Home</a></h2>
     <h1>Show All Flight</h1>
-     <h2><a href="AdminPage.jsp">Go To Home</a></h2>
+     
     <br><br>
     <table cellpading="30px" cellspacing="30px"    >
         <th>Flight No</th>

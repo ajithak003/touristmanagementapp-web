@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,42 +29,35 @@ public class AdminRating extends HttpServlet {
      */
     public AdminRating() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		//System.out.println("calling");
 		 try {
 		RatingDaoImplement ratingDao = new RatingDaoImplement();
-	     UserTableDaoImplement userDao = new UserTableDaoImplement();
 	     
-	    
 			List<UserFeedbackClass> ratings = ratingDao.getAllFeedback();
-			
-			HttpSession session = request.getSession();
-			session.setAttribute("adminratings", ratings);
-		    response.sendRedirect("adminRating.jsp");
-			
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
+			request.setAttribute("adminratings", ratings);
+		    
+		    RequestDispatcher rd=request.getRequestDispatcher("adminRating.jsp");
+			rd.forward(request, response);
+			
+			
+		} catch (ClassNotFoundException | SQLException e) {
+			
+			System.out.println(e.getMessage());
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

@@ -186,11 +186,11 @@
     	
     	BookingClass singlebooking = booking.get(i);
     	
-    	FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
+    	/* FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
     	FlightClass flight = flightDao.getSingleFlight(singlebooking.getFlightNo());
     	
     	HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-        HotelClass hotel = hotelDao.getSingleHotel(singlebooking.getHotelId());
+        HotelClass hotel = hotelDao.getSingleHotel(singlebooking.getHotelId()); */
         
         RatingDaoImplement ratingDao = new RatingDaoImplement();
         boolean rating = ratingDao.endDateCheck(singlebooking);
@@ -219,11 +219,11 @@
                </div>
                
                 <div class="location">
-                    <h2><%=flight.getDepature() %>  -  <%=flight.getDestination() %></h2>
+                    <h2><%=singlebooking.getFlight().getDepature() %>  -  <%=singlebooking.getFlight().getDestination() %></h2>
                 </div>
                <div class="hotel">
                  
-                 <h2>Hotel Name : <span><%=hotel.getHotelName() %></span></h2>
+                 <h2>Hotel Name : <span><%=singlebooking.getHotel().getHotelName() %></span></h2>
                </div>
                 <div class="price">
                    

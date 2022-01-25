@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,14 +77,13 @@ button{
        
  <br><br><br>
     
-    <%          
-      String error = (String) session.getAttribute("addpackageerror");
-     if(error!=null){ 
-   %>
+    
+    <c:if test="${sessionScope.addpackageerror !=null}">    
      <script type="text/javascript">
      alert("This Package Already Added");
      </script>  
-<%} %>
+     
+</c:if>
 
 
 
@@ -116,8 +117,6 @@ button{
     </table>
     <button >Add Package</button>
     </form>
-    <%
-  session.setAttribute("addpackageerror", null);
-   %>
+   
 </body>
 </html>

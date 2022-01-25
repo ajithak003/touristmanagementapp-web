@@ -1,8 +1,6 @@
-<%@page import="com.ajith.model.UserFeedbackClass"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.daoImplement.UserTableDaoImplement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     
     <!DOCTYPE html>
@@ -60,46 +58,49 @@
 </head>
 <body>
      
-     <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
       
      <h1 class="title">Ratings</h1>
-      <h3><a href="AdminPage.jsp">Go To Home</a></h3>
+     
+           <h3><a href="AdminPage.jsp">Go To Home</a></h3>
+     
      <br>
-     <% 
      
-     List<UserFeedbackClass> ratings = (List<UserFeedbackClass>) session.getAttribute("adminratings");
      
-     for(int i =0; i<ratings.size(); i++){
-     
-    	 UserFeedbackClass rating = ratings.get(i);
-     
-     %>
+    <c:forEach items="${adminratings}" var="rating">
+    
      <a></a>
      <div class="container">
-     <h2 class="name"><%=rating.getUserName() %></h2>
-     <h3><%=rating.getPackageName() %> Trip</h3>
+     <h2 class="name"><c:out value="${rating.getUserName()}"></c:out></h2>
+     <h3>${ rating.getPackageName()}Trip</h3>
      
-      <%if(rating.getRating()==5.0) {%>
-     
+    <c:choose>
+      <c:when test="${rating.getRating()==5.0}">
      <h1 class="rate">&#11088;&#11088;&#11088;&#11088;&#11088;</h1>
-     <%}else if (rating.getRating()==4.0) {%>
+     </c:when>
+     
+    <c:when test="${rating.getRating()==4.0}">
      <h1 class="rate">&#11088;&#11088;&#11088;&#11088;</h1>
-     <%} 
-     else if(rating.getRating()==3.0) {%>
+     </c:when> 
      
+    <c:when test="${rating.getRating()==3.0}">
      <h1 class="rate">&#11088;&#11088;&#11088;</h1>
-     <%}else if (rating.getRating()==2.0) {%>
-     <h1 class="rate">&#11088;&#11088;</h1>
-     <%} else if (rating.getRating()==1.0){%>
-      <h1 class="rate">&#11088;</h1>
-      <%} if(rating.getDescribtion()==null){
-      %> <p> </p><%}else if(rating.getDescribtion()!=null) {%>
-     <p><%=rating.getDescribtion()%></p>
-     <%} %>
+     </c:when>
      
+    <c:when test="${rating.getRating()==2.0}">
+     <h1 class="rate">&#11088;&#11088;</h1>
+     </c:when>
+     
+    <c:when test="${rating.getRating()==1.0}">
+      <h1 class="rate">&#11088;</h1>
+      </c:when>
+       </c:choose>
+       
+      <c:if test="${rating.getDescribtion()!=null}">
+     <p>${rating.getDescribtion()}</p>
+     </c:if>
+    
 </div>
 <br><br>
-<%} %>
-
+</c:forEach>
 </body>
 </html>

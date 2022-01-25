@@ -41,9 +41,9 @@
 <body>
 
 <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
+ <h2><a href="AdminPage.jsp">Go To Home</a></h2>
     <h1>Show All Packages</h1>
-    <h2><a href="AdminPage.jsp">Go To Home</a></h2>
+   
     <br><br>
     
     
