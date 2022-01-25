@@ -17,7 +17,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 
 	@Override
 	public boolean insertPackage(PackageModeClass Packages) {
-		// TODO Auto-generated method stub
 		
 		
 		Connection con = null;

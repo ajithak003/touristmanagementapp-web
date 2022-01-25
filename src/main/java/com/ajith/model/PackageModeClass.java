@@ -13,7 +13,6 @@ public class PackageModeClass {
 	private String image;
 	public PackageModeClass() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

@@ -5,43 +5,44 @@
 <%@page import="com.ajith.model.BookingClass"%>
 <%@page import="com.ajith.daoImplement.BookingTableDaoImplement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
-    
-    <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel = "icon" type = "" href = "Assets/logo.png">
-    <title>cancel Booking</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="" href="Assets/logo.png">
+<title>cancel Booking</title>
 <style>
-body{
-    background-color: silver;
-}
-h1{
-    font-size: 40px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    font-weight: bold;
-    color: slateblue;
-    text-align: center;
-    margin-top: 18%;
-}
-h2,a{
-    text-align: center;
-    text-decoration: none;
+body {
+	background-color: silver;
 }
 
+h1 {
+	font-size: 40px;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-weight: bold;
+	color: slateblue;
+	text-align: center;
+	margin-top: 18%;
+}
+
+h2, a {
+	text-align: center;
+	text-decoration: none;
+}
 </style>
 
 </head>
 <body>
 
 
-<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-  
-      <%
+	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+
+	<%
       
        String bookingid  = request.getParameter("bookingid");
       
@@ -58,9 +59,11 @@ h2,a{
 		if(book.getStatus().equalsIgnoreCase("cancel")) {
 			//System.out.println("this package already canceled");
 			%><h1><%="Your Booking Already Canceled" %></h1>
-			<h2><%="please wait! Your Payment Refund within 3 working days "%></h2>
-			<h2><a href="showAllBooking.jsp">Go To My Booking</a></h2>
-			<%
+	<h2><%="please wait! Your Payment Refund within 3 working days "%></h2>
+	<h2>
+		<a href="showAllBooking.jsp">Go To My Booking</a>
+	</h2>
+	<%
 		}
 		else {
 		
@@ -88,19 +91,21 @@ h2,a{
 			
 		//	System.out.println("successfully canceled");
 			%><h1><%="Cancel Successful"%></h1>
-			<h2><%="Your Payment Refund within 3 working days"%></h2>
-			<h2><a href="showAllBooking.jsp">Go To My Booking</a></h2>
-			 <%
+	<h2><%="Your Payment Refund within 3 working days"%></h2>
+	<h2>
+		<a href="showAllBooking.jsp">Go To My Booking</a>
+	</h2>
+	<%
 			
 		}
 		else {
 			//System.out.println("unable to cancel your booking please try again later");
 		}
 		}%>
-	
-    
-    
+
+
+
 </body>
- 
+
 
 </html>

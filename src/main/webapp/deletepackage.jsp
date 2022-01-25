@@ -1,21 +1,21 @@
 <%@page import="com.ajith.daoImplement.PackageModeClassDaoImplement"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 
 
 
 l>
 <head>
 <meta charset="ISO-8859-1">
-<link rel = "icon" type = "" href = "Assets/logo.png">
+<link rel="icon" type="" href="Assets/logo.png">
 <title>Delete Package</title>
 
 </head>
 <body>
 
-      <%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-      
-      <% String packageName = request.getParameter("packagname");
+	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+
+	<% String packageName = request.getParameter("packagname");
        //System.out.print(packageName);
        PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
     
@@ -34,7 +34,7 @@ l>
 			
 			
     %>
-      
+
 
 
 </body>

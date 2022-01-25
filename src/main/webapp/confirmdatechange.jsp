@@ -5,33 +5,35 @@
 <%@page import="com.ajith.daoImplement.FlightTableDaoImplement"%>
 <%@page import="com.ajith.model.BookingClass"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<link rel = "icon" type = "" href = "Assets/logo.png">
+<link rel="icon" type="" href="Assets/logo.png">
 <title>plan date change</title>
 <style>
-body{
-    background-color:ivory;
+body {
+	background-color: ivory;
 }
-h1{
-    text-align: center;
-    margin-top: 20%;
+
+h1 {
+	text-align: center;
+	margin-top: 20%;
 }
-h2,a{
-     text-align: center;
-     text-decoration: none;
+
+h2, a {
+	text-align: center;
+	text-decoration: none;
 }
 </style>
 
 </head>
 <body>
 
-<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 
-<% UserClass users = (UserClass) session.getAttribute("user");
+	<% UserClass users = (UserClass) session.getAttribute("user");
    UserTableDaoImplement userDao = new UserTableDaoImplement(); 
    UserClass user = userDao.getUserById(users);
    
@@ -93,13 +95,15 @@ h2,a{
 	   
 	   boolean change = bookingDao.dateChange(booking, wallet, days, newFlightbSeat, newFlighteSeat, oldFlightbSeat, oldFlighteSeat, flight.getFlightNo(), singleBookingId, totalPrice);
 	   //System.out.println("query "+singleBookingId);
-%>      
+%>
 
 
-<h1>Successfully Change Your Tour Date</h1>
-<br>
-<h2><a href="UserPage.jsp">Go To Home</a></h2>
-<%}else {
+	<h1>Successfully Change Your Tour Date</h1>
+	<br>
+	<h2>
+		<a href="UserPage.jsp">Go To Home</a>
+	</h2>
+	<%}else {
     out.println("<script type=\"text/javascript\">");
 	out.println("alert('Insufficient balance !');");
 	out.println("location='wallet.jsp';");
@@ -113,12 +117,14 @@ h2,a{
        
 	   boolean change = bookingDao.dateChange(booking, wallet, days, newFlightbSeat, newFlighteSeat, oldFlightbSeat, oldFlighteSeat, flight.getFlightNo(), singleBookingId, totalPrice);
 	   %>
-	   <h1>Successfully Change Your Tour Date</h1>
-<br>
-<h2><a href="UserPage.jsp">Go To Home</a></h2>
-  <%} %> 
-   
-  
+	<h1>Successfully Change Your Tour Date</h1>
+	<br>
+	<h2>
+		<a href="UserPage.jsp">Go To Home</a>
+	</h2>
+	<%} %>
+
+
 
 
 </body>
