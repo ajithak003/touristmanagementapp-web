@@ -118,7 +118,7 @@ span {
 			<li><a href="#">Home</a></li>
 			<li><a href="papularPlaces">Book Package</a></li>
 			<li><a href="papularPlaces">Popular Places</a></li>
-			<li><a href="showAllBooking.jsp">My Booking</a></li>
+			<li><a href="showAllBooking">My Booking</a></li>
 			<li><a>More</a>
 				<ul>
 					<li><a href="profile.jsp">Profile</a></li>

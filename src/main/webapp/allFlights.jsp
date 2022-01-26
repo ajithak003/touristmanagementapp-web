@@ -1,11 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@page import="com.ajith.daoImplement.FlightTableDaoImplement"%>
-<%@page import="com.ajith.model.FlightClass"%>
-<%@page import="java.util.List"%>
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="java.time.LocalDate"%>
-<%@page import="com.ajith.model.BookingClass"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,127 +119,94 @@ span {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
-	<form action="hotels.jsp">
-		<!-- <h3><a href="UserPage.jsp">Go To Home</a></h3> -->
+	<form action="hotels">
 		<div>
 
 			<h1>Flights</h1>
 
-			<% 
-     DateTimeFormatter formatter =
-     DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-     DateTimeFormatter format =
-    	     DateTimeFormatter.ofPattern("dd-MM-yyyy");
-     
-     BookingClass booking =(BookingClass) session.getAttribute("booking");
-   
-    String depDate = request.getParameter("startdate") ;
-     
-		LocalDate depatureTimeDate = LocalDate.parse(depDate);
-        String daysPlane = request.getParameter("noofdays");
-		//System.out.println(daysPlane);
-		
-	int noOfPerson =Integer.parseInt( request.getParameter("noofperson"));
-	//System.out.println(noOfPerson);
-	
-	int days = Integer.parseInt(daysPlane.substring(0, 1));
-	//System.out.println(days);
-	double totalPrice = booking.getTotalPrice() * days;
-	//System.out.println(totalPrice);
-	
-	String flightClass = null;
-	
-        //FlightClass showAllFlight = new FlightClass();
-		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-		//System.out.println(booking.getPackageName());
-		List<FlightClass> flights = flightDao.getFlightByNo(booking.getPackageName(),depatureTimeDate); 
-		
-		if(flights.isEmpty()){%>
-			<br>
-			<br>
-			<p class="noflight">No Flights Available
-			<p>
-				<% 	}
-		
-		
-		else
-		{
-		for (int i = 0; i < flights.size(); i++) {
-			
-			
-			FlightClass flight = flights.get(i);
-			if(flight.getBusinessClassSeat()>=noOfPerson || flight.getEconomicClassSeat()>=noOfPerson){	
-		%>
-			
-			<div class="container">
-				<h2><%=flight.getFlightName()%></h2>
-				<div>
-					<img src="https://pngimg.com/uploads/plane/plane_PNG5248.png"
-						alt="">
-				</div>
-				<div class="depature">
+			<c:set var="flights" scope="session" value="${allflightpage}" />
+			<c:set var="noOfPerson" scope="session" value="${noofperson}" />
 
-					<h3 class="place"><%=flight.getDepature()%></h3>
-					<%/*  LocalDate startDate = LocalDate.parse(flight.getDepatureDateTime().format(format));*/ %>
-					<h3 class="date"><%=flight.getDepatureDateTime().format(formatter) %></h3>
-				</div>
-				<div class="destinations">
-					<%String destination = flight.getDestination(); %>
-					<h3 class="place" name="destination"><%=flight.getDestination() %></h3>
-					<h3 class="date"><%=flight.getArrivalDateTime().format(formatter) %></h3>
-				</div>
-				<div class="price">
 
-					<p>
-						<% if(flight.getBusinessClassSeat()>=noOfPerson) {
-            	
-            	 
-            %>
+			<c:if test="${empty flights}">
+				<br>
+				<br>
+				<p class="noflight">No Flights Available
+				<p>
+			</c:if>
+
+
+			<c:forEach items="${allflightpage}" var="flight">
+			
+			<c:if test="${flight.getEconomicClassSeat()>=noOfPerson or flight.getBusinessClassSeat()>=noOfPerson}" >
+
+				<div class="container">
+					<h2>${flight.getFlightName()}</h2>
+					<div>
+						<img src="https://pngimg.com/uploads/plane/plane_PNG5248.png"
+							alt="">
+					</div>
+					<div class="depature">
+
+						<h3 class="place">${flight.getDepature()}</h3>
+						<fmt:parseDate value="${flight.getDepatureDateTime()}"
+							pattern="yyyy-MM-dd'T'HH:mm" var="DepatureDateTime" type="both" />
+						<h3 class="date">
+							<fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+								value="${DepatureDateTime}" />
+						</h3>
+					</div>
+					<div class="destinations">
+						<%-- ${String destination = flight.getDestination()} --%>
+						<h3 class="place" name="destination">${flight.getDestination()}</h3>
+						<fmt:parseDate value="${flight.getArrivalDateTime()}"
+							pattern="yyyy-MM-dd'T'HH:mm" var="ArrivalDateTime" type="both" />
+
+						<h3 class="date">
+							<fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+								value="${ArrivalDateTime}" />
+						</h3>
+					</div>
+					<div class="price">
+
+						<p>
+							<c:if test="${flight.getBusinessClassSeat()>=noOfPerson}">
+  
 						<input type="radio" name="price" id="Business"
-							value="<%=flight.getBusinessClassFare() %>" required
-							title="please select one"><label for="">Business
-							Class <span><%=flight.getBusinessClassFare() %></span>
-						</label>
-						<%} 
-                if(flight.getEconomicClassSeat()>=noOfPerson){ 
-                	 
-                	
-                %>
+									value="${flight.getBusinessClassFare()}" required
+									title="please select one">
+								<label for="">Business Class <span>${flight.getBusinessClassFare()}</span>
+								</label>
+							</c:if>
 
+							<c:if test="${flight.getEconomicClassSeat()>=noOfPerson}">
+                
 						<input type="radio" name="price" id="Economic"
-							value="<%=flight.getEconomicClassFare() %>" required
-							title="please select one"><label for="" id="Economic">Economic
-							Class <span><%=flight.getEconomicClassFare() %></span>
-						</label>
-						<%} %>
-					</p>
+									value="${flight.getEconomicClassFare()}" required
+									title="please select one">
+								<label for="" id="Economic">Economic Class <span>${flight.getEconomicClassFare()}</span>
+								</label>
+							</c:if>
+						</p>
+
+					</div>
+					<div class="btn">
+
+						<button id="button" name="flightno"
+							value="${flight.getFlightNo()}">Book flight</button>
+					</div>
+
 
 				</div>
-				<div class="btn">
+				<br> <br>
+				</c:if>
+			</c:forEach>
 
-
-					<!-- <input type="button" value="Book" id="button"> -->
-					<button id="button" name="flightno"
-						value="<%=flight.getFlightNo()%>">Book flight</button>
-				</div>
-
-			</div>
-			<br>
-			<br>
+			
 		</div>
 
-		<% } }
-		}
-		%>
-		<% 
-      
-      BookingClass bookings = new  BookingClass( booking.getUser(),booking.getPackages(),null,null,noOfPerson,depatureTimeDate,totalPrice,flightClass,"",daysPlane,booking.getPackageName(),0); 
-		session.setAttribute("bookings",bookings);
-		
-		//System.out.println("allflights "+bookings); 
-		 %>
+
+
 	</form>
 </body>
 </html>

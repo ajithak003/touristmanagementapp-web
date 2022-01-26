@@ -1,11 +1,4 @@
-<%@page import="com.ajith.daoImplement.FlightTableDaoImplement"%>
-<%@page import="com.ajith.model.FlightClass"%>
-<%@page import="com.ajith.model.HotelClass"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.daoImplement.HotelTableDaoImplement"%>
-<%@page import="com.ajith.model.BookingClass"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -100,106 +93,66 @@ button {
 	font-family: monospace;
 	font-weight: bold;
 }
+
+.nohotel {
+	color: darkred;
+	text-align: center;
+	color: black;
+	font-size: 40px;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	<form action="booking">
 
-	<form action="booking.jsp">
-		<!-- <h3><a href="UserPage.jsp">Go To Home</a></h3> -->
 		<h1>Hotels</h1>
-		<br>
-		<br>
+		<br> <br>
 
-		<% BookingClass booking =(BookingClass) session.getAttribute("bookings"); 
-    //System.out.println(booking);
-        String flightNoStr = request.getParameter("flightno");
-        int flightNo = Integer.parseInt(flightNoStr);
-        
-        double flightFare = Double.parseDouble (request.getParameter("price"));
-        //System.out.println(flightFare);
-        session.setAttribute("flightfare", flightFare);
-        
-        FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-        FlightClass flight = flightDao.getSingleFlight(flightNo);
-        session.setAttribute("singleflight", flight);
-        String flightClass="";
-        if(flightFare==flight.getBusinessClassFare()){
-        	flightClass = "business class";
-        }
-        else{
-        	 flightClass = "economic class";
-        }
-       // System.out.println(flight);
-       double totalPrice = (booking.getTotalPrice()+flightFare) * booking.getNoOfPerson();
-       
-       //System.out.println(totalPrice);
-       
-        session.setAttribute("flight", flight);
-       
-        HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-        List<HotelClass> hotels = hotelDao.getHotelByNo(booking.getPackageName());
-        
-        String hotelRoomType = null;
-        
-for (int i = 0; i < hotels.size(); i++) {
-			
-			
-	HotelClass hotel = hotels.get(i);
-	
-	//System.out.println(hotel);	
-        	
-    %>
+		<c:set var="hotels" scope="session" value="${bookingallhotels}" />
+		<c:if test="${empty hotels}">
+			<br>
+			<br>
+			<p class="nohotel">No Hotels Available
+			<p>
+		</c:if>
 
-		<div class="container">
-			<div>
-				<img src="Assets/<%=hotel.getImage()%>" alt="">
-				<div class="name">
-					<h3>Hotel Name :</h3>
-					<h3 class="hotelname"><%=hotel.getHotelName()%></h3>
+		<c:forEach items="${hotels}" var="hotel">
+
+			<div class="container">
+				<div>
+					<img src="Assets/${hotel.getImage()}"
+						alt="${hotel.getHotelName()}, ${hotel.getLocation()}">
+					<div class="name">
+						<h3>Hotel Name :</h3>
+						<h3 class="hotelname">${hotel.getHotelName()}</h3>
+					</div>
+					<div class="location">
+						<h3>Location :</h3>
+						<h3 class="locationname">${hotel.getLocation()}</h3>
+					</div>
+					<div class="radio">
+						<p>
+
+							<input type="radio" name="hotelprice" id="Normal"
+								value="${hotel.getMidRangePrice()}" required><label
+								for="">Normal Room <span>${hotel.getMidRangePrice()}</span></label>
+
+							<input type="radio" name="hotelprice" id="Premium"
+								value="${hotel.getPremiumPrice()}" required><label
+								for="" id="Premium">Premium Room <span>${hotel.getPremiumPrice()}</span></label>
+
+						</p>
+					</div>
+					<button id="button" name="hotelid" value="${hotel.getHotelId()}">Book
+						hotel</button>
 				</div>
-				<div class="location">
-					<h3>Location :</h3>
-					<h3 class="locationname">
-						<%=hotel.getLocation() %></h3>
-				</div>
-				<div class="radio">
-					<p>
-						<%  {
-            	
-            	
-            %>
-						<input type="radio" name="hotelprice" id="Normal"
-							value="<%=hotel.getMidRangePrice() %>" required><label
-							for="">Normal Room <span><%=hotel.getMidRangePrice()%></span></label>
-						<%} 
-                { 
-                	 
-                	
-                %>
-						<input type="radio" name="hotelprice" id="Premium"
-							value="<%=hotel.getPremiumPrice() %>" required><label
-							for="" id="Premium">Premium Room <span><%=hotel.getPremiumPrice()%></span></label>
-						<%} %>
-					</p>
-				</div>
-				<button id="button" name="hotelid" value="<%=hotel.getHotelId() %>">Book
-					hotel</button>
+
 			</div>
-
-		</div>
-		<br>
-		<br>
-		<%}%>
-		<% 
-			 
-			 
-			// System.out.println(totalPrice);
-      BookingClass bookings = new  BookingClass( booking.getUser(),booking.getPackages(),booking.getFlight(),null,booking.getNoOfPerson(),booking.getStartDate(),totalPrice,flightClass,"",booking.getDaysPlan(),booking.getPackageName(),0); 
-		session.setAttribute("bookingsflight",bookings);
-		
-		//System.out.println("hotelpage "+bookings); %>
+			<br>
+			<br>
+		</c:forEach>
 
 	</form>
 </body>

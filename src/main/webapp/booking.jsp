@@ -1,14 +1,5 @@
-<%@page import="com.ajith.daoImplement.UserTableDaoImplement"%>
-<%@page import="com.ajith.daoImplement.BookingTableDaoImplement"%>
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="com.ajith.model.FlightClass"%>
-<%@page import="com.ajith.model.PackageModeClass"%>
-<%@page import="com.ajith.model.UserClass"%>
-<%@page import="com.ajith.model.HotelClass"%>
-<%@page import="com.ajith.daoImplement.HotelTableDaoImplement"%>
-<%@page import="com.ajith.model.BookingClass"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,184 +61,133 @@ button {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
-	<form action="bookingsus.jsp">
+	<form action="bookingsus">
 
 		<h1>Booking Details</h1>
 
-		<%  DateTimeFormatter formatter =
-		     DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-   
-   BookingClass booking =(BookingClass) session.getAttribute("bookingsflight"); 
-   
-        String hotelId = request.getParameter("hotelid");
-       // System.out.println(hotelId);
-        
-        double no = booking.getNoOfPerson();
-        double noOfRoom  = Math.ceil(no/4);
-       // System.out.println("no of rooms: "+noOfRoom);
-        double hotelPrices = Double.parseDouble(request.getParameter("hotelprice"));
-        double  hotelonePrice = hotelPrices*noOfRoom;
-       // System.out.println("no of rooms price: "+hotelPrices);
-        int days = Integer.parseInt(booking.getDaysPlan().substring(0, 1));
-      //  System.out.println("no of rooms days: "+days);
-        
-       double hotelPrice = hotelonePrice * days;
-        double totalPrice = booking.getTotalPrice()+hotelPrice;
-      //  System.out.println(totalPrice);
-        
-        HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-        HotelClass hotel = hotelDao.getSingleHotel(Integer.parseInt(hotelId));
-       // System.out.println(hotel);
-        session.setAttribute("singlehotel", hotel);
-        String hotelRoomType = null;
-        String room = null;
-        if(hotelPrices==hotel.getPremiumPrice()){
-        	/* hotelRoomType = "premimum room"; */
-        	room = "premimum room";
-        }
-        else{        	
-             room = "Standard Room";
-        }
-        
-        UserClass user = (UserClass) session.getAttribute("user");
-      //  System.out.println(user);
-      //System.out.println(user.getWallet());
-        
-        PackageModeClass packages = (PackageModeClass) session.getAttribute("singlepackages");
-      //  System.out.println(packages);
-        
-        FlightClass flight = (FlightClass) session.getAttribute("singleflight");
-       // System.out.println(flight);
-        
-        double flightFare = (Double) session.getAttribute("flightfare");
-       // System.out.println(flightFare);
-       
-       int noOfHotelRooms = (int) noOfRoom;
-        
-        %>
-
-
+		<c:set var="flightFare" scope="session" value="${flightfare}" />
+		<c:set var="noOfHotelRooms" scope="session" value="${noofroom}" />
+		<c:set var="booking" scope="session"
+			value="${sessionScope.confirmbooking}" />
+		<c:set var="hotelPrice" scope="session" value="${hotelprice}" />
 
 		<div class="container">
 			<table cellpadding="10px" cellspacing="10px">
 				<tr>
-					<th>
+					<th id="">
 						<h2>User Details</h2>
 					</th>
 				</tr>
 				<br>
 
 				<td>User Name :</td>
-				<td><%=user.getName() %></td>
+				<td>${booking.getUser().getName()}</td>
 
 				<tr>
 					<td>User Email Id :</td>
-					<td><%=user.getEmail() %></td>
+					<td>${booking.getUser().getEmail()}</td>
 
 				</tr>
 
 				<tr>
-					<th><h2>Package Details</h2></th>
+					<th id=""><h2>Package Details</h2></th>
 				</tr>
 				<br>
 				<td>Tour place :</td>
-				<td><%=packages.getName() %></td>
+				<td>${booking.getPackages().getName()}</td>
 				</tr>
 				<tr>
 					<td>one Day Night Price / person :</td>
-					<td><%=packages.getPriceOneDays() %></td>
+					<td>${booking.getPackages().getPriceOneDays()}</td>
 				</tr>
 				<tr>
 					<td>No Of Person :</td>
-					<td><%=booking.getNoOfPerson() %></td>
+					<td>${booking.getNoOfPerson()}</td>
 				</tr>
 				<tr>
 					<td>No Of Days in Night :</td>
-					<td><%=booking.getDaysPlan() %></td>
+					<td>${booking.getDaysPlan()}</td>
 				</tr>
 				<tr>
 					<td>Tour Start Date :</td>
-					<td><%=booking.getStartDate() %></td>
+					<td>${booking.getStartDate()}</td>
 				</tr>
 
 				<tr>
-					<th>
+					<th id="">
 						<h2>Flight Details</h2>
 					</th>
 				</tr>
 				<br>
 				<td>Flight Name :</td>
-				<td><%=flight.getFlightName() %></td>
+				<td>${booking.getFlight().getFlightName()}</td>
 				</tr>
 				<tr>
 					<td>departure place :</td>
-					<td><%=flight.getDepature() %></td>
+					<td>${booking.getFlight().getDepature()}</td>
 				</tr>
 				<tr>
 					<td>destination place :</td>
-					<td><%=flight.getDestination() %></td>
+					
+					<td>${booking.getFlight().getDestination()}</td>
 				</tr>
 				<tr>
 					<td>Departure Date And Time Name :</td>
-					<td><%=flight.getDepatureDateTime().format(formatter) %></td>
+					<fmt:parseDate value="${booking.getFlight().getDepatureDateTime()}"
+						pattern="yyyy-MM-dd'T'HH:mm" var="DepatureDateTime" type="both" />
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+							value="${DepatureDateTime}" /></td>
 				</tr>
 				<tr>
 					<td>Arrival Date And Time Name :</td>
-					<td><%=flight.getArrivalDateTime().format(formatter) %></td>
+					<fmt:parseDate value="${booking.getFlight().getArrivalDateTime()}"
+						pattern="yyyy-MM-dd'T'HH:mm" var="ArrivalDateTime" type="both" />
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+							value="${ArrivalDateTime}" /></td>
 				</tr>
 				<tr>
 					<td>Class :</td>
-					<td><%=booking.getFlightClass() %></td>
+					<td>${booking.getFlightClass()}</td>
 				</tr>
 				<tr>
 					<td>Ticket Price :</td>
-					<td><%=flightFare%></td>
+					<td>${flightFare}</td>
 				</tr>
 
 				<tr>
-					<th>
+					<th id="">
 						<h2>Hotel Details</h2>
 					</th>
+					<br>
 				</tr>
 				<td>Hotel Name :</td>
-				<td><%=hotel.getHotelName() %></td>
+
+				<td>${booking.getHotel().getHotelName()}</td>
 				</tr>
 				<tr>
 					<td>Hotel Location :</td>
 
-					<td><%=hotel.getLocation() %></td>
+					<td>${booking.getHotel().getLocation()}</td>
 				</tr>
 				<tr>
 					<td>Room Type :</td>
-					<td><%=room %></td>
+					<td>${booking.getHotelRoomType()}</td>
 				</tr>
 				<tr>
 					<td>Hotel One Day Night Price :</td>
-					<td><%= hotelPrice %></td>
+					<td>${hotelPrice}</td>
 				</tr>
 				<tr>
 					<td>No Of Room :</td>
-					<td><%=noOfHotelRooms  %> Room</td>
+					<td>${noOfHotelRooms}Room</td>
 				</tr>
 				<tr>
 					<td><h3>Package Total Price</h3></td>
-					<td><h3><%=totalPrice %></h3></td>
+					<td><h3>${booking.getTotalPrice()}</h3></td>
 				</tr>
 			</table>
 			<button>Confirm Booking</button>
 
-
-			<% 
- 
-BookingClass bookings = new BookingClass(user, packages,
-			flight, hotel, booking.getNoOfPerson(),booking.getStartDate(), totalPrice,
-			booking.getFlightClass(),room,booking.getDaysPlan(),booking.getPackageName(),noOfHotelRooms);
-	
-	session.setAttribute("confirmbooking", bookings);
-	  
-%>
 		</div>
 	</form>
 </body>

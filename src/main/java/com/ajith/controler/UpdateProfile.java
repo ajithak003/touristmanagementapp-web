@@ -38,7 +38,7 @@ public class UpdateProfile extends HttpServlet {
 			boolean update = userDao.updateuser(name, email, mboilNo, password);
 			//System.out.println(update);
 			PrintWriter out = res.getWriter();
-			if(update==true) {
+			if(update) {
 				
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Successfully Updated');");

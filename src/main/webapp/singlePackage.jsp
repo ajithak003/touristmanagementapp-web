@@ -1,12 +1,5 @@
-<%@page import="com.ajith.model.UserFeedbackClass"%>
-<%@page import="com.ajith.daoImplement.RatingDaoImplement"%>
-<%@page import="com.ajith.model.UserClass"%>
-<%@page import="java.time.LocalDate"%>
-<%@page import="com.ajith.model.BookingClass"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@page import="com.ajith.daoImplement.PackageModeClassDaoImplement"%>
-<%@page import="com.ajith.model.PackageModeClass"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -132,44 +125,29 @@ label {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	<c:set var="packages" scope="session"
+		value="${sessionScope.singlepackages}" />
+	<c:set var="rating" scope="session"
+		value="${sessionScope.singleaverating}" />
 
-	<%
-	String location = request.getParameter("location");
-	//System.out.println(location);
-	PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-	PackageModeClass packages = packageDao.getSinglePackage(location.toLowerCase());
-	session.setAttribute("singlepackages", packages);
-	UserClass user = (UserClass) session.getAttribute("user");
-	int userId = user.getId();
-	//System.out.println(userId);
-	double totalPrice = packages.getPriceOneDays();
-	RatingDaoImplement ratingDao = new RatingDaoImplement();
-	
-	UserFeedbackClass rating = ratingDao.getAllFeedbackratingS(location);
-	//System.out.println(rating);
-	
-	%>
-	<form action="allFlights.jsp">
-		<!--      <h3><a href="UserPage.jsp">Go To Home</a></h3>
- -->
+	<form action="allFlights">
+
 		<div id="container">
-			<%int packageId = packages.getPackageId(); %>
-			<%String place=packages.getName();%>
-			<h1 name="place"><%=packages.getName()%></h1>
+
+			<h1 name="place">${packages.getName()}</h1>
 			<br> <a href="#"> <img class="firstrowimg"
-				src="Assets/<%=packages.getImage() %>" alt="">
+				src="Assets/${packages.getImage()}" alt="${packages.getName()}">
 
 			</a> <br> <br>
 			<table class="details" cellspacing="30px" cellpadding="">
 				<tr>
-					<td><p><%=packages.getDescription()%></p></td>
+					<td><p>${packages.getDescription()}</p></td>
 				</tr>
 				<tr>
 					<td>
 						<h3>Location :</h3>
 					</td>
-					<td><p><%=packages.getName()%></p></td>
+					<td><p>${packages.getName()}</p></td>
 				</tr>
 				<tr>
 					<td>
@@ -178,38 +156,35 @@ label {
 						</h3>
 					</td>
 
-					<td><p><%=packages.getPriceOneDays() %></p></td>
+					<td><p>${packages.getPriceOneDays()}</p></td>
 				</tr>
 				<tr>
 					<td>
 						<h3>Season :</h3>
 					</td>
-					<td><p><%=packages.getSeason() %></p></td>
+					<td><p>${packages.getSeason()}</p></td>
 				</tr>
 				<tr>
 					<td>
 						<h3>Tourist Protocols :</h3>
 					</td>
 
-					<td><p><%=packages.getProtocols() %></p></td>
+					<td><p>${packages.getProtocols()}</p></td>
 				</tr>
-				<%if(rating!=null) {%>
-				<tr>
-					<td>
-						<h3>Ratings</h3>
-					</td>
+				<c:if test="${rating!=null}">
+					<tr>
+						<td>
+							<h3>Ratings</h3>
+						</td>
 
-					<td>
-						<h3><%=rating.getRating()%>
-							/ 5
-						</h3>
-					</td>
-				</tr>
-				<%} %>
+						<td>
+							<h3>${rating.getRating()}/ 5</h3>
+						</td>
+					</tr>
+				</c:if>
 
 			</table>
-			<br>
-			<br>
+			<br> <br>
 
 			<table>
 				<tr>
@@ -239,36 +214,29 @@ label {
 		</div>
 	</form>
 
-	<%
-	BookingClass booking = new  BookingClass( user, packages,  null,  null,  0,null ,totalPrice, "", "", "",place,0); 
-    //System.out.println("singlepackage"+booking);
-	session.setAttribute("booking",booking);
-	%>
-
-
 </body>
 
 <script>
+	today();
+	function today() {
 
-   today();
-function today(){
-  
-var currentTime = new Date() 
-var minDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), + currentTime.getDate()+2); //one day next before month
-var maxDate =  new Date(currentTime.getFullYear(), currentTime.getMonth() +1, +currentTime.getDate()+2	); // one day before next month
-console.log(minDate);
-console.log(maxDate);
-let date = JSON.stringify(maxDate)
-date = date.slice(1,11)
-console.log(date)
-let dates = JSON.stringify(minDate)
-dates = dates.slice(1,11)
-console.log(dates)
-document.getElementById("startdate").setAttribute("max",date);
-document.getElementById("startdate").setAttribute("min",dates);
+		var currentTime = new Date()
+		var minDate = new Date(currentTime.getFullYear(), currentTime
+				.getMonth(), +currentTime.getDate() + 2); //one day next before month
+		var maxDate = new Date(currentTime.getFullYear(), currentTime
+				.getMonth() + 1, +currentTime.getDate() + 2); // one day before next month
+		console.log(minDate);
+		console.log(maxDate);
+		let date = JSON.stringify(maxDate)
+		date = date.slice(1, 11)
+		console.log(date)
+		let dates = JSON.stringify(minDate)
+		dates = dates.slice(1, 11)
+		console.log(dates)
+		document.getElementById("startdate").setAttribute("max", date);
+		document.getElementById("startdate").setAttribute("min", dates);
 
-}   
- 
+	}
 </script>
 
 </html>

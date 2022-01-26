@@ -1,5 +1,6 @@
 package com.ajith.controler;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,9 +16,9 @@ import javax.servlet.http.HttpServlet;
 @WebServlet("/login")
 public class Login extends HttpServlet {
 
-	public void doPost(HttpServletRequest req, HttpServletResponse res) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
-		HttpSession session = req.getSession();
+		HttpSession session = request.getSession();
 
 		try {
 			UserTableDaoImplement userDao = new UserTableDaoImplement();
@@ -26,55 +27,51 @@ public class Login extends HttpServlet {
 			adminDao = new AdminTableDaoImplement();
 			userDao = new UserTableDaoImplement();
 
-			String email = req.getParameter("loginemail");
+			String email = request.getParameter("loginemail");
 			email = email.trim().toLowerCase();
 
 			if (email.endsWith("@admin.com")) {
 
 				AdminClass admin = new AdminClass();
-				String password = req.getParameter("loginpsws");
+				String password = request.getParameter("loginpsws");
 				// System.out.println(password);
 
 				admin = adminDao.validateAdmin(email, password);
 				if (admin == null) {
 
 					session.setAttribute("error", "user name and password mismatch");
-					req.getRequestDispatcher("login.jsp").forward(req, res);
+					request.getRequestDispatcher("login.jsp").forward(request, response);
 				} else {
 
-					res.sendRedirect("AdminPage.jsp");
-
 					session.setAttribute("welcom", admin.getName());
-
-					req.getRequestDispatcher("UserPage.jsp").forward(req, res);
+					response.sendRedirect("AdminPage.jsp");
 
 				}
 			}
 
-			String password = req.getParameter("loginpsws");
-			
+			String password = request.getParameter("loginpsws");
 
 			UserClass user = userDao.validateUser(email, password);
 
 			if (user == null) {
 
 				session.setAttribute("error", "user name and password mismatch");
-				req.getRequestDispatcher("login.jsp").forward(req, res);
+				request.getRequestDispatcher("login.jsp").forward(request, response);
 
 			} else {
 
-				res.sendRedirect("UserPage.jsp");
+				response.sendRedirect("UserPage.jsp");
 
-				
 				session.setAttribute("user", user);
 				session.setAttribute("welcom", user.getName());
 				session.setAttribute("wallet", "none");
 
-				req.getRequestDispatcher("UserPage.jsp").forward(req, res);
+				request.getRequestDispatcher("UserPage.jsp").forward(request, response);
 
 			}
 
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 
 		}
 

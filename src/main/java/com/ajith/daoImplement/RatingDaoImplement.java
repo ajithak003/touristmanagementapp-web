@@ -21,8 +21,7 @@ import com.ajith.model.UserFeedbackClass;
 public class RatingDaoImplement implements UserFeedbackDaoInterface {
 
 	@Override
-	public boolean insertFeedback(UserFeedbackClass Feedback) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
+	public boolean insertFeedback(UserFeedbackClass Feedbacks) throws ClassNotFoundException, SQLException {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -37,13 +36,13 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 			pstmt = con.prepareStatement(query);
 
 //		String date1=dateFormatMDY.format(employees.getHire());
-			pstmt.setInt(1, Feedback.getUserId());
-			pstmt.setInt(2, Feedback.getBookingId());
-			pstmt.setInt(3, Feedback.getPackageId());
-			pstmt.setString(4, Feedback.getUserName());
-			pstmt.setString(5, Feedback.getPackageName());
-			pstmt.setFloat(6,Feedback.getRating() );
-			pstmt.setString(7, Feedback.getDescribtion());
+			pstmt.setInt(1, Feedbacks.getUserId());
+			pstmt.setInt(2, Feedbacks.getBookingId());
+			pstmt.setInt(3, Feedbacks.getPackageId());
+			pstmt.setString(4, Feedbacks.getUserName());
+			pstmt.setString(5, Feedbacks.getPackageName());
+			pstmt.setFloat(6,Feedbacks.getRating() );
+			pstmt.setString(7, Feedbacks.getDescribtion());
 			
 			
 			//System.out.println(query);
@@ -54,7 +53,6 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 
 			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -66,7 +64,6 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 
 	@Override
 	public List<UserFeedbackClass> getAllFeedback() throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -93,7 +90,6 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -129,7 +125,6 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 		}
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			
 			
 		} finally {
@@ -142,7 +137,6 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 	
     
 	public UserFeedbackClass getAllFeedbackratingS(String location) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		Statement stmt = null;
 		
@@ -167,7 +161,6 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {

@@ -1,17 +1,6 @@
-<%@page import="com.ajith.daoImplement.RatingDaoImplement"%>
-<%@page import="java.text.Format"%>
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="com.ajith.model.FlightClass"%>
-<%@page import="com.ajith.model.HotelClass"%>
-<%@page import="com.ajith.daoImplement.HotelTableDaoImplement"%>
-<%@page import="com.ajith.daoImplement.FlightTableDaoImplement"%>
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="com.ajith.model.BookingClass"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.daoImplement.BookingTableDaoImplement"%>
-<%@page import="com.ajith.model.UserClass"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -181,8 +170,6 @@ a {
 
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
 	<div class="container">
 		<h2>
 			<a href="UserPage.jsp">Go To Home</a>
@@ -190,122 +177,113 @@ a {
 		<div>
 			<h1>My Trips</h1>
 
-			<br>
-			<br>
+			<br> <br>
 
-			<%   
-     DateTimeFormatter month = DateTimeFormatter.ofPattern("MMM");
-    UserClass user = (UserClass) session.getAttribute("user");
-    BookingTableDaoImplement bookingDao = new BookingTableDaoImplement();
-    List<BookingClass> booking = bookingDao.getAllbooking(user);
-    
-    for(int i=0; i<booking.size(); i++){
-    	
-    	BookingClass singlebooking = booking.get(i);
-    	
-    	/* FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-    	FlightClass flight = flightDao.getSingleFlight(singlebooking.getFlightNo());
-    	
-    	HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-        HotelClass hotel = hotelDao.getSingleHotel(singlebooking.getHotelId()); */
-        
-        RatingDaoImplement ratingDao = new RatingDaoImplement();
-        boolean rating = ratingDao.endDateCheck(singlebooking);
-        //System.out.println("rating "+rating+" end dage" +singlebooking.getEndDate());
-        
-        boolean cancel = bookingDao.endDateCheck(singlebooking);
-       // System.out.println("cancel "+cancel+"date "+singlebooking.getStartDate());
+			<c:forEach items="${userallbooking}" var="singlebooking">
 
-    %>
-			<form>
+				<jsp:useBean id="rating"
+					class="com.ajith.daoImplement.RatingDaoImplement" />
 
-				<div class="box">
-					<div class="title">
-						<h3><%=singlebooking.getPackageName().toUpperCase() %>
-							TRIP
-						</h3>
-					</div>
-					<div class="status">
-						<h3><%=singlebooking.getStatus() %></h3>
-					</div>
-					<div class="textdate">
-						<h2>Start Date</h2>
-					</div>
-					<div class="date">
-						<h2 id="dd"><%=singlebooking.getStartDate().getDayOfMonth() %></h2>
-						<h2 id="mm"><%=singlebooking.getStartDate().format(month) %></h2>
-						<h2 id="yyyy"><%=singlebooking.getStartDate().getYear()%></h2>
-					</div>
 
-					<div class="location">
-						<h2><%=singlebooking.getFlight().getDepature() %>
-							-
-							<%=singlebooking.getFlight().getDestination() %></h2>
-					</div>
-					<div class="hotel">
+				<jsp:useBean id="cancel"
+					class="com.ajith.daoImplement.BookingTableDaoImplement" />
 
-						<h2>
-							Hotel Name : <span><%=singlebooking.getHotel().getHotelName() %></span>
-						</h2>
-					</div>
-					<div class="price">
 
-						<h2>
-							No Of Days : <span><%=singlebooking.getDaysPlan()%><span>
-						</h2>
-					</div>
-					<div class="days">
-						<h2>
-							Total price &nbsp;: <span id="totprice"><%=singlebooking.getTotalPrice() %></span>
-						</h2>
-					</div>
-					</table>
+				<form>
 
-					<div>
-						<% if(cancel==false){ 
-                
-                 %>
-						<button class="cancel" onclick="check()">
-							<a
-								href="cancelTrip.jsp?bookingid=<%=singlebooking.getBookingId()%>">
-								Cancel</a>
-						</button>
-						<%  if(singlebooking.getStatus().equalsIgnoreCase("confirmed")){
-                %>
-						<button class="datechange">
-							<a href="terms.jsp?bookingid=<%=singlebooking.getBookingId() %>">Change
-								Date</a>
-						</button>
+					<div class="box">
+						<div class="title">
+							<h3>${singlebooking.getPackageName().toUpperCase()}TRIP</h3>
+						</div>
+						<div class="status">
+							<h3>${singlebooking.getStatus()}</h3>
+						</div>
+						<div class="textdate">
+							<h2>Start Date</h2>
+						</div>
+						<div class="date">
+							<h2 id="dd">${singlebooking.getStartDate().getDayOfMonth()}</h2>
 
-						<%} }%>
-						<%if(rating==true && singlebooking.getStatus().equalsIgnoreCase("confirmed")) {%>
-						<button class="rate">
-							<a href="rating.jsp?bookingid=<%=singlebooking.getBookingId() %>">Rate
-								Now</a>
-						</button>
-						<%} %>
+							<fmt:parseDate value="${singlebooking.getStartDate()}"
+								pattern="yyyy-MM-dd" var="singlebookingmonth" type="both" />
+							<h2 id="mm">
+								<fmt:formatDate pattern=" MMM " value="${singlebookingmonth}" />
+							</h2>
+
+							<h2 id="yyyy">${singlebooking.getStartDate().getYear()}</h2>
+						</div>
+
+						<div class="location">
+							<h2>${singlebooking.getFlight().getDepature()}-
+								${singlebooking.getFlight().getDestination()}</h2>
+						</div>
+						<div class="hotel">
+
+							<h2>
+								Hotel Name : <span>${singlebooking.getHotel().getHotelName()}</span>
+							</h2>
+						</div>
+						<div class="price">
+
+							<h2>
+								No Of Days : <span>${singlebooking.getDaysPlan()}<span>
+							</h2>
+						</div>
+						<div class="days">
+							<h2>
+								Total price &nbsp;: <span id="totprice">${singlebooking.getTotalPrice()}</span>
+							</h2>
+						</div>
+						</table>
+
+						<div>
+							<c:if test="${cancel.endDateCheck(singlebooking)==false}">
+
+
+								<button class="cancel" onclick="check()">
+									<a
+										href="cancelTrip.jsp?bookingid=${singlebooking.getBookingId()}">
+										Cancel</a>
+								</button>
+
+								<c:if test="${singlebooking.getStatus().equals('confirmed')}">
+
+									<button class="datechange">
+										<a href="terms.jsp?bookingid=${singlebooking.getBookingId()}">Change
+											Date</a>
+									</button>
+								</c:if>
+							</c:if>
+							
+							<c:if
+								test="${singlebooking.getStatus().equals('confirmed') and rating.endDateCheck(singlebooking)==true}">
+								<button class="rate">
+									<a href="rating.jsp?bookingid=${singlebooking.getBookingId()}">Rate
+										Now</a>
+								</button>
+							</c:if>
+						</div>
 					</div>
-				</div>
-				<h3 class="see">
-					<a
-						href="showSingleBooking.jsp?bookingid=<%=singlebooking.getBookingId()%>"><span>SEE
-							DETAILS</span></a>
-				</h3>
-				<br>
-				<br>
-				<%} %>
-			</form>
+					<h3 class="see">
+						<a
+							href="showSingleBooking?bookingid=${singlebooking.getBookingId()}"><span>SEE
+								DETAILS</span></a>
+					</h3>
+					</form>
+					<br> <br>
+			</c:forEach>
+
 		</div>
 	</div>
 	<script>
-    function check(){
-        var result = confirm("if you want to cancel 10% cancelation charge will be detected on your total price");
+		function check() {
+			var result = confirm("if you want to cancel 10% cancelation charge will be detected on your total price");
 
-        if(result==false){
-            event.preventDefault();
-        }
-    }
-</script>
+			if (result == false) {
+				event.preventDefault();
+			}
+		}
+	</script>
 
 </body>
 </html>

@@ -79,7 +79,7 @@ h2 {
 
 				<td>
 					<div class="firstrow">
-						<a href="singlePackage.jsp?location=${packages.getName()}"> <img
+						<a href="singlePackage?location=${packages.getName()}"> <img
 							class="firstrowimg" src="Assets/${packages.getImage() }"
 							alt="${packages.getName()}">
 						</a>

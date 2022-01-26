@@ -114,7 +114,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			 bookingDetails.add(booking);
 		}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
@@ -127,7 +126,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 	@Override
 	public BookingClass getbookingById(int user_id, LocalDate startDate) {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		BookingClass booking=null;
