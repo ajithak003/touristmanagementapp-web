@@ -157,7 +157,7 @@ span {
 						</h3>
 					</div>
 					<div class="destinations">
-						<%-- ${String destination = flight.getDestination()} --%>
+						
 						<h3 class="place" name="destination">${flight.getDestination()}</h3>
 						<fmt:parseDate value="${flight.getArrivalDateTime()}"
 							pattern="yyyy-MM-dd'T'HH:mm" var="ArrivalDateTime" type="both" />

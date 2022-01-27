@@ -78,7 +78,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 	@Override
 	public List<BookingClass> getAllbooking(UserClass users) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		List<BookingClass> bookingDetails = new ArrayList<BookingClass>();
 		
 		UserTableDaoImplement userDao= new UserTableDaoImplement();
@@ -125,7 +124,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 	}
 
 	@Override
-	public BookingClass getbookingById(int user_id, LocalDate startDate) {
+	public BookingClass getbookingById(int userId, LocalDate startDate) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		BookingClass booking=null;
@@ -144,7 +143,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			
 			 pstmt =con.prepareStatement(query);
 			 pstmt.setDate(1, java.sql.Date.valueOf(startDate));
-			 pstmt.setInt(2, user_id);
+			 pstmt.setInt(2, userId);
 			
 			 ResultSet rs = pstmt.executeQuery();
 			
@@ -162,8 +161,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 				
 		}
 		}	catch (Exception e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		
 		} finally {
@@ -173,7 +170,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 	}
 
 	@Override
-	public boolean updatebooking(int user_id, LocalDate startDate,double refundPrice,int businessSeats,int economicSeats,int flightNo, int bookinId)
+	public boolean updatebooking(int userId, LocalDate startDate,double refundPrice,int businessSeats,int economicSeats,int flightNo, int bookinId)
 			 {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -193,13 +190,13 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		pstmt = con.prepareStatement(query);
 		pstmt.setString(1, "cancel");
 		pstmt.setString(2, "payment refunded");
-		pstmt.setInt(3, user_id );
+		pstmt.setInt(3, userId );
 		pstmt.setDate(4, java.sql.Date.valueOf(startDate));
 		pstmt.setInt(5, bookinId);
 		
 		pstmtUser =con.prepareStatement(wallet);
 		pstmtUser.setDouble(1, refundPrice);
-		pstmtUser.setInt(2, user_id);
+		pstmtUser.setInt(2, userId);
 		
 		pstmtflight = con.prepareStatement(flight);
 		pstmtflight.setInt(1, businessSeats);
@@ -247,8 +244,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
            
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
+			
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
@@ -258,7 +254,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 
 	public List<BookingClass> getAllUserBooking() {
-		// TODO Auto-generated method stub
 		
 		List<BookingClass> bookingDetails = new ArrayList<BookingClass>();
 		
@@ -309,7 +304,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 	
 	public boolean dateChange(BookingClass booking ,double wallet,int end,int newFlightBusinessSeat, int newFlightEconomicSeat,int oldFlightBusinessSeat,int oldFlightEconomicSeat,int newFlightNo, int bookingId, double totalPrice) {
 		
-		//System.out.println(wallet);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmtUser = null;

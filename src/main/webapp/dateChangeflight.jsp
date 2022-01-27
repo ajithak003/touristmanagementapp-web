@@ -1,15 +1,6 @@
-<%@page import="com.ajith.model.UserClass"%>
-<%@page import="com.ajith.daoImplement.UserTableDaoImplement"%>
-<%@page import="com.ajith.model.FlightClass"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.daoImplement.FlightTableDaoImplement"%>
-<%@page import="com.ajith.model.BookingClass"%>
-<%@page import="com.ajith.daoImplement.BookingTableDaoImplement"%>
-<%@page import="java.time.LocalDate"%>
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -119,124 +110,75 @@ span {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
-	<form action="confirmdatechange.jsp">
+	<form action="confirmdatechange">
 		<div>
 			<h1>Flights</h1>
-			<%
-      
-DateTimeFormatter formatter =
-	            DateTimeFormatter.ofPattern("yyyy-MM-dd");
-      
-    BookingTableDaoImplement book = new BookingTableDaoImplement();
-    
-    UserClass user = (UserClass) session.getAttribute("user");
-   
-    //int bookingId = Integer.parseInt(request.getParameter("bookingid"));
-    int bookingId =(Integer) session.getAttribute("datechangeid");
-  //  System.out.println("date change page "+bookingId);
-    //int bookingId = Integer.parseInt(bookingIds);
-    
-    BookingClass bookingpackage = 	book.getSingleBookingById(bookingId);
-    
-    String date = request.getParameter("changedate");
-    LocalDate startDate = LocalDate.parse(date);
-    //System.out.println(startDate);
-
-	FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-	
-	//FlightClass singleFlight = flightDao.getSingleFlight(bookingpackage.getFlightNo());
-	double oldFlightPrice = 0.0;
-	int bseats = bookingpackage.getFlight().getBusinessClassSeat();
-	//System.out.println("bseats"+singleFlight.getBusinessClassSeat()+""+singleFlight.getFlightNo());
-	int eseats =bookingpackage.getFlight().getEconomicClassSeat();
-	
-	if(bookingpackage.getFlightClass().equalsIgnoreCase("business class")){
-		oldFlightPrice =  bookingpackage.getFlight().getBusinessClassFare()*bookingpackage.getNoOfPerson();
-		bseats = bookingpackage.getFlight().getBusinessClassSeat()+bookingpackage.getNoOfPerson();
-		//System.out.println("bseats"+bseats);
-	}
-	else if(bookingpackage.getFlightClass().equalsIgnoreCase("economic class")){
-		oldFlightPrice = bookingpackage.getFlight().getEconomicClassFare()*bookingpackage.getNoOfPerson();
-		eseats = bookingpackage.getFlight().getEconomicClassSeat()+bookingpackage.getNoOfPerson();
-		//System.out.println("eseats"+eseats);
-	}
-	
-	//System.out.println("old flight "+singleFlight.getBusinessClassFare());
-	double totalPrice = bookingpackage.getTotalPrice()-oldFlightPrice;
-	session.setAttribute("totalPrice",totalPrice );
-	
-	session.setAttribute("oldflightbseats", bseats);
-	session.setAttribute("oldflighteseats", eseats);
-	
-		List<FlightClass> flights =flightDao.getFlightByNo(bookingpackage.getPackageName(), startDate);
-		for (int i = 0; i < flights.size(); i++) {
 			
-			FlightClass flight = flights.get(i);
+		<c:set var="bookingpackage" scope="session" value="${sessionScope.datechangebookings}"/> 
+		
+		<c:forEach items="${datechangeflightlist}"  var="flight" >
+		
+		
 			
-			if(flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson() || flight.getEconomicClassSeat()>=bookingpackage.getNoOfPerson()){	
-		%>
+			<c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson() or flight.getEconomicClassSeat()>=bookingpackage.getNoOfPerson()}">	
+		
 
 			<div class="container">
-				<h2><%=flight.getFlightName()%></h2>
+				<h2>${flight.getFlightName()}</h2>
 				<div>
 					<img src="https://pngimg.com/uploads/plane/plane_PNG5248.png"
 						alt="">
 				</div>
 				<div class="depature">
 
-					<h3 class="place"><%=flight.getDepature()%></h3>
-					<%/*  LocalDate startDate = LocalDate.parse(flight.getDepatureDateTime().format(format));*/ %>
-					<h3 class="date"><%=flight.getDepatureDateTime().format(formatter) %></h3>
+					<h3 class="place">${flight.getDepature()}</h3>
+					<fmt:parseDate value="${flight.getDepatureDateTime()}" pattern="yyyy-MM-dd'T'HH:mm" var="DepatureDateTime" type="both" />
+					<h3 class="date"><fmt:formatDate pattern="dd/MM/yyyy HH:mm"	value="${DepatureDateTime}" /></h3>
 				</div>
 				<div class="destinations">
-					<%String destination = flight.getDestination(); %>
-					<h3 class="place" name="destination"><%=flight.getDestination() %></h3>
-					<h3 class="date"><%=flight.getArrivalDateTime().format(formatter) %></h3>
+					
+					<h3 class="place" name="destination">${flight.getDestination()}</h3>
+					<fmt:parseDate value="${flight.getArrivalDateTime()}" pattern="yyyy-MM-dd'T'HH:mm" var="ArrivalDateTime" type="both" />
+					<h3 class="date"><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${ArrivalDateTime}" /></h3>
 				</div>
 				<div class="price">
 
 					<p>
-						<% if(bookingpackage.getFlightClass().equalsIgnoreCase("business class")){
+						<c:if test="${bookingpackage.getFlightClass().equalsIgnoreCase('business class')}">
             
-            if(flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()) {            %>
+            <c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()}">
 						<input type="radio" name="price" id="Business"
-							value="<%=flight.getBusinessClassFare() %>" required><label
-							for="">Business Class <span><%=flight.getBusinessClassFare() %></span></label>
-						<%} } %>
+							value="${flight.getBusinessClassFare()}" required><label
+							for="">Business Class <span>${flight.getBusinessClassFare() }></span></label>
+						</c:if>
+						</c:if>
 					</p>
 
 					<p>
-						<% if(bookingpackage.getFlightClass().equalsIgnoreCase("economic class")){
+						<c:if test="${bookingpackage.getFlightClass().equalsIgnoreCase('economic class')}">
             
-            if(flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()) {            %>
+            <c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()}">
 						<input type="radio" name="price" id="Business"
-							value="<%=flight.getEconomicClassFare()%>" required><label
-							for="">Economic Class <span><%=flight.getEconomicClassFare() %></span></label>
-						<%} } %>
+							value="${flight.getEconomicClassFare()}" required><label
+							for="">Economic Class <span>${flight.getEconomicClassFare()}</span></label>
+						</c:if>
+						</c:if>
 					</p>
 
 				</div>
 				<div class="btn">
 					<button id="button" name="flightno"
-						value="<%=flight.getFlightNo()%>">Book flight</button>
+						value="${flight.getFlightNo()}">Book flight</button>
 				</div>
 
 			</div>
+			</c:if>
 			<br>
 			<br>
+			</c:forEach>
+			
 		</div>
 
-		<% }
-		}	 %>
-		<% 
-      
-      BookingClass bookings = new  BookingClass( bookingpackage.getUser(),bookingpackage.getPackages(),bookingpackage.getFlight(),bookingpackage.getHotel(),bookingpackage.getNoOfPerson(),
-    		  startDate,bookingpackage.getTotalPrice(),bookingpackage.getFlightClass(),bookingpackage.getHotelRoomType(),bookingpackage.getDaysPlan(),bookingpackage.getPackageName(),bookingpackage.getNoOfRoom()); 
-		session.setAttribute("datechangebookings",bookings); 
-		
-		//System.out.println("allflights "+bookings); %>
 	</form>
 
 </body>

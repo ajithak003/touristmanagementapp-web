@@ -13,7 +13,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: url("blure.jpg");
+	background: url("Assets/blure.jpg");
 	background-size: cover;
 }
 

@@ -102,6 +102,8 @@ second {
 				<c:if test="${loop.count%5==0}">
 					<tr>
 				</c:if>
+				
+				
 
 				<td>
 					<div class="firstrow">
@@ -110,6 +112,7 @@ second {
 
 
 						<h2 name="location">${packages.getName()}</h2>
+						<p>${packages.getImage()  }</p>
 
 					</div>
 				</td>

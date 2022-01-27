@@ -249,7 +249,7 @@ a {
 								<c:if test="${singlebooking.getStatus().equals('confirmed')}">
 
 									<button class="datechange">
-										<a href="terms.jsp?bookingid=${singlebooking.getBookingId()}">Change
+										<a href="terms?bookingid=${singlebooking.getBookingId()}">Change
 											Date</a>
 									</button>
 								</c:if>
