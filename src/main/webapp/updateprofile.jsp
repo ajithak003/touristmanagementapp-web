@@ -1,7 +1,4 @@
-<%@page import="com.ajith.model.UserClass"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,38 +42,37 @@ button {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
 	<h1>Update Your Profile</h1>
 	<br>
 	<br>
-	<% UserClass user = (UserClass) session.getAttribute("user");
-    %>
+	
+	<c:set var="user" scope="session" value="${user}" />
+	
 	<form action="updateprofile" method="post">
 		<table cellpadding="30px">
 			<tr>
 				<td><input type="text" placeholder="FullName" name="FullName"
-					value="<%=user.getName() %>" required autofocus
+					value="${user.getName()}" required autofocus
 					pattern="[aa-Zz]{2,}" title="must contain characters only">
 				</td>
 			</tr>
 
 			<tr>
 				<td><input type="text" placeholder="Mobile No" name="regmobile"
-					value="<%=user.getMboNo() %>" required pattern="[6-9][0-9]{9}"
+					value="${user.getMboNo()}" required pattern="[6-9][0-9]{9}"
 					title="Must contain 10 numbers only"></td>
 			</tr>
 			<tr></tr>
 			<tr>
 				<td><input type="password" placeholder="Password" name="regpsw"
-					value="<%=user.getPassword() %>" id="psw" required
+					value="${user.getPassword()}" id="psw" required
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
 					title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character">
 				</td>
 			</tr>
 			<tr>
 				<td><button class="btn btn-primary" name="regemail"
-						value="<%=user.getEmail()%>">Update Profile</button></td>
+						value="${user.getEmail()}">Update Profile</button></td>
 			</tr>
 
 		</table>

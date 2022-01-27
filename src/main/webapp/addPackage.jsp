@@ -70,8 +70,6 @@ button {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
 	<form action="addpackage" method="post">
 		<h1>Add Tourist Package</h1>
 		<h2>

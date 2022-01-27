@@ -41,7 +41,7 @@ public class UpdateProfile extends HttpServlet {
 			if(update) {
 				
 				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Successfully Updated');");
+				out.println("alert('Successfully Updated ! please Login');");
 				out.println("location='logout.jsp';");
 				out.println("</script>");
 

@@ -15,33 +15,33 @@ import com.ajith.model.UserClass;
 import com.ajith.model.UserFeedbackClass;
 
 
-@WebServlet("/rating")
+@WebServlet("/ratings")
 public class rating extends HttpServlet {
 
-	public void doGet(HttpServletRequest req, HttpServletResponse res) {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		
 		try{
 			
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			UserClass user = (UserClass) session.getAttribute("user");
 			//System.out.println(user);
 			RatingDaoImplement ratingDao = new RatingDaoImplement();
 			
-			int bookingId = Integer.parseInt(req.getParameter("bookingId"));
+			int bookingId = Integer.parseInt(request.getParameter("bookingId"));
 			//System.out.println(bookingId);
 			
 			BookingTableDaoImplement bookingDao = new BookingTableDaoImplement();
 			BookingClass booking = bookingDao.getSingleBookingById(bookingId);
 			
-			float rating = Float.parseFloat(req.getParameter("rate"));
+			float rating = Float.parseFloat(request.getParameter("rate"));
 			//System.out.println(rating);
 			
-			String describrion = req.getParameter("describe");
+			String describrion = request.getParameter("describe");
 			
-			UserFeedbackClass userRating = new UserFeedbackClass(bookingId,user.getId(),booking.getPackages().getPackageId(),user.getName(),booking.getPackageName(),rating,describrion);
+			UserFeedbackClass userRating = new UserFeedbackClass(bookingId,booking.getUser().getId(),booking.getPackages().getPackageId(),booking.getUser().getName(),booking.getPackageName(),rating,describrion);
 			boolean rate  = ratingDao.insertFeedback(userRating);
-			PrintWriter out = res.getWriter();
-			if(rate==true) {
+			PrintWriter out = response.getWriter();
+			if(rate) {
 				//System.out.println("successfully rated");
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Thanks For Your Rating');");

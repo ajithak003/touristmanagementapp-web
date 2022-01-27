@@ -14,13 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.ajith.daoImplement.RatingDaoImplement;
 import com.ajith.model.UserFeedbackClass;
 
-@WebServlet("/adminratings")
-public class AdminRating extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-	public AdminRating() {
-		super();
-	}
+@WebServlet("/showAllRating")
+public class ShowAllRatings extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
@@ -28,15 +23,16 @@ public class AdminRating extends HttpServlet {
 
 			List<UserFeedbackClass> ratings = ratingDao.getAllFeedback();
 
-			request.setAttribute("adminratings", ratings);
+			request.setAttribute("showAllRating", ratings);
 
-			RequestDispatcher rd = request.getRequestDispatcher("adminRating.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("showAllRating.jsp");
 			rd.forward(request, response);
 
 		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
 
 			System.out.println(e.getMessage());
 		}
+
 	}
 
 }

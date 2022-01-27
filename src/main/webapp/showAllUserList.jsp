@@ -1,9 +1,4 @@
-<%@page import="com.ajith.model.UserClass"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.daoImplement.UserTableDaoImplement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +14,7 @@ table {
 	border: 2px solid;
 	border-collapse: collapse;
 	background-color: mintcream;
-	margin-left: 30%;
+	margin-left: 33%;
 }
 
 tr, td, th {
@@ -45,10 +40,7 @@ h2 {
 
 </head>
 <body>
-	<% List<UserClass> users = (List<UserClass>) session.getAttribute("showalluserlist"); %>
-
-
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
+	
 	<h2>
 		<a href="AdminPage.jsp">Go To Home</a>
 	</h2>
@@ -58,31 +50,23 @@ h2 {
 	<br>
 	<br>
 
-
-
 	<table cellpading="30px" cellspacing="30px">
 
 
-		<th>User Id</th>
-		<th>User Name</th>
-		<th>User Email Id</th>
-		<th>User Mobile No</th>
+		<th id="">User Id</th>
+		<th id="">User Name</th>
+		<th id="">User Email Id</th>
+		<th id="">User Mobile No</th>
 
-		<%  
-        for(int i =0; i<users.size(); i++){
-         UserClass user = users.get(i); 
-    %>
-
-
-
+		<c:forEach items="${showalluserlist}" var="user">
 		<tr>
-			<td><%=user.getId() %></td>
-			<td><%=user.getName() %></td>
-			<td><%=user.getEmail() %></td>
-			<td><%=user.getMboNo() %></td>
+			<td>${user.getId()}</td>
+			<td>${user.getName()}</td>
+			<td>${user.getEmail()}</td>
+			<td>${user.getMboNo()}</td>
 
 		</tr>
-		<% }%>
+		</c:forEach>
 	</table>
 
 </body>

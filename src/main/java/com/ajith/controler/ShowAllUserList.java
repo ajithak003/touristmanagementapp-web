@@ -25,12 +25,8 @@ public class ShowAllUserList extends HttpServlet {
 		//System.out.println("calling");
 		UserTableDaoImplement userDao = new UserTableDaoImplement();
         List<UserClass> users = userDao.getAllUser();
-        
-     
          
-         HttpSession session = request.getSession();
-         
-         session.setAttribute("showalluserlist", users);
+         request.setAttribute("showalluserlist", users);
          
          RequestDispatcher rd = request.getRequestDispatcher("showAllUserList.jsp");
          rd.forward(request, response);

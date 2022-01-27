@@ -1,8 +1,4 @@
-<%@page import="com.ajith.daoImplement.UserTableDaoImplement"%>
-<%@page import="com.ajith.model.UserClass"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +18,7 @@ body {
 	width: 400px;
 	text-align: center;
 	margin-left: 30%;
-	margin-top: 13%;
+	margin-top: 10%;
 	padding: 3%;
 	border-radius: 3%;
 }
@@ -57,28 +53,17 @@ a {
 
 </head>
 <body>
-
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
-	<%
         
-        UserClass user = (UserClass) session.getAttribute("user");
+        <c:set var="user" scope="session" value="${newUser}"/>
         
-        UserTableDaoImplement userDao = new UserTableDaoImplement();
-        UserClass newUser = userDao.getSingleUserById(user.getId());
-        
-        String data=(String)session.getAttribute("wallet");
-         
-        session.setAttribute("newUser", newUser);%>
-
-	<form action="walletSus.jsp">
+	<form action="walletSus" method="get">
 		<h3>
 			<a href="UserPage.jsp">Go To Home</a>
 		</h3>
 		<div class="container">
 
 			<h3>
-				Your Wallet Amount : <span><%=newUser.getWallet() %></span>
+				Your Wallet Amount : <span>${user.getWallet()}</span>
 				</h2>
 			</h3>
 			<br>
@@ -93,6 +78,5 @@ a {
 			<button>PROCEED TO TOPUP</button>
 		</div>
 	</form>
-	<%session.setAttribute("wallet", null);%>
 </body>
 </html>

@@ -237,28 +237,27 @@ a {
 						</table>
 
 						<div>
-							<c:if test="${cancel.endDateCheck(singlebooking)==false}">
+							<c:if test="${cancel.endDateCheck(singlebooking)==false and singlebooking.getStatus().equals('confirmed')}">
 
-
+                                 
 								<button class="cancel" onclick="check()">
-									<a
-										href="cancelTrip.jsp?bookingid=${singlebooking.getBookingId()}">
+									<a href="cancelTrip?bookingid=${singlebooking.getBookingId()}">
 										Cancel</a>
 								</button>
 
-								<c:if test="${singlebooking.getStatus().equals('confirmed')}">
+								
 
 									<button class="datechange">
 										<a href="terms?bookingid=${singlebooking.getBookingId()}">Change
 											Date</a>
 									</button>
-								</c:if>
+								
 							</c:if>
 							
 							<c:if
 								test="${singlebooking.getStatus().equals('confirmed') and rating.endDateCheck(singlebooking)==true}">
 								<button class="rate">
-									<a href="rating.jsp?bookingid=${singlebooking.getBookingId()}">Rate
+									<a href="rating?bookingid=${singlebooking.getBookingId()}">Rate
 										Now</a>
 								</button>
 							</c:if>

@@ -1,10 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="style.css">
@@ -95,14 +92,10 @@ button {
 
 
 
-	<form action="rating" method="get">
+	<form action="ratings" method="get">
 
-		<% 
-    int bookingId = Integer.parseInt(request.getParameter("bookingid"));
-    //System.out.println(bookingId);
+    <c:set var = "bookingId" scope="session" value="${ratingbookingid}"/>
     
-    %>
-
 		<div class="rate">
 			<input type="radio" id="star5" name="rate" value="5" required /> <label
 				for="star5" title=" 🤩 Excellent">5 stars</label> <input
@@ -121,7 +114,7 @@ button {
 		<br>
 		<br>
 		<br>
-		<button name="bookingId" value="<%=bookingId%>">Rate Now</button>
+		<button name="bookingId" value="${bookingId}">Rate Now</button>
 	</form>
 </body>
 

@@ -1,7 +1,4 @@
-<%@page import="com.ajith.daoImplement.UserTableDaoImplement"%>
-<%@page import="com.ajith.model.UserClass"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,48 +34,18 @@ span {
 
 </head>
 <body>
+ 
+ <c:set var ="newUser" scope="session" value="${walletuser}"/>
 
-
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
-	<%  
-    UserClass user = (UserClass) session.getAttribute("newUser");
-   UserTableDaoImplement userDao = new UserTableDaoImplement();
-   String amounts = request.getParameter("amount");
-   long amount = Long.parseLong(amounts);
-   if(amount>0){
-   long totalAmount = user.getWallet()+ amount;
-   boolean wallet = userDao.addWalletAmount(user.getId(), totalAmount);
-   if(wallet==true){
-   UserClass newUser = userDao.getUserById(user);
-   
-%>
 	<h1>Transaction Successful</h1>
 	<h2>
-		Your wallet Amount : <span><%=newUser.getWallet() %></span>
+		Your wallet Amount : <span>${newUser.getWallet()}</span>
 	</h2>
 	<br>
 	<br>
 	<h2>
 		<a href="UserPage.jsp">Go To Home</a>
 	</h2>
-	<%} 
-   else{
-	   %>
-	<h1>Transaction failedü</h1>
-	<h2>
-		Your wallet Amount : <span><%=user.getWallet() %></span>
-	</h2>
-	<h2>
-		<a href="UserPage.jsp">Go To Home</a>
-	</h2>
-	<%}}
-   else{%>
-	<h1>Enter the Correct Values</h1>
-	<h2>
-		<a href="UserPage.jsp">Go To Home</a>
-	</h2>
-	<%  
-   } %>
+	
 </body>
 </html>

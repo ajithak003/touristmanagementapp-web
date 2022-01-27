@@ -439,7 +439,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		}
 		
 		} catch (SQLException e) {
-			
+			System.out.println(e.getMessage());
 			
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);;

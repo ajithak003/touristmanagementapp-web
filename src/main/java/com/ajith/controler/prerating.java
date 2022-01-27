@@ -8,24 +8,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-@WebServlet("/terms")
-public class Terms extends HttpServlet {
+
+@WebServlet("/rating")
+public class prerating extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
-		HttpSession session = request.getSession();
-
+		
 		int bookingId = Integer.parseInt(request.getParameter("bookingid"));
-		session.setAttribute("datechangebookingid", bookingId);
-
-		RequestDispatcher rd = request.getRequestDispatcher("terms.jsp");
+		
+		request.setAttribute("ratingbookingid", bookingId);
+		RequestDispatcher rd = request.getRequestDispatcher("rating.jsp");
 		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
 			System.out.println(e.getMessage());
 		}
+		
+		
 	}
-
+	
 }

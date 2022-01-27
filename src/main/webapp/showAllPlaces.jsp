@@ -112,7 +112,7 @@ second {
 
 
 						<h2 name="location">${packages.getName()}</h2>
-						<p>${packages.getImage()  }</p>
+						
 
 					</div>
 				</td>

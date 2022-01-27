@@ -122,10 +122,10 @@ span {
 			<li><a>More</a>
 				<ul>
 					<li><a href="profile.jsp">Profile</a></li>
-					<li><a href="wallet.jsp"> Wallet Topup</a>
+					<li><a href="wallet"> Wallet Topup</a>
 					<li>
 				</ul></li>
-			<li><a href="userRating.jsp">Ratings</a></li>
+			<li><a href="userRating">Ratings</a></li>
 			<li><a href="logout.jsp">Logout</a></li>
 		</ul>
 	</div>

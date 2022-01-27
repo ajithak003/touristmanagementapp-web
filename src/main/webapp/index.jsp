@@ -1,7 +1,4 @@
 
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +70,7 @@ a:hover {
 		<ul>
 			<li><a href="#">Home</a></li>
 			<li><a href="showAllHomePlaces">Popular Places</a></li>
-			<li><a href="showAllRating.jsp">Ratings</a></li>
+			<li><a href="showAllRating">Ratings</a></li>
 			<li><a href="login.jsp">Login</a></li>
 
 		</ul>

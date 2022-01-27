@@ -71,7 +71,6 @@ button {
 </style>
 </head>
 <body>
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 
 	<form action="addflight" method="get">
 		<div class="container">
