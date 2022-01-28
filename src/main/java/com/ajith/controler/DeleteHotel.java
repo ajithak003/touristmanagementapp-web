@@ -37,7 +37,7 @@ public class DeleteHotel extends HttpServlet {
 		
 
 		}
-		} catch (IOException e) {
+		} catch (IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());
 		}
 	}

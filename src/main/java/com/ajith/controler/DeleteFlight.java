@@ -38,7 +38,7 @@ public class DeleteFlight extends HttpServlet {
 			out.println("</script>");
 		
 		}
-		} catch (ClassNotFoundException | SQLException | IOException e) {
+		} catch (ClassNotFoundException | SQLException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());
 		}
 

@@ -52,7 +52,7 @@ public class ShowSingleBooking extends HttpServlet {
 		       RequestDispatcher rd = request.getRequestDispatcher("showSingleBooking.jsp");
 		       try {
 				rd.forward(request, response);
-			} catch (ServletException | IOException e) {
+			} catch (ServletException | IOException | NumberFormatException e) {
 				System.out.println(e.getMessage());
 			}
 	}

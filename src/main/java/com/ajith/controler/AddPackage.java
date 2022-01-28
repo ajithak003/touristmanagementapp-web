@@ -2,9 +2,7 @@ package com.ajith.controler;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Scanner;
 
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +18,7 @@ import com.ajith.model.PackageModeClass;
 public class AddPackage extends HttpServlet {
 
 
-	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException  {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 	
 
 		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
@@ -42,7 +40,6 @@ public class AddPackage extends HttpServlet {
 		PackageModeClass packages = new PackageModeClass(packagename,packageOneDayPrice,season,protocol,description,image);
 		boolean pack = packageDao.insertPackage(packages);
 		
-		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		if(pack) {
 			
@@ -53,13 +50,11 @@ public class AddPackage extends HttpServlet {
 			
 		}
 		else {
-			//System.out.println("insert invalid");
 			throw new UserDefineException();
 		}
-		} catch (UserDefineException e) {
+		} catch (UserDefineException | NumberFormatException | IOException e) {
 			HttpSession session = request.getSession();
-			//System.out.println("error");
-			session.setAttribute("addpackageerror", e.addPackage());
+			session.setAttribute("addpackageerror", ((UserDefineException) e).addPackage());
 			try {
 				response.sendRedirect("addPackage.jsp");
 			} catch (IOException e1) {

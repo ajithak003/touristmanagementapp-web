@@ -59,7 +59,7 @@ public class Hotel extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("hotels.jsp");
 		try {
 			rd.forward(request, response);
-		} catch (ServletException | IOException e) {
+		} catch (ServletException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());
 		} 
 

@@ -48,7 +48,7 @@ public class WalletSuccess extends HttpServlet {
 				out.println("location='addHotel.jsp';");
 				out.println("</script>");
 			}
-			} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+			} catch (ClassNotFoundException | SQLException | ServletException | IOException | NumberFormatException e) {
 				System.out.println(e.getMessage());
 			}
 		}
