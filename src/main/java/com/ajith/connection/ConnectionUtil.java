@@ -41,7 +41,7 @@ Connection con=null;
 				con.close();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 	
@@ -55,7 +55,7 @@ Connection con=null;
 				con.close();
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

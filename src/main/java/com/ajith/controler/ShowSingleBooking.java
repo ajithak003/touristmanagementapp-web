@@ -53,7 +53,7 @@ public class ShowSingleBooking extends HttpServlet {
 		       try {
 				rd.forward(request, response);
 			} catch (ServletException | IOException e) {
-				e.printStackTrace();
+				System.out.println(e.getMessage());
 			}
 	}
 

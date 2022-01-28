@@ -66,7 +66,7 @@ public class AddHotel extends HttpServlet {
 			try {
 				response.sendRedirect("addHotel.jsp");
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				System.out.println(e1.getMessage());
 			}
 		
 		}

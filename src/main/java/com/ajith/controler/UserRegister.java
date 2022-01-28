@@ -77,7 +77,7 @@ public class UserRegister extends HttpServlet {
 			try {
 				response.sendRedirect("Register.jsp");
 			} catch (IOException e1) {
-				e1.printStackTrace();
+				System.out.println(e1.getMessage());
 			}
 		
 		

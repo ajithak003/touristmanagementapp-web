@@ -34,7 +34,7 @@ public class ShowAllBooking extends HttpServlet {
 			
 			
 		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

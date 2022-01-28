@@ -43,7 +43,7 @@ public class SinglePlace extends HttpServlet {
 			response.sendRedirect("singlePackage.jsp");
 			
 		} catch (ClassNotFoundException | SQLException | IOException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 	}

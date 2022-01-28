@@ -215,7 +215,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		pstmtflight.executeUpdate(commit);
        
 		}	catch (Exception e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
 			ConnectionUtil.closePreparedStatement(pstmtflight, con);
