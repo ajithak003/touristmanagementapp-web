@@ -14,41 +14,30 @@ public class UpdateProfile extends HttpServlet {
 
 	public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
-		
 		try {
 
 			UserTableDaoImplement userDao = new UserTableDaoImplement();
-			
 
 			String name = req.getParameter("FullName");
-		//System.out.println(name);
 
 			String email = req.getParameter("regemail");
-			//System.out.println(email);
 			email = email.trim().toLowerCase();
-			
-			// System.out.println(email);
 
 			long mboilNo = Long.parseLong(req.getParameter("regmobile"));
-			//System.out.println(mboilNo);
 
 			String password = req.getParameter("regpsw");
-			//System.out.println(password);
-			
+
 			boolean update = userDao.updateuser(name, email, mboilNo, password);
-			//System.out.println(update);
 			PrintWriter out = res.getWriter();
-			if(update) {
-				
+			if (update) {
+
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Successfully Updated ! please Login');");
 				out.println("location='logout.jsp';");
 				out.println("</script>");
 
-
-				
 			}
-			
+
 			else {
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('can't be updated! please try agin later');");
@@ -57,7 +46,7 @@ public class UpdateProfile extends HttpServlet {
 
 			}
 
-		}catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}

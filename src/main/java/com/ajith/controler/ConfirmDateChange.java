@@ -80,7 +80,6 @@ public class ConfirmDateChange extends HttpServlet {
 			if (totalPriceBalance <= 0) {
 
 				double wallet = (user.getWallet() - totalPriceBalance);
-				// System.out.println("current wallet minus "+wallet);
 
 				boolean change = bookingDao.dateChange(booking, wallet, days, newFlightbSeat, newFlighteSeat,
 						oldFlightbSeat, oldFlighteSeat, flight.getFlightNo(), bookingId, totalPrice);

@@ -1,7 +1,6 @@
 package com.ajith.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
 public class PackageModeClass implements Serializable {
 	

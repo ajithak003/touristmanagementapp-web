@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-import javax.servlet.ServletException;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -56,12 +54,10 @@ public class AddHotel extends HttpServlet {
 		}
 		
 		else {
-			//System.out.println("insert invalid");
 			throw new UserDefineException();
 		}
 		} catch (UserDefineException | ClassNotFoundException | SQLException  e) {
 			HttpSession session = request.getSession();
-			//System.out.println("error");
 			session.setAttribute("addHotelerror", ((UserDefineException) e).addhotel());
 			try {
 				response.sendRedirect("addHotel.jsp");

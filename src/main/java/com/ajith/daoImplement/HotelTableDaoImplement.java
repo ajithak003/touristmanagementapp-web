@@ -4,14 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.ajith.connection.ConnectionUtil;
 import com.ajith.daoInterface.HotelDaoInterface;
-import com.ajith.model.FlightClass;
 import com.ajith.model.HotelClass;
 
 public class HotelTableDaoImplement implements HotelDaoInterface {
@@ -38,15 +36,11 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			pstmt.setDouble(4, hotel.getPremiumPrice());
 			pstmt.setString(5, hotel.getImage());
 			
-//			System.out.println(insert);
 			pstmtvalue = pstmt.executeUpdate();
 			
-			//System.out.println(user.getEmail());
 			pstmt.executeQuery(commit);
 
-			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
@@ -82,7 +76,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			pstmt.executeQuery(commit);
 
 		} catch (SQLException e) {
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
@@ -109,7 +102,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
             pstmt.executeUpdate(commit);
 			
 		} catch (SQLException e) {
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
@@ -121,7 +113,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 	public List<HotelClass> getAllHotel()  {
 		List<HotelClass> hotelDetails = new ArrayList<HotelClass>();
 		Connection con = null;
-		//System.out.println("connection");
 		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price, image from hotel_details where status=?";
 		PreparedStatement pstmt = null;
 		
@@ -136,10 +127,8 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			   
 			HotelClass hotel = new HotelClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
 			hotelDetails.add(hotel);
-			//System.out.println(hotel);
 		}
 		} catch (SQLException e) {
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
 		finally {
@@ -175,7 +164,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			while(rs.next()) {
 				hotel = new HotelClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getDouble(4),rs.getDouble(5),rs.getString(6));
 				hotels.add(hotel);
-				//System.out.println("dao "+hotel);
 				
 			}
 			
@@ -214,7 +202,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			
 		}
 		} catch (SQLException e) {
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
 		finally {

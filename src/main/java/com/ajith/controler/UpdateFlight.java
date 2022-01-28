@@ -55,7 +55,6 @@ public class UpdateFlight extends HttpServlet {
 		
 		PrintWriter out = res.getWriter();
 		if(flights) {
-			//System.out.println("update success");
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Successfully Updated');");
 			out.println("location='showAllFlight';");

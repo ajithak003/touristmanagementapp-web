@@ -32,7 +32,6 @@ Connection con=null;
 	}
 	
 	public static void closePreparedStatement(PreparedStatement pstmt, Connection con) {
-		// Null Check - to avoid Null Pointer Exception
 		try {
 			if (pstmt != null) {
 				pstmt.close();
@@ -46,7 +45,6 @@ Connection con=null;
 	}
 	
 	public static void closeStatement(Statement stmt, Connection con) {
-		// Null Check - to avoid Null Pointer Exception
 		try {
 			if (stmt != null) {
 				stmt.close();

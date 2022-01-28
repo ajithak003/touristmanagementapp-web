@@ -1,7 +1,6 @@
 package com.ajith.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

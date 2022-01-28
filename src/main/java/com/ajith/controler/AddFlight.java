@@ -2,18 +2,14 @@ package com.ajith.controler;
 
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.ajith.daoImplement.FlightTableDaoImplement;
-import com.ajith.daoImplement.PackageModeClassDaoImplement;
 import com.ajith.model.FlightClass;
-import com.ajith.model.PackageModeClass;
 
 @WebServlet("/addflight")
 public class AddFlight extends HttpServlet {
@@ -25,36 +21,26 @@ public class AddFlight extends HttpServlet {
 			
 					
 		String flightName = req.getParameter("flightname");
-		//System.out.println(flightName);
 		
 		String depature = req.getParameter("Depature");
-		//System.out.println(depature);
 		
 		String destination = req.getParameter("destination");
-		//System.out.println(destination);
 		
 		String depatureDate = req.getParameter("DepatureDate");
 		LocalDateTime depatureTimeDate = LocalDateTime.parse(depatureDate);
-		//System.out.println(depatureTimeDate);
 		
 		String arrivalDate = req.getParameter("ArrivalDate");
 		LocalDateTime arrivalTimeDate = LocalDateTime.parse(arrivalDate);
-		//System.out.println(arrivalTimeDate);
 		
 		double businessClassFare = Double.parseDouble(req.getParameter("businessclassfare"));
-		//System.out.println(businessClassFare);
 		
 		double economicClassFare = Double.parseDouble(req.getParameter("economicclassfare"));
-		//System.out.println(economicClassFare);
 		
 		String status = req.getParameter("status");
-		//System.out.println(status);
 		
 		int businessClassSeat = Integer.parseInt(req.getParameter("businessclassseat"));
-		//System.out.println(businessClassSeat);
 		
 		int economicClassSeat = Integer.parseInt(req.getParameter("economicclassseat"));
-		//System.out.println(economicClassSeat);
 		
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
 		FlightClass flight = new FlightClass(flightName,depature, destination, depatureTimeDate, arrivalTimeDate,

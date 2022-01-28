@@ -1,7 +1,6 @@
 package com.ajith.daoInterface;
 
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 

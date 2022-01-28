@@ -16,6 +16,11 @@ import com.ajith.model.UserClass;
 @WebServlet("/bookingsus")
 public class BookingSuccess extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
@@ -26,17 +31,11 @@ public class BookingSuccess extends HttpServlet {
 			UserClass user = userDao.getUserById(users);
 
 			BookingClass booking = (BookingClass) session.getAttribute("confirmbooking");
-			/* FlightClass flight = (FlightClass) session.getAttribute("singleflight"); */
 
 			int days = Integer.parseInt(booking.getDaysPlan().substring(0, 1));
 
 			if (user.getWallet() >= booking.getTotalPrice()) {
 				BookingTableDaoImplement bookDao = new BookingTableDaoImplement();
-				
-				BookingClass confirmBooking = new BookingClass(user, booking.getPackages(), booking.getFlight(),
-						booking.getHotel(), booking.getNoOfPerson(), booking.getStartDate(), booking.getTotalPrice(),
-						booking.getFlightClass(), booking.getHotelRoomType(), booking.getDaysPlan(),
-						booking.getPackageName(), booking.getNoOfRoom());
 				
 				int businessClassSeats = booking.getFlight().getBusinessClassSeat();
 				int economicClassSeats = booking.getFlight().getEconomicClassSeat();

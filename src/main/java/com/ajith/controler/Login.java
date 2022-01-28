@@ -1,6 +1,5 @@
 package com.ajith.controler;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,7 +33,6 @@ public class Login extends HttpServlet {
 
 				AdminClass admin = new AdminClass();
 				String password = request.getParameter("loginpsws");
-				// System.out.println(password);
 
 				admin = adminDao.validateAdmin(email, password);
 				if (admin == null) {
