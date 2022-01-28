@@ -56,6 +56,7 @@ a img {
 	position: absolute;
 	left: 70px;
 	top: 500px;
+	
 }
 
 p {
@@ -121,6 +122,9 @@ label {
 	left: 170px;
 	width: 100px;
 }
+.details, td{
+padding:15px;
+}
 </style>
 </head>
 <body>
@@ -139,7 +143,7 @@ label {
 				src="Assets/${packages.getImage()}" alt="${packages.getName()}">
 
 			</a> <br> <br>
-			<table class="details" cellspacing="30px" cellpadding="">
+			<table class="details" aria-describedby="single place details">
 				<tr>
 					<td><p>${packages.getDescription()}</p></td>
 				</tr>
@@ -182,11 +186,11 @@ label {
 						</td>
 					</tr>
 				</c:if>
-
+              <th id=""></th>
 			</table>
 			<br> <br>
 
-			<table>
+			<table aria-describedby="single place details">
 				<tr>
 					<td><label for="">start Date</label></td>
 					<td><label for="">No of person</label></td>
@@ -208,6 +212,7 @@ label {
 							Place</button>
 					</td>
 				</tr>
+				<th id=""></th>
 
 			</table>
 

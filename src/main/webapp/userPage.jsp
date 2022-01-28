@@ -126,7 +126,7 @@ span {
 					<li>
 				</ul></li>
 			<li><a href="userRating">Ratings</a></li>
-			<li><a href="logout.jsp">Logout</a></li>
+			<li><a href="logout">Logout</a></li>
 		</ul>
 	</div>
 

@@ -39,6 +39,11 @@ h1 {
 a {
 	text-decoration: none;
 }
+td {
+	padding:25px;
+	padding-left: 40px
+	
+}
 </style>
 </head>
 <body>
@@ -55,7 +60,8 @@ a {
 	<div class="table">
 
 
-		<table cellspacing="50px">
+		<table aria-describedby="profile">
+		<th id=""></th>
 			<tr>
 				<td><h2>Name</h2></td>
 				<td><h3>${user.getName()}</h3></td>

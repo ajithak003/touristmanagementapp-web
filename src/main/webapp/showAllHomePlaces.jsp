@@ -52,6 +52,11 @@ h2 {
 	font-size: 35px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+td {
+	padding-right: 15px;
+	padding-left:18px;
+	
+}
 
 </style>
 </head>
@@ -62,7 +67,7 @@ h2 {
 		<h3>
 			<a href="index.jsp">Go To Home</a>
 		</h3>
-		<table cellspacing="29px" cellpadding="1000px" class="table">
+		<table  class="table" aria-describedby="Show All home places">
 
 			<c:forEach begin="0" items="${showAllHomePlaces}" var="packages"
 				varStatus="loop">
@@ -82,6 +87,7 @@ h2 {
 					</div>
 				</td>
 			</c:forEach>
+			<th id=""></th>
 		</table>
 
 	</div>

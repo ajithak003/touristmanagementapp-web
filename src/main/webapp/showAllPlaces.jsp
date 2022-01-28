@@ -85,6 +85,11 @@ h2 {
 second {
 	border: 3px solid;
 }
+td {
+	padding-right: 15px;
+	padding-left:18px;
+	
+}
 </style>
 </head>
 
@@ -94,7 +99,7 @@ second {
 		<h3>
 			<a href="adminPage.jsp">Go To Home</a>
 		</h3>
-		<table cellspacing="29px" cellpadding="1000px" class="table">
+		<table class="table" aria-describedby="Show All places">
 
 			<c:forEach begin="0" items="${showAllPlaces}" var="packages"
 				varStatus="loop">
@@ -117,7 +122,7 @@ second {
 					</div>
 				</td>
 			</c:forEach>
-
+        <th id=""></th>
 		</table>
 
 	</div>

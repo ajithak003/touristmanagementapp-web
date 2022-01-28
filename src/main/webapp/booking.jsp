@@ -56,6 +56,9 @@ button {
 	margin-left: 110px;
 	margin-top: 20px;
 }
+td{
+padding:20px;
+}
 </style>
 
 </head>

@@ -65,6 +65,10 @@ button {
 	font-weight: bold;
 	border: none
 }
+td {
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
 
 .container {
 	height: 830px;

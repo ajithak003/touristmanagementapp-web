@@ -64,6 +64,10 @@ button {
 	font-weight: bold;
 	border: none
 }
+td {
+	padding-top: 13px;
+	padding-bottom: 13px;
+}
 </style>
 
 </head>

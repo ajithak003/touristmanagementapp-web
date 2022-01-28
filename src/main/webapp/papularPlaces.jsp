@@ -28,14 +28,14 @@ body {
 h1 {
 	position: absolute;
 	top: 300px;
-	left: 30%;
+	left: ;
 	background-color: black;
 	border-radius: 25%;
 	color: white;
 }
 
 .firsrrow {
-	padding-left: 20%;
+	padding-left: ;
 }
 
 .firstrowimg {
@@ -55,7 +55,10 @@ h2 {
 	font-size: 35px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
+td {
+	padding-right: 15px;
+	padding-left:20px;
+}
 </style>
 </head>
 
@@ -64,7 +67,8 @@ h2 {
 		<h3>
 			<a href="userPage.jsp">Go To Home</a>
 		</h3>
-		<table cellspacing="30px" cellpadding="1000px" class="table">
+		<table class="table" aria-describedby="popular places">
+		
 
 			<c:forEach begin="0" items="${popularplace}" var="packages"
 				varStatus="loop">
@@ -85,7 +89,7 @@ h2 {
 					</div>
 				</td>
 			</c:forEach>
-
+<th id=""></th>
 			
 </body>
 

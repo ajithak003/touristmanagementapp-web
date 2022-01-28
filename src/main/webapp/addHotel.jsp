@@ -26,7 +26,7 @@ h1 {
 
 .addpackage {
 	border: 3px solid;
-	height: 550px;
+	height: 450px;
 	width: 45%;
 	position: absolute;
 	left: 27%;
@@ -63,6 +63,10 @@ button {
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-weight: bold;
 	border: none
+}
+td {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 </style>
 

@@ -1,6 +1,7 @@
 package com.ajith.controler;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javax.servlet.annotation.WebServlet;
@@ -16,9 +17,7 @@ import com.ajith.model.UserClass;
 
 
 
-@WebServlet(urlPatterns = {"/register", "/otp"})
-
-
+@WebServlet("/register")
 public class UserRegister extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
@@ -62,10 +61,11 @@ public class UserRegister extends HttpServlet {
 			UserClass userinsert = new UserClass(name, email, mboilNo, password);
 			boolean boo = userDao.insertUser(userinsert);
 			if (boo) {
-				
-				session.setAttribute("success", "Successfully Register");
-				
-					response.sendRedirect("otp.jsp");
+				PrintWriter out = response.getWriter();
+				out.println("<script type=\"text/javascript\">");
+				out.println("alert('Successfully Registered ! please Login');");
+				out.println("location='login.jsp';");
+				out.println("</script>");
 				
 			}
 			

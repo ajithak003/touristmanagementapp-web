@@ -142,7 +142,7 @@ span {
 					<li><a href="showAllUserBooking">view all booking</a></li>
 					<li><a href="adminratings">view all feedback</a></li>
 				</ul></li>
-			<li><a href="logout.jsp">Logout</a></li>
+			<li><a href="logout">Logout</a></li>
 
 		</ul>
 

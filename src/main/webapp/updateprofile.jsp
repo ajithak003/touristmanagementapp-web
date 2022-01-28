@@ -38,6 +38,9 @@ button {
 	font-size: 20px;
 	font-weight: bold;
 }
+td{
+padding:30px;
+}
 </style>
 </head>
 <body>
@@ -49,7 +52,7 @@ button {
 	<c:set var="user" scope="session" value="${user}" />
 	
 	<form action="updateprofile" method="post">
-		<table cellpadding="30px">
+		<table aria-describedby="update profile">
 			<tr>
 				<td><input type="text" placeholder="FullName" name="FullName"
 					value="${user.getName()}" required autofocus
@@ -74,7 +77,7 @@ button {
 				<td><button class="btn btn-primary" name="regemail"
 						value="${user.getEmail()}">Update Profile</button></td>
 			</tr>
-
+<th id=""></th>
 		</table>
 	</form>
 </body>

@@ -56,6 +56,10 @@ button {
 	margin-left: 350px;
 	margin-top: 20px;
 }
+td {
+	padding:20px;
+	
+}
 </style>
 
 </head>
@@ -72,7 +76,7 @@ button {
 
 
 		<div class="container">
-			<table cellpadding="10px" cellspacing="10px">
+			<table aria-describedby="single booking details">
 				<tr>
 					<th id="">
 						<h2>User Details</h2>
