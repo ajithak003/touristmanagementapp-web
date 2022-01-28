@@ -10,7 +10,6 @@ public class AdminClass {
 	private String password;
 	public AdminClass() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	public AdminClass(int id, String name, String email, long mobileNo, String password) {

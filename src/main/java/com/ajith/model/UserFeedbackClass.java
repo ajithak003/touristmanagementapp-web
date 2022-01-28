@@ -16,7 +16,6 @@ public class UserFeedbackClass implements Serializable {
 	
 	public UserFeedbackClass() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 

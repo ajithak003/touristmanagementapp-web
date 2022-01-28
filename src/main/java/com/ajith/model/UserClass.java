@@ -102,7 +102,6 @@ public class UserClass implements Serializable {
 	}
 	public UserClass() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	

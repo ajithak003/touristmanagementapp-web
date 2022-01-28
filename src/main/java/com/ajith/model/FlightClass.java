@@ -23,7 +23,6 @@ public class FlightClass implements Serializable {
 	
 	public FlightClass() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public FlightClass(int flightNo, String flightName, String depature, String destination, LocalDateTime depatureDateTime,
