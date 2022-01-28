@@ -89,7 +89,7 @@ public class ConfirmDateChange extends HttpServlet {
 				}
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 	}
 

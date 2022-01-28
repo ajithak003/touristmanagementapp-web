@@ -29,7 +29,7 @@ public class Booking extends HttpServlet {
 		double noOfRoom = Math.ceil(no / 4);
 		double hotelPrices = Double.parseDouble(request.getParameter("hotelprice"));
 		request.setAttribute("hotelprice", hotelPrices);
-		
+
 		double hotelonePrice = hotelPrices * noOfRoom;
 		int days = Integer.parseInt(booking.getDaysPlan().substring(0, 1));
 
@@ -62,7 +62,7 @@ public class Booking extends HttpServlet {
 		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
 
 	}

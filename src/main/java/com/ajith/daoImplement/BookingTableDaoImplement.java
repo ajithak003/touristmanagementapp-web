@@ -20,6 +20,8 @@ import com.ajith.model.UserClass;
 
 public class BookingTableDaoImplement implements BookingDaoInterface {
 
+	final String commit = "commit";
+	
 	@Override
 	public boolean insertbooking(BookingClass booking, int end,int businessClassSeats,int economicClassSeats) {
 		Connection con = null;
@@ -27,7 +29,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		PreparedStatement pstmt2 = null;
 		int pstmtvalue = 0;
 
-		String commit = "commit";
+		
 		String insert = "insert into booking_details (user_id, package_id, flight_no, hotel_id,number_of_person,start_date,end_date,total_price,flight_class,"
 				+ "      hotel_room_type,days_in_night,package_name,no_of_room) values(?,?,?,?,?,?,?+?,?,?,?,?,?,?)";
 		String flight = "update flights_details set business_class_seat_status=?,economic_class_seat_status=? where flight_no=?";
@@ -63,6 +65,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			
 			//System.out.println(user.getEmail());
 			pstmt.executeQuery(commit);
+			pstmt2.executeQuery(commit);
 
 			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
@@ -184,7 +187,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		String wallet = "update user_details set wallet=? where user_id=?";
 		String flight = "update flights_details set business_class_seat_status=?,economic_class_seat_status=? where flight_no=?";
 
-		String commit = "commit";
+		
 		try {
 		
 		con = ConnectionUtil.getDBConnect();
@@ -233,7 +236,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		
 		int del=0;
 		String query = "delete booking_details where user_id=? and to_char(start_date,'yyyy-mm-dd')=?";
-		String commit = "commit";
+		
 		
 		try {
 			
@@ -319,7 +322,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		String updateWallet = "update user_details set wallet=? where user_id=?";
 		String newFlight = "update flights_details set business_class_seat_status  =?, economic_class_seat_status=? where flight_no  =?";
 		String oldFlight = "update flights_details set business_class_seat_status  =?, economic_class_seat_status=? where flight_no  =?";
-		String commit = "commit";
+		
 		
 		try {
 		
