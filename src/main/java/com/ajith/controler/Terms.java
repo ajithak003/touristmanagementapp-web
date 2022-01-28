@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/terms")
 public class Terms extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		try {

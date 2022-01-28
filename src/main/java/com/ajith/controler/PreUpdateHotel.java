@@ -15,6 +15,7 @@ import com.ajith.model.HotelClass;
 @WebServlet("/updateHotel")
 public class PreUpdateHotel extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		try {

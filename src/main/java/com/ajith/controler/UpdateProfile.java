@@ -12,6 +12,7 @@ import com.ajith.daoImplement.UserTableDaoImplement;
 @WebServlet("/updateprofile")
 public class UpdateProfile extends HttpServlet {
 
+	@Override
 	public void doPost(HttpServletRequest req, HttpServletResponse res) {
 
 		try {

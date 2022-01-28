@@ -103,10 +103,10 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 			}
 
 		} catch (SQLException e) {
+			System.out.println(e.getMessage());
 
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
-			;
 		}
 
 		return flag;

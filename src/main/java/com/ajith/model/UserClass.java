@@ -30,7 +30,6 @@ public class UserClass implements Serializable {
 
 	public UserClass(int id, String name, String email, long mboNo, String password, long wallet) {
 		super();
-		// System.out.println("super class");
 		this.id = id;
 		this.name = name;
 		this.email = email;

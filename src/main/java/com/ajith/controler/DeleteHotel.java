@@ -13,6 +13,7 @@ import com.ajith.daoImplement.HotelTableDaoImplement;
 @WebServlet("/deleteHotel")
 public class DeleteHotel extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 		int hotelId = Integer.parseInt(request.getParameter("hotelid"));

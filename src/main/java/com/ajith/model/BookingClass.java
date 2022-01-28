@@ -250,15 +250,6 @@ public class BookingClass implements Serializable {
 	}
 
 
-	public String toString1(BookingClass booking) {
-		return "BookingClass \n\n Tourist Location="+packageName+"\n startDate=" + startDate + "\n endDate=" + endDate
-				+ "\n totalPrice=" + totalPrice + "\n noOfPerson=" + noOfPerson + "\n status=" + "confirmed" + 
-				 "\n flightClass=" + flightClass + "\n hotelRoomType=" + hotelRoomType + "\n daysPlan=" + daysPlan+"\n Payment Status :  "+payment ;
-	}
-	
-	
-
-
 	public String toStringbook(UserClass user, PackageModeClass packages, FlightClass flight, HotelClass hotel) {
 		
 		DateTimeFormatter dateTimeFormat = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");  

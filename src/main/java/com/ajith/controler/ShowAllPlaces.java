@@ -16,6 +16,7 @@ import com.ajith.model.PackageModeClass;
 @WebServlet("/showAllPlaces")
 public class ShowAllPlaces extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();

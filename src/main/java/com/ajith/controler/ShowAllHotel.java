@@ -16,7 +16,7 @@ import com.ajith.model.HotelClass;
 @WebServlet("/showAllHotel")
 public class ShowAllHotel extends HttpServlet {
 	
-	
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			 HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();

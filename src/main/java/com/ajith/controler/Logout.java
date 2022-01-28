@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/logout")
 public class Logout extends HttpServlet{
 	
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 	request.getSession().invalidate();
 	 

@@ -18,10 +18,7 @@ import com.ajith.model.UserFeedbackClass;
 public class AdminRating extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	public AdminRating() {
-		super();
-	}
-
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			RatingDaoImplement ratingDao = new RatingDaoImplement();

@@ -20,6 +20,7 @@ import com.ajith.model.FlightClass;
 @WebServlet("/allFlights")
 public class AllFlight extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		try {

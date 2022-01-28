@@ -19,6 +19,7 @@ import com.ajith.model.UserFeedbackClass;
 @WebServlet("/singlePackage")
 public class SinglePlace extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			String location = request.getParameter("location");

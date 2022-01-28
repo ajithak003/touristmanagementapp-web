@@ -14,6 +14,7 @@ import com.ajith.model.FlightClass;
 @WebServlet("/addflight")
 public class AddFlight extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)  {
 		
 		

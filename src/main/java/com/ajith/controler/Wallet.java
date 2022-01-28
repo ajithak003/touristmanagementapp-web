@@ -15,6 +15,7 @@ import com.ajith.model.UserClass;
 @WebServlet("/wallet")
 public class Wallet extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		
 		HttpSession session = request.getSession();

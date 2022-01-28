@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/rating")
 public class PreRating extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 		int bookingId = Integer.parseInt(request.getParameter("bookingid"));

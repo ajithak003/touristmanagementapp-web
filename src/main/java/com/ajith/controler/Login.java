@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 @WebServlet("/login")
 public class Login extends HttpServlet {
 
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
@@ -23,15 +24,13 @@ public class Login extends HttpServlet {
 			UserTableDaoImplement userDao = new UserTableDaoImplement();
 			AdminTableDaoImplement adminDao = new AdminTableDaoImplement();
 
-			adminDao = new AdminTableDaoImplement();
-			userDao = new UserTableDaoImplement();
 
 			String email = request.getParameter("loginemail");
 			email = email.trim().toLowerCase();
 
 			if (email.endsWith("@admin.com")) {
 
-				AdminClass admin = new AdminClass();
+				AdminClass admin;
 				String password = request.getParameter("loginpsws");
 
 				admin = adminDao.validateAdmin(email, password);

@@ -15,6 +15,7 @@ import com.ajith.model.FlightClass;
 @WebServlet("/updateFlight")
 public class PreUpdateFlight extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		try {

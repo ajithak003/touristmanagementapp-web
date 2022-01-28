@@ -17,6 +17,7 @@ import com.ajith.model.HotelClass;
 @WebServlet("/booking")
 public class Booking extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		try {

@@ -17,6 +17,7 @@ import com.ajith.model.FlightClass;
 @WebServlet("/showAllFlight")
 public class ShowAllFlight extends HttpServlet {
 	
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();

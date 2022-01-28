@@ -14,6 +14,7 @@ import com.ajith.daoImplement.FlightTableDaoImplement;
 @WebServlet("/deleteFlight")
 public class DeleteFlight extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 		int flightNo = Integer.parseInt(request.getParameter("flightno"));

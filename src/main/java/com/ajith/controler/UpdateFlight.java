@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ajith.daoImplement.FlightTableDaoImplement;
-import com.ajith.daoImplement.PackageModeClassDaoImplement;
 import com.ajith.model.FlightClass;
 
 
 @WebServlet(urlPatterns = "/updateflight")
 public class UpdateFlight extends HttpServlet {
 	
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)  {
 		
 		try {
-			
-		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-		
+					
 		String flightName = req.getParameter("flightname");
 		
 		String depature = req.getParameter("Depature");

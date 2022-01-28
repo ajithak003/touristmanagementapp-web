@@ -13,6 +13,7 @@ import com.ajith.model.HotelClass;
 @WebServlet ("/updatehotel")
 public class UpdateHotel extends HttpServlet{
 
+	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)  {
 		
 		

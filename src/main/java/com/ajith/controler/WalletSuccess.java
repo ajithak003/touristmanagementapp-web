@@ -18,6 +18,7 @@ import com.ajith.model.UserClass;
 @WebServlet("/walletSus")
 public class WalletSuccess extends HttpServlet {
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		try {

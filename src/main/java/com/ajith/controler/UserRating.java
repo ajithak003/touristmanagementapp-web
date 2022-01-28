@@ -17,6 +17,7 @@ import com.ajith.model.UserFeedbackClass;
 @WebServlet("/userRating")
 public class UserRating extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			RatingDaoImplement ratingDao = new RatingDaoImplement();
