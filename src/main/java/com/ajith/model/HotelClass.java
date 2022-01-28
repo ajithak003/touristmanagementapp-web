@@ -1,8 +1,9 @@
 package com.ajith.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class HotelClass {
+public class HotelClass implements Serializable {
 	
 	private int hotelId;
 	private String location;

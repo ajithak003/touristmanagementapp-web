@@ -70,6 +70,8 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.closePreparedStatement(pstmt2, con);
+			
 		}
 		return pstmtvalue > 0;	
 		
@@ -216,6 +218,8 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			e.printStackTrace();
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.closePreparedStatement(pstmtflight, con);
+			ConnectionUtil.closePreparedStatement(pstmtUser, con);
 		}
 		return pstmtvalue>0;
 	}
@@ -368,6 +372,10 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.closePreparedStatement(pstmtUser, con);
+			ConnectionUtil.closePreparedStatement(pstmtoldflight, con);
+			ConnectionUtil.closePreparedStatement(pstmtnewflight, con);
+			
 		}
 		return pstmtvalue>0;
 		

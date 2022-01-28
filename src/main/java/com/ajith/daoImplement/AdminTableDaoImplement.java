@@ -20,23 +20,23 @@ public class AdminTableDaoImplement implements AdminDaoInterface {
 		String validateQuery = "select admin_id,name,email_id,mobile_no,password from admin_details where email_id=? and password=?";
 		Connection con = ConnectionUtil.getDBConnect();
 		AdminClass AdminClass=null;
+		PreparedStatement pstmt = null;
 		try {
-			PreparedStatement pstmt = con.prepareStatement(validateQuery);
+			pstmt = con.prepareStatement(validateQuery);
 			pstmt.setString(1, emailId);
 			pstmt.setString(2, password);
 			
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				//System.out.println(rs.getString(2));
 				AdminClass=new AdminClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getString(5));
 				
-				//System.out.println("login successful");
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 			System.out.println("adminStatement error");
+		}finally {
+			ConnectionUtil.closePreparedStatement(pstmt, con);
 		}
 
 		return AdminClass;
@@ -47,7 +47,6 @@ public class AdminTableDaoImplement implements AdminDaoInterface {
 	
 
 	public UserClass getUserById(int userId) {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		UserClass userById=null;
@@ -68,8 +67,6 @@ public class AdminTableDaoImplement implements AdminDaoInterface {
 			 userById=new UserClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getString(5),rs.getLong(6));
 				
 			}} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				//e.printStackTrace();
 				System.out.println(e.getMessage());
 			} finally {
 				ConnectionUtil.closePreparedStatement(pstmt, con);

@@ -1,11 +1,12 @@
 package com.ajith.model;
 
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class FlightClass {
+public class FlightClass implements Serializable {
 
 	
 	private int flightNo;

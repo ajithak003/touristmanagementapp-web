@@ -1,8 +1,9 @@
 package com.ajith.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class UserClass {
+public class UserClass implements Serializable {
      
 	private int id;
 	private String name;

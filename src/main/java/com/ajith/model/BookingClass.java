@@ -1,12 +1,13 @@
 package com.ajith.model;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class BookingClass {
+public class BookingClass implements Serializable {
 	
 	private int bookingId;
 	private UserClass user;
@@ -30,7 +31,6 @@ public class BookingClass {
 	public BookingClass(int bookingId, UserClass user, PackageModeClass packages, FlightClass flight, HotelClass hotel, int noOfPerson, LocalDate startDate, LocalDate endDate, double totalPrice, String status, 
 			LocalDateTime bookingDate,String flightClass,String hotelRoomType, String daysPlan,String packageName,String payment,double noOfRoom) {
 		super();
-		// TODO Auto-generated constructor stub
 		this.bookingId = bookingId;
 		this.user = user;
 		this.packages = packages;

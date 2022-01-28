@@ -1,8 +1,9 @@
 package com.ajith.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class UserFeedbackClass {
+public class UserFeedbackClass implements Serializable {
 	private int feedbackId;
 	private int userId;
 	private int bookingId;

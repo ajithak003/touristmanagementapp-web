@@ -1,8 +1,9 @@
 package com.ajith.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class PackageModeClass {
+public class PackageModeClass implements Serializable {
 	
 	private int packageId;
 	private String name;
