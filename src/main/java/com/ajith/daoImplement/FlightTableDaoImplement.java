@@ -21,9 +21,9 @@ import com.ajith.model.FlightClass;
 
 public class FlightTableDaoImplement implements FlightDaoInterface {
 
+	static String commit = "commit";
 	@Override
 	public boolean insertFlight(FlightClass flight) {
-		// TODO Auto-generated method stub
 	
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -31,7 +31,7 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 //		SimpleDateFormat sdfDate = new SimpleDateFormat("dd-MM-yyyy");
 //		SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
 		
-		String commit = "commit";
+		
 		String insert = "insert into flights_details (flight_name,depature,destination,depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,status,business_class_seat_status,economic_class_seat_status)"
 				+ " values(?,?,?,?,?,?,?,?,?,?)";
 		
@@ -83,7 +83,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 		int pstmtvalue = 0;
 		//System.out.println(flight);
 		
-		String commit = "commit";
 		String insert = "update flights_details set flight_name=?,depature=?,destination=?,depature_date_time=?,arrival_date_time=?,business_class_fare=?,economic_class_fare=?,status=?,business_class_seat_status=?,economic_class_seat_status=?"
 				+ " where flight_no=?";
 		
@@ -133,7 +132,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 		PreparedStatement pstmt =null;
 		int del=0;
 		String query = "update flights_details set status =? where flight_no=?";
-		String commit = "commit";
 		
 		try {
 			
@@ -181,7 +179,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 			
 		}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
@@ -199,7 +196,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 	public List<FlightClass> getFlightByNo(String location, LocalDate startDate)  {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		//PreparedStatement pstmt =null;
 		
 		FlightClass flight= null;
 		
@@ -245,7 +241,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 	public FlightClass getSingleFlight(int flightNo)  {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		//PreparedStatement pstmt =null;
 		
 		FlightClass flight= null;
 		

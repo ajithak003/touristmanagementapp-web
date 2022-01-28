@@ -20,7 +20,7 @@ import com.ajith.model.UserClass;
 
 public class BookingTableDaoImplement implements BookingDaoInterface {
 
-	final String commit = "commit";
+	static String commit = "commit";
 	
 	@Override
 	public boolean insertbooking(BookingClass booking, int end,int businessClassSeats,int economicClassSeats) {

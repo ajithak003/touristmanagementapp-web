@@ -16,14 +16,15 @@ import com.ajith.model.HotelClass;
 
 public class HotelTableDaoImplement implements HotelDaoInterface {
 
+	static  String commit = "commit";
+	static  String active ="active";
 	@Override
 	public boolean insertHotel(HotelClass hotel) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int pstmtvalue = 0;
 
-		String commit = "commit";
+		
 		String insert = "insert into hotel_details (location, hotel_name, room_type_mid_range_price, room_type_premium_price,image) values(?,?,?,?,?)";
 		
 		try {
@@ -45,7 +46,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 
 			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -60,11 +60,9 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 	@Override
 	public boolean updateHotel(HotelClass hotel)
 		 {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int pstmtvalue = 0;
-		String commit = "commit";
 		String update = "update hotel_details set location=?,hotel_name=?,room_type_mid_range_price=?,room_type_premium_price=?, image=? where hotel_id=?";
 		
 		try {
@@ -84,7 +82,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			pstmt.executeQuery(commit);
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -95,12 +92,10 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 
 	@Override
 	public boolean deleteHotel(int hotelId)  {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt =null;
 		int del=0;
 		String query = "update hotel_details set status=? where hotel_id=?";
-		String commit = "commit";
 		
 		try {
 			
@@ -114,7 +109,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
             pstmt.executeUpdate(commit);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -125,7 +119,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 	
 	@Override
 	public List<HotelClass> getAllHotel()  {
-		// TODO Auto-generated method stub
 		List<HotelClass> hotelDetails = new ArrayList<HotelClass>();
 		Connection con = null;
 		//System.out.println("connection");
@@ -135,7 +128,7 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "active");
+			pstmt.setString(1, active);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -146,7 +139,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			//System.out.println(hotel);
 		}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
@@ -159,7 +151,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 	
 	@Override
 	public List<HotelClass> getHotelByNo(String location) {
-		// TODO Auto-generated method stub
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -171,14 +162,13 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 
 		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price, image from hotel_details "
 				+ "where location=? and status=?";
-		//System.out.println(query);
 		
 		try {
 			con = ConnectionUtil.getDBConnect();
 			
 			 pstmt =con.prepareStatement(query);
 			 pstmt.setString(1, location);
-			 pstmt.setString(2, "active");
+			 pstmt.setString(2, active);
 			
 			 ResultSet rs = pstmt.executeQuery();
 			
@@ -191,8 +181,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closeStatement(pstmt, con);
@@ -206,7 +194,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 	
 	@Override
 	public HotelClass getSingleHotel(int hotelId)  {
-		// TODO Auto-generated method stub
 		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price, image"
 				+ " from hotel_details where hotel_id=? and status=?";
 		Connection con = null;
@@ -217,7 +204,7 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, hotelId);
-			pstmt.setString(2, "active");
+			pstmt.setString(2, active);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -227,7 +214,6 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			
 		}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}

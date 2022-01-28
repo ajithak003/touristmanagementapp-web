@@ -15,6 +15,8 @@ import com.ajith.model.UserClass;
 
 public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 
+	static String commit = "commit";
+	static String active = "active";
 	@Override
 	public boolean insertPackage(PackageModeClass Packages) {
 		
@@ -22,7 +24,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int pstmtvalue = 0;
-		String commit = "commit";
 		String insert = "insert into package_modes(package_name,package_price_1n,season,protocols,description,image) values(?,?,?,?,?,?)";
 		
 		try {
@@ -46,7 +47,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 
 			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -58,10 +58,8 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 	
 	@Override
 	public boolean updatePackage(PackageModeClass packages) {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		int update=0;
-		String commit = "commit";
 		String query = "update package_modes set package_name=?,package_price_1n=?,season=?,protocols=?,description=?, image=? where package_id=?";
 		PreparedStatement pstmt = null;
 		
@@ -86,7 +84,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 			 pstmt.executeQuery(commit);
 			 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -100,7 +97,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 
 	@Override
 	public List<PackageModeClass> getAllPackage()  {
-		// TODO Auto-generated method stub
 		
 		List<PackageModeClass> packageList = new ArrayList<PackageModeClass>();
 		Connection con = null;
@@ -111,7 +107,7 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 		try {
 		con=ConnectionUtil.getDBConnect();
 		pstmt = con.prepareStatement(query);
-		pstmt.setString(1, "active");
+		pstmt.setString(1, active);
 		
 		ResultSet rs = pstmt.executeQuery();
 		
@@ -123,7 +119,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 		
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -136,7 +131,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 
 	@Override
 	public PackageModeClass getPackageByNo(String PackageName) {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PackageModeClass packageById=null;
@@ -157,7 +151,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 			 packageById=new  PackageModeClass(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(8));
 				//System.out.println(packageById);
 			}} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println(e.getMessage());
 			} finally {
@@ -169,13 +162,11 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 	
 	@Override
 	public boolean deletePackage(String location) {
-		// TODO Auto-generated method stub
 
 		Connection con = null;
 		PreparedStatement pstmt =null;
 		int del=0;
 		String query = "update package_modes set status=? where package_name=?";
-		String commit = "commit";
 		
 		try {
 			
@@ -189,7 +180,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
             pstmt.executeUpdate(commit);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -204,7 +194,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 	
 	@Override
 	public PackageModeClass getSinglePackage(String location) {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		PackageModeClass packages=null;
@@ -219,7 +208,7 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 		 con = ConnectionUtil.getDBConnect();
 		 pstmt = con.prepareStatement(query);
 		 pstmt.setString(1, location);
-		 pstmt.setString(2, "active");
+		 pstmt.setString(2, active);
 		 
 		 ResultSet rs = pstmt.executeQuery();
 		
@@ -230,7 +219,6 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 			// System.out.println("single "+packages);
 
 		 }} catch (Exception e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println(e.getMessage());
 			} finally {

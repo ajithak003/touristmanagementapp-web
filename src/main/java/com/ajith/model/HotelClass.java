@@ -13,7 +13,6 @@ public class HotelClass implements Serializable {
 	private String image;
 	public HotelClass() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public HotelClass(int hotelId, String location, String hotelName, double midRangePrice, double premiumPrice, String image) {
 		super();

@@ -18,14 +18,13 @@ import com.ajith.model.UserClass;
 
 public class UserTableDaoImplement implements UserDaoInterface {
 
+	static String commit = "commit";
 	@Override
 	public boolean insertUser(UserClass user) {
-		// TODO Auto-generated method stub
-//		DateFormat dateFormatMDY = new SimpleDateFormat("dd-MM-yyyy");
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int pstmtvalue = 0;
-		String commit = "commit";
+		
 		String query = "insert into user_details(name,email_id,mobile_no,password) values(?,?,?,?)";
 		//System.out.println(user.getName());
 		
@@ -50,8 +49,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
+		//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
@@ -69,7 +67,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 		Connection con = null;
 		int update=0;
-		String commit = "commit";
 		String query = "update user_details set name=?,mobile_no=?,password=? where email_id=?";
 		PreparedStatement pstmt = null;
 		try {
@@ -87,7 +84,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		    update = pstmt.executeUpdate();
 			 pstmt.executeQuery(commit);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -99,12 +95,10 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 	@Override
 	public boolean deleteuser(UserClass user) {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt =null;
 		int del=0;
 		String query = "update user_details set status =? where email_id=?";
-		String commit = "commit";
 		
 		try {
 			
@@ -118,7 +112,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
             pstmt.executeUpdate(commit);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -130,7 +123,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 	
 	@Override
 	public UserClass getUserById(UserClass user) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		UserClass userById=null;
@@ -152,7 +144,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 			 userById=new UserClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getString(5),rs.getLong(6));
 				
 			}} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println(e.getMessage());
 			} finally {
@@ -165,7 +156,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 	@Override
 	public List<UserClass> getAllUser() {
 
-		// TODO Auto-generated method stub
 		List<UserClass> userList = new ArrayList<UserClass>();
 		Connection con = null;
 		//System.out.println("connection");
@@ -185,7 +175,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 			userList.add(user);
 		}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		}
@@ -199,7 +188,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 
 	public UserClass validateUser(String emailId, String password) {
-		// TODO Auto-generated method stub
 
 		String validateQuery = "select user_id,name,email_id,mobile_no,password,wallet from user_details "
 				+ "where email_id=? and password=? and status=?";
@@ -225,7 +213,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 			}
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println("Statement error");
 		} finally {
@@ -259,7 +246,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		}
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -291,7 +277,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		}
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -306,7 +291,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		Connection con = null;
 		int wallet=0;
 		String query = "update user_details set wallet=? where user_id=?";
-		String commit ="commit";
 		//System.out.println(query);
 		PreparedStatement pstmt = null;
 		try {
@@ -320,7 +304,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		
 		
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -336,7 +319,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		 UserClass user = null;
 		int del=0;
 		String query = "select user_id,name,email_id,mobile_no,password,wallet user_details from  where email_id=?";
-		String commit = "commit";
 		
 		try {
 			
@@ -354,7 +336,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
    				
    			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -365,7 +346,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 	}
 	
 	public UserClass getSingleUserById(int userId) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		UserClass userById=null;
@@ -387,7 +367,6 @@ public class UserTableDaoImplement implements UserDaoInterface {
 			 userById=new UserClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getString(5),rs.getLong(6));
 				
 			}} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				//e.printStackTrace();
 				System.out.println(e.getMessage());
 			} finally {
