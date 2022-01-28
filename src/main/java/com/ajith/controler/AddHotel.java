@@ -59,7 +59,7 @@ public class AddHotel extends HttpServlet {
 			//System.out.println("insert invalid");
 			throw new UserDefineException();
 		}
-		} catch (UserDefineException | ClassNotFoundException | SQLException e) {
+		} catch (UserDefineException | ClassNotFoundException | SQLException  e) {
 			HttpSession session = request.getSession();
 			//System.out.println("error");
 			session.setAttribute("addHotelerror", ((UserDefineException) e).addhotel());

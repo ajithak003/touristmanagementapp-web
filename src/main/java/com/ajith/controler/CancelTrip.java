@@ -22,6 +22,7 @@ public class CancelTrip extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
+		try {
 		String bookingid = request.getParameter("bookingid");
 
 		int bookingId = Integer.parseInt(bookingid);
@@ -30,7 +31,7 @@ public class CancelTrip extends HttpServlet {
 
 		UserTableDaoImplement userDao = new UserTableDaoImplement();
 
-		try {
+		
 			UserClass user = userDao.getUserById(book.getUser());
 
 			double fine = (book.getTotalPrice() / 100) * 10;

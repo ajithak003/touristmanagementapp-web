@@ -20,38 +20,37 @@ public class WalletSuccess extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
-		HttpSession session = request.getSession();
+		try {
+			HttpSession session = request.getSession();
 
-		UserClass user = (UserClass) session.getAttribute("newUser");
-		UserTableDaoImplement userDao = new UserTableDaoImplement();
-		String amounts = request.getParameter("amount");
-		long amount = Long.parseLong(amounts);
-		if (amount > 0) {
-			long totalAmount = user.getWallet() + amount;
-			boolean wallet = userDao.addWalletAmount(user.getId(), totalAmount);
-			try {
-			if (wallet) {
-				
+			UserClass user = (UserClass) session.getAttribute("newUser");
+			UserTableDaoImplement userDao = new UserTableDaoImplement();
+			String amounts = request.getParameter("amount");
+			long amount = Long.parseLong(amounts);
+			if (amount > 0) {
+				long totalAmount = user.getWallet() + amount;
+				boolean wallet = userDao.addWalletAmount(user.getId(), totalAmount);
+
+				if (wallet) {
+
 					UserClass newUser = userDao.getUserById(user);
 					request.setAttribute("walletuser", newUser);
-					
+
 					RequestDispatcher rd = request.getRequestDispatcher("walletSus.jsp");
 					rd.forward(request, response);
-					
-				
+
+				}
+
+				else {
+					PrintWriter out = response.getWriter();
+					out.println("<script type=\"text/javascript\">");
+					out.println("alert('Successfully Added');");
+					out.println("location='addHotel.jsp';");
+					out.println("</script>");
+				}
 			}
-			
-			else {
-				PrintWriter out = response.getWriter();
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Successfully Added');");
-				out.println("location='addHotel.jsp';");
-				out.println("</script>");
-			}
-			} catch (ClassNotFoundException | SQLException | ServletException | IOException | NumberFormatException e) {
-				System.out.println(e.getMessage());
-			}
+		} catch (ClassNotFoundException | SQLException | ServletException | IOException | NumberFormatException e) {
+			System.out.println(e.getMessage());
 		}
 	}
-
 }

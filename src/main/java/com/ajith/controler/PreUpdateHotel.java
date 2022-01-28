@@ -17,6 +17,7 @@ public class PreUpdateHotel extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
+		try {
 		int hotelId = Integer.parseInt(request.getParameter("hotelid"));
 		HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
 		HotelClass hotel = hotelDao.getSingleHotel(hotelId);
@@ -24,7 +25,7 @@ public class PreUpdateHotel extends HttpServlet {
 		request.setAttribute("updatehotel", hotel);
 
 		RequestDispatcher rd = request.getRequestDispatcher("updateHotel.jsp");
-		try {
+		
 			rd.forward(request, response);
 		} catch (ServletException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());

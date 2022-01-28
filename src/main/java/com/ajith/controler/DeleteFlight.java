@@ -15,13 +15,13 @@ import com.ajith.daoImplement.FlightTableDaoImplement;
 public class DeleteFlight extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
+		try {
 		int flightNo = Integer.parseInt(request.getParameter("flightno"));
 		System.out.print(flightNo);
 
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
 		boolean flight;
-		try {
+	
 			flight = flightDao.deleteFlight(flightNo);
 		
 		PrintWriter out = response.getWriter();

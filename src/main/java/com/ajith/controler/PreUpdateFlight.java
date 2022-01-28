@@ -17,6 +17,7 @@ public class PreUpdateFlight extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
+		try {
 		int flightNo = Integer.parseInt(request.getParameter("flightno"));
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
 		FlightClass flight = flightDao.getSingleFlight(flightNo);
@@ -24,7 +25,7 @@ public class PreUpdateFlight extends HttpServlet {
 		request.setAttribute("updateflight", flight);
 
 		RequestDispatcher rd = request.getRequestDispatcher("updateFlight.jsp");
-		try {
+	
 			rd.forward(request, response);
 		} catch (ServletException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());

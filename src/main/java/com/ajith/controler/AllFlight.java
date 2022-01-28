@@ -22,6 +22,7 @@ public class AllFlight extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
+		try {
 		HttpSession session = request.getSession();
 
 		BookingClass booking = (BookingClass) session.getAttribute("booking");
@@ -48,7 +49,7 @@ public class AllFlight extends HttpServlet {
 		session.setAttribute("bookings", bookings);
 
 		RequestDispatcher rd = request.getRequestDispatcher("allFlights.jsp");
-		try {
+	
 			rd.forward(request, response);
 		} catch (ServletException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());

@@ -19,6 +19,7 @@ public class Booking extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
+		try {
 		HttpSession session = request.getSession();
 
 		BookingClass booking = (BookingClass) session.getAttribute("bookingsflight");
@@ -59,7 +60,7 @@ public class Booking extends HttpServlet {
 		session.setAttribute("confirmbooking", bookings);
 
 		RequestDispatcher rd = request.getRequestDispatcher("booking.jsp");
-		try {
+	
 			rd.forward(request, response);
 		} catch (ServletException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());

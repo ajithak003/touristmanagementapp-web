@@ -14,12 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 public class PreRating extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-		
+		try {
 		int bookingId = Integer.parseInt(request.getParameter("bookingid"));
 		
 		request.setAttribute("ratingbookingid", bookingId);
 		RequestDispatcher rd = request.getRequestDispatcher("rating.jsp");
-		try {
+	
 			rd.forward(request, response);
 		} catch (ServletException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());

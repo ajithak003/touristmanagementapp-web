@@ -14,12 +14,12 @@ import com.ajith.daoImplement.HotelTableDaoImplement;
 public class DeleteHotel extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
+		try {
 		int hotelId = Integer.parseInt(request.getParameter("hotelid"));
 		HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
 
 		boolean hotel = hotelDao.deleteHotel(hotelId);
-		try {
+		
 			PrintWriter out = response.getWriter();
 		
 

@@ -21,7 +21,7 @@ import com.ajith.model.HotelClass;
 public class Hotel extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
+		try {
 		HttpSession session = request.getSession();
 
 		BookingClass booking = (BookingClass) session.getAttribute("bookings");
@@ -57,7 +57,7 @@ public class Hotel extends HttpServlet {
 		session.setAttribute("bookingsflight", bookings);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("hotels.jsp");
-		try {
+		
 			rd.forward(request, response);
 		} catch (ServletException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());
