@@ -23,10 +23,7 @@ public class AddFlight extends HttpServlet {
 		
 		try {
 			
-			DateTimeFormatter formatter =
-		            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-		
+					
 		String flightName = req.getParameter("flightname");
 		//System.out.println(flightName);
 		
@@ -40,8 +37,8 @@ public class AddFlight extends HttpServlet {
 		LocalDateTime depatureTimeDate = LocalDateTime.parse(depatureDate);
 		//System.out.println(depatureTimeDate);
 		
-		String ArrivalDate = req.getParameter("ArrivalDate");
-		LocalDateTime arrivalTimeDate = LocalDateTime.parse(ArrivalDate);
+		String arrivalDate = req.getParameter("ArrivalDate");
+		LocalDateTime arrivalTimeDate = LocalDateTime.parse(arrivalDate);
 		//System.out.println(arrivalTimeDate);
 		
 		double businessClassFare = Double.parseDouble(req.getParameter("businessclassfare"));
@@ -65,10 +62,9 @@ public class AddFlight extends HttpServlet {
 		
 		boolean flights = flightDao.insertFlight(flight);
 		
-		HttpSession session = req.getSession();
 		PrintWriter out = res.getWriter();
 		
-		if(flights==true) {
+		if(flights) {
 			
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Successfully Added');");

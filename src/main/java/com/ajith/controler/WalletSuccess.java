@@ -18,7 +18,7 @@ import com.ajith.model.UserClass;
 @WebServlet("/walletSus")
 public class WalletSuccess extends HttpServlet {
 
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		HttpSession session = request.getSession();
 
@@ -48,7 +48,7 @@ public class WalletSuccess extends HttpServlet {
 				out.println("location='addHotel.jsp';");
 				out.println("</script>");
 			}
-			} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
+			} catch (ClassNotFoundException | SQLException e) {
 				System.out.println(e.getMessage());
 			}
 		}

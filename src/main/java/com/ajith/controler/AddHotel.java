@@ -29,32 +29,24 @@ public class AddHotel extends HttpServlet {
 			HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
 		
 		String hotelname = request.getParameter("hotelname");
-		//System.out.println(hotelname);
 		
 		String hotelLocation = request.getParameter("hotellocation");
-		//System.out.println(hotelLocation);
 		
 	   double normalRoom = Double.parseDouble(request.getParameter("standardprice"));
-		//System.out.println(normalRoom);
 		
 		double premiumRoom = Double.parseDouble (request.getParameter("premiumprice"));
-		//System.out.println(premiumRoom);
 		
 		String image = request.getParameter("hotelimage");
 		
 		
 		HotelClass hotel = new HotelClass(hotelname,hotelLocation,normalRoom,premiumRoom,image);
-		//System.out.println(hotelDao);
 		boolean hotels;
 		
 			hotels = hotelDao.insertHotel(hotel);
 		
-		HttpSession session = request.getSession();
 		
 		PrintWriter out =  response.getWriter();
-		if(hotels) {
-			//System.out.println("insert success");
-			
+		if(hotels) {			
 
 			out.println("<script type=\"text/javascript\">");
 			out.println("alert('Successfully Added');");

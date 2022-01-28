@@ -26,26 +26,20 @@ public class AddPackage extends HttpServlet {
 		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
 		
 		String packagename = request.getParameter("packagename");
-		//System.out.println(packagename);
 		
 		double packageOneDayPrice = Double.parseDouble(request.getParameter("packageonedayprice"));
-		//System.out.println(packageOneDayPrice);
 		
 		String season = request.getParameter("season");
-		//System.out.println(season);
 		
 		String protocol = request.getParameter("protocol");
-		//System.out.println(protocol);
 		
 		String description = request.getParameter("description");
-		//System.out.println(description);
 		
 		String image = request.getParameter("packageimage");
-		//System.out.println(image);
-try {
+
+		try {
 		
 		PackageModeClass packages = new PackageModeClass(packagename,packageOneDayPrice,season,protocol,description,image);
-		//ystem.out.println(packages);
 		boolean pack = packageDao.insertPackage(packages);
 		
 		HttpSession session = request.getSession();
