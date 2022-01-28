@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -23,6 +21,7 @@
 
 h1 {
 	text-align: center;
+	color:blue;
 }
 
 .addpackage {
@@ -73,10 +72,8 @@ button {
 	<form action="addpackage" method="post">
 		<h1>Add Tourist Package</h1>
 		<h2>
-			<a href="AdminPage.jsp">Go To Home</a>
+			<a href="adminPage.jsp">Go To Home</a>
 		</h2>
-
-
 		<br>
 		<br>
 		<br>
@@ -92,11 +89,12 @@ button {
 
 
 		<div class="addpackage">
-			<table cellspacing="20px" cellpadding="30px">
+			<table aria-describedby="Show All package">
+			<th id=""></th>
 				<tr>
 					<td><label for="location">package location : </label></td>
 					<td><input type="text" name="packagename" id="packagename"
-						required pattern="[Aa-Zz]{2,}"
+						required autofocus pattern="[Aa-Zz]{2,}"
 						title="must contain characters only"></td>
 				</tr>
 

@@ -64,8 +64,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 
 			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.closePreparedStatement(pstmt, con);
@@ -79,7 +77,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 	@Override
 	public boolean updateFlight(FlightClass flight)
 			throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -120,7 +117,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 
 			// System.out.println( stmt.executeUpdate()+" Row Instered");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -133,7 +129,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 
 	@Override
 	public boolean deleteFlight(int flightNo) throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt =null;
 		int del=0;
@@ -152,7 +147,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
             pstmt.executeUpdate(commit);
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -164,7 +158,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 	
 	@Override
 	public List<FlightClass> getAllFlight() throws ClassNotFoundException, SQLException {
-		// TODO Auto-generated method stub
 		
 		List<FlightClass> flightDetails = new ArrayList<FlightClass>();
 		Connection con = null;
@@ -204,7 +197,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 
 	@Override
 	public List<FlightClass> getFlightByNo(String location, LocalDate startDate)  {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		//PreparedStatement pstmt =null;
@@ -238,7 +230,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {
@@ -252,7 +243,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 
 	@Override
 	public FlightClass getSingleFlight(int flightNo)  {
-		// TODO Auto-generated method stub
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		//PreparedStatement pstmt =null;
@@ -281,7 +271,6 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			//e.printStackTrace();
 			System.out.println(e.getMessage());
 		} finally {

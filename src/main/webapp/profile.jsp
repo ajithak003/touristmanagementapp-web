@@ -44,7 +44,7 @@ a {
 <body>
 
 	<h3>
-		<a href="UserPage.jsp">Go To Home</a>
+		<a href="userPage.jsp">Go To Home</a>
 	</h3>
 	<h1>My Profile</h1>
 	<br>

@@ -121,25 +121,25 @@ span {
 			<li><a>Package</a>
 				<ul class="list">
 					<li><a href="addPackage.jsp">Add Package</a></li>
-					<li><a href="showAllAdminPackages.jsp">show all package</a></li>
+					<li><a href="showAllAdminPackages">show all package</a></li>
 				</ul></li>
 
 
 			<li><a>flights</a>
 				<ul class="list">
 					<li><a href="addFlight.jsp">Add flight</a></li>
-					<li><a href="showAllFlight.jsp">show all flight</a></li>
+					<li><a href="showAllFlight">show all flight</a></li>
 				</ul></li>
 			<li></li>
 			<li><a>Hotels</a>
 				<ul class="list">
 					<li><a href="addHotel.jsp">Add hotel</a></li>
-					<li><a href="showAllHotel.jsp">show all hotel</a></li>
+					<li><a href="showAllHotel">show all hotel</a></li>
 				</ul></li>
 			<li><a>More</a>
 				<ul class="list">
 					<li><a href="showAllUserList">View User List</a></li>
-					<li><a href="showAllUserBooking.jsp">view all booking</a></li>
+					<li><a href="showAllUserBooking">view all booking</a></li>
 					<li><a href="adminratings">view all feedback</a></li>
 				</ul></li>
 			<li><a href="logout.jsp">Logout</a></li>

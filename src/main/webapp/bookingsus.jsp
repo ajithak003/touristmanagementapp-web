@@ -30,7 +30,7 @@ h2, a {
 
 	<h1>Booking Successful !</h1>
 	<h2>
-		<a href="UserPage.jsp">GoTo Home</a>
+		<a href="userPage.jsp">GoTo Home</a>
 	</h2>
 
 </body>

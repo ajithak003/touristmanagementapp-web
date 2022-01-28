@@ -17,30 +17,30 @@ import com.ajith.model.PackageModeClass;
 
 
 @WebServlet("/addpackage")
-public class addPackage extends HttpServlet {
+public class AddPackage extends HttpServlet {
 
 
-	public void doPost(HttpServletRequest req, HttpServletResponse res) throws IOException  {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException  {
 	
 
 		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
 		
-		String packagename = req.getParameter("packagename");
+		String packagename = request.getParameter("packagename");
 		//System.out.println(packagename);
 		
-		double packageOneDayPrice = Double.parseDouble(req.getParameter("packageonedayprice"));
+		double packageOneDayPrice = Double.parseDouble(request.getParameter("packageonedayprice"));
 		//System.out.println(packageOneDayPrice);
 		
-		String season = req.getParameter("season");
+		String season = request.getParameter("season");
 		//System.out.println(season);
 		
-		String protocol = req.getParameter("protocol");
+		String protocol = request.getParameter("protocol");
 		//System.out.println(protocol);
 		
-		String description = req.getParameter("description");
+		String description = request.getParameter("description");
 		//System.out.println(description);
 		
-		String image = req.getParameter("packageimage");
+		String image = request.getParameter("packageimage");
 		//System.out.println(image);
 try {
 		
@@ -48,8 +48,8 @@ try {
 		//ystem.out.println(packages);
 		boolean pack = packageDao.insertPackage(packages);
 		
-		HttpSession session = req.getSession();
-		PrintWriter out = res.getWriter();
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
 		if(pack) {
 			
 			out.println("<script type=\"text/javascript\">");
@@ -63,11 +63,11 @@ try {
 			throw new UserDefineException();
 		}
 		} catch (UserDefineException e) {
-			HttpSession session = req.getSession();
+			HttpSession session = request.getSession();
 			//System.out.println("error");
 			session.setAttribute("addpackageerror", e.addPackage());
 			try {
-				res.sendRedirect("addPackage.jsp");
+				response.sendRedirect("addPackage.jsp");
 			} catch (IOException e1) {
 				e1.printStackTrace();
 			}

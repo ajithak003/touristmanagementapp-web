@@ -63,7 +63,7 @@ a {
 	<h1 class="title">Ratings</h1>
 
 	<h3>
-		<a href="UserPage.jsp">Go To Home</a>
+		<a href="userPage.jsp">Go To Home</a>
 	</h3>
 
 	<br>

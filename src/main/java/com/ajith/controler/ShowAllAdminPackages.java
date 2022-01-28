@@ -9,33 +9,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import com.ajith.daoImplement.UserTableDaoImplement;
-import com.ajith.model.UserClass;
+import com.ajith.daoImplement.PackageModeClassDaoImplement;
+import com.ajith.model.PackageModeClass;
 
+@WebServlet("/showAllAdminPackages")
+public class ShowAllAdminPackages extends HttpServlet {
 
-
-@WebServlet("/showAllUserList")
-
-public class ShowAllUserList extends HttpServlet {
-	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		
-		UserTableDaoImplement userDao = new UserTableDaoImplement();
-        List<UserClass> users = userDao.getAllUser();
-         
-         request.setAttribute("showalluserlist", users);
-         
-         RequestDispatcher rd = request.getRequestDispatcher("showAllUserList.jsp");
-         try {
+		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
+		List<PackageModeClass> packages = packageDao.getAllPackage();
+		
+		request.setAttribute("showalladminpackage", packages);
+		
+		RequestDispatcher rd = request.getRequestDispatcher("showAllAdminPackages.jsp");
+		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
 			System.out.println(e.getMessage());
 		}
-         
-        
-		
 	}
 
 }

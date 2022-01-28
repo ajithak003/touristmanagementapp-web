@@ -92,7 +92,7 @@ second {
 
 	<div class="second">
 		<h3>
-			<a href="AdminPage.jsp">Go To Home</a>
+			<a href="adminPage.jsp">Go To Home</a>
 		</h3>
 		<table cellspacing="29px" cellpadding="1000px" class="table">
 

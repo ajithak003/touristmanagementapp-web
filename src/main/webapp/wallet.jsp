@@ -58,7 +58,7 @@ a {
         
 	<form action="walletSus" method="get">
 		<h3>
-			<a href="UserPage.jsp">Go To Home</a>
+			<a href="userPage.jsp">Go To Home</a>
 		</h3>
 		<div class="container">
 

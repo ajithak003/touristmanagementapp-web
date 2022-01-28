@@ -172,7 +172,7 @@ a {
 
 	<div class="container">
 		<h2>
-			<a href="UserPage.jsp">Go To Home</a>
+			<a href="userPage.jsp">Go To Home</a>
 		</h2>
 		<div>
 			<h1>My Trips</h1>

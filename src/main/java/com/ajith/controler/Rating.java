@@ -16,7 +16,7 @@ import com.ajith.model.UserFeedbackClass;
 
 
 @WebServlet("/ratings")
-public class rating extends HttpServlet {
+public class Rating extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		

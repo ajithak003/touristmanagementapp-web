@@ -42,7 +42,7 @@ h2 {
 <body>
 	
 	<h2>
-		<a href="AdminPage.jsp">Go To Home</a>
+		<a href="adminPage.jsp">Go To Home</a>
 	</h2>
 
 	<h1>Show All Users</h1>
@@ -50,7 +50,7 @@ h2 {
 	<br>
 	<br>
 
-	<table cellpading="30px" cellspacing="30px">
+	<table aria-describedby="Show All User">
 
 
 		<th id="">User Id</th>

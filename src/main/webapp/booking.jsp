@@ -72,7 +72,7 @@ button {
 		<c:set var="hotelPrice" scope="session" value="${hotelprice}" />
 
 		<div class="container">
-			<table cellpadding="10px" cellspacing="10px">
+			<table aria-describedby="confirm booking">
 				<tr>
 					<th id="">
 						<h2>User Details</h2>

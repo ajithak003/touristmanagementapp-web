@@ -30,10 +30,10 @@ h2, a {
 </head>
 <body>
 
-	<h1><%="Booking Canceled !"%></h1>
-	<h2><%="Your Payment Refund within 3 working days"%></h2>
+	<h1>Booking Canceled !</h1>
+	<h2>Your Payment Refund within 3 working days</h2>
 	<h2>
-		<a href="UserPage.jsp">Go To Home</a>
+		<a href="userPage.jsp">Go To Home</a>
 	</h2>
 
 </body>

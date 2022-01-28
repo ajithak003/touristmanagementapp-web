@@ -27,7 +27,7 @@ h2, a {
 	<h1>Successfully Change Your Tour Date</h1>
 	<br>
 	<h2>
-		<a href="UserPage.jsp">Go To Home</a>
+		<a href="userPage.jsp">Go To Home</a>
 	</h2>
 	
 </body>

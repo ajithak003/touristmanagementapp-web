@@ -1,7 +1,3 @@
-
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
@@ -66,7 +62,7 @@ h2 {
 <body>
 
 		<h3>
-			<a href="UserPage.jsp">Go To Home</a>
+			<a href="userPage.jsp">Go To Home</a>
 		</h3>
 		<table cellspacing="30px" cellpadding="1000px" class="table">
 

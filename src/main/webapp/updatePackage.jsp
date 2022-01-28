@@ -1,7 +1,4 @@
-<%@page import="com.ajith.model.PackageModeClass"%>
-<%@page import="com.ajith.daoImplement.PackageModeClassDaoImplement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +45,7 @@ input {
 	width: 222px;
 	font-size: 16px;
 	font-weight: bold;
+	text-align: center;
 }
 
 textarea {
@@ -66,63 +64,65 @@ button {
 	font-weight: bold;
 	border: none
 }
+
+td {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+a{
+text-decoration: none;
+}
 </style>
 
 </head>
 <body>
-
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
+    <br>
+    <h3><a href="showAllAdminPackages">Go Back</a></h3>
+    
 	<h1>Update Tourist Package</h1>
 	<br>
 	<br>
 	<br>
 
-	<% String PackageName = request.getParameter("packagname");
-       // System.out.println(PackageName);
-    PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-    PackageModeClass  packages = packageDao.getPackageByNo(PackageName);
-    
-  //  System.out.println("jsp page "+packages.getDescription());
-    
-    %>
+	<c:set var="packages" scope="session" value="${updatepackage}" />
 
 	<form action="updatepackage" method="get">
 		<div class="addpackage">
-			<table cellspacing="20px" cellpadding="30px">
+			<table aria-describedby="package update">
+				<th id=""></th>
 				<tr>
 					<td><label for="location">package location : </label></td>
 					<td><input type="text" name="packagename" id="packagename"
-						value="<%=packages.getName() %>" required pattern="[aa-Zz]{2,}"
+						value="${packages.getName()}" required pattern="[aa-Zz]{2,}"
 						title="must contain characters only"></td>
 				</tr>
 
 				<tr>
 					<td><label for="price">Package one day night price : </label></td>
 					<td><input type="text" name="packageonedayprice"
-						id="packageonedayprice" value="<%=packages.getPriceOneDays() %>"
+						id="packageonedayprice" value=" ${packages.getPriceOneDays()}"
 						required pattern="[0-9 .]{2,}" title="must contain numbers only"></td>
 				</tr>
 				<tr>
 					<td><label for="season">current season :</label></td>
 					<td><input type="text" name="season" id="season"
-						value="<%=packages.getSeason()%>" required pattern="[aa-Zz]{2,}"
+						value="${packages.getSeason()}" required pattern="[aa-Zz]{2,}"
 						title="must contain characters only"></td>
 				</tr>
 				<tr>
 					<td><label for="protocol">current tourist protocols :</label></td>
 					<td><textarea name="protocols" id="protocols"
-							value="<%=packages.getProtocols()%>" cols="30" rows="3" required
+							value="${packages.getProtocols()}" cols="30" rows="3" required
 							pattern="[aa-Zz 0-9]{2,}"
-							title="must contain characters and numbers only"><%=packages.getProtocols()%></textarea></td>
+							title="must contain characters and numbers only">${packages.getProtocols()}</textarea></td>
 				</tr>
 				<tr>
 					<td><label for="description">Tourist Place Description
 							:</label></td>
 					<td><textarea name="description" id="description"
-							value="<%=packages.getDescription() %>" cols="30" rows="3"
-							required pattern="[aa-Zz 0-9]{2,}"
-							title="must contain characters and numbers only"><%=packages.getDescription() %></textarea></td>
+							value="${packages.getDescription()}" cols="30" rows="3" required
+							pattern="[aa-Zz 0-9]{2,}"
+							title="must contain characters and numbers only">${packages.getDescription()}</textarea></td>
 				</tr>
 				<tr>
 					<td><label for="image">Add Image URL :</label></td>
@@ -130,7 +130,7 @@ button {
 						required></td>
 				</tr>
 			</table>
-			<button name="packageid" value="<%=packages.getPackageId()%>">Update
+			<button name="packageid" value="${packages.getPackageId()}">Update
 				Package</button>
 		</div>
 	</form>

@@ -1,7 +1,4 @@
-<%@page import="com.ajith.model.HotelClass"%>
-<%@page import="com.ajith.daoImplement.HotelTableDaoImplement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +25,7 @@ h1 {
 
 .addpackage {
 	border: 3px solid;
-	height: 580px;
+	height: 450px;
 	width: 45%;
 	position: absolute;
 	left: 27%;
@@ -66,62 +63,69 @@ button {
 	font-weight: bold;
 	border: none
 }
+td {
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+a{
+text-decoration: none;
+}
 </style>
 </head>
 <body>
-
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
-
+     
+     <br>
+     <h3><a href="showAllHotel">Go Back</a></h3>
+     
 	<h1>Update Hotels</h1>
 	<br>
 	<br>
 	<br>
 
-	<% int hotelId = Integer.parseInt(request.getParameter("hotelid"));
-        
-    HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-    HotelClass hotel = hotelDao.getSingleHotel(hotelId);
-    
-    %>
+	
 
 	<form action="updatehotel" method="get">
 		<div class="container">
 			<div class="addpackage">
-				<table cellspacing="50px" cellpadding="70px">
+			
+			<c:set var="hotel" scope="session" value="${updatehotel}" />
+			
+				<table aria-describedby="update hotel">
+				<th id=""></th>
 					<tr>
 						<td><label for="">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"
-							value="<%=hotel.getHotelName() %>" required pattern="[aa-Zz]{2,}"
+							value="${hotel.getHotelName()}" required pattern="[aa-Zz]{2,}"
 							title="must contain characters only" autofocus></td>
 					</tr>
 
 					<tr>
 						<td><label for="">Hotel Location : </label></td>
 						<td><input type="text" name="hotellocation"
-							id="hotellocation" value="<%=hotel.getLocation() %>" required
+							id="hotellocation" value="${hotel.getLocation()}" required
 							pattern="[aa-Zz]{2,}" title="must contain characters only"></td>
 					</tr>
 					<tr>
 						<td><label for="">Standard Room One Day Price :</label></td>
 						<td><input type="text" name="standardprice"
-							id="standardprice" value="<%=hotel.getMidRangePrice() %>"
+							id="standardprice" value="${hotel.getMidRangePrice()}"
 							required pattern="[0-9 .]{2,10}"
 							title="must contain number only maximum 10 number"></td>
 					</tr>
 					<tr>
 						<td><label for="">Premium Room One Day Price :</label></td>
 						<td><input type="text" name="premiumprice" id="premiumprice"
-							value="<%=hotel.getPremiumPrice() %>" required
+							value="${hotel.getPremiumPrice()}" required
 							pattern="[0-9 .]{2,10}"
 							title="must contain number only maximum 10 number"></td>
 					</tr>
 					<tr>
 						<td><label for="">Add Image URL :</label></td>
 						<td><input type="file" name="hotelimage" id="hotelimage"
-							value="<%=hotel.getImage()%>" required></td>
+							value="${hotel.getImage()}" required></td>
 					</tr>
 				</table>
-				<button name="hotelid" value="<%=hotel.getHotelId()%>">Update
+				<button name="hotelid" value="${hotel.getHotelId()}">Update
 					hotel</button>
 			</div>
 		</div>

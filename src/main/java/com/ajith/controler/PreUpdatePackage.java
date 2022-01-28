@@ -9,23 +9,27 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ajith.daoImplement.PackageModeClassDaoImplement;
+import com.ajith.model.PackageModeClass;
 
-@WebServlet("/rating")
-public class prerating extends HttpServlet {
+@WebServlet("/updatePackage")
+public class PreUpdatePackage extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-		
-		int bookingId = Integer.parseInt(request.getParameter("bookingid"));
-		
-		request.setAttribute("ratingbookingid", bookingId);
-		RequestDispatcher rd = request.getRequestDispatcher("rating.jsp");
+
+		String packageName = request.getParameter("packagname");
+		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
+		PackageModeClass packages = packageDao.getPackageByNo(packageName);
+
+		request.setAttribute("updatepackage", packages);
+
+		RequestDispatcher rd = request.getRequestDispatcher("updatePackage.jsp");
 		try {
 			rd.forward(request, response);
 		} catch (ServletException | IOException e) {
 			System.out.println(e.getMessage());
 		}
-		
-		
+
 	}
-	
+
 }

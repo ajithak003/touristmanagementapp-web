@@ -44,7 +44,7 @@ public class Login extends HttpServlet {
 				} else {
 
 					session.setAttribute("welcom", admin.getName());
-					response.sendRedirect("AdminPage.jsp");
+					response.sendRedirect("adminPage.jsp");
 
 				}
 			}
@@ -60,13 +60,10 @@ public class Login extends HttpServlet {
 
 			} else {
 
-				response.sendRedirect("UserPage.jsp");
-
 				session.setAttribute("user", user);
 				session.setAttribute("welcom", user.getName());
-				session.setAttribute("wallet", "none");
 
-				request.getRequestDispatcher("UserPage.jsp").forward(request, response);
+				request.getRequestDispatcher("userPage.jsp").forward(request, response);
 
 			}
 

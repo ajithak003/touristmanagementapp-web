@@ -21,6 +21,7 @@
 
 h1 {
 	text-align: center;
+	color:blue;
 }
 
 .addpackage {
@@ -71,7 +72,7 @@ button {
 	<form action="addhotel" method="get">
 		<h1>Add Hotels</h1>
 		<h2>
-			<a href="AdminPage.jsp">Go To Home</a>
+			<a href="adminPage.jsp">Go To Home</a>
 		</h2>
 		<br> <br> <br>
 
@@ -84,7 +85,8 @@ button {
 
 		<div class="container">
 			<div class="addpackage">
-				<table cellspacing="50px" cellpadding="70px">
+				<table aria-describedby="Add Package">
+				<th id=""></th>
 					<tr>
 						<td><label for="">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"

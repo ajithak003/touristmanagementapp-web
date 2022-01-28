@@ -1,9 +1,4 @@
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.model.PackageModeClass"%>
-<%@page import="com.ajith.daoImplement.PackageModeClassDaoImplement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,9 +36,8 @@ h1 {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<h2>
-		<a href="AdminPage.jsp">Go To Home</a>
+		<a href="adminPage.jsp">Go To Home</a>
 	</h2>
 	<h1>Show All Packages</h1>
 
@@ -52,37 +46,32 @@ h1 {
 
 
 
-	<table cellpading="30px" cellspacing="30px">
+	<table aria-describedby="Show All packages">
 
-		<th>Package Id</th>
-		<th>Package Name</th>
-		<th>One Day Night Price</th>
-		<th>Season</th>
-		<th>Protocols</th>
-		<th>Description</th>
-		<th>Action</th>
-		<th>Action</th>
-		<%
-    PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-    List<PackageModeClass> packages = packageDao.getAllPackage();
-    for(int i =0; i<packages.size(); i++){
-    	
-    	PackageModeClass singlePackage = packages.get(i);
-    
-    %>
+		<th id="">Package Id</th>
+		<th id="">Package Name</th>
+		<th id="">One Day Night Price</th>
+		<th id="">Season</th>
+		<th id="">Protocols</th>
+		<th id="">Description</th>
+		<th id="">Action</th>
+		<th id="">Action</th>
+		
+		<c:forEach items="${showalladminpackage}" var="singlePackage">
+		
 		<tr>
-			<td><%=singlePackage.getPackageId() %></td>
-			<td><%=singlePackage.getName() %></td>
-			<td><%=singlePackage.getPriceOneDays() %></td>
-			<td><%=singlePackage.getSeason() %></td>
-			<td><%=singlePackage.getProtocols() %></td>
-			<td><%=singlePackage.getDescription() %></td>
+			<td>${singlePackage.getPackageId()}</td>
+			<td>${singlePackage.getName()}</td>
+			<td>${singlePackage.getPriceOneDays()}</td>
+			<td>${singlePackage.getSeason()}</td>
+			<td>${singlePackage.getProtocols()}</td>
+			<td>${singlePackage.getDescription()}</td>
 			<td><a
-				href="updatePackage.jsp?packagname=<%=singlePackage.getName() %>">Edit</a></td>
+				href="updatePackage?packagname=${singlePackage.getName()}">Edit</a></td>
 			<td><a
-				href="deletepackage.jsp?packagname=<%=singlePackage.getName() %>">Delete</a></td>
+				href="deletepackage?packagname=${singlePackage.getName()}">Delete</a></td>
 		</tr>
-		<%} %>
+		</c:forEach>
 	</table>
 </body>
 </html>

@@ -1,10 +1,5 @@
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.model.FlightClass"%>
-<%@page import="com.ajith.daoImplement.FlightTableDaoImplement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,67 +38,51 @@ h1 {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<h2>
-		<a href="AdminPage.jsp">Go To Home</a>
+		<a href="adminPage.jsp">Go To Home</a>
 	</h2>
 	<h1>Show All Flight</h1>
 
 	<br>
 	<br>
-	<table cellpading="30px" cellspacing="30px">
-		<th>Flight No</th>
-		<th>Flight Name</th>
-		<th>Departure</th>
-		<th>Destination</th>
-		<th>Departure Date And Time</th>
-		<th>Arrival Date And Time</th>
-		<th>Business Class Fare</th>
-		<th>Economic Class Fare</th>
-		<th>Status</th>
-		<th>Business Class Seats Status</th>
-		<th>Economic Class Seat Status</th>
-		<th>Action</th>
-		<th>Action</th>
+	<table aria-describedby="Show All Flight">
+		<th id="">Flight No</th>
+		<th id="">Flight Name</th>
+		<th id="">Departure</th>
+		<th id="">Destination</th>
+		<th id="">Departure Date And Time</th>
+		<th id="">Arrival Date And Time</th>
+		<th id="">Business Class Fare</th>
+		<th id="">Economic Class Fare</th>
+		<th id="">Status</th>
+		<th id="">Business Class Seats Status</th>
+		<th id="">Economic Class Seat Status</th>
+		<th id="">Action</th>
+		<th id="">Action</th>
 
-
-
-
-
-		<%     DateTimeFormatter formatter =
-DateTimeFormatter.ofPattern("dd-MM-yy HH:mm");
-
-       FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-       List<FlightClass> flight = flightDao.getAllFlight();
+       <c:forEach items="${showalladminflight}" var="singleFlight">
        
-       for(int i =0; i<flight.size(); i++){
-    	   
-    	   FlightClass singleFlight =flight.get(i);
-     %>
-
-
+	<fmt:parseDate value="${singleFlight.getDepatureDateTime()}" pattern="yyyy-MM-dd'T'HH:mm" var="DepartureDateTime" type="both" />
+	<fmt:parseDate value="${singleFlight.getArrivalDateTime()}" pattern="yyyy-MM-dd'T'HH:mm" var="ArrivalDateTime" type="both" />
+	
 		<tr>
-			<td><%=singleFlight.getFlightNo() %></td>
-			<td><%=singleFlight.getFlightName() %></td>
-			<td><%=singleFlight.getDepature() %></td>
-			<td><%=singleFlight.getDestination() %></td>
-			<td><%=singleFlight.getDepatureDateTime().format(formatter) %></td>
-			<td><%=singleFlight.getArrivalDateTime().format(formatter) %></td>
-			<td><%=singleFlight.getBusinessClassFare() %></td>
-			<td><%=singleFlight.getEconomicClassFare() %></td>
-			<td><%=singleFlight.getStatus() %></td>
-			<td><%=singleFlight.getBusinessClassSeat() %></td>
-			<td><%=singleFlight.getEconomicClassSeat() %></td>
+			<td>${singleFlight.getFlightNo()}</td>
+			<td>${singleFlight.getFlightName()}</td>
+			<td>${singleFlight.getDepature()}</td>
+			<td>${singleFlight.getDestination()}</td>
+			<td><fmt:formatDate pattern="dd-MM-yyyy HH:mm" value="${DepartureDateTime}" /></td>
+			<td><fmt:formatDate pattern="dd-MM-yyyy HH:mm" value="${ArrivalDateTime}" /></td>
+			<td>${singleFlight.getBusinessClassFare()}</td>
+			<td>${singleFlight.getEconomicClassFare()}</td>
+			<td>${singleFlight.getStatus()}</td>
+			<td>${singleFlight.getBusinessClassSeat()}</td>
+			<td>${singleFlight.getEconomicClassSeat()}</td>
 			<td><a
-				href="updateFlight.jsp?flightno=<%=singleFlight.getFlightNo() %>">Edit</a></td>
+				href="updateFlight?flightno=${singleFlight.getFlightNo()}">Edit</a></td>
 			<td><a
-				href="deleteFlight.jsp?flightno=<%=singleFlight.getFlightNo() %>">Delete</a></td>
+				href="deleteFlight?flightno=${singleFlight.getFlightNo()}">Delete</a></td>
 		</tr>
-		<%
-       }%>
+		</c:forEach>
 	</table>
-	<%-- <%session.setAttribute("updateflight", null);
-  session.removeAttribute("updateflight");%> --%>
-
 </body>
 </html>

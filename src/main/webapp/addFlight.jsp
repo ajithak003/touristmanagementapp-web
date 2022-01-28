@@ -22,6 +22,7 @@
 
 h1 {
 	text-align: center;
+	color:blue;
 }
 
 .addpackage {
@@ -76,14 +77,15 @@ button {
 		<div class="container">
 			<h1>Add Flight</h1>
 			<h2>
-				<a href="AdminPage.jsp">Go To Home</a>
+				<a href="adminPage.jsp">Go To Home</a>
 			</h2>
 			<br>
 			<br>
 			<br>
 
 			<div class="addpackage">
-				<table cellspacing="20px" cellpadding="30px">
+				<table aria-describedby="add package">
+				<th id=""></th>
 
 					<tr>
 						<td><label for="location">Flight Name : </label></td>

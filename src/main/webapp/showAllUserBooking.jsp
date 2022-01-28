@@ -1,13 +1,5 @@
-<%@page import="java.time.format.DateTimeFormatter"%>
-<%@page import="com.ajith.model.HotelClass"%>
-<%@page import="com.ajith.daoImplement.HotelTableDaoImplement"%>
-<%@page import="com.ajith.model.UserClass"%>
-<%@page import="com.ajith.daoImplement.UserTableDaoImplement"%>
-<%@page import="com.ajith.model.BookingClass"%>
-<%@page import="java.util.List"%>
-<%@page import="com.ajith.daoImplement.BookingTableDaoImplement"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 
 <!DOCTYPE html>
@@ -50,9 +42,8 @@ h2 {
 </head>
 <body>
 
-	<%  response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");%>
 	<h2>
-		<a href="AdminPage.jsp">Go To Home</a>
+		<a href="adminPage.jsp">Go To Home</a>
 	</h2>
 
 	<h1>Show All Booking</h1>
@@ -61,61 +52,44 @@ h2 {
 	<br>
 
 
-	<table cellpading="30px" cellspacing="30px">
+	<table aria-describedby="Show All User Booking">
+	
 
-		<th>User Id</th>
-		<th>User Name</th>
-		<th>Package Name</th>
-		<th>Tour Start Date</th>
-		<th>Tour End Date</th>
-		<th>Number Of Person</th>
-		<th>No Of Days In Night</th>
-		<th>Booking Date</th>
-		<th>Flight Seat Class</th>
-		<th>Hotel Name</th>
-		<th>Hotel Room Type</th>
-		<th>Total Price</th>
-		<th>Payment Details</th>
-		<th>Booking Status</th>
+		<th id="">User Id</th>
+		<th id="">User Name</th>
+		<th id="">Package Name</th>
+		<th id="">Tour Start Date</th>
+		<th id="">Tour End Date</th>
+		<th id="">Number Of Person</th>
+		<th id="">No Of Days In Night</th>
+		<th id="">Booking Date</th>
+		<th id="">Flight Seat Class</th>
+		<th id="">Hotel Name</th>
+		<th id="">Hotel Room Type</th>
+		<th id="">Total Price</th>
+		<th id="">Payment Details</th>
+		<th id="">Booking Status</th>
 
-
-		<%   DateTimeFormatter formatter =
-DateTimeFormatter.ofPattern("dd-MM-yy");
-
-       BookingTableDaoImplement bookingDao = new BookingTableDaoImplement();
-       List<BookingClass> bookings = bookingDao.getAllUserBooking();
-       
-       for(int i=0; i<bookings.size(); i++){
-         
-    	   BookingClass booking = bookings.get(i); 
-    	   
-    	   /* UserTableDaoImplement userDao = new UserTableDaoImplement(); 
-    	   UserClass user = userDao.getSingleUserById(booking.getUser().getId()); */
-           
-    	   /* HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
-           HotelClass hotel = hotelDao.getSingleHotel(booking.getHotel().getHotelId()); */
-           
-    %>
-
-
-
+        
+        <c:forEach items="${showalluserbooking}" var="booking">
+          <fmt:parseDate value="${booking.getBookingDate()}" pattern="yyyy-MM-dd'T'HH:mm" var="bookingdate" type="both" />
 		<tr>
-			<td><%=booking.getUser().getId() %></td>
-			<td><%=booking.getUser().getName() %></td>
-			<td><%=booking.getPackageName() %></td>
-			<td><%=booking.getStartDate() %></td>
-			<td><%=booking.getEndDate() %></td>
-			<td><%=booking.getNoOfPerson() %></td>
-			<td><%=booking.getDaysPlan() %></td>
-			<td><%=booking.getBookingDate()		.format(formatter) %></td>
-			<td><%=booking.getFlightClass() %></td>
-			<td><%=booking.getHotel().getHotelName() %></td>
-			<td><%=booking.getHotelRoomType() %></td>
-			<td><%=booking.getTotalPrice() %></td>
-			<td><%=booking.getPayment() %></td>
-			<td><%=booking.getStatus() %></td>
+			<td>${booking.getUser().getId()}</td>
+			<td>${booking.getUser().getName()}</td>
+			<td>${booking.getPackageName()}</td>
+			<td>${booking.getStartDate()}</td>
+			<td>${booking.getEndDate()}</td>
+			<td>${booking.getNoOfPerson()}</td>
+			<td>${booking.getDaysPlan()}</td>
+			<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${bookingdate}" /></td>
+			<td>${booking.getFlightClass()}</td>
+			<td>${booking.getHotel().getHotelName()}</td>
+			<td>${booking.getHotelRoomType()}</td>
+			<td>${booking.getTotalPrice()}</td>
+			<td>${booking.getPayment()}</td>
+			<td>${booking.getStatus()}</td>
 		</tr>
-		<%} %>
+		</c:forEach>
 	</table>
 </body>
 </html>
