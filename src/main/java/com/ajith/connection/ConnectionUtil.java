@@ -1,18 +1,20 @@
 package com.ajith.connection;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ConnectionUtil {
+public class ConnectionUtil implements Serializable{
 	
 	public static Connection getDBConnect()
 	{
 Connection con=null;
 		
 		try {
+			
 			Class.forName("oracle.jdbc.OracleDriver");
 			String url="jdbc:oracle:thin:@localhost:1521:xe";
 			con=DriverManager.getConnection(url,"system","oracle");
