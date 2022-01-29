@@ -1,6 +1,6 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +10,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>user Page</title>
+
+<SCRIPT type="text/javascript">
+	window.history.forward();
+	function noBack() { window.history.forward(); }
+	
+</SCRIPT>
 
 <style>
 * {
@@ -106,6 +112,10 @@ span {
 </head>
 
 <body>
+
+     <c:if test="${sessionScope.welcom==null }">
+     <c:redirect url="index.jsp"/>  
+     </c:if>
 
 	<h1>Tourist Management</h1>
 	<span>welcome <c:out value="${sessionScope.welcom }" />

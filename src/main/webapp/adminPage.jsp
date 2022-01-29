@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +8,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>AdminPage</title>
+
+<SCRIPT type="text/javascript">
+	console.log("enter");
+	window.history.forward();
+	function noBack() {
+		window.history.forward();
+	}
+</SCRIPT>
 
 <style>
 * {
@@ -106,6 +114,10 @@ span {
 
 <body>
 
+	<c:if test="${sessionScope.welcom==null }">
+		<c:redirect url="index.jsp" />
+	</c:if>
+
 	<h1>Tourist Management</h1>
 	<span>Welcome <c:out value="${sessionScope.welcom }" />
 
@@ -148,12 +160,16 @@ span {
 
 
 	</div>
-<script>
-function go() {
-window.location.replace("logout",'window','toolbar=1,location=1,directories=1,status=1,menubar=1,scrollbars=1,resizable=1');
-self.close()
-}
-</script>
+	<script>
+		function go() {
+			window.location
+					.replace(
+							"logout",
+							'window',
+							'toolbar=1,location=1,directories=1,status=1,menubar=1,scrollbars=1,resizable=1');
+			self.close()
+		}
+	</script>
 
 </body>
 </html>

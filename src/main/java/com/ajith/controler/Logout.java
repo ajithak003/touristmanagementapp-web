@@ -15,9 +15,11 @@ public class Logout extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
+		session.removeAttribute("welcom");
+		session.removeAttribute("user");
 		session.invalidate();
 
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
 
 		try {
 			response.sendRedirect("index.jsp");

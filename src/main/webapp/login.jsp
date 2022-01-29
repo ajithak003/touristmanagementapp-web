@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +10,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Login Page</title>
+
+<SCRIPT type="text/javascript">
+	window.history.forward();
+	function noBack() {
+		window.history.forward();
+	}
+</SCRIPT>
+
 <style>
 body {
 	margin: 0;
@@ -77,6 +85,11 @@ a {
 </head>
 
 <body>
+	<c:if test="${param.id!=2}">
+		<c:redirect url="index.jsp" />
+	</c:if>
+
+
 	<form action="login" id="login" method="post">
 
 		<div class="loginbox">
