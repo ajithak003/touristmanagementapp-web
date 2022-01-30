@@ -47,7 +47,7 @@ public class UserRegister extends HttpServlet {
 
 					session.setAttribute("notallow", "Not allowed '@admin' !");
 
-					response.sendRedirect("Register.jsp");
+					response.sendRedirect("register.jsp");
 
 				} else {
 
@@ -68,7 +68,7 @@ public class UserRegister extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("error", ((UserDefineException) e).reregister());
 			try {
-				response.sendRedirect("Register.jsp");
+				response.sendRedirect("register.jsp");
 			} catch (IOException e1) {
 				System.out.println(e1.getMessage());
 			}

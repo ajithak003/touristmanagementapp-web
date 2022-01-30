@@ -9,14 +9,6 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>AdminPage</title>
 
-<SCRIPT type="text/javascript">
-	console.log("enter");
-	window.history.forward();
-	function noBack() {
-		window.history.forward();
-	}
-</SCRIPT>
-
 <style>
 * {
 	margin: 0;

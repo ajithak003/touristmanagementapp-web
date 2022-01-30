@@ -71,7 +71,7 @@ a:hover {
 			<li><a href="#">Home</a></li>
 			<li><a href="showAllHomePlaces">Popular Places</a></li>
 			<li><a href="showAllRating">Ratings</a></li>
-			<li><a href="login.jsp?id=2">Login</a></li>
+			<li><a href="login.jsp">Login</a></li>
 
 		</ul>
 	</div>

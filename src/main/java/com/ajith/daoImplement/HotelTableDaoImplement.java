@@ -111,7 +111,7 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 	
 	@Override
 	public List<HotelClass> getAllHotel()  {
-		List<HotelClass> hotelDetails = new ArrayList<HotelClass>();
+		List<HotelClass> hotelDetails = new ArrayList<>();
 		Connection con = null;
 		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price, image from hotel_details where status=?";
 		PreparedStatement pstmt = null;

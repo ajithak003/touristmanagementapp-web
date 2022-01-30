@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,13 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Login Page</title>
-
-<SCRIPT type="text/javascript">
-	window.history.forward();
-	function noBack() {
-		window.history.forward();
-	}
-</SCRIPT>
 
 <style>
 body {
@@ -85,9 +77,6 @@ a {
 </head>
 
 <body>
-	<c:if test="${param.id!=2}">
-		<c:redirect url="index.jsp" />
-	</c:if>
 
 
 	<form action="login" id="login" method="post">
@@ -98,7 +87,7 @@ a {
 			<div class="textbox">
 				<input type="email" placeholder="Email" name="loginemail" value=""
 					required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
-					autofocus>
+					autofocus onkeyup="remove()">
 			</div>
 			<div class="textbox">
 				<input type="password" placeholder="Password" name="loginpsws"
@@ -117,17 +106,24 @@ a {
 				</p>
 			</div>
 			<br>
-
-			<c:if test="${sessionScope.error !=null}">
-				<p>
-					<c:out value="${ sessionScope.error }"></c:out>
+			
+            <c:if test="${not empty error}">
+				<p id="error">
+					<c:out value="${error}"></c:out>
 				</p>
+				<c:set var="error" scope="session" value=""/>
 			</c:if>
+			
 
 		</div>
 
 	</form>
-	<script type="text/javascript" src="script.js"></script>
+	<script type="text/javascript">
+	function remove(){
+		console.log("enter");
+		document.getElementById("error").innerHTML="";
+	}
+	</script>
 </body>
 
 </html>

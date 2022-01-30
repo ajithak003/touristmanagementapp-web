@@ -136,7 +136,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 	@Override
 	public List<UserClass> getAllUser() {
 
-		List<UserClass> userList = new ArrayList<UserClass>();
+		List<UserClass> userList = new ArrayList<>();
 		Connection con = null;
 		String query = "select user_id,name,email_id,mobile_no,password,wallet from user_details";
 

@@ -77,7 +77,7 @@ body {
 			<h1>Register</h1>
 			<div class="textbox">
 				<input type="text" placeholder="FullName" name="FullName" value=""
-					required autofocus pattern="[aa-Zz]{2,}"
+					required autofocus onkeyup="remove()" pattern="[aa-Zz]{2,}"
 					title="must contain numbers only">
 			</div>
 			<div class="textbox">
@@ -98,11 +98,11 @@ body {
 
 			<div>
 				<ul>
-					<li id="upper">Atleast one uppercase[A-Z]</li>
-					<li id="lower">Atleast one lowercase [a-z]</li>
-					<li id="number">Atleast one number [0-9]</li>
-					<li id="special">Atleast one special character [@$!%*?&]</li>
-					<li id="char">Alleast 8 character</li>
+					<li id="upper">At least one upper case[A-Z]</li>
+					<li id="lower">At least one lower case [a-z]</li>
+					<li id="number">At least one number [0-9]</li>
+					<li id="special">At least one special character [@$!%*?&]</li>
+					<li id="char">At least 8 character</li>
 				</ul>
 			</div>
 
@@ -111,19 +111,19 @@ body {
 			
 		    <c:set var="notallow" scope="session" value="${sessionScope.notallow }"/>
 			<c:if test="${notallow !=null}">
-				<p>
+				<p id="error">
 					<c:out value="${ sessionScope.notallow }"></c:out>
 				</p>
 			</c:if>
-			<c:remove var="notallow"/>  
+			<c:remove var="notallow" scope="session"/>  
 
 			<c:set var="error" scope="session" value="${sessionScope.error }"/>
             <c:if test="${error!=null}">
-				<p>
+				<p id="error">
 					<c:out value="${error}"></c:out>
 				</p>
 			</c:if>
-			<c:remove var="error"/>
+			<c:remove var="error" scope="session"/>
 
 			<div></div>
 		</div>
@@ -168,6 +168,11 @@ body {
 				document.getElementById("char").style.color = "black";
 			}
 
+		}
+		
+		function remove(){
+			console.log("enter");
+			document.getElementById("error").innerHTML="";
 		}
 	</script>
 </body>

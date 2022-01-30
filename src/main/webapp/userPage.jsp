@@ -11,12 +11,6 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>user Page</title>
 
-<SCRIPT type="text/javascript">
-	window.history.forward();
-	function noBack() { window.history.forward(); }
-	
-</SCRIPT>
-
 <style>
 * {
 	margin: 0;
