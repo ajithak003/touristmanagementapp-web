@@ -31,7 +31,7 @@ public class Wallet extends HttpServlet {
         
         response.sendRedirect("wallet.jsp");
         
-		} catch (ClassNotFoundException | SQLException | IOException e) {
+		} catch (SQLException | IOException e) {
 			System.out.println(e.getMessage());
 		}
 	}

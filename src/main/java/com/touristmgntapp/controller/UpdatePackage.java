@@ -34,7 +34,7 @@ public class UpdatePackage extends HttpServlet {
 		
 		String image = request.getParameter("packageimage");
 		
-		PackageModeClass packages = new PackageModeClass(packageId,packagename,packageOneDayPrice,season,protocol,description,image);
+		PackageModeClass packages = new PackageModeClass(packageId,packagename,packageOneDayPrice,season,protocol,description,"active",image);
 		boolean pack = packageDao.updatePackage(packages);
 		
 		PrintWriter out = response.getWriter();

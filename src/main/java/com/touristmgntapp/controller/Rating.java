@@ -38,13 +38,13 @@ public class Rating extends HttpServlet {
 			if(rate) {
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Thanks For Your Rating');");
-				out.println("location='UserPage.jsp';");
+				out.println("location='userPage.jsp';");
 				out.println("</script>");
 			}
 			else {
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('can not be rated ! please try again');");
-				out.println("location='UserPage.jsp';");
+				out.println("location='userPage.jsp';");
 				out.println("</script>");
 			}
 			

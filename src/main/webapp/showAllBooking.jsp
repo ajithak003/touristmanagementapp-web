@@ -190,7 +190,7 @@ a {
 					class="com.touristmgntapp.daoImpl.BookingTableDaoImplement" />
 
 
-				<form>
+				
 
 					<div class="box">
 						<div class="title">
@@ -269,7 +269,6 @@ a {
 							href="showSingleBooking?bookingid=${singlebooking.getBookingId()}"><span>SEE
 								DETAILS</span></a>
 					</h3>
-					</form>
 					<br> <br>
 			</c:forEach>
 

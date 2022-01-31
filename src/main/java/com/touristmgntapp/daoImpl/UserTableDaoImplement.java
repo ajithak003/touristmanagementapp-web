@@ -307,7 +307,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 	}
 
-	public UserClass getSingleUserById(int userId) throws ClassNotFoundException, SQLException {
+	public UserClass getSingleUserById(int userId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		UserClass userById = null;

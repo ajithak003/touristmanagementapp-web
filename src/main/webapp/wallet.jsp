@@ -54,7 +54,6 @@ a {
 
 </head>
 <body>
-        
         <c:set var="user" scope="session" value="${newUser}"/>
         
 	<form action="walletSus" method="get">

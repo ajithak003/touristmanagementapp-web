@@ -71,11 +71,13 @@ public class ConfirmDateChange extends HttpServlet {
 					}
 
 				} else {
-					PrintWriter out = response.getWriter();
-					out.println("<script type=\"text/javascript\">");
-					out.println("alert('Insufficient balance !');");
-					out.println("location='wallet.jsp';");
-					out.println("</script>");
+					/*
+					 * PrintWriter out = response.getWriter();
+					 * out.println("<script type=\"text/javascript\">");
+					 * out.println("alert('Insufficient balance !');");
+					 * out.println("location='wallet.jsp';"); out.println("</script>");
+					 */
+					response.sendRedirect("wallet.jsp?errormsg=Insufficient balance");
 				}
 			}
 			if (totalPriceBalance <= 0) {
