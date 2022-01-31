@@ -182,11 +182,11 @@ a {
 			<c:forEach items="${userallbooking}" var="singlebooking">
 
 				<jsp:useBean id="rating"
-					class="com.ajith.daoImplement.RatingDaoImplement" />
+					class="com.touristMgntApp.daoImpl.RatingDaoImplement" />
 
 
 				<jsp:useBean id="cancel"
-					class="com.ajith.daoImplement.BookingTableDaoImplement" />
+					class="com.touristMgntApp.daoImpl.BookingTableDaoImplement" />
 
 
 				<form>
