@@ -112,9 +112,7 @@ span {
 
 <body>
 
-     <c:if test="${sessionScope.welcom==null }">
-     <c:redirect url="index.jsp"/>  
-     </c:if>
+     
 
 	<h1>Tourist Management</h1>
 	<span>welcome <c:out value="${sessionScope.welcom }" />

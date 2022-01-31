@@ -9,6 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Profile</title>
+
 <style>
 /*  body{
             background-color:rgb(202, 187, 187);
