@@ -32,7 +32,7 @@ Connection con=null;
 			e.getMessage();
 			System.out.println("url or uasername or password may wrong");
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 		return con;
 	}
