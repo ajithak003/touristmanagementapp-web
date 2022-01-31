@@ -19,7 +19,7 @@ public class Logout extends HttpServlet {
 		session.removeAttribute("user");
 		session.invalidate();
 
-		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); 
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 
 		try {
 			response.sendRedirect("index.jsp");
