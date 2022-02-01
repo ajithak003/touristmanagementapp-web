@@ -44,7 +44,7 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
 		return pstmtvalue > 0;
 
@@ -54,23 +54,22 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 	public List<UserFeedbackClass> getAllFeedback() throws ClassNotFoundException, SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
+		ResultSet rs = null;
 		UserFeedbackClass rating = null;
 
-		List<UserFeedbackClass> ratings = new ArrayList<UserFeedbackClass>();
+		List<UserFeedbackClass> ratings = new ArrayList<>();
 
-		String query = "select feedback_id,user_id,booking_id,package_id,user_name,package_name,rating,describtion from users_feedback";
+		String query = "select user_name,package_name,rating,describtion from users_feedback";
 
 		try {
 			con = ConnectionUtil.getDBConnect();
 
 			pstmt = con.prepareStatement(query);
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				rating = new UserFeedbackClass(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getInt(4), rs.getString(5),
-						rs.getString(6), rs.getFloat(7), rs.getString(8));
+				rating = new UserFeedbackClass(0, 0, 0, 0, rs.getString("user_name"),rs.getString("package_name"), rs.getFloat("rating"), rs.getString("describtion"));
 				ratings.add(rating);
 
 			}
@@ -78,7 +77,7 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 
 		return ratings;
@@ -107,7 +106,7 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 			System.out.println(e.getMessage());
 
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
 
 		return flag;
@@ -116,7 +115,7 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 	public UserFeedbackClass getAllFeedbackratingS(String location) throws ClassNotFoundException, SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
+		ResultSet rs = null;
 		UserFeedbackClass rating = null;
 
 		String query = "select package_name, avg(rating)as rating  from users_feedback where package_name=? group by package_name";
@@ -127,17 +126,17 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, location);
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				rating = new UserFeedbackClass(0, 0, 0, 0, "", rs.getString(1), rs.getFloat(2), "");
+				rating = new UserFeedbackClass(0, 0, 0, 0, "", rs.getString("package_name"), rs.getFloat("rating"), "");
 
 			}
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return rating;
 

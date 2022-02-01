@@ -40,7 +40,7 @@ span {
 
 	<h1>Transaction Successful</h1>
 	<h2>
-		Your wallet Amount : <span>${newUser.getWallet()}</span>
+		Your wallet Amount : <span>Rs. ${newUser.getWallet()}</span>
 	</h2>
 	<br>
 	<br>

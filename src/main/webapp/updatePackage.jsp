@@ -87,7 +87,7 @@ text-decoration: none;
 
 	<c:set var="packages" scope="session" value="${updatepackage}" />
 
-	<form action="updatepackage" method="get">
+	<form action="updatepackage" method="post">
 		<div class="addpackage">
 			<table aria-describedby="package update">
 				<th id=""></th>
@@ -100,7 +100,7 @@ text-decoration: none;
 
 				<tr>
 					<td><label for="price">Package one day night price : </label></td>
-					<td><input type="text" name="packageonedayprice"
+					<td><input type="text" name="packageonedayprice" placeholder="Rs. "
 						id="packageonedayprice" value=" ${packages.getPriceOneDays()}"
 						required pattern="[0-9 .]{2,}" title="must contain numbers only"></td>
 				</tr>

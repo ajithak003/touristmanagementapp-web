@@ -41,7 +41,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
 		return pstmtvalue > 0;
 
@@ -69,7 +69,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 
 		}
 		return update > 0;
@@ -96,7 +96,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
 		return del > 0;
 
@@ -107,7 +107,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		UserClass userById = null;
-
+		ResultSet rs=null;
 		String query = "select user_id,name,email_id,mobile_no,password,wallet from user_details where email_id=? ";
 
 		try {
@@ -116,18 +116,18 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 			pstmt.setString(1, user.getEmail());
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 
-				userById = new UserClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5),
-						rs.getLong(6));
+				userById = new UserClass(rs.getInt("user_id"), rs.getString("name"), rs.getString("email_id"),
+						rs.getLong("mobile_no"), rs.getString("password"), rs.getLong("wallet"));
 
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return userById;
 
@@ -141,23 +141,24 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		String query = "select user_id,name,email_id,mobile_no,password,wallet from user_details";
 
 		Statement stmt = null;
+		ResultSet rs = null;
 		try {
 			con = ConnectionUtil.getDBConnect();
 			stmt = con.createStatement();
 
-			ResultSet rs = stmt.executeQuery(query);
+			 rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
 
-				UserClass user = new UserClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4),
-						rs.getString(5), rs.getLong(6));
+				UserClass user = new UserClass(rs.getInt("user_id"), rs.getString("name"), rs.getString("email_id"),
+						rs.getLong("mobile_no"), rs.getString("password"), rs.getLong("wallet"));
 
 				userList.add(user);
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closeStatement(stmt, con);
+			ConnectionUtil.closeStatement(stmt, con, rs);
 		}
 
 		return userList;
@@ -169,6 +170,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 				+ "where email_id=? and password=? and status=?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		UserClass UserClass = null;
 
 		try {
@@ -179,18 +181,18 @@ public class UserTableDaoImplement implements UserDaoInterface {
 			pstmt.setString(2, password);
 			pstmt.setString(3, "active");
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 			if (rs.next()) {
 
-				UserClass = new UserClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4),
-						rs.getString(5), rs.getLong(6));
+				UserClass = new UserClass(rs.getInt("user_id"), rs.getString("name"), rs.getString("email_id"),
+						rs.getLong("mobile_no"), rs.getString("password"), rs.getLong("wallet"));
 
 			}
 
 		} catch (SQLException e) {
 			System.out.println("Statement error");
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 
 		return UserClass;
@@ -199,6 +201,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 	public boolean emailvalid(String emailverifi) {
 		Connection con = null;
+		ResultSet rs = null;
 		String query = "select email_id from user_details where email_id=?";
 
 		boolean flag = true;
@@ -209,7 +212,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, emailverifi);
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 			if (rs.next()) {
 
 				flag = false;
@@ -219,7 +222,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 
 		return flag;
@@ -228,6 +231,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 	public long showWalletAmount(UserClass user) {
 
 		Connection con = null;
+		ResultSet rs = null;
 		long wallet = 0;
 		String query = "select wallet from user_details where email_id=?";
 		PreparedStatement pstmt = null;
@@ -236,17 +240,17 @@ public class UserTableDaoImplement implements UserDaoInterface {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, user.getEmail());
 
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			if (rs.next()) {
 
-				wallet = rs.getLong(1);
+				wallet = rs.getLong("wallet");
 
 			}
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return wallet;
 
@@ -270,8 +274,8 @@ public class UserTableDaoImplement implements UserDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
-			;
+			ConnectionUtil.close(pstmt, con);
+			
 		}
 		return wallet > 0;
 
@@ -280,6 +284,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 	public UserClass reRegister(String email) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		UserClass user = null;
 		String query = "select user_id,name,email_id,mobile_no,password,wallet user_details from  where email_id=?";
 
@@ -290,18 +295,18 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 			pstmt.setString(1, email);
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 
-				user = new UserClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5),
-						rs.getLong(6));
+				user = new UserClass(rs.getInt("user_id"), rs.getString("name"), rs.getString("email_id"),
+						rs.getLong("mobile_no"), rs.getString("password"), rs.getLong("wallet"));
 
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return user;
 
@@ -310,6 +315,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 	public UserClass getSingleUserById(int userId) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs=null;
 		UserClass userById = null;
 
 		String query = "select user_id,name,email_id,mobile_no,password,wallet from user_details where user_id=?";
@@ -320,18 +326,18 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 			pstmt.setInt(1, userId);
 
-			ResultSet rs = pstmt.executeQuery();
+		    rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 
-				userById = new UserClass(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getLong(4), rs.getString(5),
-						rs.getLong(6));
+				userById = new UserClass(rs.getInt("user_id"), rs.getString("name"), rs.getString("email_id"),
+						rs.getLong("mobile_no"), rs.getString("password"), rs.getLong("wallet"));
 
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return userById;
 

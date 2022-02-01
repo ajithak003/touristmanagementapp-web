@@ -103,7 +103,7 @@ td {
 				</tr>
 				<tr>
 					<td>one Day Night Price / person :</td>
-					<td>${booking.getPackages().getPriceOneDays()}</td>
+					<td>Rs. ${booking.getPackages().getPriceOneDays()}</td>
 				</tr>
 				<tr>
 					<td>No Of Person :</td>
@@ -154,7 +154,7 @@ td {
 				</tr>
 				<tr>
 					<td>Ticket Price :</td>
-					<td>${flightfare}</td>
+					<td>Rs. ${flightfare}</td>
 				</tr>
 
 				<tr>
@@ -176,15 +176,23 @@ td {
 				</tr>
 				<tr>
 					<td>Hotel One Day Night Price :</td>
-					<td>${hotelfare}</td>
+					<td>Rs. ${hotelfare}</td>
 				</tr>
 				<tr>
 					<td>No Of Room :</td>
 					<td>${noOfHotelRooms} Room</td>
 				</tr>
+				
+				<tr>
+					<td>Booking Date :</td>
+					<fmt:parseDate value="${booking.getBookingDate()}"
+						pattern="yyyy-MM-dd'T'HH:mm" var="bookingdate" type="both" />
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${bookingdate}" /></td>
+				</tr>
+				
 				<tr>
 					<td><h3>Package Total Price</h3></td>
-					<td><h3>${booking.getTotalPrice()}</h3></td>
+					<td><h3>Rs. ${booking.getTotalPrice()}</h3></td>
 				</tr>
 			</table>
 

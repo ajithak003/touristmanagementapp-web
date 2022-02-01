@@ -38,6 +38,13 @@ h1 {
 h2 {
 	margin-left: 20px;
 }
+th {
+  background:black;
+  color:white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+ 
+}
 </style>
 
 </head>
@@ -55,7 +62,7 @@ h2 {
 
 	<table aria-describedby="Show All User Booking">
 	
-
+        <th id="">Sl.No</th>
 		<th id="">User Id</th>
 		<th id="">User Name</th>
 		<th id="">Package Name</th>
@@ -67,14 +74,15 @@ h2 {
 		<th id="">Flight Seat Class</th>
 		<th id="">Hotel Name</th>
 		<th id="">Hotel Room Type</th>
-		<th id="">Total Price</th>
+		<th id="">Total Price (Rs)</th>
 		<th id="">Payment Details</th>
 		<th id="">Booking Status</th>
 
         
-        <c:forEach items="${showalluserbooking}" var="booking">
+        <c:forEach begin="0" items="${showalluserbooking}" var="booking" varStatus="loop">
           <fmt:parseDate value="${booking.getBookingDate()}" pattern="yyyy-MM-dd'T'HH:mm" var="bookingdate" type="both" />
 		<tr>
+		    <td>${loop.count}</td>
 			<td>${booking.getUser().getId()}</td>
 			<td>${booking.getUser().getName()}</td>
 			<td>${booking.getPackageName()}</td>

@@ -22,7 +22,7 @@ public class ShowAllFlight extends HttpServlet {
 		try {
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
 	       List<FlightClass> flight = flightDao.getAllFlight();
-		
+	       System.out.println("flight");
 		request.setAttribute("showalladminflight", flight);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("showAllFlight.jsp");

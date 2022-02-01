@@ -65,8 +65,8 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
-			ConnectionUtil.closePreparedStatement(pstmt2, con);
+			ConnectionUtil.close(pstmt, con);
+			ConnectionUtil.close(pstmt2, con);
 
 		}
 		return pstmtvalue > 0;
@@ -79,6 +79,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		RatingDaoImplement ratingDao = new RatingDaoImplement();
 
 		Connection con = null;
+		ResultSet rs = null;
 
 		String query = "select b.booking_id,flight.depature,flight.destination,hotel.hotel_name,b.start_date,b.end_date,b.total_price,b.status,b.days_in_night,b.package_name,u.user_id,p.package_id,flight.flight_no,hotel.hotel_id "
 				+ "from booking_details b inner join user_details u on b.user_id = u.user_id inner join package_modes p on b.package_id=p.package_id inner join "
@@ -92,7 +93,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, users.getId());
 
-			ResultSet rs = pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 
@@ -114,7 +115,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 
 		return bookingDetails;
@@ -124,6 +125,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 	public BookingClass getbookingById(int userId, LocalDate startDate) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		BookingClass booking = null;
 
 		UserTableDaoImplement userDao = new UserTableDaoImplement();
@@ -142,7 +144,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			pstmt.setDate(1, java.sql.Date.valueOf(startDate));
 			pstmt.setInt(2, userId);
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 
@@ -163,7 +165,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			System.out.println(e.getMessage());
 
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return booking;
 	}
@@ -213,9 +215,9 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
-			ConnectionUtil.closePreparedStatement(pstmtflight, con);
-			ConnectionUtil.closePreparedStatement(pstmtUser, con);
+			ConnectionUtil.close(pstmt, con);
+			ConnectionUtil.close(pstmtflight, con);
+			ConnectionUtil.close(pstmtUser, con);
 		}
 		return pstmtvalue > 0;
 	}
@@ -243,7 +245,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
 		return del > 0;
 	}
@@ -262,13 +264,14 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 				+ "booking_date,flight_class,hotel_room_type,days_in_night,package_name,payment_details,no_of_room from booking_details";
 
 		Statement stmt = null;
+		ResultSet rs =null;
 		BookingClass booking = null;
 
 		try {
 			con = ConnectionUtil.getDBConnect();
 			stmt = con.createStatement();
 
-			ResultSet rs = stmt.executeQuery(query);
+			rs = stmt.executeQuery(query);
 
 			while (rs.next()) {
 
@@ -289,7 +292,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closeStatement(stmt, con);
+			ConnectionUtil.close(null, con, rs);
 		}
 
 		return bookingDetails;
@@ -355,10 +358,10 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
-			ConnectionUtil.closePreparedStatement(pstmtUser, con);
-			ConnectionUtil.closePreparedStatement(pstmtoldflight, con);
-			ConnectionUtil.closePreparedStatement(pstmtnewflight, con);
+			ConnectionUtil.close(pstmt, con);
+			ConnectionUtil.close(pstmtUser, con);
+			ConnectionUtil.close(pstmtoldflight, con);
+			ConnectionUtil.close(pstmtnewflight, con);
 
 		}
 		return pstmtvalue > 0;
@@ -368,6 +371,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 	public BookingClass getSingleBookingById(int bookingId) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		ResultSet rs = null;
 		BookingClass booking = null;
 
 		UserTableDaoImplement userDao = new UserTableDaoImplement();
@@ -385,7 +389,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, bookingId);
 
-			ResultSet rs = pstmt.executeQuery();
+			 rs = pstmt.executeQuery();
 
 			if (rs.next()) {
 
@@ -405,7 +409,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closeStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return booking;
 	}
@@ -434,7 +438,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			System.out.println(e.getMessage());
 
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 			;
 		}
 

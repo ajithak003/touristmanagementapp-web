@@ -63,15 +63,15 @@ a {
 		<div class="container">
 
 			<h3>
-				Your Wallet Amount : <span>${user.getWallet()}</span>
+				Your Wallet Amount : <span>Rs. ${user.getWallet()}</span>
 				</h2>
 			</h3>
 			<br>
 			<h4>Topup Wallet</h4>
 			<br> <input type="number" name="amount" id="amount"
-				placeholder="Rs.  Enter amount" required min="5000" autofocus
+				placeholder="Rs.  Enter amount" required min="10000" autofocus
 				pattern="[0-9]{3,}" title="must contain numbers only">
-			<p>Minimum 5000</p>
+			<p>Minimum Rs. 10000</p>
 			<br>
 			<br>
 			<br>

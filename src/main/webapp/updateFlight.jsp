@@ -88,7 +88,7 @@ text-decoration: none;
 		<c:set var="flight" scope="session" value="${updateflight}" />
 
 
-		<form action="updateflight" method="get">
+		<form action="updateflight" method="post">
 
 			<div class="addpackage">
 				<table aria-describedby="update flight">
@@ -124,13 +124,13 @@ text-decoration: none;
 					</tr>
 					<tr>
 						<td><label for="">Business Class Fare :</label></td>
-						<td><input type="text" name="businessclassfare"
+						<td><input type="text" name="businessclassfare" placeholder="Rs. "
 							id="businessclassfare" value="${flight.getBusinessClassFare()}"
 							pattern="[0-9 .]{2,10}" title="must contain number only"></td>
 					</tr>
 					<tr>
 						<td><label for="">Economic Class Fare :</label></td>
-						<td><input type="text" name="economicclassfare"
+						<td><input type="text" name="economicclassfare" placeholder="Rs. "
 							id="economicclassfare" value="${flight.getEconomicClassFare()}"
 							pattern="[0-9 .]{2,10}" title="must contain number only"></td>
 					</tr>

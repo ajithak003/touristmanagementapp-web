@@ -39,7 +39,6 @@ public class Login extends HttpServlet {
 					session.setAttribute("error", "user name and password mismatch");
 					request.getRequestDispatcher("login.jsp").forward(request, response);
 				} else {
-
 					session.setAttribute("welcom", admin.getName());
 					response.sendRedirect("adminPage.jsp");
 

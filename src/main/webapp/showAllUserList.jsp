@@ -37,6 +37,13 @@ h1 {
 h2 {
 	margin-left: 20px;
 }
+th {
+  background:black;
+  color:white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+ 
+}
 </style>
 
 </head>
@@ -53,14 +60,15 @@ h2 {
 
 	<table aria-describedby="Show All User">
 
-
+        <th id="">Sl.No</th>
 		<th id="">User Id</th>
 		<th id="">User Name</th>
 		<th id="">User Email Id</th>
 		<th id="">User Mobile No</th>
 
-		<c:forEach items="${showalluserlist}" var="user">
+		<c:forEach begin="0" items="${showalluserlist}" var="user" varStatus="loop">
 		<tr>
+		    <td>${loop.count}</td>
 			<td>${user.getId()}</td>
 			<td>${user.getName()}</td>
 			<td>${user.getEmail()}</td>

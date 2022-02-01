@@ -26,15 +26,15 @@ public class AdminTableDaoImplement implements AdminDaoInterface {
 			
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
-				AdminClass=new AdminClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getString(5));
+				AdminClass=new AdminClass(rs.getInt("admin_id"),rs.getString("name"),rs.getString("email_id"),rs.getLong("mobile_no"),rs.getString("password"));
 				
 			}
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			System.out.println("adminStatement error");
+			
 		}finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
 
 		return AdminClass;
@@ -42,36 +42,6 @@ public class AdminTableDaoImplement implements AdminDaoInterface {
 		
 	}
 
-	
-
-	public UserClass getUserById(int userId) {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		UserClass userById=null;
-		
-			String query ="select user_id,name,email_id,mobile_no,password,wallet from user_details where user_id =?";
-			System.out.println(query);
-
-		try {
-		 con = ConnectionUtil.getDBConnect();
-		 pstmt = con.prepareStatement(query);
-		 pstmt.setInt(1, userId);
-		 
-		 ResultSet rs = pstmt.executeQuery(query);
-		
-		 
-		 if (rs.next()) {
-
-			 userById=new UserClass(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getLong(4),rs.getString(5),rs.getLong(6));
-				
-			}} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			} finally {
-				ConnectionUtil.closePreparedStatement(pstmt, con);
-			}
-		 return userById;
-
-	}
 
 	
 

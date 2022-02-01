@@ -150,7 +150,7 @@ span {
             <c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()}">
 						<input type="radio" name="price" id="Business"
 							value="${flight.getBusinessClassFare()}" required><label
-							for="">Business Class <span>${flight.getBusinessClassFare() }></span></label>
+							for="">Business Class <span>Rs. ${flight.getBusinessClassFare() }></span></label>
 						</c:if>
 						</c:if>
 					</p>
@@ -161,7 +161,7 @@ span {
             <c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()}">
 						<input type="radio" name="price" id="Business"
 							value="${flight.getEconomicClassFare()}" required><label
-							for="">Economic Class <span>${flight.getEconomicClassFare()}</span></label>
+							for="">Economic Class <span>Rs. ${flight.getEconomicClassFare()}</span></label>
 						</c:if>
 						</c:if>
 					</p>

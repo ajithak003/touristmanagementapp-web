@@ -222,7 +222,7 @@ a {
 						</div>
 						<div class="days">
 							<h2>
-								Total price &nbsp;: <span id="totprice">${singlebooking.getTotalPrice()}</span>
+								Total price &nbsp;: <span id="totprice">Rs. ${singlebooking.getTotalPrice()}</span>
 							</h2>
 						</div>
 						</table>

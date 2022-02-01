@@ -102,7 +102,7 @@ padding:20px;
 				</tr>
 				<tr>
 					<td>one Day Night Price / person :</td>
-					<td>${booking.getPackages().getPriceOneDays()}</td>
+					<td>Rs. ${booking.getPackages().getPriceOneDays()}</td>
 				</tr>
 				<tr>
 					<td>No Of Person :</td>
@@ -155,7 +155,7 @@ padding:20px;
 				</tr>
 				<tr>
 					<td>Ticket Price :</td>
-					<td>${flightFare}</td>
+					<td>Rs. ${flightFare}</td>
 				</tr>
 
 				<tr>
@@ -179,7 +179,7 @@ padding:20px;
 				</tr>
 				<tr>
 					<td>Hotel One Day Night Price :</td>
-					<td>${hotelPrice}</td>
+					<td>Rs. ${hotelPrice}</td>
 				</tr>
 				<tr>
 					<td>No Of Room :</td>
@@ -187,7 +187,7 @@ padding:20px;
 				</tr>
 				<tr>
 					<td><h3>Package Total Price</h3></td>
-					<td><h3>${booking.getTotalPrice()}</h3></td>
+					<td><h3>Rs. ${booking.getTotalPrice()}</h3></td>
 				</tr>
 			</table>
 			<button>Confirm Booking</button>

@@ -15,7 +15,7 @@ import com.touristmgntapp.model.FlightClass;
 public class AddFlight extends HttpServlet {
 
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse res)  {
+	public void doPost(HttpServletRequest req, HttpServletResponse res)  {
 		
 		
 		try {

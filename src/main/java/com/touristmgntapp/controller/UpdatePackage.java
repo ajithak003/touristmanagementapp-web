@@ -15,7 +15,7 @@ import com.touristmgntapp.model.PackageModeClass;
 public class UpdatePackage extends HttpServlet {
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response)  {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)  {
 		
 		try {
 		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();

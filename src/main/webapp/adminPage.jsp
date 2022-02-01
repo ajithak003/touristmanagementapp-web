@@ -10,9 +10,9 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>AdminPage</title>
 
-<script>
+<!-- <script>
     history.forward();
-</script>
+</script> -->
 
 
 <style>

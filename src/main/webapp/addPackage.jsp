@@ -105,7 +105,7 @@ td {
 
 				<tr>
 					<td><label for="price">Package one day night price : </label></td>
-					<td><input type="text" name="packageonedayprice"
+					<td><input type="number" name="packageonedayprice" placeholder="Rs"
 						id="packageonedayprice" required pattern="[0-9]{2,}"
 						title="must contain numbers only"></td>
 				</tr>

@@ -32,6 +32,13 @@ h1 {
 	font-size: 50px;
 	color: steelblue
 }
+th {
+  background:black;
+  color:white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+ 
+}
 </style>
 
 </head>
@@ -48,19 +55,21 @@ h1 {
 
 
 	<table aria-describedby="Show All packages">
-
+         
+        <th id="">Sl.No</th>
 		<th id="">Package Id</th>
 		<th id="">Package Name</th>
-		<th id="">One Day Night Price</th>
+		<th id="">One Day Night Price (Rs)</th>
 		<th id="">Season</th>
 		<th id="">Protocols</th>
 		<th id="">Description</th>
 		<th id="">Action</th>
 		<th id="">Action</th>
 		
-		<c:forEach items="${showalladminpackage}" var="singlePackage">
+		<c:forEach begin="0" items="${showalladminpackage}" var="singlePackage" varStatus="loop">
 		
 		<tr>
+		    <td>${loop.count}</td>
 			<td>${singlePackage.getPackageId()}</td>
 			<td>${singlePackage.getName()}</td>
 			<td>${singlePackage.getPriceOneDays()}</td>

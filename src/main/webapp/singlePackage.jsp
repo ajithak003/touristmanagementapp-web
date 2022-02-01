@@ -157,11 +157,11 @@ padding:15px;
 				<tr>
 					<td>
 						<h3>
-							One Day night <br> Package Place
+							One Day night <br> Package Price
 						</h3>
 					</td>
 
-					<td><p>${packages.getPriceOneDays()}</p></td>
+					<td><p>Rs. ${packages.getPriceOneDays()}</p></td>
 				</tr>
 				<tr>
 					<td>

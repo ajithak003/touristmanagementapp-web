@@ -74,6 +74,13 @@ a {
 	text-decoration: none;
 	font-weight: bolder;
 }
+.show{
+font-weight: bold;
+}
+#error{
+color:red;
+font-weight: bold;
+}
 </style>
 </head>
 
@@ -92,14 +99,18 @@ a {
 			</div>
 			<div class="textbox">
 				<input type="password" placeholder="Password" name="loginpsws"
-					value="" required
+					id="psw" value="" required
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
 					title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character">
+
 			</div>
-
-
-			<button class="btn" type="submit">Sign in</button>
-
+			<div class="show">
+				<input type="checkbox" onclick="myFunction()">Show Password
+			</div>
+			<br>
+			<div>
+				<button class="btn" type="submit">Sign in</button>
+			</div>
 			<div class="forget">
 
 				<p>
@@ -107,23 +118,32 @@ a {
 				</p>
 			</div>
 			<br>
-			
-            <c:if test="${not empty error}">
+
+			<c:if test="${not empty error}">
 				<p id="error">
 					<c:out value="${error}"></c:out>
 				</p>
-				<c:set var="error" scope="session" value=""/>
+				<c:set var="error" scope="session" value="" />
 			</c:if>
-			
+
 
 		</div>
 
 	</form>
 	<script type="text/javascript">
-	function remove(){
-		console.log("enter");
-		document.getElementById("error").innerHTML="";
-	}
+		function remove() {
+			console.log("enter");
+			document.getElementById("error").innerHTML = "";
+		}
+
+		function myFunction() {
+			var x = document.getElementById("psw");
+			if (x.type === "password") {
+				x.type = "text";
+			} else {
+				x.type = "password";
+			}
+		}
 	</script>
 </body>
 

@@ -34,15 +34,15 @@ public class UpdateProfile extends HttpServlet {
 
 				out.println("<script type=\"text/javascript\">");
 				out.println("alert('Successfully Updated ! please Login');");
-				out.println("location='logout.jsp';");
+				out.println("location='logout';");
 				out.println("</script>");
 
 			}
 
 			else {
 				out.println("<script type=\"text/javascript\">");
-				out.println("alert('can't be updated! please try agin later');");
-				out.println("location='logout.jsp';");
+				out.println("alert('can't be updated! please try agin');");
+				out.println("location='register.jsp';");
 				out.println("</script>");
 
 			}

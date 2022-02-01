@@ -15,7 +15,7 @@ table {
 	border: 2px solid;
 	border-collapse: collapse;
 	background-color: rgb(235, 206, 194);
-	margin-left: 18%;
+	margin-left: 12%;
 }
 
 tr, td, th {
@@ -33,6 +33,13 @@ h1 {
 	font-size: 50px;
 	color: steelblue
 }
+th {
+  background:black;
+  color:white;
+  position: sticky;
+  top: 0; /* Don't forget this, required for the stickiness */
+ 
+}
 </style>
 </head>
 <body>
@@ -47,18 +54,20 @@ h1 {
 	<br>
 
 	<table aria-describedby="Show All Hotels">
-
+         
+        <th id="">Sl.No</th> 
 		<th id="">Hotel Id</th>
 		<th id="">Hotel Name</th>
 		<th id="">Hotel Location</th>
-		<th id="">Standard Room Price</th>
-		<th id="">Premium Room Price</th>
+		<th id="">Standard Room Price (Rs)</th>
+		<th id="">Premium Room Price (Rs)</th>
 		<th id="">Action</th>
 		<th id="">Action</th>
 
-        <c:forEach items="${showalladminhotel}" var="hotel">
+        <c:forEach begin="0" items="${showalladminhotel}" var="hotel" varStatus="loop">
 
 		<tr>
+		    <td>${loop.count}</td>
 			<td>${hotel.getHotelId()}</td>
 			<td>${hotel.getHotelName()}</td>
 			<td>${hotel.getLocation()}</td>

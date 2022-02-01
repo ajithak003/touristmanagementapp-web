@@ -76,7 +76,7 @@ td {
 </head>
 <body>
 
-	<form action="addflight" method="get">
+	<form action="addflight" method="post">
 		<div class="container">
 			<h1>Add Flight</h1>
 			<h2>
@@ -120,15 +120,15 @@ td {
 					</tr>
 					<tr>
 						<td><label for="">Business Class Fare :</label></td>
-						<td><input type="text" name="businessclassfare"
-							id="businessclassfare" pattern="[0-9]{3,10}" required
-							title="must contain number only maximum 10 minimum 3 no. number"></td>
+						<td><input type="number" name="businessclassfare" placeholder="Rs"
+							id="businessclassfare" min="600" max="200000" required
+							title="must contain number only maximum 600 minimum 200000"></td>
 					</tr>
 					<tr>
 						<td><label for="">Economic Class Fare :</label></td>
-						<td><input type="text" name="economicclassfare"
-							id="economicclassfare" pattern="[0-9]{3,10}"
-							title="must contain number only maximum 10 minimum 3 no. number"
+						<td><input type="number" name="economicclassfare" placeholder="Rs"
+							id="economicclassfare" min="600" max="200000"
+							title="must contain number only maximum 600 minimum 200000"
 							required></td>
 					</tr>
 
@@ -143,13 +143,13 @@ td {
 						<td><label for="">Business Class Seats Count :</label></td>
 						<td><input type="text" name="businessclassseat"
 							id="businessclassseatr" required pattern="[0-9]{2,3}"
-							title="must contain number only maximum 10 minimum 2 no. number"></td>
+							title="must contain number only maximum 10 minimum 2 no. number" ></td>
 					</tr>
 					<tr>
 						<td><label for="">Economic Class Seats Count :</label></td>
 						<td><input type="text" name="economicclassseat"
 							id="economicclassseat" required pattern="[0-9]{2,3}"
-							title="must contain number only maximum 10 minimum 2 no. number"></td>
+							title="must contain number only maximum 50 minimum 200 no. number"></td>
 					</tr>
 				</table>
 				<button>Add Flight</button>

@@ -2,11 +2,14 @@ package com.touristmgntapp.controller;
 
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
 import com.touristmgntapp.model.FlightClass;
@@ -16,33 +19,33 @@ import com.touristmgntapp.model.FlightClass;
 public class UpdateFlight extends HttpServlet {
 	
 	@Override
-	public void doGet(HttpServletRequest req, HttpServletResponse res)  {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)  {
 		
 		try {
 					
-		String flightName = req.getParameter("flightname");
+		String flightName = request.getParameter("flightname");
 		
-		String depature = req.getParameter("Depature");
+		String depature = request.getParameter("Depature");
 		
-		String destination = req.getParameter("destination");
+		String destination = request.getParameter("destination");
 		
-		String depatureDate = req.getParameter("DepatureDate");
+		String depatureDate = request.getParameter("DepatureDate");
 		LocalDateTime depatureTimeDate = LocalDateTime.parse(depatureDate);
 		
-		String arrivalDate = req.getParameter("ArrivalDate");
+		String arrivalDate = request.getParameter("ArrivalDate");
 		LocalDateTime arrivalTimeDate = LocalDateTime.parse(arrivalDate);
 		
-		double businessClassFare = Double.parseDouble(req.getParameter("businessclassfare"));
+		double businessClassFare = Double.parseDouble(request.getParameter("businessclassfare"));
 		
-		double economicClassFare = Double.parseDouble(req.getParameter("economicclassfare"));
+		double economicClassFare = Double.parseDouble(request.getParameter("economicclassfare"));
 		
-		String status = req.getParameter("status");
+		String status = request.getParameter("status");
 		
-		int businessClassSeat = Integer.parseInt(req.getParameter("businessclassseat"));
+		int businessClassSeat = Integer.parseInt(request.getParameter("businessclassseat"));
 		
-		int economicClassSeat = Integer.parseInt(req.getParameter("economicclassseat"));
+		int economicClassSeat = Integer.parseInt(request.getParameter("economicclassseat"));
 		
-		int flightno = Integer.parseInt(req.getParameter("flightno"));
+		int flightno = Integer.parseInt(request.getParameter("flightno"));
 		
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
 		FlightClass flight = new FlightClass(flightno,flightName,depature, destination, depatureTimeDate, arrivalTimeDate,
@@ -51,12 +54,29 @@ public class UpdateFlight extends HttpServlet {
 		
 		boolean flights = flightDao.updateFlight(flight);
 		
-		PrintWriter out = res.getWriter();
+		PrintWriter out = response.getWriter();
+		int i=1;
 		if(flights) {
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Successfully Updated');");
-			out.println("location='showAllFlight';");
-			out.println("</script>");
+			/*
+			 * out.println("<script type=\"text/javascript\">");
+			 * out.println("alert('Successfully Updated');");
+			 * out.println("location='showAllFlight';"); out.println("</script>");
+			 */
+		
+			
+		       List<FlightClass> showFlights = flightDao.getAllFlight();
+
+			request.setAttribute("showalladminflight", showFlights);
+			System.out.println("enter");
+			if(i==1) {
+			request.setAttribute("updateflight","true");
+			System.out.println(i);
+			i++;
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("showAllFlight.jsp");
+			rd.forward(request, response);
+			
+			
 			
 		}
 		else {

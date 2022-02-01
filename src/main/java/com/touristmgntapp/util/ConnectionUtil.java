@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -37,7 +38,7 @@ Connection con=null;
 		return con;
 	}
 	
-	public static void closePreparedStatement(PreparedStatement pstmt, Connection con) {
+	public static void close(PreparedStatement pstmt, Connection con) {
 		try {
 			if (pstmt != null) {
 				pstmt.close();
@@ -50,7 +51,7 @@ Connection con=null;
 		}
 	}
 	
-	public static void closeStatement(Statement stmt, Connection con) {
+	public static void closeStatement(Statement stmt, Connection con,ResultSet rs) {
 		try {
 			if (stmt != null) {
 				stmt.close();
@@ -58,9 +59,28 @@ Connection con=null;
 			if (con != null) {
 				con.close();
 			}
+			if(rs!=null){
+				rs.close();
+			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
+	public static void close(PreparedStatement pstmt, Connection con, ResultSet rs) {
+		try {
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (con != null) {
+				con.close();
+			}
+			if(rs!=null){
+				rs.close();
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 }

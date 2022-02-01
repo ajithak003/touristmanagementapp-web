@@ -85,7 +85,7 @@ text-decoration: none;
 
 	
 
-	<form action="updatehotel" method="get">
+	<form action="updatehotel" method="post">
 		<div class="container">
 			<div class="addpackage">
 			
@@ -108,7 +108,7 @@ text-decoration: none;
 					</tr>
 					<tr>
 						<td><label for="">Standard Room One Day Price :</label></td>
-						<td><input type="text" name="standardprice"
+						<td><input type="text" name="standardprice" placeholder="Rs. "
 							id="standardprice" value="${hotel.getMidRangePrice()}"
 							required pattern="[0-9 .]{2,10}"
 							title="must contain number only maximum 10 number"></td>
@@ -116,7 +116,7 @@ text-decoration: none;
 					<tr>
 						<td><label for="">Premium Room One Day Price :</label></td>
 						<td><input type="text" name="premiumprice" id="premiumprice"
-							value="${hotel.getPremiumPrice()}" required
+							value="${hotel.getPremiumPrice()}" placeholder="Rs. " required
 							pattern="[0-9 .]{2,10}"
 							title="must contain number only maximum 10 number"></td>
 					</tr>

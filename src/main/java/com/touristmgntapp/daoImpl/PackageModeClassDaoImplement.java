@@ -1,4 +1,5 @@
 package com.touristmgntapp.daoImpl;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,56 +11,55 @@ import com.touristmgntapp.dao.PackageModeDaoInterface;
 import com.touristmgntapp.model.PackageModeClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
-
-public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
+public class PackageModeClassDaoImplement implements PackageModeDaoInterface {
 
 	static String commit = "commit";
 	static String active = "active";
+
 	@Override
 	public boolean insertPackage(PackageModeClass Packages) {
-		
-		
+
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int pstmtvalue = 0;
 		String insert = "insert into package_modes(package_name,package_price_1n,season,protocols,description,image) values(?,?,?,?,?,?)";
-		
+
 		try {
 			con = ConnectionUtil.getDBConnect();
-			
+
 			pstmt = con.prepareStatement(insert);
-           
+
 			pstmt.setString(1, Packages.getName());
 			pstmt.setDouble(2, Packages.getPriceOneDays());
 			pstmt.setString(3, Packages.getSeason());
 			pstmt.setString(4, Packages.getProtocols());
 			pstmt.setString(5, Packages.getDescription());
 			pstmt.setString(6, Packages.getImage());
-			
+
 			pstmtvalue = pstmt.executeUpdate();
-			
+
 			pstmt.executeQuery(commit);
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
 		return pstmtvalue > 0;
-		
+
 	}
-	
+
 	@Override
 	public boolean updatePackage(PackageModeClass packages) {
 		Connection con = null;
-		int update=0;
+		int update = 0;
 		String query = "update package_modes set package_name=?,package_price_1n=?,season=?,protocols=?,description=?,status=?,image=? where package_id=?";
 		PreparedStatement pstmt = null;
-		
+
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			
+
 			pstmt.setString(1, packages.getName());
 			pstmt.setDouble(2, packages.getPriceOneDays());
 			pstmt.setString(3, packages.getSeason());
@@ -68,142 +68,135 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface{
 			pstmt.setString(6, active);
 			pstmt.setString(7, packages.getImage());
 			pstmt.setInt(8, packages.getPackageId());
-			
-		    update = pstmt.executeUpdate();
-			 pstmt.executeQuery(commit);
-			 
+
+			update = pstmt.executeUpdate();
+			pstmt.executeQuery(commit);
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
-			
+			ConnectionUtil.close(pstmt, con);
+
 		}
-           return update>0;
-	
+		return update > 0;
+
 	}
 
-
 	@Override
-	public List<PackageModeClass> getAllPackage()  {
-		
+	public List<PackageModeClass> getAllPackage() {
+
 		List<PackageModeClass> packageList = new ArrayList<>();
 		Connection con = null;
 		String query = "select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes where status=?";
-		
+
 		PreparedStatement pstmt = null;
 		try {
-		con=ConnectionUtil.getDBConnect();
-		pstmt = con.prepareStatement(query);
-		pstmt.setString(1, active);
-		
-		ResultSet rs = pstmt.executeQuery();
-		
-		while (rs.next()) {
-			PackageModeClass packages = new  PackageModeClass(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
-			packageList.add(packages);
-		}
-		
-		
+			con = ConnectionUtil.getDBConnect();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, active);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				PackageModeClass packages = new PackageModeClass(rs.getInt("package_id"), rs.getString("package_name"),
+						rs.getDouble("package_price_1n"), rs.getString("season"), rs.getString("protocols"),
+						rs.getString("description"), rs.getString("status"), rs.getString("image"));
+				packageList.add(packages);
+			}
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
-		
+
 		return packageList;
-		
+
 	}
 
 	@Override
 	public PackageModeClass getPackageByNo(String PackageName) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		PackageModeClass packageById=null;
-		
-		String query ="select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes where package_name=?";
-		try {
-		 con = ConnectionUtil.getDBConnect();
-		 pstmt = con.prepareStatement(query);
-		 pstmt.setString(1, PackageName);
-		 
-		 ResultSet rs = pstmt.executeQuery();
-		
-		 
-		 if (rs.next()) {
+		PackageModeClass packageById = null;
 
-			 packageById=new  PackageModeClass(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7),rs.getString(8));
-			}} catch (SQLException e) {
-				System.out.println(e.getMessage());
-			} finally {
-				ConnectionUtil.closePreparedStatement(pstmt, con);
+		String query = "select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes where package_name=?";
+		try {
+			con = ConnectionUtil.getDBConnect();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, PackageName);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				packageById = new PackageModeClass(rs.getInt("package_id"), rs.getString("package_name"),
+						rs.getDouble("package_price_1n"), rs.getString("season"), rs.getString("protocols"),
+						rs.getString("description"), rs.getString("status"), rs.getString("image"));
 			}
-		 return packageById;
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			ConnectionUtil.close(pstmt, con);
+		}
+		return packageById;
 	}
 
-	
 	@Override
 	public boolean deletePackage(String location) {
 
 		Connection con = null;
-		PreparedStatement pstmt =null;
-		int del=0;
+		PreparedStatement pstmt = null;
+		int del = 0;
 		String query = "update package_modes set status=? where package_name=?";
-		
+
 		try {
-			
+
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-           
-            pstmt.setString(1, "inactive");
-            pstmt.setString(2,location);
-			
-            del = pstmt.executeUpdate();
-            pstmt.executeUpdate(commit);
-			
+
+			pstmt.setString(1, "inactive");
+			pstmt.setString(2, location);
+
+			del = pstmt.executeUpdate();
+			pstmt.executeUpdate(commit);
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.closePreparedStatement(pstmt, con);
+			ConnectionUtil.close(pstmt, con);
 		}
-		return del>0;
+		return del > 0;
 
-		
 	}
 
-	
-	
 	@Override
 	public PackageModeClass getSinglePackage(String location) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		PackageModeClass packages=null;
-		
-		
-		
-		String query ="select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes where package_name=?";
+		PackageModeClass packages = null;
+
+		String query = "select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes where package_name=?";
 		try {
-			
-		 con = ConnectionUtil.getDBConnect();
-		 pstmt = con.prepareStatement(query);
-		 pstmt.setString(1, location);
-		 
-		 
-		 ResultSet rs = pstmt.executeQuery();
-		
-		 
-		 if (rs.next()) {
 
-			 packages=new  PackageModeClass(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7), rs.getString(8));
+			con = ConnectionUtil.getDBConnect();
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, location);
 
-		 }} catch (Exception e) {
-				System.out.println(e.getMessage());
-			} finally {
-				ConnectionUtil.closePreparedStatement(pstmt, con);
+			ResultSet rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+
+				packages = new PackageModeClass(rs.getInt("package_id"), rs.getString("package_name"),
+						rs.getDouble("package_price_1n"), rs.getString("season"), rs.getString("protocols"),
+						rs.getString("description"), rs.getString("status"), rs.getString("image"));
 			}
-		 return packages;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			ConnectionUtil.close(pstmt, con);
+		}
+		return packages;
 	}
-	
-	
-	
-	
+
 }

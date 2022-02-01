@@ -11,9 +11,9 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>user Page</title>
 
-<script>
+<!-- <script>
     history.forward();
-</script>
+</script> -->
 
 
 <style>

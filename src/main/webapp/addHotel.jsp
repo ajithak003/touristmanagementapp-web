@@ -74,7 +74,7 @@ td {
 </head>
 <body>
 
-	<form action="addhotel" method="get">
+	<form action="addhotel" method="post">
 		<h1>Add Hotels</h1>
 		<h2>
 			<a href="adminPage.jsp">Go To Home</a>
@@ -107,15 +107,15 @@ td {
 					</tr>
 					<tr>
 						<td><label for="">Standard Room One Day Price :</label></td>
-						<td><input type="text" name="standardprice"
-							id="standardprice" required pattern="[0-9]{2,10}"
-							title="must contain numbers maximum 10 no. minimum 2 no. only"></td>
+						<td><input type="number" name="standardprice" placeholder="Rs. "
+							id="standardprice" required min="600" max="200000"
+							title="must contain numbers maximum 500 no. minimum 100000 only"></td>
 					</tr>
 					<tr>
 						<td><label for="">Premium Room One Day Price :</label></td>
 						<td><input type="text" name="premiumprice" id="premiumprice"
-							required pattern="[0-9]{2,10}"
-							title="must contain numbers maximum 10 no. minimum 2 no. only"></td>
+							required placeholder="Rs. " min="600" max="200000"
+							title="must contain numbers maximum 500 no. minimum 100000 no. only"></td>
 					</tr>
 					<tr>
 						<td><label>Add Images URL </label></td>

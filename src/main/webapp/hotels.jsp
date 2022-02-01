@@ -137,11 +137,11 @@ button {
 
 							<input type="radio" name="hotelprice" id="Normal"
 								value="${hotel.getMidRangePrice()}" required><label
-								for="">Normal Room <span>${hotel.getMidRangePrice()}</span></label>
+								for="">Normal Room <span> Rs. ${hotel.getMidRangePrice()}</span></label>
 
 							<input type="radio" name="hotelprice" id="Premium"
 								value="${hotel.getPremiumPrice()}" required><label
-								for="" id="Premium">Premium Room <span>${hotel.getPremiumPrice()}</span></label>
+								for="" id="Premium">Premium Room <span> Rs. ${hotel.getPremiumPrice()}</span></label>
 
 						</p>
 					</div>

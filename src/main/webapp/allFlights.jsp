@@ -176,7 +176,7 @@ span {
 						<input type="radio" name="price" id="Business"
 									value="${flight.getBusinessClassFare()}" required
 									title="please select one">
-								<label for="">Business Class <span>${flight.getBusinessClassFare()}</span>
+								<label for="">Business Class <span> Rs. ${flight.getBusinessClassFare()}</span>
 								</label>
 							</c:if>
 
@@ -185,7 +185,7 @@ span {
 						<input type="radio" name="price" id="Economic"
 									value="${flight.getEconomicClassFare()}" required
 									title="please select one">
-								<label for="" id="Economic">Economic Class <span>${flight.getEconomicClassFare()}</span>
+								<label for="" id="Economic">Economic Class <span> Rs. ${flight.getEconomicClassFare()}</span>
 								</label>
 							</c:if>
 						</p>
