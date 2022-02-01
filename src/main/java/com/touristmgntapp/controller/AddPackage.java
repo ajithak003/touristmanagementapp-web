@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.touristmgntapp.daoImpl.PackageModeClassDaoImplement;
+import com.touristmgntapp.dao.Impl.PackageModeClassDaoImplement;
 import com.touristmgntapp.exception.UserDefineException;
 import com.touristmgntapp.model.PackageModeClass;
 

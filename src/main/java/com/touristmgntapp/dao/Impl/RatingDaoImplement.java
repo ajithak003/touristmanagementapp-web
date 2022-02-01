@@ -1,4 +1,4 @@
-package com.touristmgntapp.daoImpl;
+package com.touristmgntapp.dao.Impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

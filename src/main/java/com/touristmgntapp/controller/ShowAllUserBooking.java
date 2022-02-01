@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.BookingTableDaoImplement;
+import com.touristmgntapp.dao.Impl.BookingTableDaoImplement;
 import com.touristmgntapp.model.BookingClass;
 
 @WebServlet("/showAllUserBooking")

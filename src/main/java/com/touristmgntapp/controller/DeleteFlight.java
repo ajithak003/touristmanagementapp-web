@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
+import com.touristmgntapp.dao.Impl.FlightTableDaoImplement;
 
 @WebServlet("/deleteFlight")
 public class DeleteFlight extends HttpServlet {

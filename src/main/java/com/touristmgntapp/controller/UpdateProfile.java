@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.UserTableDaoImplement;
+import com.touristmgntapp.dao.Impl.UserTableDaoImplement;
 
 @WebServlet("/updateprofile")
 public class UpdateProfile extends HttpServlet {

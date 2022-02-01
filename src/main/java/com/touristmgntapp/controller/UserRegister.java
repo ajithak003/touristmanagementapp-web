@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.touristmgntapp.daoImpl.UserTableDaoImplement;
+import com.touristmgntapp.dao.Impl.UserTableDaoImplement;
 import com.touristmgntapp.exception.UserDefineException;
 import com.touristmgntapp.model.UserClass;
 

@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.PackageModeClassDaoImplement;
+import com.touristmgntapp.dao.Impl.PackageModeClassDaoImplement;
 
 @WebServlet("/deletepackage")
 public class Deletepackage extends HttpServlet {

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.RatingDaoImplement;
+import com.touristmgntapp.dao.Impl.RatingDaoImplement;
 import com.touristmgntapp.model.UserFeedbackClass;
 
 @WebServlet("/showAllRating")

@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.touristmgntapp.daoImpl.BookingTableDaoImplement;
-import com.touristmgntapp.daoImpl.UserTableDaoImplement;
+import com.touristmgntapp.dao.Impl.BookingTableDaoImplement;
+import com.touristmgntapp.dao.Impl.UserTableDaoImplement;
 import com.touristmgntapp.model.BookingClass;
 import com.touristmgntapp.model.UserClass;
 

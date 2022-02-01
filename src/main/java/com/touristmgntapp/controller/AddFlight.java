@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
+import com.touristmgntapp.dao.Impl.FlightTableDaoImplement;
 import com.touristmgntapp.model.FlightClass;
 
 @WebServlet("/addflight")

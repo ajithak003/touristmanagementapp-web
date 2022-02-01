@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.PackageModeClassDaoImplement;
+import com.touristmgntapp.dao.Impl.PackageModeClassDaoImplement;
 import com.touristmgntapp.model.PackageModeClass;
 
 @WebServlet("/showAllHomePlaces")

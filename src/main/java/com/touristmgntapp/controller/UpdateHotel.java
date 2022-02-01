@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.HotelTableDaoImplement;
+import com.touristmgntapp.dao.Impl.HotelTableDaoImplement;
 import com.touristmgntapp.model.HotelClass;
 
 @WebServlet ("/updatehotel")

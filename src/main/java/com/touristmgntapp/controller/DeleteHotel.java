@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.touristmgntapp.daoImpl.HotelTableDaoImplement;
+import com.touristmgntapp.dao.Impl.HotelTableDaoImplement;
 
 @WebServlet("/deleteHotel")
 public class DeleteHotel extends HttpServlet {

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
+import com.touristmgntapp.dao.Impl.FlightTableDaoImplement;
 import com.touristmgntapp.model.BookingClass;
 import com.touristmgntapp.model.FlightClass;
 

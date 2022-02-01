@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.touristmgntapp.daoImpl.HotelTableDaoImplement;
+import com.touristmgntapp.dao.Impl.HotelTableDaoImplement;
 import com.touristmgntapp.exception.UserDefineException;
 import com.touristmgntapp.model.HotelClass;
 
