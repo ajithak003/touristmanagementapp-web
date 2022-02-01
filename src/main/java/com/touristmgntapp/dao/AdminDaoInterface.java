@@ -2,7 +2,7 @@ package com.touristmgntapp.dao;
 
 import java.sql.SQLException;
 
-import com.touristmgntapp.models.AdminClass;
+import com.touristmgntapp.model.AdminClass;
 
 public interface AdminDaoInterface {
 	

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.UserTableDaoImplement;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.UserClass;
 
 @WebServlet("/walletSus")
 public class WalletSuccess extends HttpServlet {

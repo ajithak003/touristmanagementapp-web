@@ -7,8 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.AdminTableDaoImplement;
 import com.touristmgntapp.daoImpl.UserTableDaoImplement;
-import com.touristmgntapp.models.AdminClass;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.AdminClass;
+import com.touristmgntapp.model.UserClass;
 
 import javax.servlet.http.HttpServlet;
 

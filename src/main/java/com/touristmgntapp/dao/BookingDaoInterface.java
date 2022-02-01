@@ -4,8 +4,8 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.List;
 
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.UserClass;
 
 public interface BookingDaoInterface {
 	
@@ -17,5 +17,5 @@ public interface BookingDaoInterface {
 	public List<BookingClass> getAllUserBooking();
 	public boolean dateChange(BookingClass booking ,double wallet,int end,int newFlightbSeat, int newFlighteSeat,int oldFlightbSeat,int oldFlighteSeat,int newFlightNo, int bookingId, double totalPrice);
 	public BookingClass getSingleBookingById(int bookingId);
-	public boolean endDateCheck(BookingClass booking);
+	public boolean endDateCheck(LocalDate startDate, int bookingId);
 }

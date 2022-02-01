@@ -10,11 +10,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touristmgntapp.dao.BookingDaoInterface;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.FlightClass;
-import com.touristmgntapp.models.HotelClass;
-import com.touristmgntapp.models.PackageModeClass;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.FlightClass;
+import com.touristmgntapp.model.HotelClass;
+import com.touristmgntapp.model.PackageModeClass;
+import com.touristmgntapp.model.UserClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
 public class BookingTableDaoImplement implements BookingDaoInterface {
@@ -76,16 +76,13 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 	@Override
 	public List<BookingClass> getAllbooking(UserClass users) throws ClassNotFoundException, SQLException {
 		List<BookingClass> bookingDetails = new ArrayList<>();
-
-		UserTableDaoImplement userDao = new UserTableDaoImplement();
-		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-		HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
+		RatingDaoImplement ratingDao = new RatingDaoImplement();
 
 		Connection con = null;
 
-		String query = "select booking_id,user_id, package_id, flight_no, hotel_id,number_of_person,start_date,end_date,total_price,status,booking_date,"
-				+ "flight_class,hotel_room_type,days_in_night,package_name,payment_details,no_of_room from booking_details where user_id=? order by start_date desc";
+		String query = "select b.booking_id,flight.depature,flight.destination,hotel.hotel_name,b.start_date,b.end_date,b.total_price,b.status,b.days_in_night,b.package_name,u.user_id,p.package_id,flight.flight_no,hotel.hotel_id "
+				+ "from booking_details b inner join user_details u on b.user_id = u.user_id inner join package_modes p on b.package_id=p.package_id inner join "
+				+ "flights_details flight on b.flight_no=flight.flight_no inner join hotel_details hotel on b.hotel_id=hotel.hotel_id where u.user_id=? order by b.start_date desc";
 
 		PreparedStatement pstmt = null;
 		BookingClass booking = null;
@@ -99,19 +96,23 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 			while (rs.next()) {
 
-				UserClass user = userDao.getSingleUserById(rs.getInt(2));
-				PackageModeClass packages = packageDao.getPackageByNo(rs.getString(15));
-				FlightClass flight = flightDao.getSingleFlight(rs.getInt(4));
-				HotelClass hotel = hotelDao.getSingleHotel(rs.getInt(5));
+				UserClass user = new UserClass();
+				PackageModeClass packages = new PackageModeClass(rs.getString(10), 0.0, "", "", "");
+				FlightClass flight = new FlightClass("", rs.getString("depature"), rs.getString("destination"), null,
+						null, 0.0, 0.0, "", 0, 0);
+				HotelClass hotel = new HotelClass(rs.getString("hotel_name"), "", 0.0, 0.0, "");
+				boolean cancel = endDateCheck(rs.getDate("start_date").toLocalDate(), rs.getInt("booking_id"));
+				boolean rating = ratingDao.endDateCheck(rs.getDate("end_date").toLocalDate(), rs.getInt("booking_id"));
 
-				booking = new BookingClass(rs.getInt(1), user, packages, flight, hotel, rs.getInt(6),
-						rs.getDate(7).toLocalDate(), rs.getDate(8).toLocalDate(), rs.getDouble(9), rs.getString(10),
-						rs.getTimestamp(11).toLocalDateTime(), rs.getString(12), rs.getString(13), rs.getString(14),
-						rs.getString(15), rs.getString(16), rs.getDouble(17));
+				booking = new BookingClass(rs.getInt("booking_id"), user, packages, flight, hotel, 0,
+						rs.getDate("start_date").toLocalDate(), null, rs.getDouble("total_price"),
+						rs.getString("status"), null, "", "", rs.getString("days_in_night"),
+						rs.getString("package_name"), "", 0.0, cancel, rating);
+
 				bookingDetails.add(booking);
 			}
 		} catch (SQLException e) {
-			System.out.println(e.getMessage());
+			e.printStackTrace();
 		} finally {
 			ConnectionUtil.closeStatement(pstmt, con);
 		}
@@ -145,15 +146,17 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 			if (rs.next()) {
 
-				UserClass user = userDao.getSingleUserById(rs.getInt(2));
+				UserClass user = userDao.getSingleUserById(rs.getInt("user_id"));
 				PackageModeClass packages = packageDao.getPackageByNo(rs.getString(15));
-				FlightClass flight = flightDao.getSingleFlight(rs.getInt(4));
-				HotelClass hotel = hotelDao.getSingleHotel(rs.getInt(5));
+				FlightClass flight = flightDao.getSingleFlight(rs.getInt("flight_no"));
+				HotelClass hotel = hotelDao.getSingleHotel(rs.getInt("hotel_id"));
 
-				booking = new BookingClass(rs.getInt(1), user, packages, flight, hotel, rs.getInt(6),
-						rs.getDate(7).toLocalDate(), rs.getDate(8).toLocalDate(), rs.getDouble(9), rs.getString(10),
-						rs.getTimestamp(11).toLocalDateTime(), rs.getString(12), rs.getString(13), rs.getString(14),
-						rs.getString(15), rs.getString(16), rs.getDouble(17));
+				booking = new BookingClass(rs.getInt("booking_id"), user, packages, flight, hotel,
+						rs.getInt("number_of_person"), rs.getDate("start_date").toLocalDate(),
+						rs.getDate("end_date").toLocalDate(), rs.getDouble("total_price"), rs.getString("status"),
+						rs.getTimestamp("booking_date").toLocalDateTime(), rs.getString("flight_class"),
+						rs.getString("hotel_room_type"), rs.getString("days_in_night"), rs.getString("package_name"),
+						rs.getString("payment_details"), rs.getDouble("no_of_room"));
 
 			}
 		} catch (Exception e) {
@@ -269,15 +272,18 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 			while (rs.next()) {
 
-				UserClass user = userDao.getSingleUserById(rs.getInt(2));
-				PackageModeClass packages = packageDao.getPackageByNo(rs.getString(15));
-				FlightClass flight = flightDao.getSingleFlight(rs.getInt(4));
-				HotelClass hotel = hotelDao.getSingleHotel(rs.getInt(5));
+				UserClass user = userDao.getSingleUserById(rs.getInt("user_id"));
+				PackageModeClass packages = packageDao.getPackageByNo(rs.getString("package_name"));
+				FlightClass flight = flightDao.getSingleFlight(rs.getInt("flight_no"));
+				HotelClass hotel = hotelDao.getSingleHotel(rs.getInt("hotel_id"));
 
-				booking = new BookingClass(rs.getInt(1), user, packages, flight, hotel, rs.getInt(6),
-						rs.getDate(7).toLocalDate(), rs.getDate(8).toLocalDate(), rs.getDouble(9), rs.getString(10),
-						rs.getTimestamp(11).toLocalDateTime(), rs.getString(12), rs.getString(13), rs.getString(14),
-						rs.getString(15), rs.getString(16), rs.getDouble(17));
+				booking = new BookingClass(rs.getInt("booking_id"), user, packages, flight, hotel,
+						rs.getInt("number_of_person"), rs.getDate("start_date").toLocalDate(),
+						rs.getDate("end_date").toLocalDate(), rs.getDouble("total_price"), rs.getString("status"),
+						rs.getTimestamp("booking_date").toLocalDateTime(), rs.getString("flight_class"),
+						rs.getString("hotel_room_type"), rs.getString("days_in_night"), rs.getString("package_name"),
+						rs.getString("payment_details"), rs.getDouble("no_of_room"));
+
 				bookingDetails.add(booking);
 			}
 		} catch (Exception e) {
@@ -292,7 +298,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 	/**
 	 * 
 	 */
-	
+
 	public boolean dateChange(BookingClass booking, double wallet, int end, int newFlightBusinessSeat,
 			int newFlightEconomicSeat, int oldFlightBusinessSeat, int oldFlightEconomicSeat, int newFlightNo,
 			int bookingId, double totalPrice) {
@@ -383,15 +389,17 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 			if (rs.next()) {
 
-				UserClass user = userDao.getSingleUserById(rs.getInt(2));
-				PackageModeClass packages = packageDao.getPackageByNo(rs.getString(15));
-				FlightClass flight = flightDao.getSingleFlight(rs.getInt(4));
-				HotelClass hotel = hotelDao.getSingleHotel(rs.getInt(5));
+				UserClass user = userDao.getSingleUserById(rs.getInt("user_id"));
+				PackageModeClass packages = packageDao.getPackageByNo(rs.getString("package_name"));
+				FlightClass flight = flightDao.getSingleFlight(rs.getInt("flight_no"));
+				HotelClass hotel = hotelDao.getSingleHotel(rs.getInt("hotel_id"));
 
-				booking = new BookingClass(rs.getInt(1), user, packages, flight, hotel, rs.getInt(6),
-						rs.getDate(7).toLocalDate(), rs.getDate(8).toLocalDate(), rs.getDouble(9), rs.getString(10),
-						rs.getTimestamp(11).toLocalDateTime(), rs.getString(12), rs.getString(13), rs.getString(14),
-						rs.getString(15), rs.getString(16), rs.getDouble(17));
+				booking = new BookingClass(rs.getInt("booking_id"), user, packages, flight, hotel,
+						rs.getInt("number_of_person"), rs.getDate("start_date").toLocalDate(),
+						rs.getDate("end_date").toLocalDate(), rs.getDouble("total_price"), rs.getString("status"),
+						rs.getTimestamp("booking_date").toLocalDateTime(), rs.getString("flight_class"),
+						rs.getString("hotel_room_type"), rs.getString("days_in_night"), rs.getString("package_name"),
+						rs.getString("payment_details"), rs.getDouble("no_of_room"));
 
 			}
 		} catch (Exception e) {
@@ -402,7 +410,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		return booking;
 	}
 
-	public boolean endDateCheck(BookingClass booking) {
+	public boolean endDateCheck(LocalDate startDate, int bookingId) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String query = "select booking_id from booking_details where booking_id=? and SYSDATE>?";
@@ -412,8 +420,8 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, booking.getBookingId());
-			pstmt.setDate(2, java.sql.Date.valueOf(booking.getStartDate()));
+			pstmt.setInt(1, bookingId);
+			pstmt.setDate(2, java.sql.Date.valueOf(startDate));
 
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touristmgntapp.dao.PackageModeDaoInterface;
-import com.touristmgntapp.models.PackageModeClass;
+import com.touristmgntapp.model.PackageModeClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
 

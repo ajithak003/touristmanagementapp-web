@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.daoImpl.BookingTableDaoImplement;
-import com.touristmgntapp.models.BookingClass;
+import com.touristmgntapp.model.BookingClass;
 
 @WebServlet("/showAllUserBooking")
 public class ShowAllUserBooking extends HttpServlet{

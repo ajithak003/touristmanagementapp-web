@@ -182,16 +182,6 @@ a {
 
 			<c:forEach items="${userallbooking}" var="singlebooking">
 
-				<jsp:useBean id="rating"
-					class="com.touristmgntapp.daoImpl.RatingDaoImplement" />
-
-
-				<jsp:useBean id="cancel"
-					class="com.touristmgntapp.daoImpl.BookingTableDaoImplement" />
-
-
-				
-
 					<div class="box">
 						<div class="title">
 							<h3>${singlebooking.getPackageName().toUpperCase()}TRIP</h3>
@@ -238,7 +228,7 @@ a {
 						</table>
 
 						<div>
-							<c:if test="${cancel.endDateCheck(singlebooking)==false and singlebooking.getStatus().equals('confirmed')}">
+							<c:if test="${singlebooking.isCancel()==false and singlebooking.getStatus().equals('confirmed')}">
 
                                  
 								<button class="cancel" onclick="check()">
@@ -256,7 +246,7 @@ a {
 							</c:if>
 							
 							<c:if
-								test="${singlebooking.getStatus().equals('confirmed') and rating.endDateCheck(singlebooking)==true}">
+								test="${singlebooking.getStatus().equals('confirmed') and singlebooking.isRating()}">
 								<button class="rate">
 									<a href="rating?bookingid=${singlebooking.getBookingId()}">Rate
 										Now</a>

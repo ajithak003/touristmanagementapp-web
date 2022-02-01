@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.daoImpl.HotelTableDaoImplement;
-import com.touristmgntapp.models.HotelClass;
+import com.touristmgntapp.model.HotelClass;
 
 @WebServlet ("/updatehotel")
 public class UpdateHotel extends HttpServlet{

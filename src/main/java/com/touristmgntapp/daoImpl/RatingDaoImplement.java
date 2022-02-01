@@ -4,12 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.touristmgntapp.dao.UserFeedbackDaoInterface;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.UserFeedbackClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.UserFeedbackClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
 public class RatingDaoImplement implements UserFeedbackDaoInterface {
@@ -84,7 +85,7 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 
 	}
 
-	public boolean endDateCheck(BookingClass booking) {
+	public boolean endDateCheck(LocalDate endDate, int bookingId) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		String query = "select user_id from booking_details where booking_id=? and SYSDATE>=?";
@@ -94,8 +95,8 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, booking.getBookingId());
-			pstmt.setDate(2, java.sql.Date.valueOf(booking.getEndDate()));
+			pstmt.setInt(1, bookingId);
+			pstmt.setDate(2, java.sql.Date.valueOf(endDate));
 			ResultSet rs = pstmt.executeQuery();
 			if (rs.next()) {
 				flag = true;

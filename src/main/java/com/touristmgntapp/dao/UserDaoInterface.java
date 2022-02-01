@@ -3,7 +3,7 @@ package com.touristmgntapp.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.UserClass;
 
 public interface UserDaoInterface {
 	

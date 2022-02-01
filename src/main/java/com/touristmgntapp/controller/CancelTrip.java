@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.touristmgntapp.daoImpl.BookingTableDaoImplement;
 import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
 import com.touristmgntapp.daoImpl.UserTableDaoImplement;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.FlightClass;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.FlightClass;
+import com.touristmgntapp.model.UserClass;
 
 @WebServlet("/cancelTrip")
 public class CancelTrip extends HttpServlet {

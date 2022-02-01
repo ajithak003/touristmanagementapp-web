@@ -4,7 +4,7 @@ package com.touristmgntapp.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.touristmgntapp.models.PackageModeClass;
+import com.touristmgntapp.model.PackageModeClass;
 
 public interface PackageModeDaoInterface {
 

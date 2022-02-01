@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.daoImpl.PackageModeClassDaoImplement;
-import com.touristmgntapp.models.PackageModeClass;
+import com.touristmgntapp.model.PackageModeClass;
 
 @WebServlet("/showAllPlaces")
 public class ShowAllPlaces extends HttpServlet {

@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.FlightClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.FlightClass;
 
 @WebServlet("/allFlights")
 public class AllFlight extends HttpServlet {

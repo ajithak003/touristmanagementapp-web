@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.HotelTableDaoImplement;
 import com.touristmgntapp.exception.UserDefineException;
-import com.touristmgntapp.models.HotelClass;
+import com.touristmgntapp.model.HotelClass;
 
 
 @WebServlet("/addhotel")

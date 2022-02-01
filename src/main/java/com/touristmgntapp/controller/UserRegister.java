@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.UserTableDaoImplement;
 import com.touristmgntapp.exception.UserDefineException;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.UserClass;
 
 @WebServlet("/register")
 public class UserRegister extends HttpServlet {

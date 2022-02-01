@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touristmgntapp.dao.HotelDaoInterface;
-import com.touristmgntapp.models.HotelClass;
+import com.touristmgntapp.model.HotelClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
 public class HotelTableDaoImplement implements HotelDaoInterface {

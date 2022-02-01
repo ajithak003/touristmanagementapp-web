@@ -11,10 +11,10 @@ import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.PackageModeClassDaoImplement;
 import com.touristmgntapp.daoImpl.RatingDaoImplement;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.PackageModeClass;
-import com.touristmgntapp.models.UserClass;
-import com.touristmgntapp.models.UserFeedbackClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.PackageModeClass;
+import com.touristmgntapp.model.UserClass;
+import com.touristmgntapp.model.UserFeedbackClass;
 
 @WebServlet("/singlePackage")
 public class SinglePlace extends HttpServlet {

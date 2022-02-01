@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
-import com.touristmgntapp.models.FlightClass;
+import com.touristmgntapp.model.FlightClass;
 
 @WebServlet("/showAllFlight")
 public class ShowAllFlight extends HttpServlet {

@@ -1,4 +1,4 @@
-package com.touristmgntapp.models;
+package com.touristmgntapp.model;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -25,6 +25,8 @@ public class BookingClass implements Serializable {
 	private String packageName;
 	private String payment;
 	private double noOfRoom;
+	private boolean cancel;
+	private boolean rating;
 	
 	
 	public BookingClass(int bookingId, UserClass user, PackageModeClass packages, FlightClass flight, HotelClass hotel, int noOfPerson, LocalDate startDate, LocalDate endDate, double totalPrice, String status, 
@@ -67,8 +69,54 @@ public class BookingClass implements Serializable {
 		this.noOfRoom = noOfRoom;
 		
 	}
-
 	
+
+	public BookingClass(int bookingId, UserClass user, PackageModeClass packages, FlightClass flight, HotelClass hotel,
+			int noOfPerson, LocalDate startDate, LocalDate endDate, double totalPrice, String status,
+			LocalDateTime bookingDate, String flightClass, String hotelRoomType, String daysPlan, String packageName,
+			String payment, double noOfRoom, boolean cancel, boolean rating) {
+		super();
+		this.bookingId = bookingId;
+		this.user = user;
+		this.packages = packages;
+		this.flight = flight;
+		this.hotel = hotel;
+		this.noOfPerson = noOfPerson;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.totalPrice = totalPrice;
+		this.status = status;
+		this.bookingDate = bookingDate;
+		this.flightClass = flightClass;
+		this.hotelRoomType = hotelRoomType;
+		this.daysPlan = daysPlan;
+		this.packageName = packageName;
+		this.payment = payment;
+		this.noOfRoom = noOfRoom;
+		this.cancel = cancel;
+		this.rating = rating;
+	}
+
+
+	public boolean isCancel() {
+		return cancel;
+	}
+
+
+	public void setCancel(boolean cancel) {
+		this.cancel = cancel;
+	}
+
+
+	public boolean isRating() {
+		return rating;
+	}
+
+
+	public void setRating(boolean rating) {
+		this.rating = rating;
+	}
+
 
 	public int getBookingId() {
 		return bookingId;

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.daoImpl.UserTableDaoImplement;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.UserClass;
 
 
 

@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 import com.touristmgntapp.daoImpl.BookingTableDaoImplement;
 import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
 import com.touristmgntapp.daoImpl.UserTableDaoImplement;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.FlightClass;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.FlightClass;
+import com.touristmgntapp.model.UserClass;
 
 @WebServlet("/confirmdatechange")
 public class ConfirmDateChange extends HttpServlet {

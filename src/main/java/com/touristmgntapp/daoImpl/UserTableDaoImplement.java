@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touristmgntapp.dao.UserDaoInterface;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.UserClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
 public class UserTableDaoImplement implements UserDaoInterface {

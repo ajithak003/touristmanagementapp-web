@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
-import com.touristmgntapp.models.FlightClass;
+import com.touristmgntapp.model.FlightClass;
 
 @WebServlet("/updateFlight")
 public class PreUpdateFlight extends HttpServlet {

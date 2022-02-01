@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touristmgntapp.dao.FlightDaoInterface;
-import com.touristmgntapp.models.FlightClass;
+import com.touristmgntapp.model.FlightClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
 public class FlightTableDaoImplement implements FlightDaoInterface {

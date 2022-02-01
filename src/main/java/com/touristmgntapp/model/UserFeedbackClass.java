@@ -1,4 +1,4 @@
-package com.touristmgntapp.models;
+package com.touristmgntapp.model;
 
 import java.io.Serializable;
 import java.util.Objects;

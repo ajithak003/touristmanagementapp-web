@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.daoImpl.BookingTableDaoImplement;
 import com.touristmgntapp.daoImpl.RatingDaoImplement;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.UserFeedbackClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.UserFeedbackClass;
 
 
 @WebServlet("/ratings")

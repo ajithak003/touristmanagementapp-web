@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.PackageModeClassDaoImplement;
 import com.touristmgntapp.exception.UserDefineException;
-import com.touristmgntapp.models.PackageModeClass;
+import com.touristmgntapp.model.PackageModeClass;
 
 @WebServlet("/addpackage")
 public class AddPackage extends HttpServlet {

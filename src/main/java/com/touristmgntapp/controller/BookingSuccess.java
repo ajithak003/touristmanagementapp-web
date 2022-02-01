@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.BookingTableDaoImplement;
 import com.touristmgntapp.daoImpl.UserTableDaoImplement;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.UserClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.UserClass;
 
 @WebServlet("/bookingsus")
 public class BookingSuccess extends HttpServlet {

@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.daoImpl.FlightTableDaoImplement;
 import com.touristmgntapp.daoImpl.HotelTableDaoImplement;
-import com.touristmgntapp.models.BookingClass;
-import com.touristmgntapp.models.FlightClass;
-import com.touristmgntapp.models.HotelClass;
+import com.touristmgntapp.model.BookingClass;
+import com.touristmgntapp.model.FlightClass;
+import com.touristmgntapp.model.HotelClass;
 
 @WebServlet("/hotels")
 public class Hotel extends HttpServlet {
