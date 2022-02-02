@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,7 +24,7 @@
 
 h1 {
 	text-align: center;
-	color:blue;
+	color: blue;
 }
 
 .addpackage {
@@ -49,6 +51,11 @@ input {
 	font-weight: bold;
 }
 
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
 textarea {
 	border: 3px solid;
 }
@@ -65,6 +72,7 @@ button {
 	font-weight: bold;
 	border: none
 }
+
 td {
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -73,6 +81,20 @@ td {
 
 </head>
 <body>
+
+
+	<c:if test="${param.infomsg!=null}">
+		<script type="text/javascript">
+			alert("successfully added");
+		</script>
+	</c:if>
+
+	<c:if test="${param.error!=null}">
+		<script type="text/javascript">
+			alert("This Hotel Already Added");
+		</script>
+	</c:if>
+
 
 	<form action="addhotel" method="post">
 		<h1>Add Hotels</h1>
@@ -91,7 +113,7 @@ td {
 		<div class="container">
 			<div class="addpackage">
 				<table aria-describedby="Add Package">
-				<th id=""></th>
+					<th id=""></th>
 					<tr>
 						<td><label for="">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"
@@ -107,8 +129,9 @@ td {
 					</tr>
 					<tr>
 						<td><label for="">Standard Room One Day Price :</label></td>
-						<td><input type="number" name="standardprice" placeholder="Rs. "
-							id="standardprice" required min="600" max="200000"
+						<td><input type="number" name="standardprice"
+							placeholder="Rs. " id="standardprice" required min="600"
+							max="200000"
 							title="must contain numbers maximum 500 no. minimum 100000 only"></td>
 					</tr>
 					<tr>

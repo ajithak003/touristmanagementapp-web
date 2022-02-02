@@ -292,7 +292,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		} finally {
-			ConnectionUtil.close(null, con, rs);
+			ConnectionUtil.closeStatement(stmt, con, rs);
 		}
 
 		return bookingDetails;

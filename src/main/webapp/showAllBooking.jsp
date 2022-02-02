@@ -100,15 +100,14 @@ h1 {
 	font-size: 20px;
 }
 
-.price {
+.days {
 	margin-left: 200px;
 	font-size: 20px;
 }
 
-.days {
+.price {
 	margin-left: 200px;
 	font-size: 20px;
-	color: green;
 }
 
 .cancel {
@@ -217,7 +216,7 @@ a {
 						<div class="price">
 
 							<h2>
-								No Of Days : <span>${singlebooking.getDaysPlan()}<span>
+								No Of Days : <span>${singlebooking.getDaysPlan()}</span>
 							</h2>
 						</div>
 						<div class="days">

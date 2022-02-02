@@ -8,6 +8,8 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Ratings</title>
+<link rel="stylesheet" href="Assets/css/headerNavbar.css">
+
 <style>
 * {
 	margin: 0;
@@ -90,7 +92,23 @@ button {
 </head>
 
 <body>
-
+     
+     <div id="link">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="papularPlaces">Book Package</a></li>
+			<li><a href="papularPlaces">Popular Places</a></li>
+			<li><a href="showAllBooking">My Booking</a></li>
+			<li><a>More</a>
+				<ul>
+					<li><a href="profile.jsp">Profile</a></li>
+					<li><a href="wallet"> Wallet Topup</a>
+					<li>
+				</ul></li>
+			<li><a href="userRating">Ratings</a></li>
+			<li><a href="logout">Logout</a></li>
+		</ul>
+	</div>
 
 
 	<form action="ratings" method="get">

@@ -9,63 +9,54 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.dao.Impl.FlightTableDaoImplement;
+import com.touristmgntapp.exception.UserDefineException;
 import com.touristmgntapp.model.FlightClass;
 
 @WebServlet("/addflight")
 public class AddFlight extends HttpServlet {
 
 	@Override
-	public void doPost(HttpServletRequest req, HttpServletResponse res)  {
+	public void doPost(HttpServletRequest request, HttpServletResponse response)  {
 		
 		
 		try {
 			
 					
-		String flightName = req.getParameter("flightname");
+		String flightName = request.getParameter("flightname");
 		
-		String depature = req.getParameter("Depature");
+		String depature = request.getParameter("Depature");
 		
-		String destination = req.getParameter("destination");
+		String destination = request.getParameter("destination");
 		
-		String depatureDate = req.getParameter("DepatureDate");
+		String depatureDate = request.getParameter("DepatureDate");
 		LocalDateTime depatureTimeDate = LocalDateTime.parse(depatureDate);
 		
-		String arrivalDate = req.getParameter("ArrivalDate");
+		String arrivalDate = request.getParameter("ArrivalDate");
 		LocalDateTime arrivalTimeDate = LocalDateTime.parse(arrivalDate);
 		
-		double businessClassFare = Double.parseDouble(req.getParameter("businessclassfare"));
+		double businessClassFare = Double.parseDouble(request.getParameter("businessclassfare"));
 		
-		double economicClassFare = Double.parseDouble(req.getParameter("economicclassfare"));
+		double economicClassFare = Double.parseDouble(request.getParameter("economicclassfare"));
 		
-		String status = req.getParameter("status");
+		String status = request.getParameter("status");
 		
-		int businessClassSeat = Integer.parseInt(req.getParameter("businessclassseat"));
+		int businessClassSeat = Integer.parseInt(request.getParameter("businessclassseat"));
 		
-		int economicClassSeat = Integer.parseInt(req.getParameter("economicclassseat"));
+		int economicClassSeat = Integer.parseInt(request.getParameter("economicclassseat"));
 		
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
 		FlightClass flight = new FlightClass(flightName,depature, destination, depatureTimeDate, arrivalTimeDate,
 				businessClassFare, economicClassFare,status,businessClassSeat,economicClassSeat);
 		
 		boolean flights = flightDao.insertFlight(flight);
-		
-		PrintWriter out = res.getWriter();
-		
+				
 		if(flights) {
 			
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Successfully Added');");
-			out.println("location='addFlight.jsp';");
-			out.println("</script>");
+			response.sendRedirect("addFlight.jsp?infomsg=successfully added");
 			
 		}
 		else {
-			
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('can not be added! please try again');");
-			out.println("location='addFlight.jsp';");
-			out.println("</script>");
-			
+			response.sendRedirect("addFlight.jsp?error=can not be added! please try again");
 		}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());

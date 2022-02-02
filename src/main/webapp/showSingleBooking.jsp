@@ -17,8 +17,8 @@ body {
 }
 
 .container {
-	margin-left: 33%;
-	height: 1550px;
+	margin-left: 35%;
+	height: 1350px;
 }
 
 h1 {
@@ -58,13 +58,16 @@ button {
 	margin-top: 20px;
 }
 td {
-	padding:20px;
+	padding-bottom: 10px;
+	padding-top: 10px;]
 	
 }
 </style>
 
 </head>
 <body>
+
+
 
 	<form action="">
 

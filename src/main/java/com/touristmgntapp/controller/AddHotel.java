@@ -43,28 +43,21 @@ public class AddHotel extends HttpServlet {
 			hotels = hotelDao.insertHotel(hotel);
 		
 		
-		PrintWriter out =  response.getWriter();
 		if(hotels) {			
 
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Successfully Added');");
-			out.println("location='addHotel.jsp';");
-			out.println("</script>");
-			
+			response.sendRedirect("addHotel.jsp?infomsg=successfully added");
+
 		}
 		
 		else {
 			throw new UserDefineException();
 		}
 		} catch (UserDefineException | ClassNotFoundException | SQLException  e) {
-			HttpSession session = request.getSession();
-			session.setAttribute("addHotelerror", ((UserDefineException) e).addhotel());
 			try {
-				response.sendRedirect("addHotel.jsp");
+				response.sendRedirect("addHotel.jsp?error="+((UserDefineException) e).addhotel());
 			} catch (IOException e1) {
 				System.out.println(e1.getMessage());
 			}
-		
 		}
 	
 	}

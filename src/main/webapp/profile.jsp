@@ -18,7 +18,6 @@ h1 {
 	text-align: center;
 	color: blue;
 }
-
 .table {
 	align-items: center;
 	border: 3px solid;
@@ -28,7 +27,6 @@ h1 {
 	margin-top: 20px;
 	border-radius: 10px;
 }
-
 .update {
 	text-decoration: none;
 	position: absolute;
@@ -37,7 +35,6 @@ h1 {
 	font-weight: bold;
 	margin-top: -30px;
 }
-
 a {
 	text-decoration: none;
 }

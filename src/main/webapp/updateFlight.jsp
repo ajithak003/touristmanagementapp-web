@@ -48,6 +48,11 @@ input {
 	font-weight: bold;
 }
 
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 textarea {
 	border: 3px solid;
 }

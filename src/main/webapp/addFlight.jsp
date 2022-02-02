@@ -1,4 +1,5 @@
 <%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,7 +48,10 @@ input {
 	font-size: 16px;
 	font-weight: bold;
 }
-
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 textarea {
 	border: 3px solid;
 }
@@ -75,6 +79,18 @@ td {
 </style>
 </head>
 <body>
+
+      <c:if test="${param.infomsg!=null}">
+			<script type="text/javascript">
+     alert("successfully added");
+     </script>
+     </c:if>
+     
+     <c:if test="${param.error!=null}">
+			<script type="text/javascript">
+     alert("Flight can not be Added! please try again later");
+     </script>
+     </c:if>  
 
 	<form action="addflight" method="post">
 		<div class="container">

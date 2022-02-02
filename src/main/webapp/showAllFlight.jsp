@@ -13,6 +13,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <link rel="icon" type="" href="Assets/logo.png">
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+	
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 <title>showAllFlight</title>

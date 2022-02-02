@@ -41,20 +41,15 @@ public class AddPackage extends HttpServlet {
 
 			PrintWriter out = response.getWriter();
 			if (pack) {
-
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Successfully Added');");
-				out.println("location='addPackage.jsp';");
-				out.println("</script>");
+				response.sendRedirect("addPackage.jsp?infomsg=successfully added");
 
 			} else {
 				throw new UserDefineException();
 			}
 		} catch (UserDefineException | NumberFormatException | IOException e) {
-			HttpSession session = request.getSession();
-			session.setAttribute("addpackageerror", ((UserDefineException) e).addPackage());
+			
 			try {
-				response.sendRedirect("addPackage.jsp");
+				response.sendRedirect("addPackage.jsp?error="+((UserDefineException) e).addPackage());
 			} catch (IOException e1) {
 				System.out.println(e1.getMessage());
 			}

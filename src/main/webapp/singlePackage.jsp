@@ -17,23 +17,19 @@
 	text-decoration: none;
 	font-family: Arial, sans-serif;
 }
-
 body {
 	background-color: cornsilk;
 }
-
 h1 {
 	text-align: center;
 	font-size: 60px;
 	color: blue;
 }
-
 .firstrowimg {
 	position: absolute;
 	width: 300px;
 	height: 400px;
 }
-
 h2 {
 	position: absolute;
 	top: 450px;
@@ -42,46 +38,38 @@ h2 {
 	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
 		'Lucida Sans', Arial, sans-serif;
 }
-
 a img {
 	width: 1000px;
 }
-
 .firstrowimg {
 	width: 1150px;
 	margin-left: 7%;
 	height: 400px;
 }
-
 .details {
 	position: absolute;
 	left: 70px;
 	top: 500px;
 	
 }
-
 p {
 	font-weight: bold;
 }
-
 h3 {
 	font-weight: bold;
 }
-
 .btn {
 	position: relative;
 	top: 800px;
 	margin-left: 50%;
 	margin-bottom: 30px;
 }
-
 input, button {
 	height: 40px;
 	width: 180px;
 	border-radius: 15px;
 	border: 2px solid;
 }
-
 #button {
 	background-color: red;
 	color: white;
@@ -94,11 +82,9 @@ input, button {
 	left: 25%;
 	top: 820px;
 }
-
 #container {
 	height: 1100px;
 }
-
 label {
 	position: relative;
 	top: 780px;
@@ -107,7 +93,6 @@ label {
 	font-size: 20px;
 	font-weight: bold;
 }
-
 .data {
 	position: relative;
 	top: 810px;
@@ -117,7 +102,6 @@ label {
 	margin-left: 28px;
 	text-aligh: center;
 }
-
 #select {
 	position: relative;
 	left: 170px;
@@ -225,7 +209,6 @@ padding:15px;
 <script>
 	today();
 	function today() {
-
 		var currentTime = new Date()
 		var minDate = new Date(currentTime.getFullYear(), currentTime
 				.getMonth(), +currentTime.getDate() + 2); //one day next before month
@@ -241,7 +224,6 @@ padding:15px;
 		console.log(dates)
 		document.getElementById("startdate").setAttribute("max", date);
 		document.getElementById("startdate").setAttribute("min", dates);
-
 	}
 </script>
 

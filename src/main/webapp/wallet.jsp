@@ -33,6 +33,10 @@ input {
 	font-weight: bold;
 	border: 2px solid;
 }
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}	
 
 button {
 	height: 40px;

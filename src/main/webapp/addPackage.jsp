@@ -49,6 +49,11 @@ input {
 	font-weight: bold;
 }
 
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 textarea {
 	border: 3px solid;
 }
@@ -84,9 +89,15 @@ td {
 		<br>
 
 
-		<c:if test="${sessionScope.addpackageerror !=null}">
+		<c:if test="${param.error!=null}">
 			<script type="text/javascript">
      alert("This Package Already Added");
+     </script>
+
+		</c:if>
+		<c:if test="${param.infomsg!=null}">
+			<script type="text/javascript">
+     alert("successfully added");
      </script>
 
 		</c:if>
@@ -133,6 +144,7 @@ td {
 						required></td>
 				</tr>
 			</table>
+			</div>
 			<button>Add Package</button>
 	</form>
 

@@ -11,11 +11,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>All flight</title>
+
+
 <style>
 body {
 	background-color: aliceblue;
 }
-
 h1 {
 	color: darkred;
 	text-align: center;
@@ -23,55 +24,46 @@ h1 {
 	font-weight: bold;
 	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-
 .container {
 	border: 3px solid;
 	border-radius: 20px;
 	height: 350px;
 }
-
 h2 {
 	color: blue;
 	margin-left: 250px;
 	margin-top: 20px;
 	font-size: 40px;
 }
-
 h3 {
 	font-size: 24px;
 }
-
 img {
 	width: 300px;
 	height: 100px;
 	margin-left: 490px;
 	margin-top: -10px;
 }
-
 .depature {
 	margin-left: 20px;
 	position: relative;
 	top: -70px;
 }
-
 .place {
 	position: relative;
 	top: 22pxpx;
 }
-
 .date {
 	margin-left: 160px;
 	margin-top: -50px;
 	word-spacing: 15px;
 	color: rgba(255, 217, 0, 0.925);
 }
-
 .destinations {
 	margin-left: 900px;
 	position: relative;
 	top: -120px;
 }
-
 #button {
 	margin-left: 1050px;
 	width: 150px;
@@ -85,7 +77,6 @@ img {
 	position: relative;
 	top: -100px;
 }
-
 .price {
 	position: relative;
 	top: -100px;
@@ -93,20 +84,16 @@ img {
 	font-size: 20px;
 	font-weight: bold;
 }
-
 span {
 	color: darkorange;
 }
-
 #Economic {
 	position: relative;
 	left: 30px;
 }
-
 .flightno {
 	visibility: hidden;
 }
-
 .noflight {
 	color: darkred;
 	text-align: center;

@@ -21,11 +21,9 @@
 	text-decoration: none;
 	font-family: Arial, sans-serif;
 }
-
 body {
 	background-color: rgb(248, 237, 221);
 }
-
 h1 {
 	position: absolute;
 	top: 300px;
@@ -34,22 +32,18 @@ h1 {
 	border-radius: 25%;
 	color: white;
 }
-
 .firsrrow {
 	padding-left: ;
 }
-
 .firstrowimg {
 	top: 400px;
 	width: 298px;
 	height: 350px;
 	border-radius: 10px;
 }
-
 .table {
 	left: 0px;
 }
-
 h2 {
 	text-align: center;
 	font-weight: bold;
