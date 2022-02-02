@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,20 +12,15 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>show All User</title>
 
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 <style>
-table {
-	border: 2px solid;
-	border-collapse: collapse;
-	background-color: mintcream;
-	margin-left: 33%;
-}
-
-tr, td, th {
-	border: 2px solid;
-	text-align: center;
-	padding: 10px;
-}
-
 a {
 	text-decoration: none;
 }
@@ -37,18 +34,26 @@ h1 {
 h2 {
 	margin-left: 20px;
 }
+
+table {
+	background-color: silver;
+}
+
 th {
-  background:black;
-  color:white;
-  position: sticky;
-  top: 0; /* Don't forget this, required for the stickiness */
- 
+	background: silver;;
+	color: black;
+	border: 1px solid;
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid;
+	border-collapse: collapse;
 }
 </style>
-
 </head>
 <body>
-	
+
 	<h2>
 		<a href="adminPage.jsp">Go To Home</a>
 	</h2>
@@ -58,25 +63,33 @@ th {
 	<br>
 	<br>
 
-	<table aria-describedby="Show All User">
+	<table aria-describedby="Show All User" id="table_id"
+		class="cell-border" style="width: 100%">
+		<thead>
+			<th id="">Sl.No</th>
+			<th id="">User Id</th>
+			<th id="">User Name</th>
+			<th id="">User Email Id</th>
+			<th id="">User Mobile No</th>
+		</thead>
+		<tbody>
+			<c:forEach begin="0" items="${showalluserlist}" var="user"
+				varStatus="loop">
+				<tr>
+					<td>${loop.count}</td>
+					<td>${user.getId()}</td>
+					<td>${user.getName()}</td>
+					<td>${user.getEmail()}</td>
+					<td>${user.getMboNo()}</td>
 
-        <th id="">Sl.No</th>
-		<th id="">User Id</th>
-		<th id="">User Name</th>
-		<th id="">User Email Id</th>
-		<th id="">User Mobile No</th>
-
-		<c:forEach begin="0" items="${showalluserlist}" var="user" varStatus="loop">
-		<tr>
-		    <td>${loop.count}</td>
-			<td>${user.getId()}</td>
-			<td>${user.getName()}</td>
-			<td>${user.getEmail()}</td>
-			<td>${user.getMboNo()}</td>
-
-		</tr>
-		</c:forEach>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
-
+	<script>
+		$(document).ready(function() {
+			$('#table_id').DataTable();
+		});
+	</script>
 </body>
 </html>

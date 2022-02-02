@@ -1,7 +1,11 @@
 package com.touristmgntapp.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +20,6 @@ public class UpdatePackage extends HttpServlet {
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response)  {
-		
 		try {
 		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
 		
@@ -36,27 +39,27 @@ public class UpdatePackage extends HttpServlet {
 		
 		PackageModeClass packages = new PackageModeClass(packageId,packagename,packageOneDayPrice,season,protocol,description,"active",image);
 		boolean pack = packageDao.updatePackage(packages);
-		
-		PrintWriter out = response.getWriter();
+	
 		if(pack) {
 			
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Successfully Updated');");
-			out.println("location='showAllAdminPackages';");
-			out.println("</script>");
+			List<PackageModeClass> packageList = packageDao.getAllPackage();
+			
+			request.setAttribute("showalladminpackage", packageList);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("showAllAdminPackages.jsp?updatepackage=updated");
+		
+				rd.forward(request, response);
 			
 		}
 		else {
+				response.sendRedirect("showAllAdminPackages.jsp?updateerror=cannot be updated");
 			
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('can not be Updated');");
-			out.println("location='showAllAdminPackages';");
-			out.println("</script>");
+		}} catch (IOException | ServletException | NumberFormatException e) {
+			e.printStackTrace();
 		}
-		}catch(Exception e) {
-			System.out.println(e.getMessage());
+		
 		}
 	}
 	
 	
-}
+

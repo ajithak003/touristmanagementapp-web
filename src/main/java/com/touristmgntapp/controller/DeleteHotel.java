@@ -2,13 +2,17 @@ package com.touristmgntapp.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.dao.Impl.HotelTableDaoImplement;
+import com.touristmgntapp.model.HotelClass;
 
 @WebServlet("/deleteHotel")
 public class DeleteHotel extends HttpServlet {
@@ -25,20 +29,19 @@ public class DeleteHotel extends HttpServlet {
 		
 
 		if (hotel) {
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('Successfully Deleted !');");
-			out.println("location='showAllHotel';");
-			out.println("</script>");
+            List<HotelClass> hotelsList = hotelDao.getAllHotel();
+			
+			request.setAttribute("showalladminhotel", hotelsList);
+			
+			RequestDispatcher rd = request.getRequestDispatcher("showAllHotel.jsp?deletehote=successfully deleted");
+			rd.forward(request, response);
+			
 
 		} else {
-			out.println("<script type=\"text/javascript\">");
-			out.println("alert('can not be Deleted !');");
-			out.println("location='showAllHotel';");
-			out.println("</script>");
-		
+			response.sendRedirect("showAllHotel.jsp?deleteerror=cannot be deleted");
 
 		}
-		} catch (IOException | NumberFormatException e) {
+		} catch (IOException | NumberFormatException | ServletException e) {
 			System.out.println(e.getMessage());
 		}
 	}

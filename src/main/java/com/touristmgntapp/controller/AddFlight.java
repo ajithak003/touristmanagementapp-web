@@ -1,8 +1,10 @@
 package com.touristmgntapp.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,7 +60,7 @@ public class AddFlight extends HttpServlet {
 		else {
 			response.sendRedirect("addFlight.jsp?error=can not be added! please try again");
 		}
-		}catch(Exception e) {
+		}catch(IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());
 		}
 	}

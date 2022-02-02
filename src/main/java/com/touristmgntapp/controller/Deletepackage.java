@@ -1,13 +1,16 @@
 package com.touristmgntapp.controller;
 
 import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.touristmgntapp.dao.Impl.PackageModeClassDaoImplement;
+import com.touristmgntapp.model.PackageModeClass;
 
 @WebServlet("/deletepackage")
 public class Deletepackage extends HttpServlet {
@@ -20,20 +23,18 @@ public class Deletepackage extends HttpServlet {
 	    
 	       boolean packages = packageDao.deletePackage(packageName);
 	       try {
-			PrintWriter out = response.getWriter();
 
 	       if(packages) {
-	    	    out.println("<script type=\"text/javascript\">");
-				out.println("alert('Successfully Deleted !');");
-				out.println("location='showAllAdminPackages';");
-				out.println("</script>");
+	    	   List<PackageModeClass> packageList = packageDao.getAllPackage();
 				
+				request.setAttribute("showalladminpackage", packageList);
+				
+				RequestDispatcher rd = request.getRequestDispatcher("showAllAdminPackages.jsp?deletepackage=successfully deleted");
+			
+					rd.forward(request, response);
 			}
 			else {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('can not be Deleted !');");
-				out.println("location='showAllAdminPackages';");
-				out.println("</script>");
+				response.sendRedirect("showAllAdminPackages.jsp?deleteerror=cannot be deleted");
 			}
 	       }catch(Exception e) {
 	    	   System.out.println(e.getMessage());
