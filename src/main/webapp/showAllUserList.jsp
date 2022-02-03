@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,7 +35,7 @@ h2 {
 }
 
 table {
-	background-color: silver;
+	text-align: center;
 }
 
 th {
@@ -71,16 +70,25 @@ td {
 			<th id="">User Name</th>
 			<th id="">User Email Id</th>
 			<th id="">User Mobile No</th>
+			<th id="">User Register Date</th>
+			<th id="">User Status</th>
 		</thead>
 		<tbody>
 			<c:forEach begin="0" items="${showalluserlist}" var="user"
 				varStatus="loop">
+				
+				<fmt:parseDate value="${user.getRegisterDate()}"
+					pattern="yyyy-MM-dd'T'HH:mm" var="registerDate" type="both" />
+				
 				<tr>
 					<td>${loop.count}</td>
 					<td>${user.getId()}</td>
 					<td>${user.getName()}</td>
 					<td>${user.getEmail()}</td>
 					<td>${user.getMboNo()}</td>
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+							value="${registerDate}" /></td>
+					<td>${user.getStatus()}</td>
 
 				</tr>
 			</c:forEach>

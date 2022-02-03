@@ -27,7 +27,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <style>
 a {
 	text-decoration: none;
-	 color: blue;
+	color: blue;
 }
 
 h1 {
@@ -41,7 +41,7 @@ h2 {
 }
 
 table {
-	background-color: silver;
+	text-align: center;
 }
 
 th {
@@ -55,31 +55,34 @@ td {
 	border: 1px solid;
 	border-collapse: collapse;
 }
-::-webkit-scrollbar { 
-      display: none; 
-   }
- .edit{
- background-color: #2196F3;
- font-weight: bold;
- border: none;
- border-radius: 10px;
- height: 30px;
- width: 50px;
- } 
-.update{
- color:white;
- }
- .delete{
- background-color: #f44336;
- color: white;
- font-weight: bold;
- border: none;
- border-radius: 5px;
- border-radius: 10px;
- height: 30px;
- width: 50px;
- } 
-   
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.edit {
+	background-color: #2196F3;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+	height: 30px;
+	width: 50px;
+}
+
+.update {
+	color: white;
+}
+
+.delete {
+	background-color: #f44336;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	border-radius: 10px;
+	height: 30px;
+	width: 50px;
+}
 </style>
 
 </head>
@@ -105,27 +108,28 @@ td {
 
 			<script>
 
-            var toastMixin = Swal.mixin({
-            toast: true,
-    icon: 'success',
-    title: 'General Title',
-    animation: false,
-    position: 'top-right',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  });
-  deleted();
-   function deleted(){
-  toastMixin.fire({
-    animation: true,
-    title: 'Successfully deleted'
-  });
-}
+			var toastMixin = Swal.mixin({
+			    toast: true,
+			    icon: 'success',
+			    title: 'General Title',
+			    animation: false,
+			    position: 'top-right',
+			    showConfirmButton: false,
+			    timer: 3000,
+			    timerProgressBar: true,
+			    didOpen: (toast) => {
+			      toast.addEventListener('mouseenter', Swal.stopTimer)
+			      toast.addEventListener('mouseleave', Swal.resumeTimer)
+			    }
+			  });
+
+            deleted();
+              function deleted(){
+               toastMixin.fire({
+               animation: true,
+               title: 'Successfully deleted'
+              });
+             }
   </script>
 
 		</c:when>
@@ -191,10 +195,12 @@ td {
 					<td>${singlePackage.getSeason()}</td>
 					<td>${singlePackage.getProtocols()}</td>
 					<td>${singlePackage.getDescription()}</td>
-					<td><button class="edit"><a class="update"
-						href="updatePackage?packagname=${singlePackage.getName()}">Edit</a></button></td>
+					<td><button class="edit">
+							<a class="update"
+								href="updatePackage?packagname=${singlePackage.getName()}">Edit</a>
+						</button></td>
 					<td><button class="delete"
-						onclick="packagedelete('${singlePackage.getName()}')">Delete</button></td>
+							onclick="packagedelete('${singlePackage.getName()}')">Delete</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>

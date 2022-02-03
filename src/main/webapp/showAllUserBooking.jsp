@@ -36,8 +36,7 @@ h2 {
 	margin-left: 20px;
 }
 table {
-	
-	background-color: silver;
+	text-align: center;
 }
  th{
 background:silver;;

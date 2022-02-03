@@ -138,7 +138,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 		List<UserClass> userList = new ArrayList<>();
 		Connection con = null;
-		String query = "select user_id,name,email_id,mobile_no,password,wallet from user_details";
+		String query = "select user_id,name,email_id,mobile_no,password,wallet,register_date,status from user_details";
 
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -150,8 +150,8 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 			while (rs.next()) {
 
-				UserClass user = new UserClass(rs.getInt("user_id"), rs.getString("name"), rs.getString("email_id"),
-						rs.getLong("mobile_no"), rs.getString("password"), rs.getLong("wallet"));
+				UserClass user = new UserClass(rs.getInt("user_id"), rs.getString("name"), rs.getString("email_id"),rs.getLong("mobile_no"),
+					rs.getString("password"), rs.getLong("wallet"),rs.getTimestamp("register_date").toLocalDateTime(), rs.getString("status"));
 
 				userList.add(user);
 			}

@@ -43,7 +43,7 @@ h2 {
 }
 
 table {
-	background-color: silver;
+	text-align: center;
 }
 
 th {

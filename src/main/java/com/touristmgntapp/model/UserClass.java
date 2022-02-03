@@ -1,6 +1,7 @@
 package com.touristmgntapp.model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class UserClass implements Serializable {
@@ -11,9 +12,40 @@ public class UserClass implements Serializable {
 	private long mboNo;
 	private String password;
 	private long wallet;
+	private LocalDateTime registerDate;
+	private String status;
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 	public long getWallet() {
 		return wallet;
+	}
+
+	public UserClass(int id, String name, String email, long mboNo, String password, long wallet,
+			LocalDateTime registerDate,String status) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.mboNo = mboNo;
+		this.password = password;
+		this.wallet = wallet;
+		this.registerDate = registerDate;
+		this.status = status;
+	}
+
+	public LocalDateTime getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(LocalDateTime registerDate) {
+		this.registerDate = registerDate;
 	}
 
 	public void setWallet(long wallet) {
