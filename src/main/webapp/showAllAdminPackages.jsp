@@ -195,8 +195,7 @@ td {
 					<td>${singlePackage.getSeason()}</td>
 					<td>${singlePackage.getProtocols()}</td>
 					<td>${singlePackage.getDescription()}</td>
-					<td><button class="edit">
-							<a class="update"
+					<td><button class="edit"><a class="update"
 								href="updatePackage?packagname=${singlePackage.getName()}">Edit</a>
 						</button></td>
 					<td><button class="delete"

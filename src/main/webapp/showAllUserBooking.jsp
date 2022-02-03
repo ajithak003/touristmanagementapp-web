@@ -14,7 +14,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Show All Bookings</title>
 
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -22,30 +23,34 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
 <style>
-
-
 a {
 	text-decoration: none;
+	color:blue;
 }
+
 h1 {
 	text-align: center;
 	font-size: 50px;
-	color: steelblue
+	color: steelblue;
 }
+
 h2 {
 	margin-left: 20px;
 }
+
 table {
 	text-align: center;
 }
- th{
-background:silver;;
-  color:black;
-  border: 1px solid;
+
+th {
+	background: silver;;
+	color: black;
+	border: 1px solid;
 	border-collapse: collapse;
 }
-td{
-border: 1px solid;
+
+td {
+	border: 1px solid;
 	border-collapse: collapse;
 }
 </style>
@@ -60,7 +65,8 @@ border: 1px solid;
 	<h1>Show All Booking</h1>
 
 
-	<table aria-describedby="Show All User Booking" id="table_id" class="cell-border"  style="width:100%" >
+	<table aria-describedby="Show All User Booking" id="table_id"
+		class="cell-border" style="width: 100%">
 		<thead class="table-dark">
 			<th id="">Sl.No</th>
 			<th id="">User Id</th>
@@ -84,14 +90,20 @@ border: 1px solid;
 				varStatus="loop">
 				<fmt:parseDate value="${booking.getBookingDate()}"
 					pattern="yyyy-MM-dd'T'HH:mm" var="bookingdate" type="both" />
-         
-		<tr>
+				<fmt:parseDate value="${booking.getStartDate()}"
+					pattern="yyyy-MM-dd" var="startdate" type="both" />
+				<fmt:parseDate value="${booking.getEndDate()}"
+					pattern="yyyy-MM-dd" var="enddate" type="both" />
+
+				<tr>
 					<td>${loop.count}</td>
 					<td>${booking.getUser().getId()}</td>
 					<td>${booking.getUser().getName()}</td>
 					<td>${booking.getPackageName()}</td>
-					<td>${booking.getStartDate()}</td>
-					<td>${booking.getEndDate()}</td>
+					<td><fmt:formatDate pattern="dd/MM/yy"
+							value="${startdate}" /></td>
+					<td><fmt:formatDate pattern="dd/MM/yy"
+							value="${enddate}" /></td>
 					<td>${booking.getNoOfPerson()}</td>
 					<td>${booking.getDaysPlan()}</td>
 					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
@@ -110,7 +122,6 @@ border: 1px solid;
 		$(document).ready(function() {
 			$('#table_id').DataTable();
 		});
-		
 	</script>
 </body>
 </html>

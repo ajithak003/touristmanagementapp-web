@@ -150,7 +150,7 @@ span {
             <c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()}">
 						<input type="radio" name="price" id="Business"
 							value="${flight.getBusinessClassFare()}" required><label
-							for="">Business Class <span>Rs. ${flight.getBusinessClassFare() }></span></label>
+							for="">Business Class <span>Rs. ${flight.getBusinessClassFare()}</span></label>
 						</c:if>
 						</c:if>
 					</p>

@@ -95,9 +95,8 @@ span {
 	visibility: hidden;
 }
 .noflight {
-	color: darkred;
+	color: blue;
 	text-align: center;
-	color: black;
 	font-size: 40px;
 	font-weight: bold;
 }

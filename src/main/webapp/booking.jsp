@@ -10,6 +10,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Confirm Booking</title>
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
 <style>
 body {
@@ -18,7 +22,7 @@ body {
 
 .container {
 	margin-left: 33%;
-	height: 1550px;
+	height: 1800px;
 }
 
 h1 {
@@ -44,7 +48,7 @@ h3 {
 	color: darkgreen;
 }
 
-button {
+.confirm {
 	width: 200px;
 	height: 40px;
 	background-color: red;
@@ -54,7 +58,20 @@ button {
 	font-weight: bold;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	border: none;
-	margin-left: 110px;
+	margin-left: 100px;
+	margin-top: 20px;
+}
+.cancel{
+    width: 150px;
+	height: 40px;
+	background-color:#ffc107;
+	color: rgb(252, 250, 250)	;
+	border-radius: 25px;
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	border: none;
+	margin-left: 0px;
 	margin-top: 20px;
 }
 td{
@@ -64,8 +81,6 @@ padding:20px;
 
 </head>
 <body>
-
-	<form action="bookingsus">
 
 		<h1>Booking Details</h1>
 
@@ -190,9 +205,34 @@ padding:20px;
 					<td><h3>Rs. ${booking.getTotalPrice()}</h3></td>
 				</tr>
 			</table>
-			<button>Confirm Booking</button>
+			<button class="cancel" onclick="cancel()">Cancel</button>
+			<button class="confirm" onclick="confirm()">Confirm Booking</button>
 
 		</div>
-	</form>
+
+	<script>
+	
+	function confirm(){
+		 window.location.replace("bookingsus");
+	}
+	
+	function cancel() {
+		 Swal.fire({
+			 title: "Are you sure about \n cancel this booking ?",
+			    type: "info",
+			    showCancelButton: true,
+			    confirmButtonText: "Delete It",
+			    confirmButtonColor: "#ff0055",
+			    cancelButtonColor: "#999999",
+			    focusConfirm: false,
+			    focusCancel: true
+			}).then((result) => {
+			  if (result.isConfirmed) {
+			    window.location.replace("userPage.jsp");
+			  }
+			})
+	}
+	
+	</script>
 </body>
 </html>

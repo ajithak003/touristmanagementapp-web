@@ -21,39 +21,42 @@
 	text-decoration: none;
 	font-family: Arial, sans-serif;
 }
+
 body {
 	background-color: rgb(248, 237, 221);
 }
+
 h1 {
-	position: absolute;
-	top: 300px;
-	left: ;
-	background-color: black;
-	border-radius: 25%;
-	color: white;
+	color: blue;
+	text-align: center;
+	font-size: 40px;
 }
-.firsrrow {
-	padding-left: ;
-}
+
 .firstrowimg {
 	top: 400px;
 	width: 298px;
 	height: 350px;
 	border-radius: 10px;
 }
+
 .table {
 	left: 0px;
+	margin-top: 50px;
 }
+
 h2 {
 	text-align: center;
 	font-weight: bold;
 	font-size: 35px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 td {
 	padding-right: 15px;
-	padding-left:20px;
+	padding-left: 20px;
+	padding-bottom: 40px;
 }
+a{color:blue;}
 </style>
 </head>
 
@@ -62,6 +65,8 @@ td {
 		<h3>
 			<a href="userPage.jsp">Go To Home</a>
 		</h3>
+		<h1>Popular Places</h1>
+		
 		<table class="table" aria-describedby="popular places">
 		
 
@@ -84,7 +89,7 @@ td {
 				</c:if>
 			</c:forEach>
 <th id=""></th>
-			
+			</table>
 </body>
 
 </html>

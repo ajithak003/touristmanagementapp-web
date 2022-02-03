@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Ratings</title>
-<link rel="stylesheet" href="Assets/css/headerNavbar.css">
 
 <style>
 * {
@@ -16,10 +17,18 @@
 	padding: 0;
 }
 
+h1 {
+	text-align: center;
+	color: blue;
+	font-size: 40px;
+	font-family: sans-serif;
+	margin-top: 20px;
+}
+
 .rate {
 	position: absolute;
-	margin-left: 600px;
-	margin-top: 200px;
+	margin-left: 500px;
+	margin-top: 100px;
 	height: 46px;
 	padding: 0 10px;
 	border: none;
@@ -37,7 +46,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 	cursor: pointer;
-	font-size: 30px;
+	font-size: 80px;
 	color: #ccc;
 }
 
@@ -62,8 +71,8 @@
 
 textarea {
 	position: relative;
-	margin-top: 280px;
-	margin-left: 480px;
+	margin-top: 230px;
+	margin-left: 490px;
 	height: 100px;
 	width: 450px;
 	border: 3px solid;
@@ -87,56 +96,43 @@ button {
 	color: black;
 	font-weight: bold;
 }
+a{
+text-decoration: none;
+color: blue;
+}
 </style>
 
 </head>
 
 <body>
-     
-     <div id="link">
-		<ul>
-			<li><a href="#">Home</a></li>
-			<li><a href="papularPlaces">Book Package</a></li>
-			<li><a href="papularPlaces">Popular Places</a></li>
-			<li><a href="showAllBooking">My Booking</a></li>
-			<li><a>More</a>
-				<ul>
-					<li><a href="profile.jsp">Profile</a></li>
-					<li><a href="wallet"> Wallet Topup</a>
-					<li>
-				</ul></li>
-			<li><a href="userRating">Ratings</a></li>
-			<li><a href="logout">Logout</a></li>
-		</ul>
-	</div>
 
+	<h2>
+		<a href="userPage.jsp">Go To Home</a>
+	</h2>
+
+	<h1>Rate Your Experience</h1>
 
 	<form action="ratings" method="get">
 
-    <c:set var = "bookingId" scope="session" value="${ratingbookingid}"/>
-    
+		<c:set var="bookingId" scope="session" value="${ratingbookingid}" />
+
 		<div class="rate">
 			<input type="radio" id="star5" name="rate" value="5" required /> <label
-				for="star5" title=" 🤩 Excellent">5 stars</label> <input
-				type="radio" id="star4" name="rate" value="4" required /> <label
-				for="star4" title="😎 very good">4 stars</label> <input
-				type="radio" id="star3" name="rate" value="3" required /> <label
-				for="star3" title="😁 Good">3 stars</label> <input type="radio"
-				id="star2" name="rate" value="2" required /> <label for="star2"
-				title="🙂 Average">2 stars</label> <input type="radio" id="star1"
-				name="rate" value="1" required /> <label for="star1"
-				title="😶 Bad">1 star</label>
+				for="star5" title=" Excellent"></label> <input type="radio"
+				id="star4" name="rate" value="4" required /> <label for="star4"
+				title="very good">4 stars</label> <input type="radio" id="star3"
+				name="rate" value="3" required /> <label for="star3" title="Good">3
+				stars</label> <input type="radio" id="star2" name="rate" value="2" required />
+			<label for="star2" title="Average">2 stars</label> <input
+				type="radio" id="star1" name="rate" value="1" required /> <label
+				for="star1" title="Bad">1 star</label>
 		</div>
 		<br>
 		<textarea name="describe" id="" cols="30" rows="10"
 			placeholder="Describe your experience"></textarea>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 		<button name="bookingId" value="${bookingId}">Rate Now</button>
 	</form>
 </body>
-
-
 
 </html>

@@ -53,12 +53,13 @@ body {
 }
 
 h1 {
-	position: absolute;
-	top: 300px;
-	left: 30%;
-	background-color: black;
-	border-radius: 25%;
-	color: white;
+	color:blue;
+	text-align: center;
+	font-size: 40px;
+}
+
+a{
+color:blue;
 }
 
 .firsrrow {
@@ -74,6 +75,7 @@ h1 {
 
 .table {
 	left: 10px;
+	margin-top: 50px;
 }
 
 h2 {
@@ -89,7 +91,7 @@ second {
 td {
 	padding-right: 15px;
 	padding-left:18px;
-	
+	padding-bottom: 40px;
 }
 </style>
 </head>
@@ -97,17 +99,17 @@ td {
 <body>
 
 	<div class="second">
+	
 		<h3>
 			<a href="adminPage.jsp">Go To Home</a>
 		</h3>
+		 
+		 <h1>Popular Places</h1>
+		 
 		<table class="table" aria-describedby="Show All places">
 
 			<c:forEach begin="0" items="${showAllPlaces}" var="packages"
 				varStatus="loop">
-
-				
-				
-				
 
 				<td>
 					<div class="firstrow">
@@ -123,6 +125,7 @@ td {
 				<c:if test="${loop.count%4==0}">
 					<tr>
 				</c:if>
+				
 			</c:forEach>
         <th id=""></th>
 		</table>

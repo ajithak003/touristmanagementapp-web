@@ -164,6 +164,9 @@ a {
 #totprice {
 	color: green;
 }
+#home{
+color:blue;
+}
 </style>
 
 </head>
@@ -172,7 +175,7 @@ a {
 
 	<div class="container">
 		<h2>
-			<a href="userPage.jsp">Go To Home</a>
+			<a href="userPage.jsp" id="home">Go To Home</a>
 		</h2>
 		<div>
 			<h1>My Trips</h1>

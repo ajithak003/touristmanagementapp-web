@@ -83,6 +83,9 @@ td {
 	padding-top: 13px;
 	padding-bottom: 13px;
 }
+a{
+	color: blue;
+}
 </style>
 
 </head>

@@ -88,6 +88,9 @@ td {
 .container {
 	height: 830px;
 }
+a{
+	color: blue;
+}
 </style>
 </head>
 <body>

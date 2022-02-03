@@ -26,6 +26,7 @@ body {
 .title {
 	font-size: 40px;
 	text-align: center;
+	color: blue;
 }
 
 .name {
@@ -56,6 +57,7 @@ p {
 
 a {
 	text-decoration: none;
+	color: blue;
 }
 </style>
 </head>

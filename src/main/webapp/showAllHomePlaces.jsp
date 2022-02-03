@@ -24,14 +24,13 @@ body {
 
 
 h1 {
-	position: absolute;
-	top: 300px;
-	left: 30%;
-	background-color: black;
-	border-radius: 25%;
-	color: white;
+	color:blue;
+	text-align: center;
+	font-size: 40px;
 }
-
+a{
+color:blue;
+}
 .firsrrow {
 	padding-left: 20%;
 }
@@ -45,6 +44,7 @@ h1 {
 
 .table {
 	left: 10px;
+	margin-top: 50px;
 }
 
 h2 {
@@ -56,7 +56,7 @@ h2 {
 td {
 	padding-right: 15px;
 	padding-left:18px;
-	
+	padding-bottom: 40px;
 }
 
 </style>
@@ -68,6 +68,9 @@ td {
 		<h3>
 			<a href="index.jsp">Go To Home</a>
 		</h3>
+		
+		<h1>Popular Places</h1>
+		
 		<table  class="table" aria-describedby="Show All home places">
 
 			<c:forEach begin="0" items="${showAllHomePlaces}" var="packages"

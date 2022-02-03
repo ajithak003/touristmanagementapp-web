@@ -18,8 +18,8 @@ body {
 	border: 3px solid;
 	width: 400px;
 	text-align: center;
-	margin-left: 30%;
-	margin-top: 10%;
+	margin-left: 35%;
+	margin-top: 70px;
 	padding: 3%;
 	border-radius: 3%;
 }
@@ -53,7 +53,14 @@ button {
 
 a {
 	text-decoration: none;
+	color: blue;
 }
+h1{
+text-align: center;
+color: blue;
+font-size: 40px;
+}
+
 </style>
 
 </head>
@@ -61,14 +68,15 @@ a {
         <c:set var="user" scope="session" value="${newUser}"/>
         
 	<form action="walletSus" method="get">
-		<h3>
+		<h3 >
 			<a href="userPage.jsp">Go To Home</a>
 		</h3>
+		<h1>Wallet Top Up</h1>
 		<div class="container">
 
-			<h3>
+			<h3 >
 				Your Wallet Amount : <span>Rs. ${user.getWallet()}</span>
-				</h2>
+			
 			</h3>
 			<br>
 			<h4>Topup Wallet</h4>

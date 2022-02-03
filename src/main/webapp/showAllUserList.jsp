@@ -22,6 +22,7 @@
 <style>
 a {
 	text-decoration: none;
+	color:blue;
 }
 
 h1 {
