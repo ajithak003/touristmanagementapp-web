@@ -29,6 +29,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <style>
 a {
 	text-decoration: none;
+	color: blue;
 }
 
 h1 {
@@ -56,6 +57,34 @@ td {
 	border: 1px solid;
 	border-collapse: collapse;
 }
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+.edit {
+	background-color: #2196F3;
+	font-weight: bold;
+	border: none;
+	border-radius: 10px;
+	height: 30px;
+	width: 50px;
+}
+
+.update {
+	color: white;
+}
+
+.delete {
+	background-color: #f44336;
+	color: white;
+	font-weight: bold;
+	border: none;
+	border-radius: 5px;
+	border-radius: 10px;
+	height: 30px;
+	width: 50px;
+}
 </style>
 </head>
 <body>
@@ -81,26 +110,26 @@ td {
 
             var toastMixin = Swal.mixin({
             toast: true,
-    icon: 'success',
-    title: 'General Title',
-    animation: false,
-    position: 'top-right',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  });
-  deleted();
-   function deleted(){
-  toastMixin.fire({
-    animation: true,
-    title: 'Successfully deleted'
-  });
-}
-  </script>
+            icon: 'success',
+            title: 'General Title',
+            animation: false,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        });
+            deleted();
+             function deleted(){
+              toastMixin.fire({
+              animation: true,
+              title: 'Successfully deleted'
+             });
+           }
+       </script>
 
 		</c:when>
 		<c:when test="${deleteerror!=null}">
@@ -164,9 +193,9 @@ td {
 					<td>${hotel.getLocation()}</td>
 					<td>${hotel.getMidRangePrice()}</td>
 					<td>${hotel.getPremiumPrice()}</td>
-					<td><a href="updateHotel?hotelid=${hotel.getHotelId()}">Edit</a></td>
-					<td><a href="deleteHotel?hotelid=${hotel.getHotelId()}"
-						onclick="hotelDelete()">Delete</a></td>
+					<td><button class="edit"><a  class="update" 
+					href="updateHotel?hotelid=${hotel.getHotelId()}">Edit</a></button></td>
+					<td> <button class="delete" onclick="deleteHotel(${hotel.getHotelId()})">Delete</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -176,17 +205,22 @@ td {
 			$('#table_id').DataTable();
 		});
 		
-		 function hotelDelete() {
-			        console.log("enter");
-					var result = confirm("Are you sure about deleting this hotel?");
-
-					if (result == false) {
-						event.preventDefault();
-					}
-				
-			}
-		
-
+		function deleteHotel(hotelid) {
+			 Swal.fire({
+				 title: "Are you sure about \n deleting this Package?",
+				    type: "info",
+				    showCancelButton: true,
+				    confirmButtonText: "Delete It",
+				    confirmButtonColor: "#ff0055",
+				    cancelButtonColor: "#999999",
+				    focusConfirm: false,
+				    focusCancel: true
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    window.location.replace("deleteHotel?info=&hotelid=" + hotelid);
+				  }
+				})
+		}
 		
 	</script>
 </body>

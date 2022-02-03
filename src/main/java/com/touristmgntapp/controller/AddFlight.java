@@ -47,7 +47,7 @@ public class AddFlight extends HttpServlet {
 		int economicClassSeat = Integer.parseInt(request.getParameter("economicclassseat"));
 		
 		FlightTableDaoImplement flightDao = new FlightTableDaoImplement();
-		FlightClass flight = new FlightClass(flightName,depature, destination, depatureTimeDate, arrivalTimeDate,
+		FlightClass flight = new FlightClass(flightName,depature.toLowerCase(), destination.toLowerCase(), depatureTimeDate, arrivalTimeDate,
 				businessClassFare, economicClassFare,status,businessClassSeat,economicClassSeat);
 		
 		boolean flights = flightDao.insertFlight(flight);

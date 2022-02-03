@@ -22,8 +22,10 @@
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <title>showAllFlight</title>
 <style>
+
 a {
 	text-decoration: none;
+	 color: blue;
 }
 
 h1 {
@@ -51,11 +53,37 @@ td {
 	border: 1px solid;
 	border-collapse: collapse;
 }
+::-webkit-scrollbar { 
+      display: none; 
+   }
+ .edit{
+ background-color: #2196F3;
+ font-weight: bold;
+ border: none;
+ border-radius: 10px;
+ height: 30px;
+ width: 50px;
+ } 
+.update{
+ color:white;
+ }
+ .delete{
+ background-color: #f44336;
+ color: white;
+ font-weight: bold;
+ border: none;
+ border-radius: 5px;
+ border-radius: 10px;
+ height: 30px;
+ width: 50px;
+ } 
+   
+
 </style>
 
 </head>
 <body>
-	<form method="post">
+	
 
 		<c:set var="update" scope="session" value="${param.updateflight}" />
 		<c:set var="delete" scope="session" value="${param.deleteflight}" />
@@ -65,10 +93,12 @@ td {
 			<c:when test="${update!=null}">
 
 				<script>
-				update();
-				function update() {
-					Swal.fire("Updated", "", "success");
-				}
+				Swal.fire({
+					  icon: 'success',
+					  title: 'Updated',
+					  showConfirmButton: false,
+					  timer: 1500})
+				
 			</script>
 			</c:when>
 
@@ -76,34 +106,35 @@ td {
 
 				<script>
 
-            var toastMixin = Swal.mixin({
-            toast: true,
-    icon: 'success',
-    title: 'General Title',
-    animation: false,
-    position: 'top-right',
-    showConfirmButton: false,
-    timer: 3000,
-    timerProgressBar: true,
-    didOpen: (toast) => {
-      toast.addEventListener('mouseenter', Swal.stopTimer)
-      toast.addEventListener('mouseleave', Swal.resumeTimer)
-    }
-  });
-  deleted();
-   function deleted(){
-  toastMixin.fire({
-    animation: true,
-    title: 'Successfully deleted'
-  });
-}
-  </script>
+				var toastMixin = Swal.mixin({
+				    toast: true,
+				    icon: 'success',
+				    title: 'General Title',
+				    animation: false,
+				    position: 'top-right',
+				    showConfirmButton: false,
+				    timer: 3000,
+				    timerProgressBar: true,
+				    didOpen: (toast) => {
+				      toast.addEventListener('mouseenter', Swal.stopTimer)
+				      toast.addEventListener('mouseleave', Swal.resumeTimer)
+				    }
+				  });
+   
+                  deleted();
+                   function deleted(){
+                    toastMixin.fire({
+                    animation: true,
+                    title: 'Successfully deleted'
+                   });
+                  }
+             </script>
 
 			</c:when>
 			<c:when test="${deleteerror!=null}">
-				<script>
-				var toastMixin = Swal.mixin({
-		            toast: true,
+		 <script>
+			var toastMixin = Swal.mixin({
+		    toast: true,
 		    icon: 'success',
 		    title: 'General Title',
 		    animation: false,
@@ -175,10 +206,10 @@ td {
 						<td>${singleFlight.getStatus()}</td>
 						<td>${singleFlight.getBusinessClassSeat()}</td>
 						<td>${singleFlight.getEconomicClassSeat()}</td>
-						<td><a
-							href="updateFlight?flightno=${singleFlight.getFlightNo()}">Edit</a></td>
-						<td><a
-							href="deleteFlight?flightno=${singleFlight.getFlightNo()}" onclick="flightDelete()">Delete</a></td>
+						<td><button class="edit"><a class="update"
+							href="updateFlight?flightno=${singleFlight.getFlightNo()}">Edit</a></button></td>
+						<td><button class="delete"
+							onclick="deleteflight(${singleFlight.getFlightNo()})">Delete</button></td>
 					</tr>
 				</c:forEach>
 			</tbody>
@@ -188,17 +219,25 @@ td {
 				$('#table_id').DataTable();
 			});
 			
-			 function flightDelete() {
-			        console.log("enter");
-					var result = confirm("Are you sure about deleting this hotel?");
-
-					if (result == false) {
-						event.preventDefault();
-					}
-				
+			 function deleteflight(flightNo) {
+				 Swal.fire({
+					 title: "Are you sure about \n deleting this flight?",
+					    type: "info",
+					    showCancelButton: true,
+					    confirmButtonText: "Delete It",
+					    confirmButtonColor: "#ff0055",
+					    cancelButtonColor: "#999999",
+					    focusConfirm: false,
+					    focusCancel: true
+					}).then((result) => {
+					  if (result.isConfirmed) {
+					    window.location.replace("deleteFlight?info=&flightno=" + flightNo);
+					  }
+					})
 			}
+			 
+			 
 			
 		</script>
-	</form>
 </body>
 </html>

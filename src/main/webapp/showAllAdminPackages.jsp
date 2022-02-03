@@ -27,6 +27,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <style>
 a {
 	text-decoration: none;
+	 color: blue;
 }
 
 h1 {
@@ -54,6 +55,31 @@ td {
 	border: 1px solid;
 	border-collapse: collapse;
 }
+::-webkit-scrollbar { 
+      display: none; 
+   }
+ .edit{
+ background-color: #2196F3;
+ font-weight: bold;
+ border: none;
+ border-radius: 10px;
+ height: 30px;
+ width: 50px;
+ } 
+.update{
+ color:white;
+ }
+ .delete{
+ background-color: #f44336;
+ color: white;
+ font-weight: bold;
+ border: none;
+ border-radius: 5px;
+ border-radius: 10px;
+ height: 30px;
+ width: 50px;
+ } 
+   
 </style>
 
 </head>
@@ -165,10 +191,10 @@ td {
 					<td>${singlePackage.getSeason()}</td>
 					<td>${singlePackage.getProtocols()}</td>
 					<td>${singlePackage.getDescription()}</td>
-					<td><a
-						href="updatePackage?packagname=${singlePackage.getName()}">Edit</a></td>
-					<td><a
-						href="deletepackage?packagname=${singlePackage.getName()}" onclick="packageDelete()">Delete</a></td>
+					<td><button class="edit"><a class="update"
+						href="updatePackage?packagname=${singlePackage.getName()}">Edit</a></button></td>
+					<td><button class="delete"
+						onclick="packagedelete('${singlePackage.getName()}')">Delete</button></td>
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -178,15 +204,22 @@ td {
 			$('#table_id').DataTable();
 		});
 		
-		function packageDelete() {
-	        console.log("enter");
-			var result = confirm("Are you sure about deleting this hotel?");
-
-			if (result == false) {
-				event.preventDefault();
-			}
-		
-	}
+		function packagedelete(packagename) {
+			 Swal.fire({
+				 title: "Are you sure about \n deleting this Package?",
+				    type: "info",
+				    showCancelButton: true,
+				    confirmButtonText: "Delete It",
+				    confirmButtonColor: "#ff0055",
+				    cancelButtonColor: "#999999",
+				    focusConfirm: false,
+				    focusCancel: true
+				}).then((result) => {
+				  if (result.isConfirmed) {
+				    window.location.replace("deletepackage?info=&packagname=" + packagename);
+				  }
+				})
+		}
 		
 	</script>
 </body>

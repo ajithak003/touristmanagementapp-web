@@ -35,7 +35,7 @@ public class AddPackage extends HttpServlet {
 
 			String image = request.getParameter("packageimage");
 
-			PackageModeClass packages = new PackageModeClass(packagename, packageOneDayPrice, season, protocol,
+			PackageModeClass packages = new PackageModeClass(packagename.toLowerCase(), packageOneDayPrice, season, protocol,
 					description, image);
 			boolean pack = packageDao.insertPackage(packages);
 

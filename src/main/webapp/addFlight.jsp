@@ -1,4 +1,7 @@
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -9,6 +12,12 @@
 <meta name="viewport" content="width=, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>add package</title>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
 <style>
 * {
 	margin: 0;
@@ -17,12 +26,12 @@
 	text-decoration: none;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
-	background-color: aquamarine;
 }
+body{background-color: aquamarine;}
 
 h1 {
 	text-align: center;
-	color:blue;
+	color: blue;
 }
 
 .addpackage {
@@ -48,10 +57,12 @@ input {
 	font-size: 16px;
 	font-weight: bold;
 }
+
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
+
 textarea {
 	border: 3px solid;
 }
@@ -68,6 +79,7 @@ button {
 	font-weight: bold;
 	border: none
 }
+
 td {
 	padding-top: 13px;
 	padding-bottom: 13px;
@@ -80,17 +92,6 @@ td {
 </head>
 <body>
 
-      <c:if test="${param.infomsg!=null}">
-			<script type="text/javascript">
-     alert("successfully added");
-     </script>
-     </c:if>
-     
-     <c:if test="${param.error!=null}">
-			<script type="text/javascript">
-     alert("Flight can not be Added! please try again later");
-     </script>
-     </c:if>  
 
 	<form action="addflight" method="post">
 		<div class="container">
@@ -98,13 +99,11 @@ td {
 			<h2>
 				<a href="adminPage.jsp">Go To Home</a>
 			</h2>
-			<br>
-			<br>
-			<br>
+			<br> <br> <br>
 
 			<div class="addpackage">
 				<table aria-describedby="add package">
-				<th id=""></th>
+					<th id=""></th>
 
 					<tr>
 						<td><label for="location">Flight Name : </label></td>
@@ -136,14 +135,15 @@ td {
 					</tr>
 					<tr>
 						<td><label for="">Business Class Fare :</label></td>
-						<td><input type="number" name="businessclassfare" placeholder="Rs"
-							id="businessclassfare" min="600" max="200000" required
+						<td><input type="number" name="businessclassfare"
+							placeholder="Rs" id="businessclassfare" min="600" max="200000"
+							required
 							title="must contain number only maximum 600 minimum 200000"></td>
 					</tr>
 					<tr>
 						<td><label for="">Economic Class Fare :</label></td>
-						<td><input type="number" name="economicclassfare" placeholder="Rs"
-							id="economicclassfare" min="600" max="200000"
+						<td><input type="number" name="economicclassfare"
+							placeholder="Rs" id="economicclassfare" min="600" max="200000"
 							title="must contain number only maximum 600 minimum 200000"
 							required></td>
 					</tr>
@@ -159,7 +159,7 @@ td {
 						<td><label for="">Business Class Seats Count :</label></td>
 						<td><input type="text" name="businessclassseat"
 							id="businessclassseatr" required pattern="[0-9]{2,3}"
-							title="must contain number only maximum 10 minimum 2 no. number" ></td>
+							title="must contain number only maximum 10 minimum 2 no. number"></td>
 					</tr>
 					<tr>
 						<td><label for="">Economic Class Seats Count :</label></td>
@@ -172,6 +172,59 @@ td {
 			</div>
 		</div>
 	</form>
+
+	<c:if test="${param.infomsg!=null}">
+		<script>
+
+				var toastMixin = Swal.mixin({
+				    toast: true,
+				    icon: 'success',
+				    title: 'General Title',
+				    animation: false,
+				    position: 'top-right',
+				    showConfirmButton: false,
+				    timer: 3000,
+				    timerProgressBar: true,
+				    didOpen: (toast) => {
+				      toast.addEventListener('mouseenter', Swal.stopTimer)
+				      toast.addEventListener('mouseleave', Swal.resumeTimer)
+				    }
+				  });
+   
+                  susAdded();
+                   function susAdded(){
+                    toastMixin.fire({
+                    animation: true,
+                    title: 'Successfully Added'
+                   });
+                  }
+             </script>
+	</c:if>
+	<c:if test="${param.error!=null}">
+		<script>
+			var toastMixin = Swal.mixin({
+		    toast: true,
+		    icon: 'success',
+		    title: 'General Title',
+		    animation: false,
+		    position: 'top-right',
+		    showConfirmButton: false,
+		    timer: 3000,
+		    timerProgressBar: true,
+		    didOpen: (toast) => {
+		      toast.addEventListener('mouseenter', Swal.stopTimer)
+		      toast.addEventListener('mouseleave', Swal.resumeTimer)
+		    }
+		  });
+				alreadyAdded();
+				function alreadyAdded() {
+					toastMixin.fire({
+						title : 'Flight can not be Added! please try again later',
+						icon : 'error'
+					});
+				}
+			</script>
+	</c:if>
 
 	<script>
 

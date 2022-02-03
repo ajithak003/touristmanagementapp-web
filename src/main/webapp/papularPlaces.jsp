@@ -68,10 +68,6 @@ td {
 			<c:forEach begin="0" items="${popularplace}" var="packages"
 				varStatus="loop">
 
-				<c:if test="${loop.count%5==0}">
-					<tr>
-				</c:if>
-
 				<td>
 					<div class="firstrow">
 						<a href="singlePackage?location=${packages.getName()}"> <img
@@ -83,6 +79,9 @@ td {
 
 					</div>
 				</td>
+				<c:if test="${loop.count%4==0}">
+					<tr>
+				</c:if>
 			</c:forEach>
 <th id=""></th>
 			

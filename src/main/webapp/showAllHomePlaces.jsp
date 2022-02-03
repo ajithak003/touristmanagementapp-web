@@ -73,10 +73,6 @@ td {
 			<c:forEach begin="0" items="${showAllHomePlaces}" var="packages"
 				varStatus="loop">
 
-				<c:if test="${loop.count%5==0}">
-					<tr>
-				</c:if>
-
 				<td>
 					<div class="firstrow">
 						<img class="firstrowimg" src="Assets/${packages.getImage() }"
@@ -87,6 +83,9 @@ td {
 
 					</div>
 				</td>
+				<c:if test="${loop.count%4==0}">
+					<tr>
+				</c:if>
 			</c:forEach>
 			<th id=""></th>
 		</table>

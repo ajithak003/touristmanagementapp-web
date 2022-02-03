@@ -37,7 +37,7 @@ public class AddHotel extends HttpServlet {
 		String image = request.getParameter("hotelimage");
 		
 		
-		HotelClass hotel = new HotelClass(hotelname,hotelLocation,normalRoom,premiumRoom,image);
+		HotelClass hotel = new HotelClass(hotelname.toLowerCase(),hotelLocation,normalRoom,premiumRoom,image);
 		boolean hotels;
 		
 			hotels = hotelDao.insertHotel(hotel);

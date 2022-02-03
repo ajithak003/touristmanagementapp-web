@@ -105,9 +105,7 @@ td {
 			<c:forEach begin="0" items="${showAllPlaces}" var="packages"
 				varStatus="loop">
 
-				<c:if test="${loop.count%5==0}">
-					<tr>
-				</c:if>
+				
 				
 				
 
@@ -122,6 +120,9 @@ td {
 
 					</div>
 				</td>
+				<c:if test="${loop.count%4==0}">
+					<tr>
+				</c:if>
 			</c:forEach>
         <th id=""></th>
 		</table>

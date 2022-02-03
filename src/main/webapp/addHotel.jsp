@@ -11,6 +11,12 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <meta name="viewport" content="width=, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>add hotels</title>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
 <style>
 * {
 	margin: 0;
@@ -19,8 +25,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	text-decoration: none;
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
-	background-color: aquamarine;
 }
+body{background-color: aquamarine;}
 
 h1 {
 	text-align: center;
@@ -82,20 +88,6 @@ td {
 </head>
 <body>
 
-
-	<c:if test="${param.infomsg!=null}">
-		<script type="text/javascript">
-			alert("successfully added");
-		</script>
-	</c:if>
-
-	<c:if test="${param.error!=null}">
-		<script type="text/javascript">
-			alert("This Hotel Already Added");
-		</script>
-	</c:if>
-
-
 	<form action="addhotel" method="post">
 		<h1>Add Hotels</h1>
 		<h2>
@@ -150,5 +142,62 @@ td {
 			</div>
 		</div>
 	</form>
+	
+	
+	<c:if test="${param.infomsg!=null}">
+		<script>
+
+				var toastMixin = Swal.mixin({
+				    toast: true,
+				    icon: 'success',
+				    title: 'General Title',
+				    animation: false,
+				    position: 'top-right',
+				    showConfirmButton: false,
+				    timer: 3000,
+				    timerProgressBar: true,
+				    didOpen: (toast) => {
+				      toast.addEventListener('mouseenter', Swal.stopTimer)
+				      toast.addEventListener('mouseleave', Swal.resumeTimer)
+				    }
+				  });
+   
+                  susAdded();
+                   function susAdded(){
+                    toastMixin.fire({
+                    animation: true,
+                    title: 'Successfully Added'
+                   });
+                  }
+             </script>
+	</c:if>
+
+	<c:if test="${param.error!=null}">
+				<script>
+			var toastMixin = Swal.mixin({
+		    toast: true,
+		    icon: 'success',
+		    title: 'General Title',
+		    animation: false,
+		    position: 'top-right',
+		    showConfirmButton: false,
+		    timer: 3000,
+		    timerProgressBar: true,
+		    didOpen: (toast) => {
+		      toast.addEventListener('mouseenter', Swal.stopTimer)
+		      toast.addEventListener('mouseleave', Swal.resumeTimer)
+		    }
+		  });
+				alreadyAdded();
+				function alreadyAdded() {
+					toastMixin.fire({
+						title : 'This Hotel Already Added',
+						icon : 'error'
+					});
+				}
+			</script>
+	</c:if>
+	
+	
 </body>
 </html>
