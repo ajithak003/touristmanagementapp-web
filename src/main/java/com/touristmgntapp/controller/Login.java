@@ -36,8 +36,7 @@ public class Login extends HttpServlet {
 				admin = adminDao.validateAdmin(email, password);
 				if (admin == null) {
 
-					session.setAttribute("error", "user name and password mismatch");
-					request.getRequestDispatcher("login.jsp").forward(request, response);
+					request.getRequestDispatcher("login.jsp?error=user name and password mismatch").forward(request, response);
 				} else {
 					session.setAttribute("welcom", admin.getName());
 					response.sendRedirect("adminPage.jsp");
@@ -51,8 +50,7 @@ public class Login extends HttpServlet {
 
 			if (user == null) {
 
-				session.setAttribute("error", "user name and password mismatch");
-				request.getRequestDispatcher("login.jsp").forward(request, response);
+				request.getRequestDispatcher("login.jsp?error=user name and password mismatch").forward(request, response);
 
 			} else {
 

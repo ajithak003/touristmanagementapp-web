@@ -1,6 +1,8 @@
 package com.touristmgntapp.controller;
 
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,8 +27,8 @@ public class BookingSuccess extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 
 		HttpSession session = request.getSession();
-
-		try {
+		  try {
+		
 			UserClass users = (UserClass) session.getAttribute("user");
 			UserTableDaoImplement userDao = new UserTableDaoImplement();
 			UserClass user = userDao.getUserById(users);
@@ -52,19 +54,24 @@ public class BookingSuccess extends HttpServlet {
 				wallet = (long) (wallet - booking.getTotalPrice());
 				userDao.addWalletAmount(user.getId(), wallet);
 				if (book) {
-				  response.sendRedirect("bookingsus.jsp");
+				
+					response.sendRedirect("bookingsus.jsp");
 				}
 
 			} else {
-				PrintWriter out = response.getWriter();
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Insufficient balance !');");
-				out.println("location='wallet.jsp';");
-				out.println("</script>");
+			        
+			     UserClass newUser;
+					
+				 newUser = userDao.getSingleUserById(user.getId());
+		         System.out.println(newUser);
+
+			    session.setAttribute("user", newUser);
+			        
+				response.sendRedirect("wallet.jsp?infomsg=Insufficient balance !");
 			}
-		} catch (Exception e) {
-			System.out.println(e.getMessage());
-		}
+			} catch (IOException | ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			}
 
 	}
 }

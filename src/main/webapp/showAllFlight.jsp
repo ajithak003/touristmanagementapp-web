@@ -97,7 +97,7 @@ td {
 					  icon: 'success',
 					  title: 'Updated',
 					  showConfirmButton: false,
-					  timer: 1500})
+					  timer: 3000})
 				
 			</script>
 			</c:when>

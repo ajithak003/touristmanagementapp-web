@@ -83,7 +83,7 @@ input, button {
 	top: 820px;
 }
 #container {
-	height: 1100px;
+	height: 1250px;
 }
 label {
 	position: relative;
@@ -125,7 +125,7 @@ padding:15px;
 
 			<h1 name="place">${packages.getName()}</h1>
 			<br> <a href="#"> <img class="firstrowimg"
-				src="Assets/${packages.getImage()}" alt="${packages.getName()}">
+				src="assets/images/${packages.getImage()}" alt="${packages.getName()}">
 
 			</a> <br> <br>
 			<table class="details" aria-describedby="single place details">

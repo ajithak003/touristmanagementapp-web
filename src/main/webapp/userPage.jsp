@@ -11,11 +11,6 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>user Page</title>
 
-<!-- <script>
-    history.forward();
-</script> -->
-
-
 <style>
 * {
 	margin: 0;
@@ -26,7 +21,7 @@
 }
 
 body {
-	background-image: url("Assets/home.png.jpg");
+	background-image: url("assets/images/home.png.jpg");
 	background-repeat: no-repeat;
 }
 

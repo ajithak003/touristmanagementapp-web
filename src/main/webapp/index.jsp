@@ -8,9 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Tourist Managements</title>
-<script>
-    history.forward();
-</script>
+
 <style>
 * {
 	margin: 0;
@@ -21,7 +19,7 @@
 }
 
 body {
-	background-image: url("Assets/home.png.jpg");
+	background-image: url("assets/images/home.png.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
 	width: 100%;

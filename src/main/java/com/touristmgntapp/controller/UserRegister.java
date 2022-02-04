@@ -45,30 +45,22 @@ public class UserRegister extends HttpServlet {
 			else {
 				if (email.contains("@admin")) {
 
-					session.setAttribute("notallow", "Not allowed '@admin' !");
-
-					response.sendRedirect("register.jsp");
+					response.sendRedirect("register.jsp?notallow=not allowed to use @admin");
 
 				} else {
 
 					UserClass userinsert = new UserClass(name, email, mboilNo, password);
 					boolean boo = userDao.insertUser(userinsert);
 					if (boo) {
-						PrintWriter out = response.getWriter();
-						out.println("<script type=\"text/javascript\">");
-						out.println("alert('Successfully Registered ! please Login');");
-						out.println("location='login.jsp';");
-						out.println("</script>");
+						
+						response.sendRedirect("login.jsp?infomsg=successfully registered");
 
 					}
 
 				}
 			}
-		} catch (UserDefineException | IOException e) {
-			HttpSession session = request.getSession();
-			session.setAttribute("error", ((UserDefineException) e).reregister());
-			try {
-				response.sendRedirect("register.jsp");
+		} catch (UserDefineException | IOException e) {			try {
+				response.sendRedirect("register.jsp?errormsg=This email id already registered");
 			} catch (IOException e1) {
 				System.out.println(e1.getMessage());
 			}

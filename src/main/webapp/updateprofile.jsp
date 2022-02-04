@@ -23,10 +23,11 @@ h1 {
 
 table {
 	border: 3px solid;
+	
 	padding: 20px;
 	text-align: center;
-	margin-left: 38%;
-	border-radius: 10px;
+	margin-left: 35%;
+	
 }
 
 input {
@@ -38,9 +39,13 @@ input {
 button {
 	font-size: 20px;
 	font-weight: bold;
+	
 }
 td{
 padding:30px;
+}
+#lable{
+font-weight: bold;
 }
 </style>
 </head>
@@ -55,6 +60,7 @@ padding:30px;
 	<form action="updateprofile" method="post">
 		<table aria-describedby="update profile">
 			<tr>
+			    <td><label id="lable">Full Name : </label></td>
 				<td><input type="text" placeholder="FullName" name="FullName"
 					value="${user.getName()}" required autofocus
 					pattern="[aa-Zz]{2,}" title="must contain characters only">
@@ -62,24 +68,38 @@ padding:30px;
 			</tr>
 
 			<tr>
+			 <td><label id="lable">Mobile No : </label></td>
 				<td><input type="text" placeholder="Mobile No" name="regmobile"
 					value="${user.getMboNo()}" required pattern="[6-9][0-9]{9}"
 					title="Must contain 10 numbers only"></td>
 			</tr>
 			<tr></tr>
 			<tr>
+			     <td><label id="lable">Password : </label></td>
 				<td><input type="password" placeholder="Password" name="regpsw"
 					value="${user.getPassword()}" id="psw" required
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
 					title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character">
 				</td>
 			</tr>
+			
 			<tr>
+			<td></td>
 				<td><button class="btn btn-primary" name="regemail"
 						value="${user.getEmail()}">Update Profile</button></td>
 			</tr>
 <th id=""></th>
 		</table>
+		<script>
+	function showPassword() {
+		var x = document.getElementById("psw");
+		if (x.type === "password") {
+			x.type = "text";
+		} else {
+			x.type = "password";
+		}
+	}
+	</script>
 	</form>
 </body>
 </html>

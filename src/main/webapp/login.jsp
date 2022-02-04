@@ -9,6 +9,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Login Page</title>
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
 
 <style>
@@ -16,7 +20,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: url("Assets/blure.jpg");
+	background: url("assets/images/blure.jpg");
 	background-size: cover;
 }
 
@@ -105,7 +109,7 @@ font-weight: bold;
 
 			</div>
 			<div class="show">
-				<input type="checkbox" onclick="myFunction()">Show Password
+				<input type="checkbox" onclick="showPassword()">Show Password
 			</div>
 			<br>
 			<div>
@@ -119,13 +123,62 @@ font-weight: bold;
 			</div>
 			<br>
 
-			<c:if test="${not empty error}">
-				<p id="error">
-					<c:out value="${error}"></c:out>
-				</p>
-				<c:set var="error" scope="session" value="" />
-			</c:if>
+			<c:if test="${param.error!=null}">
 
+				<script>
+
+				var toastMixin = Swal.mixin({
+				    toast: true,
+				    icon: 'error',
+				    title: 'General Title',
+				    animation: false,
+				    position: 'top-right',
+				    showConfirmButton: false,
+				    timer: 3000,
+				    timerProgressBar: true,
+				    didOpen: (toast) => {
+				      toast.addEventListener('mouseenter', Swal.stopTimer)
+				      toast.addEventListener('mouseleave', Swal.resumeTimer)
+				    }
+				  });
+   
+                  deleted();
+                   function deleted(){
+                    toastMixin.fire({
+                    animation: true,
+                    title: 'Username and Password mismach'
+                   });
+                  }
+             </script>
+            </c:if>
+			<c:if test="${param.infomsg!=null}">
+
+				<script>
+
+				var toastMixin = Swal.mixin({
+				    toast: true,
+				    icon: 'success',
+				    title: 'General Title',
+				    animation: false,
+				    position: 'top-right',
+				    showConfirmButton: false,
+				    timer: 3000,
+				    timerProgressBar: true,
+				    didOpen: (toast) => {
+				      toast.addEventListener('mouseenter', Swal.stopTimer)
+				      toast.addEventListener('mouseleave', Swal.resumeTimer)
+				    }
+				  });
+   
+                  deleted();
+                   function deleted(){
+                    toastMixin.fire({
+                    animation: true,
+                    title: 'Successfully Registered !\n please login'
+                   });
+                  }
+             </script>
+            </c:if>
 
 		</div>
 
@@ -136,7 +189,7 @@ font-weight: bold;
 			document.getElementById("error").innerHTML = "";
 		}
 
-		function myFunction() {
+		function showPassword() {
 			var x = document.getElementById("psw");
 			if (x.type === "password") {
 				x.type = "text";

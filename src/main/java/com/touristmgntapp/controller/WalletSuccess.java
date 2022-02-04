@@ -19,12 +19,12 @@ import com.touristmgntapp.model.UserClass;
 public class WalletSuccess extends HttpServlet {
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 
 		try {
 			HttpSession session = request.getSession();
 
-			UserClass user = (UserClass) session.getAttribute("newUser");
+			UserClass user = (UserClass) session.getAttribute("user");
 			UserTableDaoImplement userDao = new UserTableDaoImplement();
 			String amounts = request.getParameter("amount");
 			long amount = Long.parseLong(amounts);
@@ -35,10 +35,8 @@ public class WalletSuccess extends HttpServlet {
 				if (wallet) {
 
 					UserClass newUser = userDao.getUserById(user);
-					request.setAttribute("walletuser", newUser);
-
-					RequestDispatcher rd = request.getRequestDispatcher("walletSus.jsp");
-					rd.forward(request, response);
+					session.setAttribute("user", newUser);
+					response.sendRedirect("walletSus.jsp");
 
 				}
 
@@ -50,7 +48,7 @@ public class WalletSuccess extends HttpServlet {
 					out.println("</script>");
 				}
 			}
-		} catch (ClassNotFoundException | SQLException | ServletException | IOException | NumberFormatException e) {
+		} catch (ClassNotFoundException | SQLException | IOException | NumberFormatException e) {
 			System.out.println(e.getMessage());
 		}
 	}

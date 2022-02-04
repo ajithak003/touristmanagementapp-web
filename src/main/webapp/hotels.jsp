@@ -122,7 +122,7 @@ button {
 
 			<div class="container">
 				<div>
-					<img src="Assets/${hotel.getImage()}"
+					<img src="assets/images/${hotel.getImage()}"
 						alt="${hotel.getHotelName()}, ${hotel.getLocation()}">
 					<div class="name">
 						<h3>Hotel Name :</h3>

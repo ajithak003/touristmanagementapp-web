@@ -37,6 +37,7 @@ h1 {
 }
 a {
 	text-decoration: none;
+	color:blue;
 }
 td {
 	padding:25px;
@@ -78,5 +79,6 @@ td {
 		</table>
 
 	</div>
+	
 </body>
 </html>

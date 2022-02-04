@@ -76,7 +76,7 @@ a{color:blue;}
 				<td>
 					<div class="firstrow">
 						<a href="singlePackage?location=${packages.getName()}"> <img
-							class="firstrowimg" src="Assets/${packages.getImage() }"
+							class="firstrowimg" src="assets/images/${packages.getImage() }"
 							alt="${packages.getName()}">
 						</a>
 

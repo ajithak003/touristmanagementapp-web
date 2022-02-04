@@ -78,7 +78,7 @@ td {
 
 				<td>
 					<div class="firstrow">
-						<img class="firstrowimg" src="Assets/${packages.getImage() }"
+						<img class="firstrowimg" src="assets/images/${packages.getImage() }"
 							alt="${packages.getName()}">
 
 

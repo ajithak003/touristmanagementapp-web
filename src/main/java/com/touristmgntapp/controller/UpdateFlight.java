@@ -58,7 +58,7 @@ public class UpdateFlight extends HttpServlet {
 
 				request.setAttribute("showalladminflight", showFlights);
 				
-				RequestDispatcher rd = request.getRequestDispatcher("showAllFlight.jsp?updateflight=updated");
+				RequestDispatcher rd = request.getRequestDispatcher("showAllFlight.jsp?&updateflight=34");
 				rd.forward(request, response);
 
 			} else {

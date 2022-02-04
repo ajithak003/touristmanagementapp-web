@@ -36,11 +36,11 @@ span {
 </head>
 <body>
  
- <c:set var ="newUser" scope="session" value="${walletuser}"/>
+ <c:set var ="newUser" scope="session" value="${user}"/>
 
 	<h1>Transaction Successful</h1>
 	<h2>
-		Your wallet Amount : <span>Rs. ${newUser.getWallet()}</span>
+		Your wallet Balance : <span>Rs. ${newUser.getWallet()}</span>
 	</h2>
 	<br>
 	<br>

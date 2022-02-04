@@ -3,6 +3,8 @@ package com.touristmgntapp.controller;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,13 +27,12 @@ public class Wallet extends HttpServlet {
         UserTableDaoImplement userDao = new UserTableDaoImplement();
         UserClass newUser;
 		try {
-			newUser = userDao.getSingleUserById(user.getId());
-         
-        session.setAttribute("newUser", newUser);
+		newUser = userDao.getSingleUserById(user.getId());
+        session.setAttribute("user", newUser);
         
         response.sendRedirect("wallet.jsp");
         
-		} catch (SQLException | IOException e) {
+		} catch (SQLException | IOException  e) {
 			System.out.println(e.getMessage());
 		}
 	}

@@ -9,6 +9,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>wallet page</title>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+
 <style>
 body {
 	background-color: rgb(138, 238, 238);
@@ -65,9 +72,20 @@ font-size: 40px;
 
 </head>
 <body>
-        <c:set var="user" scope="session" value="${newUser}"/>
+        <c:set var="user" scope="session" value="${user}"/>
         
-	<form action="walletSus" method="get">
+        <c:if test="${param.infomsg!=null}">
+
+				<script>
+				Swal.fire({
+					  icon: 'error',
+					  title: 'Insufficient balance !',
+					  showConfirmButton: false,
+					  timer: 1500})
+			</script>
+			</c:if>
+        
+	<form action="walletSus" method="post">
 		<h3 >
 			<a href="userPage.jsp">Go To Home</a>
 		</h3>
@@ -75,7 +93,7 @@ font-size: 40px;
 		<div class="container">
 
 			<h3 >
-				Your Wallet Amount : <span>Rs. ${user.getWallet()}</span>
+				Your Wallet Balance : <span>Rs. ${user.getWallet()}</span>
 			
 			</h3>
 			<br>

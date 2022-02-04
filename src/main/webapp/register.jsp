@@ -7,12 +7,17 @@
 <meta charset="ISO-8859-1">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>register Form</title>
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
 <Style>
 body {
 	margin: 0;
 	padding: 0;
 	font-family: sans-serif;
-	background: url("Assets/blure.jpg");
+	background: url("assets/images/blure.jpg");
 	background-size: cover;
 }
 
@@ -108,23 +113,64 @@ body {
 			<button class="btn" type="submit">Sign up</button>
 			<br>
 			
-		    <c:set var="notallow" scope="session" value="${sessionScope.notallow }"/>
-			<c:if test="${notallow !=null}">
-				<p id="error">
-					<c:out value="${ sessionScope.notallow }"></c:out>
-				</p>
-			</c:if>
-			<c:remove var="notallow" scope="session"/>  
+			<c:if test="${param.notallow!=null}">
 
+				<script>
+
+				var toastMixin = Swal.mixin({
+				    toast: true,
+				    icon: 'error',
+				    title: 'General Title',
+				    animation: false,
+				    position: 'top-right',
+				    showConfirmButton: false,
+				    timer: 3000,
+				    timerProgressBar: true,
+				    didOpen: (toast) => {
+				      toast.addEventListener('mouseenter', Swal.stopTimer)
+				      toast.addEventListener('mouseleave', Swal.resumeTimer)
+				    }
+				  });
+   
+                  deleted();
+                   function deleted(){
+                    toastMixin.fire({
+                    animation: true,
+                    title: 'Not allowed "@admin"!'
+                   });
+                  }
+             </script>
+			</c:if>
+			<c:if test="${param.errormsg!=null}">
+
+				<script>
+
+				var toastMixin = Swal.mixin({
+				    toast: true,
+				    icon: 'error',
+				    title: 'General Title',
+				    animation: false,
+				    position: 'top-right',
+				    showConfirmButton: false,
+				    timer: 3000,
+				    timerProgressBar: true,
+				    didOpen: (toast) => {
+				      toast.addEventListener('mouseenter', Swal.stopTimer)
+				      toast.addEventListener('mouseleave', Swal.resumeTimer)
+				    }
+				  });
+   
+                  deleted();
+                   function deleted(){
+                    toastMixin.fire({
+                    animation: true,
+                    title: 'This email id already registered!'
+                   });
+                  }
+             </script>
+			</c:if>
 			<c:set var="error" scope="session" value="${sessionScope.error }"/>
-            <c:if test="${error!=null}">
-				<p id="error">
-					<c:out value="${error}"></c:out>
-				</p>
-			</c:if>
-			<c:remove var="error" scope="session"/>
 
-			<div></div>
 		</div>
 	</form>
 	<script type="text/javascript">
