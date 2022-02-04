@@ -133,7 +133,7 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 		Connection con = null;
 		ResultSet rs = null;
 		String query = "select flight_no,flight_name,depature,destination,depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,"
-				+ "status,business_class_seat_status,economic_class_seat_status from flights_details";
+				+ "status,business_class_seat_status,economic_class_seat_status from flights_details order by depature_date_time desc";
 
 		PreparedStatement pstmt = null;
 

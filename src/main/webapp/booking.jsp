@@ -209,31 +209,8 @@ padding:20px;
 			<button class="confirm" onclick="confirm()">Confirm Booking</button>
 
 		</div>
+		
+<script src="assets/js/popUpMessages.js"></script>
 
-	<script>
-	
-	function confirm(){
-		 window.location.replace("bookingsus");
-	}
-	
-	function cancel() {
-		 Swal.fire({
-			 title: "Are you sure about \n cancel this booking ?",
-			    type: "info",
-			    showCancelButton: true,
-			    cancelButtonText: "No",
-			    confirmButtonText: "Yes",
-			    confirmButtonColor: "#ff0055",
-			    cancelButtonColor: "#999999",
-			    focusConfirm: false,
-			    focusCancel: true
-			}).then((result) => {
-			  if (result.isConfirmed) {
-			    window.location.replace("userPage.jsp");
-			  }
-			})
-	}
-	
-	</script>
 </body>
 </html>

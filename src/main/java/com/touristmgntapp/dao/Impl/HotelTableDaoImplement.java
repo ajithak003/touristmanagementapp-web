@@ -112,7 +112,7 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status, image from hotel_details";
+		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status,image from hotel_details order by hotel_id desc";
 		
 		try {
 			con = ConnectionUtil.getDBConnect();
@@ -147,8 +147,8 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 
 		List<HotelClass> hotels = new ArrayList<>();
 
-		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status image from hotel_details "
-				+ "where location=?";
+		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status, image from hotel_details "
+				+ "where location=? order by status desc";
 
 		try {
 			con = ConnectionUtil.getDBConnect();

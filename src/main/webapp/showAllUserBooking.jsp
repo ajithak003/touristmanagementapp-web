@@ -14,6 +14,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Show All Bookings</title>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 
@@ -66,7 +68,7 @@ td {
 
 
 	<table aria-describedby="Show All User Booking" id="table_id"
-		class="cell-border" style="width: 100%">
+		class="cell-border" style="width: 70%">
 		<thead class="table-dark">
 			<th id="">Sl.No</th>
 			<th id="">User Id</th>
@@ -106,14 +108,19 @@ td {
 							value="${enddate}" /></td>
 					<td>${booking.getNoOfPerson()}</td>
 					<td>${booking.getDaysPlan()}</td>
-					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+					<td><fmt:formatDate pattern="dd/MM/yy HH:mm"
 							value="${bookingdate}" /></td>
 					<td>${booking.getFlightClass()}</td>
 					<td>${booking.getHotel().getHotelName()}</td>
 					<td>${booking.getHotelRoomType()}</td>
 					<td>${booking.getTotalPrice()}</td>
 					<td>${booking.getPayment()}</td>
-					<td>${booking.getStatus()}</td>
+					<td><c:if test="${booking.getStatus().equals('confirmed') }">
+							<span class="badge badge-pill badge-success">${booking.getStatus()}</span>
+						</c:if> <c:if test="${booking.getStatus().equals('cancel') }">
+							<span class="badge badge-pill badge-danger">${booking.getStatus()}</span>
+						</c:if></td>
+					
 				</tr>
 			</c:forEach>
 		</tbody>

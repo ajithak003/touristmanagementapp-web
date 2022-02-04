@@ -32,7 +32,6 @@ public class UpdateHotel extends HttpServlet {
 			int hotelid = Integer.parseInt(request.getParameter("hotelid"));
 			
 			String status = request.getParameter("status");
-			System.out.println(status);
 
 			String image = request.getParameter("hotelimage");
 

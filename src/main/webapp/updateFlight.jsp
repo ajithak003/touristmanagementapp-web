@@ -22,6 +22,7 @@
 
 h1 {
 	text-align: center;
+	color: blue;
 }
 
 .addpackage {
@@ -77,9 +78,9 @@ td {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-a{
+#home{
 text-decoration: none;
-color:blue;
+color: blue;
 }
 select{
     border: 3px solid;
@@ -97,7 +98,7 @@ font-weight: bold;
 
 	<div class="container">
 	<br>
-	<h3><a href="showAllFlight">Go Back</a></h3>
+	<h3><a href="showAllFlight" id="home">Go Back</a></h3>
 		<h1>Update Flight</h1>
 		<br> <br> <br>
 

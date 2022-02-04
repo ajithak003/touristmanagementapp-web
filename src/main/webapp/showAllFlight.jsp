@@ -89,77 +89,38 @@ td {
 
 		<c:set var="update" scope="session" value="${param.updateflight}" />
 		<c:set var="delete" scope="session" value="${param.deleteflight}" />
-		<c:set var="error" scope="session" value="${param.updateerror}" />
-		<c:set var="error" scope="session" value="${param.deleteerror}" />
-		<c:choose>
-			<c:when test="${update!=null}">
+		<c:set var="updateerror" scope="session" value="${param.updateerror}" />
+		<c:set var="deleteerror" scope="session" value="${param.deleteerror}" />
+		
+		<script src="assets/js/popUpMessages.js"></script>
+	
+	<c:choose>
+		<c:when test="${update!=null}">
+			<script type="text/javascript">
+			popupMessages('successfully updated')
+		</script>
+		</c:when>
+		
+		<c:when test="${updateerror!=null}">
+			<script type="text/javascript">
+			popupMessages('cannot be updated')
+		</script>
+		</c:when>
 
-				<script>
-				Swal.fire({
-					  icon: 'success',
-					  title: 'Updated',
-					  showConfirmButton: false,
-					  timer: 3000})
-				
-			</script>
-			</c:when>
-
-			<c:when test="${delete!=null}">
-
-				<script>
-
-				var toastMixin = Swal.mixin({
-				    toast: true,
-				    icon: 'success',
-				    title: 'General Title',
-				    animation: false,
-				    position: 'top-right',
-				    showConfirmButton: false,
-				    timer: 3000,
-				    timerProgressBar: true,
-				    didOpen: (toast) => {
-				      toast.addEventListener('mouseenter', Swal.stopTimer)
-				      toast.addEventListener('mouseleave', Swal.resumeTimer)
-				    }
-				  });
-   
-                  deleted();
-                   function deleted(){
-                    toastMixin.fire({
-                    animation: true,
-                    title: 'Successfully deleted'
-                   });
-                  }
-             </script>
-
-			</c:when>
-			<c:when test="${deleteerror!=null}">
-		 <script>
-			var toastMixin = Swal.mixin({
-		    toast: true,
-		    icon: 'success',
-		    title: 'General Title',
-		    animation: false,
-		    position: 'top-right',
-		    showConfirmButton: false,
-		    timer: 3000,
-		    timerProgressBar: true,
-		    didOpen: (toast) => {
-		      toast.addEventListener('mouseenter', Swal.stopTimer)
-		      toast.addEventListener('mouseleave', Swal.resumeTimer)
-		    }
-		  });
-				deleteError();
-				function deleteError() {
-					toastMixin.fire({
-						title : 'cannot be deleted',
-						icon : 'error'
-					});
-				}
-			</script>
-			</c:when>
-		</c:choose>
-
+		<c:when test="${delete!=null}">
+           <script type="text/javascript">
+			popupMessages('Successfully deleted')
+		</script>
+		</c:when>
+		<c:when test="${deleteerror!=null}">
+			<script type="text/javascript">
+			popupMessages('cannot be deleted')
+		</script>
+		</c:when>
+	</c:choose>
+		
+		
+		
 		<h2>
 			<a href="adminPage.jsp">Go To Home</a>
 		</h2>
@@ -227,26 +188,7 @@ td {
 			$(document).ready(function() {
 				$('#table_id').DataTable();
 			});
-			
-			 function deleteflight(flightNo) {
-				 Swal.fire({
-					 title: "Are you sure about \n deleting this flight?",
-					    type: "info",
-					    showCancelButton: true,
-					    confirmButtonText: "Delete It",
-					    confirmButtonColor: "#ff0055",
-					    cancelButtonColor: "#999999",
-					    focusConfirm: false,
-					    focusCancel: true
-					}).then((result) => {
-					  if (result.isConfirmed) {
-					    window.location.replace("deleteFlight?info=&flightno=" + flightNo);
-					  }
-					})
-			}
-			 
-			 
-			
+
 		</script>
 </body>
 </html>

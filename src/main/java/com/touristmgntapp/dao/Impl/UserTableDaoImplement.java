@@ -138,7 +138,7 @@ public class UserTableDaoImplement implements UserDaoInterface {
 
 		List<UserClass> userList = new ArrayList<>();
 		Connection con = null;
-		String query = "select user_id,name,email_id,mobile_no,password,wallet,register_date,status from user_details";
+		String query = "select user_id,name,email_id,mobile_no,password,wallet,register_date,status from user_details order by register_date desc";
 
 		Statement stmt = null;
 		ResultSet rs = null;

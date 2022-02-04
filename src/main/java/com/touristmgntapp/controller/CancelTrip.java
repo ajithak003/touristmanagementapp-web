@@ -24,6 +24,7 @@ public class CancelTrip extends HttpServlet {
 
 		try {
 		String bookingid = request.getParameter("bookingid");
+		System.out.println(bookingid);
 
 		int bookingId = Integer.parseInt(bookingid);
 		BookingTableDaoImplement cancel = new BookingTableDaoImplement();

@@ -144,57 +144,13 @@ a{
 			</div>
 	</form>
 	
+	<script src="assets/js/popUpMessages.js"></script>
+	
 	<c:if test="${param.error!=null}">
-			<script>
-			var toastMixin = Swal.mixin({
-		    toast: true,
-		    icon: 'success',
-		    title: 'General Title',
-		    animation: false,
-		    position: 'top-right',
-		    showConfirmButton: false,
-		    timer: 3000,
-		    timerProgressBar: true,
-		    didOpen: (toast) => {
-		      toast.addEventListener('mouseenter', Swal.stopTimer)
-		      toast.addEventListener('mouseleave', Swal.resumeTimer)
-		    }
-		  });
-				alreadyAdded();
-				function alreadyAdded() {
-					toastMixin.fire({
-						title : 'This Package Already Added!',
-						icon : 'error'
-					});
-				}
-			</script>
+			<script type="text/javascript">popupMessages('This Package Already Added!')</script>
 		</c:if>
 		<c:if test="${param.infomsg!=null}">
-			<script>
-
-				var toastMixin = Swal.mixin({
-				    toast: true,
-				    icon: 'success',
-				    title: 'General Title',
-				    animation: false,
-				    position: 'top-right',
-				    showConfirmButton: false,
-				    timer: 3000,
-				    timerProgressBar: true,
-				    didOpen: (toast) => {
-				      toast.addEventListener('mouseenter', Swal.stopTimer)
-				      toast.addEventListener('mouseleave', Swal.resumeTimer)
-				    }
-				  });
-   
-                  susAdded();
-                   function susAdded(){
-                    toastMixin.fire({
-                    animation: true,
-                    title: 'Successfully Added'
-                   });
-                  }
-             </script>
+			<script type="text/javascript">popupMessages('Successfully Added')</script>
 		</c:if>
 
 	

@@ -37,15 +37,10 @@ public class WalletSuccess extends HttpServlet {
 					UserClass newUser = userDao.getUserById(user);
 					session.setAttribute("user", newUser);
 					response.sendRedirect("walletSus.jsp");
-
 				}
 
 				else {
-					PrintWriter out = response.getWriter();
-					out.println("<script type=\"text/javascript\">");
-					out.println("alert('Successfully Added');");
-					out.println("location='addHotel.jsp';");
-					out.println("</script>");
+					response.sendRedirect("wallet.jsp?error=Transaction failed");
 				}
 			}
 		} catch (ClassNotFoundException | SQLException | IOException | NumberFormatException e) {

@@ -204,7 +204,7 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface {
 
 		List<PackageModeClass> packageList = new ArrayList<>();
 		Connection con = null;
-		String query = "select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes";
+		String query = "select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes order by package_id desc";
 
 		PreparedStatement pstmt = null;
 		try {

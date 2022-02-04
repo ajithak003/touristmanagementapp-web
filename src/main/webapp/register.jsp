@@ -1,4 +1,7 @@
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -112,67 +115,24 @@ body {
 
 			<button class="btn" type="submit">Sign up</button>
 			<br>
-			
-			<c:if test="${param.notallow!=null}">
-
-				<script>
-
-				var toastMixin = Swal.mixin({
-				    toast: true,
-				    icon: 'error',
-				    title: 'General Title',
-				    animation: false,
-				    position: 'top-right',
-				    showConfirmButton: false,
-				    timer: 3000,
-				    timerProgressBar: true,
-				    didOpen: (toast) => {
-				      toast.addEventListener('mouseenter', Swal.stopTimer)
-				      toast.addEventListener('mouseleave', Swal.resumeTimer)
-				    }
-				  });
-   
-                  deleted();
-                   function deleted(){
-                    toastMixin.fire({
-                    animation: true,
-                    title: 'Not allowed "@admin"!'
-                   });
-                  }
-             </script>
-			</c:if>
-			<c:if test="${param.errormsg!=null}">
-
-				<script>
-
-				var toastMixin = Swal.mixin({
-				    toast: true,
-				    icon: 'error',
-				    title: 'General Title',
-				    animation: false,
-				    position: 'top-right',
-				    showConfirmButton: false,
-				    timer: 3000,
-				    timerProgressBar: true,
-				    didOpen: (toast) => {
-				      toast.addEventListener('mouseenter', Swal.stopTimer)
-				      toast.addEventListener('mouseleave', Swal.resumeTimer)
-				    }
-				  });
-   
-                  deleted();
-                   function deleted(){
-                    toastMixin.fire({
-                    animation: true,
-                    title: 'This email id already registered!'
-                   });
-                  }
-             </script>
-			</c:if>
-			<c:set var="error" scope="session" value="${sessionScope.error }"/>
 
 		</div>
 	</form>
+
+	<script src="assets/js/popUpMessages.js"></script>
+
+	<c:if test="${param.notallow!=null}">
+		<script type="text/javascript">
+			popupMessages('Not allowed')
+		</script>
+	</c:if>
+	
+	<c:if test="${param.errormsg!=null}">
+         <script type="text/javascript">
+			popupMessages('This email id already registered')
+		</script>
+	</c:if>
+
 	<script type="text/javascript">
 		function checkpattern() {
 			console.log("function calling")
@@ -215,10 +175,7 @@ body {
 
 		}
 		
-		function remove(){
-			console.log("enter");
-			document.getElementById("error").innerHTML="";
-		}
+		
 	</script>
 </body>
 

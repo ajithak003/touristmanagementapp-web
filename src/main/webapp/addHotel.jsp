@@ -26,7 +26,10 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
 }
-body{background-color: aquamarine;}
+
+body {
+	background-color: aquamarine;
+}
 
 h1 {
 	text-align: center;
@@ -83,7 +86,8 @@ td {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-a{
+
+a {
 	color: blue;
 }
 </style>
@@ -97,12 +101,6 @@ a{
 			<a href="adminPage.jsp">Go To Home</a>
 		</h2>
 		<br> <br> <br>
-
-		<c:if test="${sessionScope.addHotelerror !=null}">
-			<script type="text/javascript">
-				alert("This Hotel Already Added");
-			</script>
-		</c:if>
 
 
 		<div class="container">
@@ -145,62 +143,17 @@ a{
 			</div>
 		</div>
 	</form>
-	
-	
-	<c:if test="${param.infomsg!=null}">
-		<script>
 
-				var toastMixin = Swal.mixin({
-				    toast: true,
-				    icon: 'success',
-				    title: 'General Title',
-				    animation: false,
-				    position: 'top-right',
-				    showConfirmButton: false,
-				    timer: 3000,
-				    timerProgressBar: true,
-				    didOpen: (toast) => {
-				      toast.addEventListener('mouseenter', Swal.stopTimer)
-				      toast.addEventListener('mouseleave', Swal.resumeTimer)
-				    }
-				  });
-   
-                  susAdded();
-                   function susAdded(){
-                    toastMixin.fire({
-                    animation: true,
-                    title: 'Successfully Added'
-                   });
-                  }
-             </script>
+	<script src="assets/js/popUpMessages.js"></script>
+
+	<c:if test="${param.infomsg!=null}">
+		<script type="text/javascript">popupMessages('Successfully Added')</script>
 	</c:if>
 
 	<c:if test="${param.error!=null}">
-				<script>
-			var toastMixin = Swal.mixin({
-		    toast: true,
-		    icon: 'success',
-		    title: 'General Title',
-		    animation: false,
-		    position: 'top-right',
-		    showConfirmButton: false,
-		    timer: 3000,
-		    timerProgressBar: true,
-		    didOpen: (toast) => {
-		      toast.addEventListener('mouseenter', Swal.stopTimer)
-		      toast.addEventListener('mouseleave', Swal.resumeTimer)
-		    }
-		  });
-				alreadyAdded();
-				function alreadyAdded() {
-					toastMixin.fire({
-						title : 'This Hotel Already Added',
-						icon : 'error'
-					});
-				}
-			</script>
+		<script type="text/javascript">popupMessages('This Hotel Already Added')</script>
 	</c:if>
-	
-	
+
+
 </body>
 </html>

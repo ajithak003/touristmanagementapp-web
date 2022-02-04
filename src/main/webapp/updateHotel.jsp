@@ -22,6 +22,7 @@
 
 h1 {
 	text-align: center;
+	color: blue;
 }
 
 .addpackage {
@@ -72,9 +73,9 @@ td {
 	padding-top: 20px;
 	padding-bottom: 20px;
 }
-a{
+#home{
 text-decoration: none;
-color:blue;
+color: blue;
 }
 select{
     border: 3px solid;
@@ -91,7 +92,7 @@ font-weight: bold;
 <body>
      
      <br>
-     <h3><a href="showAllHotel">Go Back</a></h3>
+     <h3><a href="showAllHotel" id="home">Go Back</a></h3>
      
 	<h1>Update Hotels</h1>
 	<br>

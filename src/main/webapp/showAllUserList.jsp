@@ -11,6 +11,11 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>show All User</title>
 
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 
@@ -22,7 +27,7 @@
 <style>
 a {
 	text-decoration: none;
-	color:blue;
+	color: blue;
 }
 
 h1 {
@@ -77,10 +82,10 @@ td {
 		<tbody>
 			<c:forEach begin="0" items="${showalluserlist}" var="user"
 				varStatus="loop">
-				
+
 				<fmt:parseDate value="${user.getRegisterDate()}"
 					pattern="yyyy-MM-dd'T'HH:mm" var="registerDate" type="both" />
-				
+
 				<tr>
 					<td>${loop.count}</td>
 					<td>${user.getId()}</td>
@@ -89,8 +94,12 @@ td {
 					<td>${user.getMboNo()}</td>
 					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
 							value="${registerDate}" /></td>
-					<td>${user.getStatus()}</td>
 
+					<td><c:if test="${user.getStatus().equals('active') }">
+							<span class="badge badge-pill badge-success">${user.getStatus()}</span>
+						</c:if> <c:if test="${user.getStatus().equals('inactive') }">
+							<span class="badge badge-pill badge-danger">${user.getStatus()}</span>
+						</c:if></td>
 				</tr>
 			</c:forEach>
 		</tbody>

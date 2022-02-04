@@ -59,7 +59,7 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 
 		List<UserFeedbackClass> ratings = new ArrayList<>();
 
-		String query = "select user_name,package_name,rating,describtion from users_feedback";
+		String query = "select feedback_id,user_name,package_name,rating,describtion from users_feedback order by feedback_id desc";
 
 		try {
 			con = ConnectionUtil.getDBConnect();
@@ -69,7 +69,7 @@ public class RatingDaoImplement implements UserFeedbackDaoInterface {
 			 rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				rating = new UserFeedbackClass(0, 0, 0, 0, rs.getString("user_name"),rs.getString("package_name"), rs.getFloat("rating"), rs.getString("describtion"));
+				rating = new UserFeedbackClass(rs.getInt("feedback_id"), 0, 0, 0, rs.getString("user_name"),rs.getString("package_name"), rs.getFloat("rating"), rs.getString("describtion"));
 				ratings.add(rating);
 
 			}

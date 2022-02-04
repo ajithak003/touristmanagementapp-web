@@ -93,70 +93,31 @@ td {
 	<c:set var="delete" scope="session" value="${param.deletepackage}" />
 	<c:set var="error" scope="session" value="${param.updateerror}" />
 	<c:set var="error" scope="session" value="${param.deleteerror}" />
+	
+	<script src="assets/js/popUpMessages.js"></script>
+	
 	<c:choose>
 		<c:when test="${update!=null}">
-
-			<script>
-				update();
-				function update() {
-					Swal.fire("Updated", "", "success");
-				}
-			</script>
+			<script type="text/javascript">
+			popupMessages('successfully updated')
+		</script>
+		</c:when>
+		
+		<c:when test="${updateerror!=null}">
+			<script type="text/javascript">
+			popupMessages('cannot be updated')
+		</script>
 		</c:when>
 
 		<c:when test="${delete!=null}">
-
-			<script>
-
-			var toastMixin = Swal.mixin({
-			    toast: true,
-			    icon: 'success',
-			    title: 'General Title',
-			    animation: false,
-			    position: 'top-right',
-			    showConfirmButton: false,
-			    timer: 3000,
-			    timerProgressBar: true,
-			    didOpen: (toast) => {
-			      toast.addEventListener('mouseenter', Swal.stopTimer)
-			      toast.addEventListener('mouseleave', Swal.resumeTimer)
-			    }
-			  });
-
-            deleted();
-              function deleted(){
-               toastMixin.fire({
-               animation: true,
-               title: 'Successfully deleted'
-              });
-             }
-  </script>
-
+           <script type="text/javascript">
+			popupMessages('Successfully deleted')
+		</script>
 		</c:when>
 		<c:when test="${deleteerror!=null}">
-			<script>
-				var toastMixin = Swal.mixin({
-		            toast: true,
-		    icon: 'success',
-		    title: 'General Title',
-		    animation: false,
-		    position: 'top-right',
-		    showConfirmButton: false,
-		    timer: 3000,
-		    timerProgressBar: true,
-		    didOpen: (toast) => {
-		      toast.addEventListener('mouseenter', Swal.stopTimer)
-		      toast.addEventListener('mouseleave', Swal.resumeTimer)
-		    }
-		  });
-				deleteError();
-				function deleteError() {
-					toastMixin.fire({
-						title : 'cannot be deleted',
-						icon : 'error'
-					});
-				}
-			</script>
+			<script type="text/javascript">
+			popupMessages('cannot be deleted')
+		</script>
 		</c:when>
 	</c:choose>
 
@@ -217,23 +178,6 @@ td {
 		$(document).ready(function() {
 			$('#table_id').DataTable();
 		});
-		
-		function packagedelete(packagename) {
-			 Swal.fire({
-				 title: "Are you sure about \n deleting this Package?",
-				    type: "info",
-				    showCancelButton: true,
-				    confirmButtonText: "Delete It",
-				    confirmButtonColor: "#ff0055",
-				    cancelButtonColor: "#999999",
-				    focusConfirm: false,
-				    focusCancel: true
-				}).then((result) => {
-				  if (result.isConfirmed) {
-				    window.location.replace("deletepackage?info=&packagname=" + packagename);
-				  }
-				})
-		}
 		
 	</script>
 </body>

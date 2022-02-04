@@ -23,7 +23,6 @@ public class ShowAllHotel extends HttpServlet {
 	    List<HotelClass> hotels = hotelDao.getAllHotel();
 		
 		request.setAttribute("showalladminhotel", hotels);
-		System.out.println(hotels.get(1).getStatus());
 
 		RequestDispatcher rd = request.getRequestDispatcher("showAllHotel.jsp");
 	

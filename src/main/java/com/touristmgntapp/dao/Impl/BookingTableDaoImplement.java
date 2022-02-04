@@ -261,7 +261,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 		Connection con = null;
 		String query = "select booking_id,user_id, package_id, flight_no, hotel_id,number_of_person,start_date,end_date,total_price,status,"
-				+ "booking_date,flight_class,hotel_room_type,days_in_night,package_name,payment_details,no_of_room from booking_details";
+				+ "booking_date,flight_class,hotel_room_type,days_in_night,package_name,payment_details,no_of_room from booking_details order by start_date desc";
 
 		Statement stmt = null;
 		ResultSet rs =null;
@@ -406,7 +406,7 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 						rs.getString("payment_details"), rs.getDouble("no_of_room"));
 
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
 			ConnectionUtil.close(pstmt, con, rs);

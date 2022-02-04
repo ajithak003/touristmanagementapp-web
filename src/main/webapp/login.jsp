@@ -78,12 +78,14 @@ a {
 	text-decoration: none;
 	font-weight: bolder;
 }
-.show{
-font-weight: bold;
+
+.show {
+	font-weight: bold;
 }
-#error{
-color:red;
-font-weight: bold;
+
+#error {
+	color: red;
+	font-weight: bold;
 }
 </style>
 </head>
@@ -109,7 +111,8 @@ font-weight: bold;
 
 			</div>
 			<div class="show">
-				<input type="checkbox" onclick="showPassword()">Show Password
+				<input type="checkbox" onclick="showPassword()">Show
+				Password
 			</div>
 			<br>
 			<div>
@@ -123,72 +126,25 @@ font-weight: bold;
 			</div>
 			<br>
 
-			<c:if test="${param.error!=null}">
-
-				<script>
-
-				var toastMixin = Swal.mixin({
-				    toast: true,
-				    icon: 'error',
-				    title: 'General Title',
-				    animation: false,
-				    position: 'top-right',
-				    showConfirmButton: false,
-				    timer: 3000,
-				    timerProgressBar: true,
-				    didOpen: (toast) => {
-				      toast.addEventListener('mouseenter', Swal.stopTimer)
-				      toast.addEventListener('mouseleave', Swal.resumeTimer)
-				    }
-				  });
-   
-                  deleted();
-                   function deleted(){
-                    toastMixin.fire({
-                    animation: true,
-                    title: 'Username and Password mismach'
-                   });
-                  }
-             </script>
-            </c:if>
-			<c:if test="${param.infomsg!=null}">
-
-				<script>
-
-				var toastMixin = Swal.mixin({
-				    toast: true,
-				    icon: 'success',
-				    title: 'General Title',
-				    animation: false,
-				    position: 'top-right',
-				    showConfirmButton: false,
-				    timer: 3000,
-				    timerProgressBar: true,
-				    didOpen: (toast) => {
-				      toast.addEventListener('mouseenter', Swal.stopTimer)
-				      toast.addEventListener('mouseleave', Swal.resumeTimer)
-				    }
-				  });
-   
-                  deleted();
-                   function deleted(){
-                    toastMixin.fire({
-                    animation: true,
-                    title: 'Successfully Registered !\n please login'
-                   });
-                  }
-             </script>
-            </c:if>
-
 		</div>
 
 	</form>
-	<script type="text/javascript">
-		function remove() {
-			console.log("enter");
-			document.getElementById("error").innerHTML = "";
-		}
 
+	<script src="assets/js/popUpMessages.js"></script>
+
+	<c:if test="${param.error!=null}">
+		<script type="text/javascript">
+			popupMessages('Username and Password mismach')
+		</script>
+	</c:if>
+
+	<c:if test="${param.infomsg!=null}">
+		<script type="text/javascript">
+			popupMessages('Successfully Registered')
+		</script>
+	</c:if>
+
+	<script type="text/javascript">
 		function showPassword() {
 			var x = document.getElementById("psw");
 			if (x.type === "password") {

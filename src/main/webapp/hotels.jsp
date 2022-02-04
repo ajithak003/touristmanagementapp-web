@@ -119,7 +119,7 @@ button {
 		</c:if>
 
 		<c:forEach items="${hotels}" var="hotel">
-
+          <c:if test="${hotel.getStatus().equals('active')}">
 			<div class="container">
 				<div>
 					<img src="assets/images/${hotel.getImage()}"
@@ -150,6 +150,7 @@ button {
 				</div>
 
 			</div>
+			</c:if>
 			<br>
 			<br>
 		</c:forEach>

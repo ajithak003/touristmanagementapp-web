@@ -11,7 +11,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Show all bookings</title>
-
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 <style>
 body {
 	background-color: rgb(229, 236, 236);
@@ -227,18 +230,12 @@ color:blue;
 								Total price &nbsp;: <span id="totprice">Rs. ${singlebooking.getTotalPrice()}</span>
 							</h2>
 						</div>
-						</table>
+						
 
 						<div>
 							<c:if test="${singlebooking.isCancel()==false and singlebooking.getStatus().equals('confirmed')}">
-
-                                 
-								<button class="cancel" onclick="check()">
-									<a href="cancelTrip?bookingid=${singlebooking.getBookingId()}">
-										Cancel</a>
-								</button>
-
 								
+								<button class="cancel" onclick="cancelBooking(${singlebooking.getBookingId()})">Delete</button>
 
 									<button class="datechange">
 										<a href="terms?bookingid=${singlebooking.getBookingId()}">Change
@@ -266,15 +263,6 @@ color:blue;
 
 		</div>
 	</div>
-	<script>
-		function check() {
-			var result = confirm("if you want to cancel 10% cancelation charge will be detected on your total price");
-
-			if (result == false) {
-				event.preventDefault();
-			}
-		}
-	</script>
-
+	<script src="assets/js/popUpMessages.js"></script>
 </body>
 </html>

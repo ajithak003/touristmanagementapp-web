@@ -74,16 +74,19 @@ font-size: 40px;
 <body>
         <c:set var="user" scope="session" value="${user}"/>
         
+        <script src="assets/js/popUpMessages.js"></script>
+        
         <c:if test="${param.infomsg!=null}">
-
-				<script>
-				Swal.fire({
-					  icon: 'error',
-					  title: 'Insufficient balance !',
-					  showConfirmButton: false,
-					  timer: 1500})
-			</script>
-			</c:if>
+       <script type="text/javascript">
+			popupMessages('Insufficient balance')
+		</script>
+		</c:if>
+		
+		<c:if test="${param.error!=null}">
+       <script type="text/javascript">
+			popupMessages('Transaction failed')
+		</script>
+		</c:if>
         
 	<form action="walletSus" method="post">
 		<h3 >
