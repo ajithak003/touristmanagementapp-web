@@ -125,7 +125,8 @@ span {
 
 			<c:forEach items="${allflightpage}" var="flight">
 			
-			<c:if test="${flight.getEconomicClassSeat()>=noOfPerson or flight.getBusinessClassSeat()>=noOfPerson}" >
+			<c:if test="${flight.getEconomicClassSeat()>=noOfPerson or flight.getBusinessClassSeat()>=noOfPerson and 
+			  flight.getStatus.equals('available') }" >
 
 				<div class="container">
 					<h2>${flight.getFlightName()}</h2>

@@ -112,7 +112,7 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setString(1, "inactive");
+			pstmt.setString(1, "unavailable");
 			pstmt.setInt(2, flightNo);
 
 			del = pstmt.executeUpdate();
@@ -132,14 +132,14 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 		List<FlightClass> flightDetails = new ArrayList<>();
 		Connection con = null;
 		ResultSet rs = null;
-		String query = "select flight_no,flight_name,depature,destination,depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,status,business_class_seat_status,economic_class_seat_status from flights_details where status=?";
+		String query = "select flight_no,flight_name,depature,destination,depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,"
+				+ "status,business_class_seat_status,economic_class_seat_status from flights_details";
 
 		PreparedStatement pstmt = null;
 
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "available");
 
 			 rs = pstmt.executeQuery();
 

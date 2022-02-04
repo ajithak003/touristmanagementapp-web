@@ -13,14 +13,13 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <title>ahowAllHotels</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript"
@@ -83,7 +82,7 @@ td {
 	border-radius: 5px;
 	border-radius: 10px;
 	height: 30px;
-	width: 50px;
+	width: 60px;
 }
 </style>
 </head>
@@ -179,6 +178,7 @@ td {
 			<th id="">Hotel Location</th>
 			<th id="">Standard Room Price (Rs)</th>
 			<th id="">Premium Room Price (Rs)</th>
+			<th id="">Status</th>
 			<th id="">Action</th>
 			<th id="">Action</th>
 		</thead>
@@ -193,6 +193,14 @@ td {
 					<td>${hotel.getLocation()}</td>
 					<td>${hotel.getMidRangePrice()}</td>
 					<td>${hotel.getPremiumPrice()}</td>
+					<td>
+				        <c:if test="${hotel.getStatus().equals('active') }">
+				        <span class="badge badge-pill badge-success">${hotel.getStatus()}</span>
+				        </c:if>
+				        <c:if test="${hotel.getStatus().equals('inactive') }" 	>
+                        <span class="badge badge-pill badge-danger">${hotel.getStatus()}</span>
+                        </c:if>
+                        </td>
 					<td><button class="edit"><a  class="update" 
 					href="updateHotel?hotelid=${hotel.getHotelId()}">Edit</a></button></td>
 					<td> <button class="delete" onclick="deleteHotel(${hotel.getHotelId()})">Delete</button></td>

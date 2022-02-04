@@ -35,14 +35,16 @@ public class UpdatePackage extends HttpServlet {
 		
 		int packageId = Integer.parseInt(request.getParameter("packageid"));
 		
+		String status = request.getParameter("status");
+		
 		String image = request.getParameter("packageimage");
 		
-		PackageModeClass packages = new PackageModeClass(packageId,packagename,packageOneDayPrice,season,protocol,description,"active",image);
+		PackageModeClass packages = new PackageModeClass(packageId,packagename,packageOneDayPrice,season,protocol,description,status,image);
 		boolean pack = packageDao.updatePackage(packages);
 	
 		if(pack) {
 			
-			List<PackageModeClass> packageList = packageDao.getAllPackage();
+			List<PackageModeClass> packageList = packageDao.getAllAdminPackage();
 			
 			request.setAttribute("showalladminpackage", packageList);
 			

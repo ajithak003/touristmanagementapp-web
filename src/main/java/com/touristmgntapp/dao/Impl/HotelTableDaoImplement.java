@@ -54,7 +54,7 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		int pstmtvalue = 0;
-		String update = "update hotel_details set location=?,hotel_name=?,room_type_mid_range_price=?,room_type_premium_price=?, image=? where hotel_id=?";
+		String update = "update hotel_details set location=?,hotel_name=?,room_type_mid_range_price=?,room_type_premium_price=?,status=?, image=? where hotel_id=?";
 
 		try {
 			con = ConnectionUtil.getDBConnect();
@@ -65,8 +65,9 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			pstmt.setString(2, hotel.getHotelName());
 			pstmt.setDouble(3, hotel.getMidRangePrice());
 			pstmt.setDouble(4, hotel.getPremiumPrice());
-			pstmt.setString(5, hotel.getImage());
-			pstmt.setInt(6, hotel.getHotelId());
+			pstmt.setString(5, hotel.getStatus());
+			pstmt.setString(6, hotel.getImage());
+			pstmt.setInt(7, hotel.getHotelId());
 			pstmtvalue = pstmt.executeUpdate();
 
 			pstmt.executeQuery(commit);
@@ -111,12 +112,11 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price, image from hotel_details where status=?";
+		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status, image from hotel_details";
 		
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, active);
 
 			 rs = pstmt.executeQuery();
 
@@ -124,7 +124,7 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 
 				HotelClass hotel = new HotelClass(rs.getInt("hotel_id"), rs.getString("location"),
 						rs.getString("hotel_name"), rs.getDouble("room_type_mid_range_price"),
-						rs.getDouble("room_type_premium_price"), rs.getString("image"));
+						rs.getDouble("room_type_premium_price"),rs.getString("status"), rs.getString("image"));
 				hotelDetails.add(hotel);
 			}
 		} catch (SQLException e) {
@@ -145,23 +145,22 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 
 		HotelClass hotel = null;
 
-		List<HotelClass> hotels = new ArrayList<HotelClass>();
+		List<HotelClass> hotels = new ArrayList<>();
 
-		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price, image from hotel_details "
-				+ "where location=? and status=?";
+		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status image from hotel_details "
+				+ "where location=?";
 
 		try {
 			con = ConnectionUtil.getDBConnect();
 
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, location);
-			pstmt.setString(2, active);
 
 			 rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 				hotel = new HotelClass(rs.getInt("hotel_id"), rs.getString("location"), rs.getString("hotel_name"),
-						rs.getDouble("room_type_mid_range_price"), rs.getDouble("room_type_premium_price"),
+						rs.getDouble("room_type_mid_range_price"), rs.getDouble("room_type_premium_price"),rs.getString("status"),
 						rs.getString("image"));
 				hotels.add(hotel);
 
@@ -179,8 +178,8 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 
 	@Override
 	public HotelClass getSingleHotel(int hotelId) {
-		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price, image"
-				+ " from hotel_details where hotel_id=? and status=?";
+		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status, image"
+				+ " from hotel_details where hotel_id=?";
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		HotelClass hotel = null;
@@ -190,14 +189,13 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, hotelId);
-			pstmt.setString(2, active);
 
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
 
 				hotel = new HotelClass(rs.getInt("hotel_id"), rs.getString("location"), rs.getString("hotel_name"),
-						rs.getDouble("room_type_mid_range_price"), rs.getDouble("room_type_premium_price"),
+						rs.getDouble("room_type_mid_range_price"), rs.getDouble("room_type_premium_price"),rs.getString("status"),
 						rs.getString("image"));
 
 			}

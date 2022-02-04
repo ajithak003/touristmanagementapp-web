@@ -24,6 +24,7 @@ public class PreUpdateHotel extends HttpServlet {
 		HotelClass hotel = hotelDao.getSingleHotel(hotelId);
 
 		request.setAttribute("updatehotel", hotel);
+		System.out.println(hotel);
 
 		RequestDispatcher rd = request.getRequestDispatcher("updateHotel.jsp");
 		

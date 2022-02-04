@@ -20,7 +20,7 @@ public class ShowAllAdminPackages extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		
 		PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-		List<PackageModeClass> packages = packageDao.getAllPackage();
+		List<PackageModeClass> packages = packageDao.getAllAdminPackage();
 		
 		request.setAttribute("showalladminpackage", packages);
 		

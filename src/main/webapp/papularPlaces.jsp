@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 
@@ -56,23 +58,26 @@ td {
 	padding-left: 20px;
 	padding-bottom: 40px;
 }
-a{color:blue;}
+
+a {
+	color: blue;
+}
 </style>
 </head>
 
 <body>
 
-		<h3>
-			<a href="userPage.jsp">Go To Home</a>
-		</h3>
-		<h1>Popular Places</h1>
-		
-		<table class="table" aria-describedby="popular places">
-		
+	<h3>
+		<a href="userPage.jsp">Go To Home</a>
+	</h3>
+	<h1>Popular Places</h1>
 
-			<c:forEach begin="0" items="${popularplace}" var="packages"
-				varStatus="loop">
+	<table class="table" aria-describedby="popular places">
 
+
+		<c:forEach begin="0" items="${popularplace}" var="packages"
+			varStatus="loop">
+			<c:if test="${packages.getStatus().equals('active') }">
 				<td>
 					<div class="firstrow">
 						<a href="singlePackage?location=${packages.getName()}"> <img
@@ -87,9 +92,10 @@ a{color:blue;}
 				<c:if test="${loop.count%4==0}">
 					<tr>
 				</c:if>
-			</c:forEach>
-<th id=""></th>
-			</table>
+			</c:if>
+		</c:forEach>
+		<th id=""></th>
+	</table>
 </body>
 
 </html>

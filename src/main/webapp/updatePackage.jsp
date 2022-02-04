@@ -75,6 +75,18 @@ td {
 }
 a{
 text-decoration: none;
+color: bule;
+}
+select{
+    border: 3px solid;
+	height: 25px;
+	width: 222px;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+option{
+font-weight: bold;
 }
 </style>
 
@@ -128,6 +140,17 @@ text-decoration: none;
 							pattern="[aa-Zz 0-9]{2,}"
 							title="must contain characters and numbers only">${packages.getDescription()}</textarea></td>
 				</tr>
+				
+				<tr>
+						<td><label for="package status">Status :</label></td>
+						<td>
+						<select name="status">
+						<option value="active">active</option>
+						<option value="inactive">inactive</option>
+						</select>
+						</td>
+					</tr>
+				
 				<tr>
 					<td><label for="image">Add Image URL :</label></td>
 					<td><input type="file" name="packageimage" id="packageimage"

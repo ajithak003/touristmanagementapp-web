@@ -10,17 +10,19 @@ public class HotelClass implements Serializable {
 	private String hotelName;
 	private double midRangePrice;
 	private double premiumPrice;
+	private String status;
 	private String image;
 	public HotelClass() {
 		super();
 	}
-	public HotelClass(int hotelId, String location, String hotelName, double midRangePrice, double premiumPrice, String image) {
+	public HotelClass(int hotelId, String location, String hotelName, double midRangePrice, double premiumPrice,String status, String image) {
 		super();
 		this.hotelId = hotelId;
 		this.location = location;
 		this.hotelName = hotelName;
 		this.midRangePrice = midRangePrice;
 		this.premiumPrice = premiumPrice;
+		this.status = status;
 		this.image = image;
 	}
 	public HotelClass(String hotelName,String location,  double midRangePrice, double premiumPrice,String image) {
@@ -70,6 +72,12 @@ public class HotelClass implements Serializable {
 		this.image = image;
 	}
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "HotelClass [hotelId=" + hotelId + ", location=" + location + ", hotelName=" + hotelName

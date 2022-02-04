@@ -14,6 +14,8 @@
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 <script
@@ -75,7 +77,7 @@ td {
  border-radius: 5px;
  border-radius: 10px;
  height: 30px;
- width: 50px;
+ width: 60px;
  } 
    
 
@@ -203,9 +205,16 @@ td {
 								value="${ArrivalDateTime}" /></td>
 						<td>${singleFlight.getBusinessClassFare()}</td>
 						<td>${singleFlight.getEconomicClassFare()}</td>
-						<td>${singleFlight.getStatus()}</td>
 						<td>${singleFlight.getBusinessClassSeat()}</td>
 						<td>${singleFlight.getEconomicClassSeat()}</td>
+				        <td>
+				        <c:if test="${singleFlight.getStatus().equals('available') }">
+				        <span class="badge badge-pill badge-success">${singleFlight.getStatus()}</span>
+				        </c:if>
+				        <c:if test="${singleFlight.getStatus().equals('unavailable') }" 	>
+                        <span class="badge badge-pill badge-danger">${singleFlight.getStatus()}</span>
+                        </c:if>
+                        </td>
 						<td><button class="edit"><a class="update"
 							href="updateFlight?flightno=${singleFlight.getFlightNo()}">Edit</a></button></td>
 						<td><button class="delete"

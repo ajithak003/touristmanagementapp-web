@@ -25,7 +25,7 @@ public class Deletepackage extends HttpServlet {
 	       try {
 
 	       if(packages) {
-	    	   List<PackageModeClass> packageList = packageDao.getAllPackage();
+	    	   List<PackageModeClass> packageList = packageDao.getAllAdminPackage();
 				
 				request.setAttribute("showalladminpackage", packageList);
 				

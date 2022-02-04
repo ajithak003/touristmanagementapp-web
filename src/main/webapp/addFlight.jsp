@@ -89,7 +89,18 @@ td {
 	height: 830px;
 }
 a{
+text-decoration:none;
 	color: blue;
+}
+select{
+    border: 3px solid;
+	height: 25px;
+	width: 222px;
+	font-size: 16px;
+	font-weight: bold;
+}
+option{
+font-weight: bold;
 }
 </style>
 </head>
@@ -153,10 +164,12 @@ a{
 
 					<tr>
 						<td><label for=" ">Status : </label></td>
-						<td><input type="text" name="status" id="status" cols="30"
-							rows="3" required pattern="[Aa-Zz]{2,}"
-							title="must contain characters only"></td>
-					</tr>
+						<td>
+						<select name="status">
+						<option value="available">available</option>
+						<option value="unavailable">unavailable</option>
+						</select>
+						</td>
 					</tr>
 					<tr>
 						<td><label for="">Business Class Seats Count :</label></td>

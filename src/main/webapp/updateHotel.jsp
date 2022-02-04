@@ -26,7 +26,7 @@ h1 {
 
 .addpackage {
 	border: 3px solid;
-	height: 450px;
+	height: 500px;
 	width: 45%;
 	position: absolute;
 	left: 27%;
@@ -74,6 +74,17 @@ td {
 }
 a{
 text-decoration: none;
+color:blue;
+}
+select{
+    border: 3px solid;
+	height: 25px;
+	width: 222px;
+	font-size: 16px;
+	font-weight: bold;
+}
+option{
+font-weight: bold;
 }
 </style>
 </head>
@@ -124,6 +135,17 @@ text-decoration: none;
 							pattern="[0-9 .]{2,10}"
 							title="must contain number only maximum 10 number"></td>
 					</tr>
+					
+					<tr>
+						<td><label for="hotel status">Status :</label></td>
+						<td>
+						<select name="status">
+						<option value="active">active</option>
+						<option value="inactive">inactive</option>
+						</select>
+						</td>
+					</tr>
+					
 					<tr>
 						<td><label for="">Add Image URL :</label></td>
 						<td><input type="file" name="hotelimage" id="hotelimage"

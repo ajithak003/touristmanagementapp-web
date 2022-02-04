@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,15 +24,16 @@ body {
 	background-color: rgb(248, 237, 221);
 }
 
-
 h1 {
-	color:blue;
+	color: blue;
 	text-align: center;
 	font-size: 40px;
 }
-a{
-color:blue;
+
+a {
+	color: blue;
 }
+
 .firsrrow {
 	padding-left: 20%;
 }
@@ -53,12 +56,12 @@ h2 {
 	font-size: 35px;
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
 td {
 	padding-right: 15px;
-	padding-left:18px;
+	padding-left: 18px;
 	padding-bottom: 40px;
 }
-
 </style>
 </head>
 
@@ -68,28 +71,31 @@ td {
 		<h3>
 			<a href="index.jsp">Go To Home</a>
 		</h3>
-		
-		<h1>Popular Places</h1>
-		
-		<table  class="table" aria-describedby="Show All home places">
 
+		<h1>Popular Places</h1>
+
+		<table class="table" aria-describedby="Show All home places">
 			<c:forEach begin="0" items="${showAllHomePlaces}" var="packages"
 				varStatus="loop">
 
 				<td>
 					<div class="firstrow">
-						<img class="firstrowimg" src="assets/images/${packages.getImage() }"
+						<img class="firstrowimg"
+							src="assets/images/${packages.getImage() }"
 							alt="${packages.getName()}">
 
 
-						<h2 name="location">${packages.getName()}</h2>
+						<h2 name="location">${packages.getName()}${loop.count}</h2>
 
 					</div>
 				</td>
+
 				<c:if test="${loop.count%4==0}">
 					<tr>
 				</c:if>
+
 			</c:forEach>
+
 			<th id=""></th>
 		</table>
 

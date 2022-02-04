@@ -110,7 +110,7 @@ td {
 
 			<c:forEach begin="0" items="${showAllPlaces}" var="packages"
 				varStatus="loop">
-
+                 <c:if test="${packages.getStatus().equals('active') }">
 				<td>
 					<div class="firstrow">
 						<img class="firstrowimg" src="assets/images/${packages.getImage() }"
@@ -125,7 +125,7 @@ td {
 				<c:if test="${loop.count%4==0}">
 					<tr>
 				</c:if>
-				
+				</c:if>
 			</c:forEach>
         <th id=""></th>
 		</table>

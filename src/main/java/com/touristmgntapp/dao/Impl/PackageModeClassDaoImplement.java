@@ -65,7 +65,7 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface {
 			pstmt.setString(3, packages.getSeason());
 			pstmt.setString(4, packages.getProtocols());
 			pstmt.setString(5, packages.getDescription());
-			pstmt.setString(6, active);
+			pstmt.setString(6, packages.getStatus());
 			pstmt.setString(7, packages.getImage());
 			pstmt.setInt(8, packages.getPackageId());
 
@@ -93,8 +93,8 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface {
 		try {
 			con = ConnectionUtil.getDBConnect();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, active);
-
+            pstmt.setString(1,active);
+			
 			ResultSet rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -199,4 +199,36 @@ public class PackageModeClassDaoImplement implements PackageModeDaoInterface {
 		return packages;
 	}
 
+	@Override
+	public List<PackageModeClass> getAllAdminPackage() {
+
+		List<PackageModeClass> packageList = new ArrayList<>();
+		Connection con = null;
+		String query = "select package_id,package_name,package_price_1n,season,protocols,description,status,image from package_modes";
+
+		PreparedStatement pstmt = null;
+		try {
+			con = ConnectionUtil.getDBConnect();
+			pstmt = con.prepareStatement(query);
+
+			ResultSet rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				PackageModeClass packages = new PackageModeClass(rs.getInt("package_id"), rs.getString("package_name"),
+						rs.getDouble("package_price_1n"), rs.getString("season"), rs.getString("protocols"),
+						rs.getString("description"), rs.getString("status"), rs.getString("image"));
+				packageList.add(packages);
+			}
+
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			ConnectionUtil.close(pstmt, con);
+		}
+
+		return packageList;
+
+	}
+
+	
 }

@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,11 +10,12 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>show All Places</title>
-
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
@@ -81,7 +81,7 @@ td {
 	border-radius: 5px;
 	border-radius: 10px;
 	height: 30px;
-	width: 50px;
+	width: 60px;
 }
 </style>
 
@@ -180,6 +180,7 @@ td {
 			<th id="">Season</th>
 			<th id="">Protocols</th>
 			<th id="">Description</th>
+			<th id="">Status</th>
 			<th id="">Action</th>
 			<th id="">Action</th>
 		</thead>
@@ -195,6 +196,14 @@ td {
 					<td>${singlePackage.getSeason()}</td>
 					<td>${singlePackage.getProtocols()}</td>
 					<td>${singlePackage.getDescription()}</td>
+					<td>
+				        <c:if test="${singlePackage.getStatus().equals('active') }">
+				        <span class="badge badge-pill badge-success">${singlePackage.getStatus()}</span>
+				        </c:if>
+				        <c:if test="${singlePackage.getStatus().trim().equals('inactive') }" 	>
+                        <span class="badge badge-pill badge-danger">${singlePackage.getStatus()}</span>
+                        </c:if>
+                        </td>
 					<td><button class="edit"><a class="update"
 								href="updatePackage?packagname=${singlePackage.getName()}">Edit</a>
 						</button></td>
