@@ -11,9 +11,7 @@
 <title>Profile</title>
 
 <style>
-/*  body{
-            background-color:rgb(202, 187, 187);
-        } */
+
 h1 {
 	text-align: center;
 	color: blue;

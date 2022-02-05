@@ -110,36 +110,35 @@ font-weight: bold;
 				<tr>
 					<td><label for="location">package location : </label></td>
 					<td><input type="text" name="packagename" id="packagename"
-						value="${packages.getName()}" required pattern="[aa-Zz]{2,}"
-						title="must contain characters only"></td>
+						value="${packages.getName()}" required pattern="[A-Za-z]{2,}"
+						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 
 				<tr>
 					<td><label for="price">Package one day night price : </label></td>
-					<td><input type="text" name="packageonedayprice" placeholder="Rs. "
-						id="packageonedayprice" value=" ${packages.getPriceOneDays()}"
-						required pattern="[0-9 .]{2,}" title="must contain numbers only"></td>
+					<td><input type="text" name="packageonedayprice" placeholder="Rs. " id="packageonedayprice"
+						 value=" ${packages.getPriceOneDays()}"required min="500" max="50000"
+						 title="must contain numbers only minimum Rs. 500 and maximum Rs. 50000"></td>
 				</tr>
 				<tr>
 					<td><label for="season">current season :</label></td>
 					<td><input type="text" name="season" id="season"
-						value="${packages.getSeason()}" required pattern="[aa-Zz]{2,}"
-						title="must contain characters only"></td>
+						value="${packages.getSeason()}" required pattern="[A-Za-z]{2,}"
+						 title="must contain characters only minimum 2 characters"></td>
 				</tr>
 				<tr>
 					<td><label for="protocol">current tourist protocols :</label></td>
-					<td><textarea name="protocols" id="protocols"
-							value="${packages.getProtocols()}" cols="30" rows="3" required
-							pattern="[aa-Zz 0-9]{2,}"
-							title="must contain characters and numbers only">${packages.getProtocols()}</textarea></td>
+					<td><textarea name="protocols" id="protocols" cols="30" rows="3"
+							value="${packages.getProtocols()}"  required  pattern="[A-Za-z0-9]{5,}"
+							title="must contain 5 characters and numbers only ">${packages.getProtocols()}</textarea></td>
 				</tr>
 				<tr>
 					<td><label for="description">Tourist Place Description
 							:</label></td>
 					<td><textarea name="description" id="description"
-							value="${packages.getDescription()}" cols="30" rows="3" required
-							pattern="[aa-Zz 0-9]{2,}"
-							title="must contain characters and numbers only">${packages.getDescription()}</textarea></td>
+							value="${packages.getDescription()}" cols="30" rows="3" 
+						    required  pattern="[A-Za-z0-9]{5,}"
+							title="must contain 5 characters and numbers only ">${packages.getDescription()}</textarea></td>
 				</tr>
 				
 				<tr>
@@ -153,7 +152,7 @@ font-weight: bold;
 					</tr>
 				
 				<tr>
-					<td><label for="image">Add Image URL :</label></td>
+					<td><label for="Tourist place image">Add Image :</label></td>
 					<td><input type="file" name="packageimage" id="packageimage"
 						required></td>
 				</tr>

@@ -23,7 +23,10 @@
 	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
 		sans-serif;
 }
-body{background-color: aquamarine;}
+
+body {
+	background-color: aquamarine;
+}
 
 h1 {
 	text-align: center;
@@ -84,19 +87,27 @@ td {
 .container {
 	height: 830px;
 }
-a{
-text-decoration:none;
+
+a {
+	text-decoration: none;
 	color: blue;
 }
-select{
-    border: 3px solid;
+
+select {
+	border: 3px solid;
 	height: 25px;
 	width: 222px;
 	font-size: 16px;
 	font-weight: bold;
 }
-option{
-font-weight: bold;
+
+option {
+	font-weight: bold;
+}
+
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 </style>
 </head>
@@ -118,104 +129,87 @@ font-weight: bold;
 					<tr>
 						<td><label for="location">Flight Name : </label></td>
 						<td><input type="text" name="flightname" id="flightname"
-							required pattern="[Aa-Zz 0-9 ]{2,}"
-							title="must contain  and numbers only" autofocus></td>
+							required autofocus pattern="[A-Za-z0-9]{2,}"
+							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
+						</td>
 					</tr>
 
 					<tr>
-						<td><label for="depature">Departure Location : </label></td>
+						<td><label for="depature place">Departure Location :
+						</label></td>
 						<td><input type="text" name="Depature" id="Depature" required
-							pattern="[aA-zZ ]{2,}" title="must contain characters only"></td>
-					</tr>
-					<tr>
-						<td><label for="destination">destination Location :</label></td>
-						<td><input type="text" name="destination" id="destination"
-							required pattern="[aA-zZ ]{2,}"
-							title="must contain characters only"></td>
-					</tr>
-					<tr>
-						<td><label>Departure Date And Time</label></td>
-						<td><input type="datetime-local" name="DepatureDate"
-							id="Date" required></td>
-					</tr>
-					<tr>
-						<td><label>Arrival Date And Time</label></td>
-						<td><input type="datetime-local" name="ArrivalDate" id="Date"
-							required></td>
-					</tr>
-					<tr>
-						<td><label for="">Business Class Fare :</label></td>
-						<td><input type="number" name="businessclassfare"
-							placeholder="Rs" id="businessclassfare" min="600" max="200000"
-							required
-							title="must contain number only maximum 600 minimum 200000"></td>
-					</tr>
-					<tr>
-						<td><label for="">Economic Class Fare :</label></td>
-						<td><input type="number" name="economicclassfare"
-							placeholder="Rs" id="economicclassfare" min="600" max="200000"
-							title="must contain number only maximum 600 minimum 200000"
-							required></td>
-					</tr>
-
-					<tr>
-						<td><label for=" ">Status : </label></td>
-						<td>
-						<select name="status">
-						<option value="available">available</option>
-						<option value="unavailable">unavailable</option>
-						</select>
+							pattern="[A-Za-z]{2,}"  title="must contain characters only minimum 2 characters">
 						</td>
 					</tr>
 					<tr>
-						<td><label for="">Business Class Seats Count :</label></td>
-						<td><input type="text" name="businessclassseat"
-							id="businessclassseatr" required pattern="[0-9]{2,3}"
-							title="must contain number only maximum 10 minimum 2 no. number"></td>
+						<td><label for="destination place">destination
+								Location :</label></td>
+						<td><input type="text" name="destination" id="destination"
+							required pattern="[A-Za-z]{2,}"
+							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>
-						<td><label for="">Economic Class Seats Count :</label></td>
-						<td><input type="text" name="economicclassseat"
-							id="economicclassseat" required pattern="[0-9]{2,3}"
-							title="must contain number only maximum 50 minimum 200 no. number"></td>
+						<td><label for="Departure Date And Time">Departure Date And Time</label></td>
+						<td><input type="datetime-local" name="DepatureDate" id="date" required></td>
+					</tr>
+					<tr>
+						<td><label for="Arrival Date And Time">Arrival Date	And Time</label></td>
+						<td><input type="datetime-local" name="ArrivalDate" id="date" required></td>
+					</tr>
+					<tr>
+						<td><label for="Business Class Fare">Business Class Fare :</label></td>
+						<td><input type="number" name="businessclassfare"
+							placeholder="Rs" id="businessclassfare" min="600" max="200000"
+							required
+							title="must contain number only maximum Rs. 600 minimum Rs. 200000"></td>
+					</tr>
+					<tr>
+						<td><label for="Economic Class Fare">Economic Class Fare :</label></td>
+						<td><input type="number" name="economicclassfare"
+							placeholder="Rs" id="economicclassfare" min="600" max="200000"
+							title="must contain number only maximum Rs. 600 minimum Rs. 200000"
+							required></td>
+					</tr>
+
+					<tr>
+						<td><label for="flight Status">Status : </label></td>
+						<td><select name="status">
+								<option value="available">available</option>
+								<option value="unavailable">unavailable</option>
+						</select></td>
+					</tr>
+					<tr>
+						<td><label for="Business Class Seats Count">Business
+								Class Seats Count :</label></td>
+						<td><input type="number" name="businessclassseat"
+							id="businessclassseatr" required min="50" max="350"
+							title="must contain number only maximum 50 minimum 350 number of seats"></td>
+					</tr>
+					<tr>
+						<td><label for="Economic Class Seats Count">Economic
+								Class Seats Count :</label></td>
+						<td><input type="number" name="economicclassseat"
+							id="economicclassseat" required min="50" max="350"
+							title="must contain number only maximum 50 minimum 350 number of seats"></td>
 					</tr>
 				</table>
 				<button>Add Flight</button>
 			</div>
 		</div>
 	</form>
-	
+
 	<script src="assets/js/popUpMessages.js"></script>
 
 	<c:if test="${param.infomsg!=null}">
-		<script type="text/javascript">popupMessages('Successfully Added')</script>
+		<script type="text/javascript">
+			popupMessages('Successfully Added')
+		</script>
 	</c:if>
 	<c:if test="${param.error!=null}">
-		<script type="text/javascript">popupMessages('Flight can not be Added')</script>
+		<script type="text/javascript">
+			popupMessages('Flight can not be Added')
+		</script>
 	</c:if>
-
-	<script>
-
-   today();
-   function today(){
-     
-   var currentTime = new Date() 
-   var minDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), + currentTime.getDate()+1); //one day next before month
-   var maxDate =  new Date(currentTime.getFullYear(), currentTime.getMonth() +1, +currentTime.getDate()+1); // one day before next month
-   console.log(minDate);
-   console.log(maxDate);
-   let date = JSON.stringify(maxDate)
-   date = date.slice(1,11)
-   console.log(date)
-   let dates = JSON.stringify(minDate)
-   dates = dates.slice(1,11)
-   console.log(dates)
-   document.getElementById("Date").setAttribute("max",date);
-   document.getElementById("Date").setAttribute("min",dates);
-
-   }   
- 
-</script>
 
 </body>
 

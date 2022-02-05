@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -150,16 +149,6 @@ span {
 
 
 	</div>
-	<script>
-		function go() {
-			window.location
-					.replace(
-							"logout",
-							'window',
-							'toolbar=1,location=1,directories=1,status=1,menubar=1,scrollbars=1,resizable=1');
-			self.close()
-		}
-	</script>
-
+	
 </body>
 </html>

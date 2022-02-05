@@ -103,7 +103,7 @@ font-size: 40px;
 			<h4>Topup Wallet</h4>
 			<br> <input type="number" name="amount" id="amount"
 				placeholder="Rs.  Enter amount" required min="10000" autofocus
-				pattern="[0-9]{3,}" title="must contain numbers only">
+				pattern="[0-9]{3,}" title="must contains numbers minimum Rs. 10000">
 			<p>Minimum Rs. 10000</p>
 			<br>
 			<br>

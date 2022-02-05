@@ -125,10 +125,8 @@ td {
 			</c:forEach>
 		</tbody>
 	</table>
-	<script>
-		$(document).ready(function() {
-			$('#table_id').DataTable();
-		});
-	</script>
+	
+	<script src="assets/js/dataTable.js"></script>
+	
 </body>
 </html>

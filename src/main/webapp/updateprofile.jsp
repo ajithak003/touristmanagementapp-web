@@ -63,7 +63,7 @@ font-weight: bold;
 			    <td><label id="lable">Full Name : </label></td>
 				<td><input type="text" placeholder="FullName" name="FullName"
 					value="${user.getName()}" required autofocus
-					pattern="[aa-Zz]{2,}" title="must contain characters only">
+					pattern="[A-Za-z]{2,}" title="must contain numbers only minimum 2 characters">
 				</td>
 			</tr>
 
@@ -71,7 +71,7 @@ font-weight: bold;
 			 <td><label id="lable">Mobile No : </label></td>
 				<td><input type="text" placeholder="Mobile No" name="regmobile"
 					value="${user.getMboNo()}" required pattern="[6-9][0-9]{9}"
-					title="Must contain 10 numbers only"></td>
+					title="Must contain 10 numbers only and starting with 6-9"></td>
 			</tr>
 			<tr></tr>
 			<tr>
@@ -90,16 +90,7 @@ font-weight: bold;
 			</tr>
 <th id=""></th>
 		</table>
-		<script>
-	function showPassword() {
-		var x = document.getElementById("psw");
-		if (x.type === "password") {
-			x.type = "text";
-		} else {
-			x.type = "password";
-		}
-	}
-	</script>
+		
 	</form>
 </body>
 </html>

@@ -1,5 +1,4 @@
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
-
+s
 <!DOCTYPE html>
 <html lang="en">
 <head>

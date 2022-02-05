@@ -112,48 +112,52 @@ font-weight: bold;
 				<th id=""></th>
 					<tr>
 						<td><label for="location">Flight Name : </label></td>
-						<td><input type="text" name="flightname" id="flightname"
-							value="${flight.getFlightName()}" required
-							pattern="[Aa-Zz 0-9]{2,}" autofocus></td>
+						<td><input type="text" name="flightname" id="flightname" autofocus
+							value="${flight.getFlightName()}" required pattern="[A-Za-z0-9]{2,}"
+							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
+						</td>
 					</tr>
 
 					<tr>
 						<td><label for="depature">Departure Location : </label></td>
 						<td><input type="text" name="Depature" id="Depature"
-							value="${flight.getDepature()}" required pattern="[aa-Zz]{2,}"
-							title="must contain characters only"></td>
+							value="${flight.getDepature()}" required pattern="[A-Za-z]{2,}"
+							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>
 						<td><label for="destination">destination Location :</label></td>
 						<td><input type="text" name="destination" id="destination"
 							value="${flight.getDestination()}" required
-							pattern="[aa-Zz]{2,}" title="must contain characters only"></td>
+							pattern="[A-Za-z]{2,}"title="must contain characters only minimum 2 characters">
+						</td>
 					</tr>
 					<tr>
-						<td><label>Departure Date And Time</label></td>
+						<td><label for="Departure Date And Time">Departure Date And Time</label></td>
 						<td><input type="datetime-local" name="DepatureDate"
-							id="Depature Date" value="${flight.getDepatureDateTime()}"></td>
+							id="date" value="${flight.getDepatureDateTime()}"></td>
 					</tr>
 					<tr>
-						<td><label>Arrival Date And Time</label></td>
+						<td><label for="Arrival Date And Time">Arrival Date And Time</label></td>
 						<td><input type="datetime-local" name="ArrivalDate"
-							id="Arrival Date" value="${flight.getArrivalDateTime()}"></td>
+							id="date" value="${flight.getArrivalDateTime()}"></td>
 					</tr>
 					<tr>
-						<td><label for="">Business Class Fare :</label></td>
-						<td><input type="text" name="businessclassfare" placeholder="Rs. "
+						<td><label for="Business Class Fare">Business Class Fare :</label></td>
+						<td><input type="number" name="businessclassfare" placeholder="Rs. "
 							id="businessclassfare" value="${flight.getBusinessClassFare()}"
-							pattern="[0-9 .]{2,10}" title="must contain number only"></td>
+							 min="600" max="200000" title="must contain number only maximum Rs. 600 minimum Rs. 200000">
+						</td>
 					</tr>
 					<tr>
-						<td><label for="">Economic Class Fare :</label></td>
-						<td><input type="text" name="economicclassfare" placeholder="Rs. "
+						<td><label for="Economic Class Fare">Economic Class Fare :</label></td>
+						<td><input type="number" name="economicclassfare" placeholder="Rs. "
 							id="economicclassfare" value="${flight.getEconomicClassFare()}"
-							pattern="[0-9 .]{2,10}" title="must contain number only"></td>
+							 min="600" max="200000" title="must contain number only maximum Rs. 600 minimum Rs. 200000">
+						</td>
 					</tr>
 
 					<tr>
-						<td><label for=" ">Status :</label></td>
+						<td><label for="flight status">Status :</label></td>
 						<td>
 						<select name="status">
 						<option value="available">available</option>
@@ -162,21 +166,20 @@ font-weight: bold;
 						</td>
 					</tr>
 					<tr>
-						<td><label for="">Business Class Seats Count :</label></td>
-						<td><input type="text" name="businessclassseat"
-							id="businessclassseat" value="${flight.getBusinessClassSeat()}"
-							pattern="[0-9]{2,3}" title="must contain number only"></td>
+						<td><label for="Business Class Seats Count ">Business Class Seats Count :</label></td>
+						<td><input type="number" name="businessclassseat" id="businessclassseat"
+							 value="${flight.getBusinessClassSeat()}" min="50" max="350"
+							title="must contain number only maximum 50 minimum 350 number of seats"></td>
 					</tr>
 					<tr>
-						<td><label for="">Economic Class Seats Count :</label></td>
-						<td><input type="text" name="economicclassseat"
-							id="economicclassseat" value="${flight.getEconomicClassSeat()}"
-							pattern="[0-9]{2,3}" title="must contain number only"></td>
+						<td><label for="Economic Class Seats Count">Economic Class Seats Count :</label></td>
+						<td><input type="number" name="economicclassseat" id="economicclassseat"
+							 value="${flight.getEconomicClassSeat()}" min="50" max="350"
+							 title="must contain number only maximum 50 minimum 350 number of seats"></td>
 					</tr>
 				</table>
 
-				<button name="flightno" value="${flight.getFlightNo()}">Update
-					Flight</button>
+				<button name="flightno" value="${flight.getFlightNo()}">Update Flight</button>
 			</div>
 		</form>
 	</div>

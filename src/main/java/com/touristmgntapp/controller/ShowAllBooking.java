@@ -21,12 +21,13 @@ public class ShowAllBooking extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-
+		
 		HttpSession session = request.getSession();
 
 		UserClass user = (UserClass) session.getAttribute("user");
 		BookingTableDaoImplement bookingDao = new BookingTableDaoImplement();
 		try {
+			
 			List<BookingClass> booking = bookingDao.getAllbooking(user);
 			request.setAttribute("userallbooking", booking);
 			

@@ -54,7 +54,6 @@ public class BookingSuccess extends HttpServlet {
 				wallet = (long) (wallet - booking.getTotalPrice());
 				userDao.addWalletAmount(user.getId(), wallet);
 				if (book) {
-				
 					response.sendRedirect("bookingsus.jsp");
 				}
 
@@ -66,7 +65,7 @@ public class BookingSuccess extends HttpServlet {
 		         System.out.println(newUser);
 
 			    session.setAttribute("user", newUser);
-			        
+			        	
 				response.sendRedirect("wallet.jsp?infomsg=Insufficient balance !");
 			}
 			} catch (IOException | ClassNotFoundException | SQLException e) {

@@ -235,7 +235,7 @@ color:blue;
 						<div>
 							<c:if test="${singlebooking.isCancel()==false and singlebooking.getStatus().equals('confirmed')}">
 								
-								<button class="cancel" onclick="cancelBooking(${singlebooking.getBookingId()})">Delete</button>
+								<button class="cancel" onclick="cancelBooking(${singlebooking.getBookingId()})">Cancel</button>
 
 									<button class="datechange">
 										<a href="terms?bookingid=${singlebooking.getBookingId()}">Change

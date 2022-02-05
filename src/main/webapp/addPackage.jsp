@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
+<%
+response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,18 +27,18 @@
 		sans-serif;
 }
 
-body{
-background-color: aquamarine;
+body {
+	background-color: aquamarine;
 }
 
 h1 {
 	text-align: center;
-	color:blue;
+	color: blue;
 }
 
 .addpackage {
 	border: 3px solid;
-	height: 480px;
+	height: 500px;
 	width: 45%;
 	position: absolute;
 	left: 27%;
@@ -59,8 +61,8 @@ input {
 }
 
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 textarea {
@@ -73,17 +75,19 @@ button {
 	margin-left: 65%;
 	margin-top: 20px;
 	border-radius: 20px;
-	background-color: cyan;
+	background-color: orange;
 	font-size: 18px;
 	font-family: Georgia, 'Times New Roman', Times, serif;
 	font-weight: bold;
 	border: none
 }
+
 td {
 	padding-top: 13px;
 	padding-bottom: 13px;
 }
-a{
+
+a {
 	color: blue;
 }
 </style>
@@ -96,64 +100,68 @@ a{
 		<h2>
 			<a href="adminPage.jsp">Go To Home</a>
 		</h2>
-		<br>
-		<br>
-		<br>
+		<br> <br> <br>
 
 		<div class="addpackage">
 			<table aria-describedby="Show All package">
-			<th id=""></th>
+				<th id=""></th>
 				<tr>
 					<td><label for="location">package location : </label></td>
 					<td><input type="text" name="packagename" id="packagename"
-						required autofocus pattern="[Aa-Zz]{2,}"
-						title="must contain characters only"></td>
+						required autofocus pattern="[A-Za-z]{2,}"
+						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 
 				<tr>
-					<td><label for="price">Package one day night price : </label></td>
-					<td><input type="number" name="packageonedayprice" placeholder="Rs"
-						id="packageonedayprice" required pattern="[0-9]{2,}"
-						title="must contain numbers only"></td>
+					<td><label for="Package one day night price">Package
+							one day night price/person : </label></td>
+					<td><input type="number" name="packageonedayprice"
+						placeholder="Rs" id="packageonedayprice" required min="500"
+						max="50000"
+						title="must contain numbers only minimum Rs. 500 and maximum Rs. 50000"></td>
 				</tr>
 				<tr>
 					<td><label for="season">current season :</label></td>
 					<td><input type="text" name="season" id="season" required
-						pattern="[Aa-Zz]{2,}" title="must contain characters only"></td>
+						pattern="[A-Za-z]{2,}"
+						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 				<tr>
 					<td><label for="protocol">current tourist protocols :</label></td>
 					<td><textarea name="protocol" id="" cols="30" rows="3"
-							required pattern="[Aa-Zz0-9]{5,}"
-							title="must contain 5 characters only"></textarea></td>
+							required pattern="[A-Za-z0-9]{5,}"
+							title="must contain 5 characters and numbers only "></textarea></td>
 				</tr>
 				<tr>
-					<td><label for="description">Tourist Place Description
-							:</label></td>
+					<td><label for="description">Tourist Place Description :</label></td>
 					<td><textarea name="description" id="description" cols="30"
-							rows="3" required pattern="[Aa-Zz0-9]{5,}"
-							title="must contain 5 characters only"></textarea></td>
+							rows="3" required pattern="[A-Za-z0-9]{5,}"
+							title="must contain 5 characters and numbers only "></textarea></td>
 				</tr>
 				<tr>
-					<td><label for="image">Add Images URL : </label></td>
+					<td><label for=" Tourist place image">Add Images : </label></td>
 					<td><input type="file" name="packageimage" id="packageimage"
 						required></td>
 				</tr>
 			</table>
 			<button>Add Package</button>
-			</div>
+		</div>
 	</form>
-	
-	<script src="assets/js/popUpMessages.js"></script>
-	
-	<c:if test="${param.error!=null}">
-			<script type="text/javascript">popupMessages('This Package Already Added!')</script>
-		</c:if>
-		<c:if test="${param.infomsg!=null}">
-			<script type="text/javascript">popupMessages('Successfully Added')</script>
-		</c:if>
 
-	
+	<script src="assets/js/popUpMessages.js"></script>
+
+	<c:if test="${param.error!=null}">
+		<script type="text/javascript">
+			popupMessages('This Package Already Added!')
+		</script>
+	</c:if>
+	<c:if test="${param.infomsg!=null}">
+		<script type="text/javascript">
+			popupMessages('Successfully Added')
+		</script>
+	</c:if>
+
+
 
 </body>
 </html>

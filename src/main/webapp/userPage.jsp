@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +9,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>user Page</title>
-
 <style>
 * {
 	margin: 0;
@@ -107,7 +105,7 @@ span {
 
 <body>
 
-     
+
 
 	<h1>Tourist Management</h1>
 	<span>welcome <c:out value="${sessionScope.welcom }" />
@@ -135,8 +133,6 @@ span {
 
 	<br>
 	<br>
-
-
 
 </body>
 

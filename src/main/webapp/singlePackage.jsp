@@ -110,6 +110,11 @@ label {
 .details, td{
 padding:15px;
 }
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 </style>
 </head>
 <body>
@@ -177,15 +182,15 @@ padding:15px;
 
 			<table aria-describedby="single place details">
 				<tr>
-					<td><label for="">start Date</label></td>
-					<td><label for="">No of person</label></td>
-					<td><label for="">No of days in night</label></td>
+					<td><label for="tour start date">start Date</label></td>
+					<td><label for="no of person">No of person</label></td>
+					<td><label for="no of night">No of days in night</label></td>
 				</tr>
 				<tr>
-					<td><input type="date" name="startdate" id="startdate"
-						class="data" required autofocus title="please enter the date"></td>
+					<td><input type="date" name="startdate" id="date"
+						class="data" required title="please enter the date"></td>
 					<td><input type="number" name="noofperson" class="data"
-						required pattern="[0-9]" min="1" title="please fill the box"></td>
+						required pattern="[0-9]" min="1" max="30" title="must contain number only minimum 1 and maximum 30"></td>
 					<td><select name="noofdays" id="select" class="data" required>
 							<option value="2 days plan">2N</option>
 							<option value="3 days plan">3N</option>
@@ -193,8 +198,7 @@ padding:15px;
 							<option value="5 days plan">5N</option>
 					</select></td>
 					<td>
-						<button value="Book Place" class="btn" id="button">Book
-							Place</button>
+						<button value="Book Place" class="btn" id="button">Book Place</button>
 					</td>
 				</tr>
 				<th id=""></th>
@@ -206,25 +210,6 @@ padding:15px;
 
 </body>
 
-<script>
-	today();
-	function today() {
-		var currentTime = new Date()
-		var minDate = new Date(currentTime.getFullYear(), currentTime
-				.getMonth(), +currentTime.getDate() + 2); //one day next before month
-		var maxDate = new Date(currentTime.getFullYear(), currentTime
-				.getMonth() + 1, +currentTime.getDate() + 2); // one day before next month
-		console.log(minDate);
-		console.log(maxDate);
-		let date = JSON.stringify(maxDate)
-		date = date.slice(1, 11)
-		console.log(date)
-		let dates = JSON.stringify(minDate)
-		dates = dates.slice(1, 11)
-		console.log(dates)
-		document.getElementById("startdate").setAttribute("max", date);
-		document.getElementById("startdate").setAttribute("min", dates);
-	}
-</script>
+<script src="assets/js/popUpMessages.js"></script>
 
 </html>

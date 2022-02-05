@@ -1,5 +1,27 @@
 /**
- * 
+ * restrict previous date and show only one month (current date to next 30 days) and disable future dates
+ */
+
+today();
+function today(){
+  
+var currentTime = new Date() 
+var minDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), + currentTime.getDate()+2); //one day next before month
+var maxDate =  new Date(currentTime.getFullYear(), currentTime.getMonth() +1, +currentTime.getDate()+2	); // one day before next month
+console.log(minDate);
+console.log(maxDate);
+let date = JSON.stringify(maxDate)
+date = date.slice(1,11)
+console.log(date)
+let dates = JSON.stringify(minDate)
+dates = dates.slice(1,11)
+console.log(dates)
+document.getElementById("date").setAttribute("max",date);
+document.getElementById("date").setAttribute("min",dates);
+
+}   
+/**
+ * animated (sweet alert messages) pop up message fuctions. using swal inbuild fuctions success, error and warning popups
  */
 
 function popupMessages(infoMessage) {
@@ -231,12 +253,12 @@ function popupMessages(infoMessage) {
 					toast.addEventListener('mouseleave', Swal.resumeTimer)
 				}
 			});
-			
-				toastMixin.fire({
-					title: 'cannot be updated',
-					icon: 'error'
-				});
-			
+
+			toastMixin.fire({
+				title: 'cannot be updated',
+				icon: 'error'
+			});
+
 			break;
 
 		case "Successfully deleted":
@@ -255,11 +277,11 @@ function popupMessages(infoMessage) {
 				}
 			});
 
-			
-				toastMixin.fire({
-					animation: true,
-					title: 'Successfully deleted'
-				});
+
+			toastMixin.fire({
+				animation: true,
+				title: 'Successfully deleted'
+			});
 			break;
 
 		case "cannot be deleted":
@@ -277,23 +299,24 @@ function popupMessages(infoMessage) {
 					toast.addEventListener('mouseleave', Swal.resumeTimer)
 				}
 			});
-			
-				toastMixin.fire({
-					title: 'cannot be deleted',
-					icon: 'error'
-				});
-			
+
+			toastMixin.fire({
+				title: 'cannot be deleted',
+				icon: 'error'
+			});
+
 			break;
-			
-			case "Insufficient balance" :
+
+		case "Insufficient balance":
 			Swal.fire({
-					  icon: 'error',
-					  title: 'Insufficient balance !',
-					  showConfirmButton: false,
-					  timer: 2000})
+				icon: 'error',
+				title: 'Insufficient balance !',
+				showConfirmButton: false,
+				timer: 2000
+			})
 			break;
-			
-			case "Transaction failed" :
+
+		case "Transaction failed":
 			var toastMixin = Swal.mixin({
 				toast: true,
 				icon: 'success',
@@ -308,108 +331,122 @@ function popupMessages(infoMessage) {
 					toast.addEventListener('mouseleave', Swal.resumeTimer)
 				}
 			});
-			
-				toastMixin.fire({
-					title: 'Transaction failed',
-					icon: 'error'
-				});
-				
+
+			toastMixin.fire({
+				title: 'Transaction failed',
+				icon: 'error'
+			});
+
 			break;
 	}
 
 }
 
 function deleteHotel(hotelid) {
-			 Swal.fire({
-				 title: "Are you sure about \n deleting this hotel?",
-				    type: "info",
-				    showCancelButton: true,
-				    confirmButtonText: "Delete It", 
-				    confirmButtonColor: "#ff0055",
-				    cancelButtonColor: "#999999",
-				    focusConfirm: false,
-				    focusCancel: true
-				}).then((result) => {
-				  if (result.isConfirmed) {
-				    window.location.replace("deleteHotel?info=&hotelid=" + hotelid);
-				  }
-				})
+	Swal.fire({
+		title: "Are you sure about \n deleting this hotel?",
+		type: "info",
+		showCancelButton: true,
+		confirmButtonText: "Delete It",
+		confirmButtonColor: "#ff0055",
+		cancelButtonColor: "#999999",
+		focusConfirm: false,
+		focusCancel: true
+	}).then((result) => {
+		if (result.isConfirmed) {
+			window.location.replace("deleteHotel?info=&hotelid=" + hotelid);
 		}
-		
+	})
+}
+
 function packagedelete(packagename) {
-			 Swal.fire({
-				 title: "Are you sure about \n deleting this Package?",
-				    type: "info",
-				    showCancelButton: true,
-				    confirmButtonText: "Delete It",
-				    confirmButtonColor: "#ff0055",
-				    cancelButtonColor: "#999999",
-				    focusConfirm: false,
-				    focusCancel: true
-				}).then((result) => {
-				  if (result.isConfirmed) {
-				    window.location.replace("deletepackage?info=&packagname=" + packagename);
-				  }
-				})
+	Swal.fire({
+		title: "Are you sure about \n deleting this Package?",
+		type: "info",
+		showCancelButton: true,
+		confirmButtonText: "Delete It",
+		confirmButtonColor: "#ff0055",
+		cancelButtonColor: "#999999",
+		focusConfirm: false,
+		focusCancel: true
+	}).then((result) => {
+		if (result.isConfirmed) {
+			window.location.replace("deletepackage?info=&packagname=" + packagename);
 		}
+	})
+}
 
 function deleteflight(flightNo) {
-				 Swal.fire({
-					 title: "Are you sure about \n deleting this flight?",
-					    type: "info",
-					    showCancelButton: true,
-					    confirmButtonText: "Delete It",
-					    confirmButtonColor: "#ff0055",
-					    cancelButtonColor: "#999999",
-					    focusConfirm: false,
-					    focusCancel: true
-					}).then((result) => {
-					  if (result.isConfirmed) {
-					    window.location.replace("deleteFlight?info=&flightno=" + flightNo);
-					  }
-					})
-			}	
-			
-function confirm(){
-		 window.location.replace("bookingsus");
-	}
+	Swal.fire({
+		title: "Are you sure about \n deleting this flight?",
+		type: "info",
+		showCancelButton: true,
+		confirmButtonText: "Delete It",
+		confirmButtonColor: "#ff0055",
+		cancelButtonColor: "#999999",
+		focusConfirm: false,
+		focusCancel: true
+	}).then((result) => {
+		if (result.isConfirmed) {
+			window.location.replace("deleteFlight?info=&flightno=" + flightNo);
+		}
+	})
+}
+
+function confirm() {
+	window.location.replace("bookingsus");
+}
+
+/*function confirm() {
+
+	$.ajax({
+		type: 'GET',
+		url: 'bookingsus',
+		cache: false,
+		success: function() {
+			window.location.replace("bookingsus.jsp");
+		}
+		
+	});
 	
+}*/
+
+
 function cancel() {
-		 Swal.fire({
-			 title: "Are you sure about \n cancel this booking ?",
-			    type: "info",
-			    showCancelButton: true,
-			    cancelButtonText: "No",
-			    confirmButtonText: "Yes",
-			    confirmButtonColor: "#ff0055",
-			    cancelButtonColor: "#999999",
-			    focusConfirm: false,
-			    focusCancel: true
-			}).then((result) => {
-			  if (result.isConfirmed) {
-			    window.location.replace("userPage.jsp");
-			  }
-			})
-	}
-	
+	Swal.fire({
+		title: "Are you sure about \n cancel this booking ?",
+		type: "info",
+		showCancelButton: true,
+		cancelButtonText: "No",
+		confirmButtonText: "Yes",
+		confirmButtonColor: "#ff0055",
+		cancelButtonColor: "#999999",
+		focusConfirm: false,
+		focusCancel: true
+	}).then((result) => {
+		if (result.isConfirmed) {
+			window.location.replace("userPage.jsp");
+		}
+	})
+}
+
 function cancelBooking(bookingId) {
-				 Swal.fire({
-					 title: "if you want to cancel 10% cancelation charge \n will be detected on your total price",
-					    type: "info",
-					    showCancelButton: true,
-	                    cancelButtonText: "Cancel",
-					    confirmButtonText: "  Ok",
-					    confirmButtonColor: "#ff0055",
-					    cancelButtonColor: "#999999",
-					    focusConfirm: false,
-					    focusCancel: true
-					}).then((result) => {
-					  if (result.isConfirmed) {
-					    window.location.replace("cancelTrip?bookingid=" +bookingId);
-					  }
-					})
-			}	
-	
-	
-	
-					
+	Swal.fire({
+		title: "if you want to cancel 10% cancelation charge \n will be detected on your total price",
+		type: "info",
+		showCancelButton: true,
+		cancelButtonText: "Cancel",
+		confirmButtonText: "  Ok",
+		confirmButtonColor: "#ff0055",
+		cancelButtonColor: "#999999",
+		focusConfirm: false,
+		focusCancel: true
+	}).then((result) => {
+		if (result.isConfirmed) {
+			window.location.replace("cancelTrip?bookingid=" + bookingId);
+		}
+	})
+}
+
+
+

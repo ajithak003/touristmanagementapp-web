@@ -43,34 +43,15 @@ body {
 				terms and policy
 			</h4>
 			<h3>
-				change Date : <input type="date" name="changedate" id="changedate"
+				change Date : <input type="date" name="changedate" id="date"
 					required>
 			</h3>
 			<button class="btn" id="btn">OK</button>
 		</div>
 	</form>
-	<script>
-
-today();
-function today(){
-  
-var currentTime = new Date() 
-var minDate = new Date(currentTime.getFullYear(), currentTime.getMonth(), + currentTime.getDate()+2); //one day next before month
-var maxDate =  new Date(currentTime.getFullYear(), currentTime.getMonth() +1, +currentTime.getDate()+2	); // one day before next month
-console.log(minDate);
-console.log(maxDate);
-let date = JSON.stringify(maxDate)
-date = date.slice(1,11)
-console.log(date)
-let dates = JSON.stringify(minDate)
-dates = dates.slice(1,11)
-console.log(dates)
-document.getElementById("changedate").setAttribute("max",date);
-document.getElementById("changedate").setAttribute("min",dates);
-
-}   
-
-</script>
+	
+	<script src="assets/js/popUpMessages.js"></script>
+	
 </body>
 
 

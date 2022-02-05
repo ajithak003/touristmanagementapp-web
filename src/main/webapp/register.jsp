@@ -84,23 +84,25 @@ body {
 			<h1>Register</h1>
 			<div class="textbox">
 				<input type="text" placeholder="FullName" name="FullName" value=""
-					required autofocus onkeyup="remove()" pattern="[aa-Zz]{2,}"
-					title="must contain numbers only">
+					required autofocus onkeyup="remove()" pattern="[A-Za-z]{2,}"
+					title="must contain numbers only minimum 2 characters">
 			</div>
 			<div class="textbox">
 				<input type="email" placeholder="Email" name="regemail" value=""
-					required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}">
+					required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
+					title="follow this pattern 'abc@xyz.com'">
 			</div>
 			<div class="textbox">
 				<input type="text" placeholder="Mobile No" name="regmobile" value=""
 					required pattern="[6-9][0-9]{9}"
-					title="Must contain 10 numbers only">
+					title="Must contain 10 numbers only and starting 6-9 only">
 			</div>
 
 			<div class="textbox">
 				<input type="password" placeholder="Password" name="regpsw" value=""
 					id="psw" onkeyup="checkpattern()" required
-					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$">
+					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
+					title="follow this pattern Ex: 'Abcd@123' or 'abCd234$'">
 			</div>
 
 			<div>
@@ -133,50 +135,8 @@ body {
 		</script>
 	</c:if>
 
-	<script type="text/javascript">
-		function checkpattern() {
-			console.log("function calling")
-			var password = document.getElementById("psw").value;
-			console.log(password)
-			if (password.match(/(?=[A-Z])/)) {
-				console.log("upper")
-				document.getElementById("upper").style.color = "rgb(31, 224, 31)";
-			} else {
-				document.getElementById("upper").style.color = "black";
-			}
-
-			if (password.match(/(?=[a-z])/)) {
-				console.log("lower")
-				document.getElementById("lower").style.color = "rgb(31, 224, 31)";
-			} else {
-				document.getElementById("lower").style.color = "black";
-			}
-
-			if (password.match(/(?=[0-9])/)) {
-				console.log("number")
-				document.getElementById("number").style.color = "rgb(31, 224, 31)";
-			} else {
-				document.getElementById("number").style.color = "black";
-			}
-
-			if (password.match(/(?=.*[!@#\$%\^&\*])/)) {
-				console.log("special")
-				document.getElementById("special").style.color = "rgb(31, 224, 31)";
-			} else {
-				document.getElementById("special").style.color = "black";
-			}
-
-			if (password.length > 7) {
-				console.log("character")
-				document.getElementById("char").style.color = "rgb(31, 224, 31)";
-			} else {
-				document.getElementById("char").style.color = "black";
-			}
-
-		}
-		
-		
-	</script>
+	<script src="assets/js/loginAndRegister.js"></script>
+	
 </body>
 
 </html>

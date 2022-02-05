@@ -144,16 +144,8 @@ a {
 		</script>
 	</c:if>
 
-	<script type="text/javascript">
-		function showPassword() {
-			var x = document.getElementById("psw");
-			if (x.type === "password") {
-				x.type = "text";
-			} else {
-				x.type = "password";
-			}
-		}
-	</script>
+	<script src="assets/js/loginAndRegister.js"></script>
+	
 </body>
 
 </html>

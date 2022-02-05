@@ -110,31 +110,30 @@ font-weight: bold;
 				<table aria-describedby="update hotel">
 				<th id=""></th>
 					<tr>
-						<td><label for="">Hotel Name : </label></td>
+						<td><label for="Hotel Name">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"
-							value="${hotel.getHotelName()}" required pattern="[aa-Zz]{2,}"
-							title="must contain characters only" autofocus></td>
+							value="${hotel.getHotelName()}" required autofocus pattern="[A-Za-z0-9]{2,}"
+							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
+						</td>
 					</tr>
 
 					<tr>
-						<td><label for="">Hotel Location : </label></td>
+						<td><label for="Hotel Location">Hotel Location : </label></td>
 						<td><input type="text" name="hotellocation"
 							id="hotellocation" value="${hotel.getLocation()}" required
-							pattern="[aa-Zz]{2,}" title="must contain characters only"></td>
+							pattern="[A-Za-z]{2,}" title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>
-						<td><label for="">Standard Room One Day Price :</label></td>
-						<td><input type="text" name="standardprice" placeholder="Rs. "
-							id="standardprice" value="${hotel.getMidRangePrice()}"
-							required pattern="[0-9 .]{2,10}"
-							title="must contain number only maximum 10 number"></td>
+						<td><label for="Hotel Standard Room One Day Price">Standard Room One Day Price :</label></td>
+						<td><input type="text" name="standardprice" placeholder="Rs. " required
+							id="standardprice" value="${hotel.getMidRangePrice()}" min="600" max="200000"
+							title="must contain numbers Rs. 500 minimum Rs. 100000 only">></td>
 					</tr>
 					<tr>
-						<td><label for="">Premium Room One Day Price :</label></td>
-						<td><input type="text" name="premiumprice" id="premiumprice"
-							value="${hotel.getPremiumPrice()}" placeholder="Rs. " required
-							pattern="[0-9 .]{2,10}"
-							title="must contain number only maximum 10 number"></td>
+						<td><label for="Hotel Premium Room One Day Price">Premium Room One Day Price :</label></td>
+						<td><input type="text" name="premiumprice" id="premiumprice"placeholder="Rs. " 
+							 value="${hotel.getPremiumPrice()}" required min="600" max="200000"
+							title="must contain numbers Rs. 500 minimum Rs. 100000 only"></td>
 					</tr>
 					
 					<tr>
@@ -148,7 +147,7 @@ font-weight: bold;
 					</tr>
 					
 					<tr>
-						<td><label for="">Add Image URL :</label></td>
+						<td><label for="Hotel image">Add Hotel Image :</label></td>
 						<td><input type="file" name="hotelimage" id="hotelimage"
 							value="${hotel.getImage()}" required></td>
 					</tr>
