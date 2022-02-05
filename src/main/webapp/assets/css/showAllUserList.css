@@ -1,0 +1,32 @@
+@charset "ISO-8859-1";
+
+a {
+	text-decoration: none;
+	color: blue;
+}
+
+h1 {
+	text-align: center;
+	font-size: 50px;
+	color: steelblue
+}
+
+h2 {
+	margin-left: 20px;
+}
+
+table {
+	text-align: center;
+}
+
+th {
+	background: silver;;
+	color: black;
+	border: 1px solid;
+	border-collapse: collapse;
+}
+
+td {
+	border: 1px solid;
+	border-collapse: collapse;
+}

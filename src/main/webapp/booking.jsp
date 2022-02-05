@@ -13,70 +13,8 @@
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
-
-<style>
-body {
-	background-color: rgb(252, 250, 250);
-}
-
-.container {
-	margin-left: 33%;
-	height: 1800px;
-}
-
-h1 {
-	text-align: center;
-	color: brown;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: bold;
-}
-
-h2 {
-	color: rgb(26, 87, 202);
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-		sans-serif;
-}
-
-td {
-	font-weight: bold;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-		'Lucida Sans', Arial, sans-serif;
-}
-
-h3 {
-	color: darkgreen;
-}
-
-.confirm {
-	width: 200px;
-	height: 40px;
-	background-color: red;
-	color: rgb(252, 250, 250);
-	border-radius: 25px;
-	font-size: 16px;
-	font-weight: bold;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	border: none;
-	margin-left: 100px;
-	margin-top: 20px;
-}
-.cancel{
-    width: 150px;
-	height: 40px;
-	background-color:#ffc107;
-	color: rgb(252, 250, 250)	;
-	border-radius: 25px;
-	font-size: 16px;
-	font-weight: bold;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	border: none;
-	margin-left: 0px;
-	margin-top: 20px;
-}
-td{
-padding:20px;
-}
-</style>
+	
+<link rel='stylesheet' href="assets/css/booking.css">
 
 </head>
 <body>

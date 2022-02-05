@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
@@ -11,58 +10,7 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Confirm Booking</title>
 
-<style>
-body {
-	background-color: rgb(252, 250, 250);
-}
-
-.container {
-	margin-left: 35%;
-	height: 1350px;
-}
-
-h1 {
-	text-align: center;
-	color: brown;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	font-weight: bold;
-}
-
-h2 {
-	color: rgb(26, 87, 202);
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-		sans-serif;
-}
-
-td {
-	font-weight: bold;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-		'Lucida Sans', Arial, sans-serif;
-}
-
-h3 {
-	color: darkgreen;
-}
-
-button {
-	width: 200px;
-	height: 40px;
-	background-color: red;
-	color: rgb(252, 250, 250);
-	border-radius: 25px;
-	font-size: 16px;
-	font-weight: bold;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-	border: none;
-	margin-left: 350px;
-	margin-top: 20px;
-}
-td {
-	padding-bottom: 10px;
-	padding-top: 10px;]
-	
-}
-</style>
+<link rel='stylesheet' href="assets/css/showSingleBooking.css">
 
 </head>
 <body>

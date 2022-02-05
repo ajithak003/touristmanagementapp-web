@@ -1,7 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,96 +8,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Ratings</title>
 
-<style>
-* {
-	margin: 0;
-	padding: 0;
-}
-
-h1 {
-	text-align: center;
-	color: blue;
-	font-size: 40px;
-	font-family: sans-serif;
-	margin-top: 20px;
-}
-
-.rate {
-	position: absolute;
-	margin-left: 500px;
-	margin-top: 100px;
-	height: 46px;
-	padding: 0 10px;
-	border: none;
-	border-radius: 20px;
-}
-
-.rate:not(:checked)>input {
-	position: absolute;
-	top: -9999px;
-}
-
-.rate:not(:checked)>label {
-	float: right;
-	width: 1em;
-	overflow: hidden;
-	white-space: nowrap;
-	cursor: pointer;
-	font-size: 80px;
-	color: #ccc;
-}
-
-.rate:not(:checked)>label:before {
-	content: '\2605';
-}
-
-.rate>input:checked ~ label {
-	color: #15ff00;
-}
-
-.rate:not(:checked)>label:hover, .rate:not(:checked)>label:hover ~ label
-	{
-	color: #00e1ff;
-}
-
-.rate>input:checked+label:hover, .rate>input:checked+label:hover ~ label,
-	.rate>input:checked ~ label:hover, .rate>input:checked ~ label:hover ~
-	label, .rate>label:hover ~ input:checked ~ label {
-	color: #fffb00;
-}
-
-textarea {
-	position: relative;
-	margin-top: 230px;
-	margin-left: 490px;
-	height: 100px;
-	width: 450px;
-	border: 3px solid;
-}
-
-textarea, :placeholder-shown {
-	font-size: 25px;
-}
-
-button {
-	position: absolute;
-	left: 900px;
-	height: 40px;
-	width: 120px;
-	border: none;
-	border-radius: 150px;
-	background-color: rgb(196, 221, 243);
-	font-size: 20px;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-		sans-serif;
-	color: black;
-	font-weight: bold;
-}
-a{
-text-decoration: none;
-color: blue;
-}
-</style>
+<link rel='stylesheet' href="assets/css/rating.css">
 
 </head>
 

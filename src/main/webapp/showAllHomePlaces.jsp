@@ -1,7 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -11,58 +8,9 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>showAllPlaces</title>
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: Arial, sans-serif;
-}
 
-body {
-	background-color: rgb(248, 237, 221);
-}
+<link rel='stylesheet' href="assets/css/popularPlaces.css">
 
-h1 {
-	color: blue;
-	text-align: center;
-	font-size: 40px;
-}
-
-a {
-	color: blue;
-}
-
-.firsrrow {
-	padding-left: 20%;
-}
-
-.firstrowimg {
-	top: 400px;
-	width: 300px;
-	height: 350px;
-	border-radius: 10px;
-}
-
-.table {
-	left: 10px;
-	margin-top: 50px;
-}
-
-h2 {
-	text-align: center;
-	font-weight: bold;
-	font-size: 35px;
-	font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-
-td {
-	padding-right: 15px;
-	padding-left: 18px;
-	padding-bottom: 40px;
-}
-</style>
 </head>
 
 <body>
@@ -85,7 +33,7 @@ td {
 							alt="${packages.getName()}">
 
 
-						<h2 name="location">${packages.getName()}${loop.count}</h2>
+						<h2 name="location">${packages.getName()}</h2>
 
 					</div>
 				</td>

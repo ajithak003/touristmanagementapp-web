@@ -7,25 +7,8 @@ s
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>cancel Booking</title>
-<style>
-body {
-	background-color: silver;
-}
 
-h1 {
-	font-size: 40px;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-weight: bold;
-	color: slateblue;
-	text-align: center;
-	margin-top: 18%;
-}
-
-h2, a {
-	text-align: center;
-	text-decoration: none;
-}
-</style>
+<link rel='stylesheet' href="assets/css/cancelTrip.css">
 
 </head>
 <body>

@@ -10,56 +10,8 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>user show all rating</title>
 
-<style>
-body {
-	background-color: rgb(238, 234, 228);
-}
+<link rel='stylesheet' href="assets/css/showAllRatings.css">
 
-.container {
-	border: 2px solid;
-	border-radius: 10px;
-	width: 700px;
-	margin-left: 300px;
-	padding: 20px
-}
-
-.title {
-	font-size: 40px;
-	text-align: center;
-	color: blue;
-}
-
-.name {
-	position: relative;
-	margin-left: 20px;
-	color: mediumblue;
-}
-
-h3 {
-	position: relative;
-	margin-left: 200px;
-	margin-top: -45px;
-	font-size: 25px;
-}
-
-p {
-	margin-left: 10px;
-	margin-top: 0px;
-	font-size: 16px;
-}
-
-.rate {
-	position: relative;
-	margin-left: 480px;
-	margin-top: -50px;
-	font-size: 30px;
-}
-
-a {
-	text-decoration: none;
-	color: blue;
-}
-</style>
 </head>
 <body>
 

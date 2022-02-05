@@ -9,85 +9,9 @@
 <meta name="viewport" content="width=, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>update hotels</title>
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
-		sans-serif;
-	background-color: azure;
-}
 
-h1 {
-	text-align: center;
-	color: blue;
-}
+<link rel='stylesheet' href="assets/css/updateHotel.css">
 
-.addpackage {
-	border: 3px solid;
-	height: 500px;
-	width: 45%;
-	position: absolute;
-	left: 27%;
-	padding: 25px;
-}
-
-label {
-	font-size: 20px;
-	font-weight: bolder;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
-		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-input {
-	border: 3px solid;
-	height: 25px;
-	width: 222px;
-	font-size: 16px;
-	font-weight: bold;
-}
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
-textarea {
-	border: 3px solid;
-}
-
-button {
-	height: 30px;
-	width: 150px;
-	margin-left: 70%;
-	margin-top: 10px;
-	border-radius: 20px;
-	background-color: gold;
-	font-size: 18px;
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-weight: bold;
-	border: none
-}
-td {
-	padding-top: 20px;
-	padding-bottom: 20px;
-}
-#home{
-text-decoration: none;
-color: blue;
-}
-select{
-    border: 3px solid;
-	height: 25px;
-	width: 222px;
-	font-size: 16px;
-	font-weight: bold;
-}
-option{
-font-weight: bold;
-}
-</style>
 </head>
 <body>
      
@@ -112,7 +36,7 @@ font-weight: bold;
 					<tr>
 						<td><label for="Hotel Name">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"
-							value="${hotel.getHotelName()}" required autofocus pattern="[A-Za-z0-9]{2,}"
+							value="${hotel.getHotelName()}" required autofocus pattern="[A-Za-z 0-9]{2,}"
 							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
 						</td>
 					</tr>
@@ -127,7 +51,7 @@ font-weight: bold;
 						<td><label for="Hotel Standard Room One Day Price">Standard Room One Day Price :</label></td>
 						<td><input type="text" name="standardprice" placeholder="Rs. " required
 							id="standardprice" value="${hotel.getMidRangePrice()}" min="600" max="200000"
-							title="must contain numbers Rs. 500 minimum Rs. 100000 only">></td>
+							title="must contain numbers Rs. 500 minimum Rs. 100000 only"></td>
 					</tr>
 					<tr>
 						<td><label for="Hotel Premium Room One Day Price">Premium Room One Day Price :</label></td>

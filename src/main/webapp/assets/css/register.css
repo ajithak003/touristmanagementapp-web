@@ -1,0 +1,61 @@
+@charset "ISO-8859-1";
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: sans-serif;
+	background: url("../images/blure.jpg");
+	background-size: cover;
+}
+
+.loginbox {
+	border: 2px solid;
+	background-color: cornsilk;
+	border-radius: 20px;
+	padding: 30px;
+	width: 290px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: black;
+	padding-left: 40px;
+	padding-right: 40px;
+}
+
+.loginbox h1 {
+	float: left;
+	font-size: 35px;
+	border-bottom: 6px solid #1ef725;
+	margin-bottom: 30px;
+	padding: 10px 0;
+}
+
+.textbox {
+	width: 100%;
+	overflow: hidden;
+	font-size: 16px;
+	padding: 8px 0;
+	margin: 8px 0;
+	border-bottom: 1px solid #1ef725;
+}
+
+.textbox input {
+	border: none;
+	outline: none;
+	background: none;
+	color: whiye;
+	font-size: 18px;
+	width: 80%;
+	float: left;
+	margin: 6px;
+}
+
+.btn {
+	width: 100%;
+	background: none;
+	border: 2px solid #1ef725;
+	color: blue;
+	padding: 5px;
+	font-size: 18px;
+}

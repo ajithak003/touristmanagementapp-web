@@ -1,7 +1,3 @@
-
-<%
-response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -15,67 +11,8 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
-<Style>
-body {
-	margin: 0;
-	padding: 0;
-	font-family: sans-serif;
-	background: url("assets/images/blure.jpg");
-	background-size: cover;
-}
+<link rel='stylesheet' href="assets/css/register.css">
 
-.loginbox {
-	border: 2px solid;
-	background-color: cornsilk;
-	border-radius: 20px;
-	padding: 30px;
-	width: 290px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	color: black;
-	padding-left: 40px;
-	padding-right: 40px;
-}
-
-.loginbox h1 {
-	float: left;
-	font-size: 35px;
-	border-bottom: 6px solid #1ef725;
-	margin-bottom: 30px;
-	padding: 10px 0;
-}
-
-.textbox {
-	width: 100%;
-	overflow: hidden;
-	font-size: 16px;
-	padding: 8px 0;
-	margin: 8px 0;
-	border-bottom: 1px solid #1ef725;
-}
-
-.textbox input {
-	border: none;
-	outline: none;
-	background: none;
-	color: whiye;
-	font-size: 18px;
-	width: 80%;
-	float: left;
-	margin: 6px;
-}
-
-.btn {
-	width: 100%;
-	background: none;
-	border: 2px solid #1ef725;
-	color: blue;
-	padding: 5px;
-	font-size: 18px;
-}
-</Style>
 </head>
 <body>
 

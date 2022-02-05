@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
@@ -11,102 +10,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>date change feature plane</title>
-<style>
-body {
-	background-color: aliceblue;
-}
 
-h1 {
-	color: darkred;
-	text-align: center;
-	font-size: 50px;
-	font-weight: bold;
-	font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-.container {
-	border: 3px solid;
-	border-radius: 20px;
-	height: 350px;
-}
-
-h2 {
-	color: blue;
-	margin-left: 250px;
-	margin-top: 20px;
-	font-size: 40px;
-}
-
-h3 {
-	font-size: 24px;
-}
-
-img {
-	width: 300px;
-	height: 100px;
-	margin-left: 490px;
-	margin-top: -10px;
-}
-
-.depature {
-	margin-left: 20px;
-	position: relative;
-	top: -70px;
-}
-
-.place {
-	position: relative;
-	top: 22pxpx;
-}
-
-.date {
-	margin-left: 160px;
-	margin-top: -50px;
-	word-spacing: 15px;
-	color: rgba(255, 217, 0, 0.925);
-}
-
-.destinations {
-	margin-left: 900px;
-	position: relative;
-	top: -120px;
-}
-
-#button {
-	margin-left: 1050px;
-	width: 150px;
-	height: 40px;
-	border-radius: 30px;
-	border: none;
-	background-color: blue;
-	color: white;
-	font-size: 20px;
-	font-weight: bold;
-	position: relative;
-	top: -100px;
-}
-
-.price {
-	position: relative;
-	top: -100px;
-	margin-left: 50px;
-	font-size: 20px;
-	font-weight: bold;
-}
-
-span {
-	color: darkorange;
-}
-
-#Economic {
-	position: relative;
-	left: 30px;
-}
-
-.flightno {
-	visibility: hidden;
-}
-</style>
+<link rel='stylesheet' href="assets/css/allFlights.css">
 
 </head>
 <body>
@@ -114,8 +19,12 @@ span {
 	<form action="confirmdatechange">
 		<div>
 			<h1>Flights</h1>
-			
-		<c:set var="bookingpackage" scope="session" value="${sessionScope.datechangebookings}"/> 
+		
+		<c:if test="${empty datechangeflightlist}">
+				<br>
+				<br>
+				<p class="noflight">No Flights Available<p>
+			</c:if>
 		
 		<c:forEach items="${datechangeflightlist}"  var="flight" >
 		

@@ -10,39 +10,8 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Profile</title>
 
-<style>
+<link rel='stylesheet' href="assets/css/profile.css">
 
-h1 {
-	text-align: center;
-	color: blue;
-}
-.table {
-	align-items: center;
-	border: 3px solid;
-	margin-left: 35%;
-	height: 430px;
-	width: 400px;
-	margin-top: 20px;
-	border-radius: 10px;
-}
-.update {
-	text-decoration: none;
-	position: absolute;
-	margin-left: 800px;
-	font-size: 20px;
-	font-weight: bold;
-	margin-top: -30px;
-}
-a {
-	text-decoration: none;
-	color:blue;
-}
-td {
-	padding:25px;
-	padding-left: 40px
-	
-}
-</style>
 </head>
 <body>
 

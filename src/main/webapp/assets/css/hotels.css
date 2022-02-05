@@ -1,0 +1,91 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: rgb(243, 221, 167);
+}
+
+h1 {
+	text-align: center;
+	font-size: 40px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	font-weight: bold;
+	color: yellowgreen;
+}
+
+.container {
+	border: 3px;
+	border-style: solid;
+	border-radius: 30px;
+	padding: 35px;
+	height: 350px;
+}
+
+img {
+	position: relative;
+	height: 350px;
+	width: 400px;
+}
+
+.name {
+	position: relative;
+	margin-left: 450px;
+	margin-top: -325px;
+}
+
+.hotelname {
+	position: relative;
+	margin-left: 300px;
+	margin-top: -37px;
+}
+
+.location {
+	position: relative;
+	margin-left: 455px;
+	margin-top: 60px;
+}
+
+.locationname {
+	position: relative;
+	margin-left: 300px;
+	margin-top: -37px;
+}
+
+.radio {
+	position: relative;
+	top: 50px;
+	margin-left: 450px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+span {
+	color: orangered;
+}
+
+#Premium {
+	position: relative;
+	left: 50px;
+}
+
+button {
+	position: relative;
+	top: 70px;
+	margin-left: 1050px;
+	height: 50px;
+	width: 130px;
+	background-color: royalblue;
+	border-radius: 50px;
+	border: none;
+	font-size: 18px;
+	color: white;
+	font-family: monospace;
+	font-weight: bold;
+}
+
+.nohotel {
+	color: darkred;
+	text-align: center;
+	color: black;
+	font-size: 40px;
+	font-weight: bold;
+}

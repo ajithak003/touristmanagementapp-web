@@ -8,27 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>terms and condition</title>
-<style>
-body {
-	background-color: ivory;
-}
 
-.box {
-	text-align: center;
-	margin-top: 100px;
-	font-size: 20px;
-}
+<link rel='stylesheet' href="assets/css/terms.css">
 
-.btn {
-	height: 40px;
-	width: 70px;
-	background-color: rgb(99, 99, 243);
-	font-size: 20px;
-	color: white;
-	border-radius: 20px;
-	border: none;
-}
-</style>
 </head>
 <body>
 

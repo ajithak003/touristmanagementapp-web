@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,113 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Single Places</title>
-<style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	text-decoration: none;
-	font-family: Arial, sans-serif;
-}
-body {
-	background-color: cornsilk;
-}
-h1 {
-	text-align: center;
-	font-size: 60px;
-	color: blue;
-}
-.firstrowimg {
-	position: absolute;
-	width: 300px;
-	height: 400px;
-}
-h2 {
-	position: absolute;
-	top: 450px;
-	left: 85px;
-	font-size: 30px;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-		'Lucida Sans', Arial, sans-serif;
-}
-a img {
-	width: 1000px;
-}
-.firstrowimg {
-	width: 1150px;
-	margin-left: 7%;
-	height: 400px;
-}
-.details {
-	position: absolute;
-	left: 70px;
-	top: 500px;
-	
-}
-p {
-	font-weight: bold;
-}
-h3 {
-	font-weight: bold;
-}
-.btn {
-	position: relative;
-	top: 800px;
-	margin-left: 50%;
-	margin-bottom: 30px;
-}
-input, button {
-	height: 40px;
-	width: 180px;
-	border-radius: 15px;
-	border: 2px solid;
-}
-#button {
-	background-color: red;
-	color: white;
-	font-weight: bold;
-	font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
-		'Lucida Sans', Arial, sans-serif;
-	font-size: 18px;
-	border-radius: 20px;
-	border: none;
-	left: 25%;
-	top: 820px;
-}
-#container {
-	height: 1250px;
-}
-label {
-	position: relative;
-	top: 780px;
-	left: 26px;
-	padding-left: 140px;
-	font-size: 20px;
-	font-weight: bold;
-}
-.data {
-	position: relative;
-	top: 810px;
-	left: 110px;
-	font-size: 20px;
-	font-weight: bold;
-	margin-left: 28px;
-	text-aligh: center;
-}
-#select {
-	position: relative;
-	left: 170px;
-	width: 100px;
-}
-.details, td{
-padding:15px;
-}
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
-</style>
+<link rel='stylesheet' href="assets/css/singlePackage.css">
+
 </head>
 <body>
 

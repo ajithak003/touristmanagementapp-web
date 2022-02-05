@@ -5,21 +5,8 @@
 <meta charset="ISO-8859-1">
 <link rel="icon" type="" href="Assets/logo.png">
 <title>plan date change</title>
-<style>
-body {
-	background-color: ivory;
-}
 
-h1 {
-	text-align: center;
-	margin-top: 20%;
-}
-
-h2, a {
-	text-align: center;
-	text-decoration: none;
-}
-</style>
+<link rel='stylesheet' href="assets/css/confirmDateChange.css">
 
 </head>
 <body>

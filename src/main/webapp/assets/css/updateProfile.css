@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+
+h1 {
+	text-align: center;
+	color: blue;
+}
+
+table {
+	border: 3px solid;
+	
+	padding: 20px;
+	text-align: center;
+	margin-left: 35%;
+	
+}
+
+input {
+	height: 30px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+button {
+	font-size: 20px;
+	font-weight: bold;
+	
+}
+td{
+padding:30px;
+}
+#lable{
+font-weight: bold;
+}

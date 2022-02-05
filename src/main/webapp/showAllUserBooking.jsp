@@ -24,38 +24,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <script type="text/javascript"
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
-<style>
-a {
-	text-decoration: none;
-	color:blue;
-}
-
-h1 {
-	text-align: center;
-	font-size: 50px;
-	color: steelblue;
-}
-
-h2 {
-	margin-left: 20px;
-}
-
-table {
-	text-align: center;
-}
-
-th {
-	background: silver;;
-	color: black;
-	border: 1px solid;
-	border-collapse: collapse;
-}
-
-td {
-	border: 1px solid;
-	border-collapse: collapse;
-}
-</style>
+<link rel='stylesheet' href="assets/css/showAllUserBooking.css">
 
 </head>
 <body>

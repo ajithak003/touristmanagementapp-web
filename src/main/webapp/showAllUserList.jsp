@@ -23,39 +23,9 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+	
+<link rel='stylesheet' href="assets/css/showAllUserList.css">
 
-<style>
-a {
-	text-decoration: none;
-	color: blue;
-}
-
-h1 {
-	text-align: center;
-	font-size: 50px;
-	color: steelblue
-}
-
-h2 {
-	margin-left: 20px;
-}
-
-table {
-	text-align: center;
-}
-
-th {
-	background: silver;;
-	color: black;
-	border: 1px solid;
-	border-collapse: collapse;
-}
-
-td {
-	border: 1px solid;
-	border-collapse: collapse;
-}
-</style>
 </head>
 <body>
 
