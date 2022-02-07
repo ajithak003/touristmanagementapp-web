@@ -19,20 +19,19 @@
 	<form action="confirmdatechange">
 		<div>
 			<h1>Flights</h1>
+			
+		<c:set var="bookingpackage" scope="session" value="${sessionScope.datechangebookings}"/>
 		
-		<c:if test="${empty datechangeflightlist}">
+		    <c:if test="${empty datechangeflightlist}">
 				<br>
 				<br>
 				<p class="noflight">No Flights Available<p>
-			</c:if>
+			</c:if> 
 		
-		<c:forEach items="${datechangeflightlist}"  var="flight" >
-		
-		
+		   <c:forEach items="${datechangeflightlist}"  var="flight" >
 			
 			<c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson() or flight.getEconomicClassSeat()>=bookingpackage.getNoOfPerson()}">	
-		
-
+		            
 			<div class="container">
 				<h2>${flight.getFlightName()}</h2>
 				<div>
