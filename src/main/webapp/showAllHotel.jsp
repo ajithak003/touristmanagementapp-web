@@ -13,7 +13,10 @@
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
@@ -31,16 +34,16 @@
 	<c:set var="delete" scope="session" value="${param.deletehote}" />
 	<c:set var="updateerror" scope="session" value="${param.updateerror}" />
 	<c:set var="deleteerror" scope="session" value="${param.deleteerror}" />
-	
-    <script src="assets/js/popUpMessages.js"></script>
-	
+
+	<script src="assets/js/popUpMessages.js"></script>
+
 	<c:choose>
 		<c:when test="${update!=null}">
 			<script type="text/javascript">
 			popupMessages('successfully updated')
 		</script>
 		</c:when>
-		
+
 		<c:when test="${updateerror!=null}">
 			<script type="text/javascript">
 			popupMessages('cannot be updated')
@@ -48,7 +51,7 @@
 		</c:when>
 
 		<c:when test="${delete!=null}">
-           <script type="text/javascript">
+			<script type="text/javascript">
 			popupMessages('Successfully deleted')
 		</script>
 		</c:when>
@@ -93,23 +96,25 @@
 					<td>${hotel.getLocation()}</td>
 					<td>${hotel.getMidRangePrice()}</td>
 					<td>${hotel.getPremiumPrice()}</td>
+					<td><c:if test="${hotel.getStatus().equals('active') }">
+							<span class="badge badge-pill badge-success">${hotel.getStatus()}</span>
+						</c:if> <c:if test="${hotel.getStatus().equals('inactive') }">
+							<span class="badge badge-pill badge-danger">${hotel.getStatus()}</span>
+						</c:if></td>
+					<td><button class="edit">
+							<a class="update"
+								href="updateHotel?hotelid=${hotel.getHotelId()}">Edit</a>
+						</button></td>
 					<td>
-				        <c:if test="${hotel.getStatus().equals('active') }">
-				        <span class="badge badge-pill badge-success">${hotel.getStatus()}</span>
-				        </c:if>
-				        <c:if test="${hotel.getStatus().equals('inactive') }" 	>
-                        <span class="badge badge-pill badge-danger">${hotel.getStatus()}</span>
-                        </c:if>
-                        </td>
-					<td><button class="edit"><a  class="update" 
-					href="updateHotel?hotelid=${hotel.getHotelId()}">Edit</a></button></td>
-					<td> <button class="delete" onclick="deleteHotel(${hotel.getHotelId()})">Delete</button></td>
+						<button class="delete"
+							onclick="deleteHotel(${hotel.getHotelId()})">Delete</button>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
 	<script src="assets/js/dataTable.js"></script>
-	
+
 </body>
 </html>

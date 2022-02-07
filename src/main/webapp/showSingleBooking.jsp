@@ -22,9 +22,12 @@
 		<h1>Booking Details</h1>
 
 		<c:set var="booking" scope="session" value="${singlebookingdetails}" />
-		<c:set var="flightfare" scope="session" value="${singlebookingflightfare}" />
-		<c:set var="noOfHotelRooms" scope="session" value="${singlebookingnoofhotelroom}" />
-		<c:set var="hotelfare" scope="session" value="${singlebookinghotelfare}" />
+		<c:set var="flightfare" scope="session"
+			value="${singlebookingflightfare}" />
+		<c:set var="noOfHotelRooms" scope="session"
+			value="${singlebookingnoofhotelroom}" />
+		<c:set var="hotelfare" scope="session"
+			value="${singlebookinghotelfare}" />
 
 
 		<div class="container">
@@ -90,14 +93,16 @@
 					<td>Departure Date And Time Name :</td>
 					<fmt:parseDate value="${booking.getFlight().getDepatureDateTime()}"
 						pattern="yyyy-MM-dd'T'HH:mm" var="DepatureDateTime" type="both" />
-						
-					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${DepatureDateTime}" /></td>
+
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+							value="${DepatureDateTime}" /></td>
 				</tr>
 				<tr>
 					<td>Arrival Date And Time Name :</td>
 					<fmt:parseDate value="${booking.getFlight().getArrivalDateTime()}"
 						pattern="yyyy-MM-dd'T'HH:mm" var="ArrivalDateTime" type="both" />
-					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${ArrivalDateTime}" /></td>
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+							value="${ArrivalDateTime}" /></td>
 				</tr>
 				<tr>
 					<td>Class :</td>
@@ -131,16 +136,17 @@
 				</tr>
 				<tr>
 					<td>No Of Room :</td>
-					<td>${noOfHotelRooms} Room</td>
+					<td>${noOfHotelRooms}Room</td>
 				</tr>
-				
+
 				<tr>
 					<td>Booking Date :</td>
 					<fmt:parseDate value="${booking.getBookingDate()}"
 						pattern="yyyy-MM-dd'T'HH:mm" var="bookingdate" type="both" />
-					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm" value="${bookingdate}" /></td>
+					<td><fmt:formatDate pattern="dd/MM/yyyy HH:mm"
+							value="${bookingdate}" /></td>
 				</tr>
-				
+
 				<tr>
 					<td><h3>Package Total Price</h3></td>
 					<td><h3>Rs. ${booking.getTotalPrice()}</h3></td>

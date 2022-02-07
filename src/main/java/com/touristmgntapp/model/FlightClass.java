@@ -9,6 +9,10 @@ import java.util.Objects;
 public class FlightClass implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int flightNo;
 	private String flightName;
 	private String depature;

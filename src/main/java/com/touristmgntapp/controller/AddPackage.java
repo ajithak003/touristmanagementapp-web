@@ -16,6 +16,11 @@ import com.touristmgntapp.model.PackageModeClass;
 @WebServlet("/addpackage")
 public class AddPackage extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 

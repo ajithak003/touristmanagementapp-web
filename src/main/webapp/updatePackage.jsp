@@ -14,9 +14,11 @@
 
 </head>
 <body>
-    <br>
-    <h3><a href="showAllAdminPackages" id="home">Go Back</a></h3>
-    
+	<br>
+	<h3>
+		<a href="showAllAdminPackages" id="home">Go Back</a>
+	</h3>
+
 	<h1>Update Tourist Package</h1>
 	<br>
 	<br>
@@ -30,48 +32,52 @@
 				<th id=""></th>
 				<tr>
 					<td><label for="location">package location : </label></td>
-					<td><input type="text" name="packagename" id="packagename" aria-label="location"
-						value="${packages.getName()}" required pattern="[A-Za-z]{2,}"
+					<td><input type="text" name="packagename" id="packagename"
+						aria-label="location" value="${packages.getName()}" required
+						pattern="[A-Za-z]{2,}"
 						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 
 				<tr>
-					<td><label for="Package one day night price per person">Package one day night price : </label></td>
-					<td><input type="text" name="packageonedayprice" placeholder="Rs. " id="packageonedayprice" required
-						 aria-label="Package one day night price per person" value=" ${packages.getPriceOneDays()}" min="500" 
-						 max="50000" title="must contain numbers only minimum Rs. 500 and maximum Rs. 50000"></td>
+					<td><label for="Package one day night price per person">Package
+							one day night price : </label></td>
+					<td><input type="text" name="packageonedayprice"
+						placeholder="Rs. " id="packageonedayprice" required
+						aria-label="Package one day night price per person"
+						value=" ${packages.getPriceOneDays()}" min="500" max="50000"
+						title="must contain numbers only minimum Rs. 500 and maximum Rs. 50000"></td>
 				</tr>
 				<tr>
 					<td><label for="season">current season :</label></td>
-					<td><input type="text" name="season" id="season" aria-label="season"
-						value="${packages.getSeason()}" required pattern="[A-Za-z]{2,}"
-						 title="must contain characters only minimum 2 characters"></td>
+					<td><input type="text" name="season" id="season"
+						aria-label="season" value="${packages.getSeason()}" required
+						pattern="[A-Za-z]{2,}"
+						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 				<tr>
 					<td><label for="protocol">current tourist protocols :</label></td>
-					<td><textarea name="protocols" id="protocols" cols="30" rows="3" aria-label="protocol"
-							value="${packages.getProtocols()}"  required  pattern="[A-Za-z0-9]{5,}"
+					<td><textarea name="protocols" id="protocols" cols="30"
+							rows="3" aria-label="protocol" value="${packages.getProtocols()}"
+							required pattern="[A-Za-z0-9]{5,}"
 							title="must contain 5 characters and numbers only ">${packages.getProtocols()}</textarea></td>
 				</tr>
 				<tr>
 					<td><label for="description">Tourist Place Description
 							:</label></td>
 					<td><textarea name="description" id="description"
-							value="${packages.getDescription()}" cols="30" rows="3" 
-						    required aria-label="description" pattern="[A-Za-z0-9]{5,}"
+							value="${packages.getDescription()}" cols="30" rows="3" required
+							aria-label="description" pattern="[A-Za-z0-9]{5,}"
 							title="must contain 5 characters and numbers only ">${packages.getDescription()}</textarea></td>
 				</tr>
-				
+
 				<tr>
-						<td><label for="package status" >Status :</label></td>
-						<td>
-						<select name="status" aria-label="package status">
-						<option value="active">active</option>
-						<option value="inactive">inactive</option>
-						</select>
-						</td>
-					</tr>
-				
+					<td><label for="package status">Status :</label></td>
+					<td><select name="status" aria-label="package status">
+							<option value="active">active</option>
+							<option value="inactive">inactive</option>
+					</select></td>
+				</tr>
+
 				<tr>
 					<td><label for="Tourist place image">Add Image :</label></td>
 					<td><input type="file" name="packageimage" id="packageimage"

@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.util.Objects;
 
 public class UserFeedbackClass implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int feedbackId;
 	private int userId;
 	private int bookingId;

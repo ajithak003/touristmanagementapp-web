@@ -27,9 +27,10 @@
 			<h1>Login</h1>
 
 			<div class="textbox">
-				<input type="email" placeholder="Email" name="loginemail" value="" id="email"
-					required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
-					autofocus onkeyup="remove()" aria-label="email id">
+				<input type="email" placeholder="Email" name="loginemail" value=""
+					id="email" required
+					pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}" autofocus
+					onkeyup="remove()" aria-label="email id">
 			</div>
 			<div class="textbox">
 				<input type="password" placeholder="Password" name="loginpsws"
@@ -39,8 +40,8 @@
 
 			</div>
 			<div class="show">
-				<input type="checkbox" onclick="showPassword()" aria-label="shoe password checkbox">Show
-				Password
+				<input type="checkbox" onclick="showPassword()"
+					aria-label="shoe password checkbox">Show Password
 			</div>
 			<br>
 			<div>
@@ -73,7 +74,7 @@
 	</c:if>
 
 	<script src="assets/js/loginAndRegister.js"></script>
-	
+
 </body>
 
 </html>

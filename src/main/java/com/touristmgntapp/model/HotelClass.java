@@ -5,6 +5,10 @@ import java.util.Objects;
 
 public class HotelClass implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int hotelId;
 	private String location;
 	private String hotelName;

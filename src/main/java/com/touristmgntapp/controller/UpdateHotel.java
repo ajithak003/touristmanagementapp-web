@@ -1,6 +1,5 @@
 package com.touristmgntapp.controller;
 
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,6 +13,11 @@ import com.touristmgntapp.model.HotelClass;
 
 @WebServlet("/updatehotel")
 public class UpdateHotel extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {

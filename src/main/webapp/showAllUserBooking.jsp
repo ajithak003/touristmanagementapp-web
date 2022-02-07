@@ -14,7 +14,10 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 <link rel="icon" type="" href="Assets/logo.png">
 <title>Show All Bookings</title>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
@@ -63,18 +66,16 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 					pattern="yyyy-MM-dd'T'HH:mm" var="bookingdate" type="both" />
 				<fmt:parseDate value="${booking.getStartDate()}"
 					pattern="yyyy-MM-dd" var="startdate" type="both" />
-				<fmt:parseDate value="${booking.getEndDate()}"
-					pattern="yyyy-MM-dd" var="enddate" type="both" />
+				<fmt:parseDate value="${booking.getEndDate()}" pattern="yyyy-MM-dd"
+					var="enddate" type="both" />
 
 				<tr>
 					<td>${loop.count}</td>
 					<td>${booking.getUser().getId()}</td>
 					<td>${booking.getUser().getName()}</td>
 					<td>${booking.getPackageName()}</td>
-					<td><fmt:formatDate pattern="dd/MM/yy"
-							value="${startdate}" /></td>
-					<td><fmt:formatDate pattern="dd/MM/yy"
-							value="${enddate}" /></td>
+					<td><fmt:formatDate pattern="dd/MM/yy" value="${startdate}" /></td>
+					<td><fmt:formatDate pattern="dd/MM/yy" value="${enddate}" /></td>
 					<td>${booking.getNoOfPerson()}</td>
 					<td>${booking.getDaysPlan()}</td>
 					<td><fmt:formatDate pattern="dd/MM/yy HH:mm"
@@ -89,13 +90,13 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 						</c:if> <c:if test="${booking.getStatus().equals('cancel') }">
 							<span class="badge badge-pill badge-danger">${booking.getStatus()}</span>
 						</c:if></td>
-					
+
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
 	<script src="assets/js/dataTable.js"></script>
-	
+
 </body>
 </html>

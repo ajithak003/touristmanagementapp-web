@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class PackageModeClass implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int packageId;
 	private String name;
 	private double priceOneDays;

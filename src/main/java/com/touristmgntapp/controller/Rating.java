@@ -16,6 +16,11 @@ import com.touristmgntapp.model.UserFeedbackClass;
 @WebServlet("/ratings")
 public class Rating extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		

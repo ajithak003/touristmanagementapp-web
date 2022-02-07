@@ -15,6 +15,11 @@ import com.touristmgntapp.model.FlightClass;
 @WebServlet("/updateFlight")
 public class PreUpdateFlight extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 

@@ -19,6 +19,11 @@ import com.touristmgntapp.model.UserFeedbackClass;
 @WebServlet("/singlePackage")
 public class SinglePlace extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {

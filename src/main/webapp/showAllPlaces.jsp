@@ -18,35 +18,36 @@
 <body>
 
 	<div class="second">
-	
+
 		<h3>
 			<a href="adminPage.jsp">Go To Home</a>
 		</h3>
-		 
-		 <h1>Popular Places</h1>
-		 
+
+		<h1>Popular Places</h1>
+
 		<table class="table" aria-describedby="Show All places">
 
 			<c:forEach begin="0" items="${showAllPlaces}" var="packages"
 				varStatus="loop">
-                 <c:if test="${packages.getStatus().equals('active') }">
-				<td>
-					<div class="firstrow">
-						<img class="firstrowimg" src="assets/images/${packages.getImage() }"
-							alt="${packages.getName()}" width = "298px" height = "350px">
+				<c:if test="${packages.getStatus().equals('active') }">
+					<td>
+						<div class="firstrow">
+							<img class="firstrowimg"
+								src="assets/images/${packages.getImage() }"
+								alt="${packages.getName()}" width="298px" height="350px">
 
 
-						<h2 name="location">${packages.getName()}</h2>
-						
+							<h2 name="location">${packages.getName()}</h2>
 
-					</div>
-				</td>
-				<c:if test="${loop.count%4==0}">
-					<tr>
-				</c:if>
+
+						</div>
+					</td>
+					<c:if test="${loop.count%4==0}">
+						<tr>
+					</c:if>
 				</c:if>
 			</c:forEach>
-        <th id=""></th>
+			<th id=""></th>
 		</table>
 
 	</div>

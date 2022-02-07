@@ -23,10 +23,11 @@ input {
 	font-weight: bold;
 	border: 2px solid;
 }
+
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}	
+	-webkit-appearance: none;
+	margin: 0;
+}
 
 button {
 	height: 40px;
@@ -45,8 +46,9 @@ a {
 	text-decoration: none;
 	color: blue;
 }
-h1{
-text-align: center;
-color: blue;
-font-size: 40px;
+
+h1 {
+	text-align: center;
+	color: blue;
+	font-size: 40px;
 }

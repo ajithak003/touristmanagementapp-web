@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.touristmgntapp.dao.UserFeedbackDaoInterface;
-import com.touristmgntapp.model.BookingClass;
 import com.touristmgntapp.model.UserFeedbackClass;
 import com.touristmgntapp.util.ConnectionUtil;
 

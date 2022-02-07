@@ -36,8 +36,9 @@
 				for="star1" title="Bad">1 star</label>
 		</div>
 		<br>
-		<textarea name="describe" id="" cols="30" rows="10" aria-label="description"
-			placeholder="Describe your experience" pattern="[A-Za-z0-9]{3,}" 
+		<textarea name="describe" id="" cols="30" rows="10"
+			aria-label="description" placeholder="Describe your experience"
+			pattern="[A-Za-z0-9]{3,}"
 			title="must contain character and numbers only minimum 3 characters or numbers"></textarea>
 		<br> <br> <br>
 		<button name="bookingId" value="${bookingId}">Rate Now</button>

@@ -28,7 +28,7 @@
 
 
 		<table aria-describedby="profile">
-		<th id=""></th>
+			<th id=""></th>
 			<tr>
 				<td><h2>Name</h2></td>
 				<td><h3>${user.getName()}</h3></td>
@@ -46,6 +46,6 @@
 		</table>
 
 	</div>
-	
+
 </body>
 </html>

@@ -25,7 +25,8 @@
 
 			<h1 name="place">${packages.getName()}</h1>
 			<br> <a href="#"> <img class="firstrowimg"
-				src="assets/images/${packages.getImage()}" alt="${packages.getName()}" width = "1000px" height="">
+				src="assets/images/${packages.getImage()}"
+				alt="${packages.getName()}" width="1000px" height="">
 
 			</a> <br> <br>
 			<table class="details" aria-describedby="single place details">
@@ -67,11 +68,11 @@
 						</td>
 
 						<td>
-							<h3>${rating.getRating()}/ 5</h3>
+							<h3>${rating.getRating()}/5</h3>
 						</td>
 					</tr>
 				</c:if>
-              <th id=""></th>
+				<th id=""></th>
 			</table>
 			<br> <br>
 
@@ -82,18 +83,22 @@
 					<td><label for="no of night">No of days in night</label></td>
 				</tr>
 				<tr>
-					<td><input type="date" name="startdate" id="date" aria-label="startdate"
-						class="data" required title="please enter the date"></td>
-					<td><input type="number" name="noofperson" class="data" id="" aria-label="noofperson"
-						required pattern="[0-9]" min="1" max="30" title="must contain number only minimum 1 and maximum 30"></td>
-					<td><select name="noofdays" id="select" class="data" required aria-label="noofdays">
+					<td><input type="date" name="startdate" id="date"
+						aria-label="startdate" class="data" required
+						title="please enter the date"></td>
+					<td><input type="number" name="noofperson" class="data" id=""
+						aria-label="noofperson" required pattern="[0-9]" min="1" max="30"
+						title="must contain number only minimum 1 and maximum 30"></td>
+					<td><select name="noofdays" id="select" class="data" required
+						aria-label="noofdays">
 							<option value="2 days plan">2N</option>
 							<option value="3 days plan">3N</option>
 							<option value="4 days plan">4N</option>
 							<option value="5 days plan">5N</option>
 					</select></td>
 					<td>
-						<button value="Book Place" class="btn" id="button">Book Place</button>
+						<button value="Book Place" class="btn" id="button">Book
+							Place</button>
 					</td>
 				</tr>
 				<th id=""></th>

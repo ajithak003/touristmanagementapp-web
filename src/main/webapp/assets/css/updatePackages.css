@@ -43,10 +43,12 @@ input {
 textarea {
 	border: 3px solid;
 }
+
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
+
 button {
 	height: 30px;
 	width: 150px;
@@ -64,18 +66,21 @@ td {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-#home{
-text-decoration: none;
-color: blue;
+
+#home {
+	text-decoration: none;
+	color: blue;
 }
-select{
-    border: 3px solid;
+
+select {
+	border: 3px solid;
 	height: 25px;
 	width: 222px;
 	font-size: 16px;
 	font-weight: bold;
 	text-align: center;
 }
-option{
-font-weight: bold;
+
+option {
+	font-weight: bold;
 }

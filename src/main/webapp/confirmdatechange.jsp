@@ -16,6 +16,6 @@
 	<h2>
 		<a href="userPage.jsp">Go To Home</a>
 	</h2>
-	
+
 </body>
 </html>

@@ -1,6 +1,5 @@
 package com.touristmgntapp.controller;
 
-import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -9,13 +8,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.dao.Impl.FlightTableDaoImplement;
 import com.touristmgntapp.model.FlightClass;
 
 @WebServlet(urlPatterns = "/updateflight")
 public class UpdateFlight extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) {

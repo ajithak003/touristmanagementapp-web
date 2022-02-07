@@ -12,6 +12,11 @@ import com.touristmgntapp.encrypt.EncryptPassword;
 
 public class ConnectionUtil implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public static Connection getDBConnect()
 	{
 Connection con=null;

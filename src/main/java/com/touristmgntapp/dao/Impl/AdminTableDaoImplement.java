@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import com.touristmgntapp.dao.AdminDaoInterface;
 import com.touristmgntapp.model.AdminClass;
-import com.touristmgntapp.model.UserClass;
 import com.touristmgntapp.util.ConnectionUtil;
 
 public class AdminTableDaoImplement implements AdminDaoInterface {

@@ -40,8 +40,8 @@ input {
 }
 
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 textarea {
@@ -64,21 +64,25 @@ button {
 .container {
 	height: 830px;
 }
+
 td {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
-#home{
-text-decoration: none;
-color: blue;
+
+#home {
+	text-decoration: none;
+	color: blue;
 }
-select{
-    border: 3px solid;
+
+select {
+	border: 3px solid;
 	height: 25px;
 	width: 222px;
 	font-size: 16px;
 	font-weight: bold;
 }
-option{
-font-weight: bold;
+
+option {
+	font-weight: bold;
 }

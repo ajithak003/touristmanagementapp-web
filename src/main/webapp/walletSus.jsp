@@ -13,8 +13,8 @@
 
 </head>
 <body>
- 
- <c:set var ="newUser" scope="session" value="${user}"/>
+
+	<c:set var="newUser" scope="session" value="${user}" />
 
 	<h1>Transaction Successful</h1>
 	<h2>
@@ -24,6 +24,6 @@
 	<h2>
 		<a href="userPage.jsp">Go To Home</a>
 	</h2>
-	
+
 </body>
 </html>

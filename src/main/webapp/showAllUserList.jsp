@@ -23,7 +23,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-	
+
 <link rel='stylesheet' href="assets/css/showAllUserList.css">
 
 </head>
@@ -74,8 +74,8 @@
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
 	<script src="assets/js/dataTable.js"></script>
-	
+
 </body>
 </html>

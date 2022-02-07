@@ -29,37 +29,40 @@
 		</c:if>
 
 		<c:forEach items="${hotels}" var="hotel">
-          <c:if test="${hotel.getStatus().equals('active')}">
-			<div class="container">
-				<div>
-					<img src="assets/images/${hotel.getImage()}"
-						alt="${hotel.getHotelName()}, ${hotel.getLocation()}" width = "400px" height = "350px">
-					<div class="name">
-						<h3>Hotel Name :</h3>
-						<h3 class="hotelname">${hotel.getHotelName()}</h3>
-					</div>
-					<div class="location">
-						<h3>Location :</h3>
-						<h3 class="locationname">${hotel.getLocation()}</h3>
-					</div>
-					<div class="radio">
-						<p>
+			<c:if test="${hotel.getStatus().equals('active')}">
+				<div class="container">
+					<div>
+						<img src="assets/images/${hotel.getImage()}"
+							alt="${hotel.getHotelName()}, ${hotel.getLocation()}"
+							width="400px" height="350px">
+						<div class="name">
+							<h3>Hotel Name :</h3>
+							<h3 class="hotelname">${hotel.getHotelName()}</h3>
+						</div>
+						<div class="location">
+							<h3>Location :</h3>
+							<h3 class="locationname">${hotel.getLocation()}</h3>
+						</div>
+						<div class="radio">
+							<p>
 
-							<input type="radio" name="hotelprice" id="Normal"
-								value="${hotel.getMidRangePrice()}" required aria-label="Standard Room">
-								<label for="Standard Room">Standard Room <span> Rs. ${hotel.getMidRangePrice()}</span></label>
+								<input type="radio" name="hotelprice" id="Normal"
+									value="${hotel.getMidRangePrice()}" required
+									aria-label="Standard Room"> <label for="Standard Room">Standard
+									Room <span> Rs. ${hotel.getMidRangePrice()}</span>
+								</label> <input type="radio" name="hotelprice" id="Premium"
+									value="${hotel.getPremiumPrice()}" required
+									aria-label="Premium Room"> <label for="Premium Room"
+									id="Premium">Premium Room <span> Rs.
+										${hotel.getPremiumPrice()}</span></label>
 
-							<input type="radio" name="hotelprice" id="Premium"
-								value="${hotel.getPremiumPrice()}" required aria-label="Premium Room">
-								<label for="Premium Room" id="Premium">Premium Room <span> Rs. ${hotel.getPremiumPrice()}</span></label>
-
-						</p>
+							</p>
+						</div>
+						<button id="button" name="hotelid" value="${hotel.getHotelId()}">Book
+							hotel</button>
 					</div>
-					<button id="button" name="hotelid" value="${hotel.getHotelId()}">Book
-						hotel</button>
+
 				</div>
-
-			</div>
 			</c:if>
 			<br>
 			<br>

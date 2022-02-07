@@ -18,6 +18,11 @@ import com.touristmgntapp.model.FlightClass;
 @WebServlet("/deleteFlight")
 public class DeleteFlight extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {

@@ -15,6 +15,11 @@ import com.touristmgntapp.model.PackageModeClass;
 @WebServlet("/deletepackage")
 public class Deletepackage extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		

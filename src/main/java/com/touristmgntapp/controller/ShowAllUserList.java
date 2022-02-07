@@ -18,6 +18,11 @@ import com.touristmgntapp.model.UserClass;
 @WebServlet("/showAllUserList")
 public class ShowAllUserList extends HttpServlet {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		

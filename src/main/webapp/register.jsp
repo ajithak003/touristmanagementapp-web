@@ -20,26 +20,29 @@
 		<div class="loginbox">
 			<h1>Register</h1>
 			<div class="textbox">
-				<input type="text" placeholder="FullName" name="FullName" value="" id=""
-					required autofocus onkeyup="remove()" pattern="[A-Za-z]{2,}"
-					title="must contain numbers only minimum 2 characters" aria-label="FullName">
+				<input type="text" placeholder="FullName" name="FullName" value=""
+					id="" required autofocus onkeyup="remove()" pattern="[A-Za-z]{2,}"
+					title="must contain numbers only minimum 2 characters"
+					aria-label="FullName">
 			</div>
 			<div class="textbox">
-				<input type="email" placeholder="Email" name="regemail" value="" id=""
-					required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
+				<input type="email" placeholder="Email" name="regemail" value=""
+					id="" required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
 					title="follow this pattern 'abc@xyz.com'" aria-label="Email id">
 			</div>
 			<div class="textbox">
-				<input type="text" placeholder="Mobile No" name="regmobile" 
-					value="" id="" required pattern="[6-9][0-9]{9}"
-					title="Must contain 10 numbers only and starting 6-9 only" aria-label="Mobile No">
+				<input type="text" placeholder="Mobile No" name="regmobile" value=""
+					id="" required pattern="[6-9][0-9]{9}"
+					title="Must contain 10 numbers only and starting 6-9 only"
+					aria-label="Mobile No">
 			</div>
 
 			<div class="textbox">
 				<input type="password" placeholder="Password" name="regpsw" value=""
 					id="psw" onkeyup="checkpattern()" required
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
-					title="follow this pattern Ex: 'Abcd@123' or 'abCd234$'" aria-label="Password">
+					title="follow this pattern Ex: 'Abcd@123' or 'abCd234$'"
+					aria-label="Password">
 			</div>
 
 			<div>
@@ -65,15 +68,15 @@
 			popupMessages('Not allowed')
 		</script>
 	</c:if>
-	
+
 	<c:if test="${param.errormsg!=null}">
-         <script type="text/javascript">
+		<script type="text/javascript">
 			popupMessages('This email id already registered')
 		</script>
 	</c:if>
 
 	<script src="assets/js/loginAndRegister.js"></script>
-	
+
 </body>
 
 </html>

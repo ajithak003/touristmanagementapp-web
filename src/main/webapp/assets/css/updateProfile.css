@@ -7,11 +7,9 @@ h1 {
 
 table {
 	border: 3px solid;
-	
 	padding: 20px;
 	text-align: center;
 	margin-left: 35%;
-	
 }
 
 input {
@@ -23,11 +21,12 @@ input {
 button {
 	font-size: 20px;
 	font-weight: bold;
-	
 }
-td{
-padding:30px;
+
+td {
+	padding: 30px;
 }
-#lable{
-font-weight: bold;
+
+#lable {
+	font-weight: bold;
 }
