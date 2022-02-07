@@ -47,7 +47,7 @@
 			</h3>
 			<br>
 			<h4>Topup Wallet</h4>
-			<br> <input type="number" name="amount" id="amount"
+			<br> <input type="number" name="amount" id="amount" aria-label="topup amount"
 				placeholder="Rs.  Enter amount" required min="10000" autofocus
 				pattern="[0-9]{3,}" title="must contains numbers minimum Rs. 10000">
 			<p>Minimum Rs. 10000</p>

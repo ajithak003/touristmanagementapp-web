@@ -32,7 +32,7 @@
 				<th id=""></th>
 					<tr>
 						<td><label for="location">Flight Name : </label></td>
-						<td><input type="text" name="flightname" id="flightname" autofocus
+						<td><input type="text" name="flightname" id="flightname" autofocus aria-label="location"
 							value="${flight.getFlightName()}" required pattern="[A-Za-z0-9]{2,}"
 							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
 						</td>
@@ -40,38 +40,38 @@
 
 					<tr>
 						<td><label for="depature">Departure Location : </label></td>
-						<td><input type="text" name="Depature" id="Depature"
+						<td><input type="text" name="Depature" id="Depature" aria-label="depature"
 							value="${flight.getDepature()}" required pattern="[A-Za-z]{2,}"
 							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>
 						<td><label for="destination">destination Location :</label></td>
 						<td><input type="text" name="destination" id="destination"
-							value="${flight.getDestination()}" required
+							value="${flight.getDestination()}" required aria-label="destination"
 							pattern="[A-Za-z]{2,}"title="must contain characters only minimum 2 characters">
 						</td>
 					</tr>
 					<tr>
 						<td><label for="Departure Date And Time">Departure Date And Time</label></td>
-						<td><input type="datetime-local" name="DepatureDate"
+						<td><input type="datetime-local" name="DepatureDate" aria-label="Departure Date And Time"
 							id="date" value="${flight.getDepatureDateTime()}"></td>
 					</tr>
 					<tr>
 						<td><label for="Arrival Date And Time">Arrival Date And Time</label></td>
-						<td><input type="datetime-local" name="ArrivalDate"
+						<td><input type="datetime-local" name="ArrivalDate" aria-label="Arrival Date And Time"
 							id="date" value="${flight.getArrivalDateTime()}"></td>
 					</tr>
 					<tr>
 						<td><label for="Business Class Fare">Business Class Fare :</label></td>
 						<td><input type="number" name="businessclassfare" placeholder="Rs. "
-							id="businessclassfare" value="${flight.getBusinessClassFare()}"
+							id="businessclassfare" value="${flight.getBusinessClassFare()}" aria-label="Business Class Fare"
 							 min="600" max="200000" title="must contain number only maximum Rs. 600 minimum Rs. 200000">
 						</td>
 					</tr>
 					<tr>
 						<td><label for="Economic Class Fare">Economic Class Fare :</label></td>
 						<td><input type="number" name="economicclassfare" placeholder="Rs. "
-							id="economicclassfare" value="${flight.getEconomicClassFare()}"
+							id="economicclassfare" value="${flight.getEconomicClassFare()}" aria-label="Economic Class Fare"
 							 min="600" max="200000" title="must contain number only maximum Rs. 600 minimum Rs. 200000">
 						</td>
 					</tr>
@@ -79,22 +79,22 @@
 					<tr>
 						<td><label for="flight status">Status :</label></td>
 						<td>
-						<select name="status">
+						<select name="status" aria-label="flight status">
 						<option value="available">available</option>
 						<option value="unavailable">unavailable</option>
 						</select>
 						</td>
 					</tr>
 					<tr>
-						<td><label for="Business Class Seats Count ">Business Class Seats Count :</label></td>
+						<td><label for="Business Class Seats Count">Business Class Seats Count :</label></td>
 						<td><input type="number" name="businessclassseat" id="businessclassseat"
-							 value="${flight.getBusinessClassSeat()}" min="50" max="350"
+							 value="${flight.getBusinessClassSeat()}" min="50" max="350" aria-label="Business Class Seats Count"
 							title="must contain number only maximum 50 minimum 350 number of seats"></td>
 					</tr>
 					<tr>
 						<td><label for="Economic Class Seats Count">Economic Class Seats Count :</label></td>
 						<td><input type="number" name="economicclassseat" id="economicclassseat"
-							 value="${flight.getEconomicClassSeat()}" min="50" max="350"
+							 value="${flight.getEconomicClassSeat()}" min="50" max="350" aria-label="Economic Class Seats Count"
 							 title="must contain number only maximum 50 minimum 350 number of seats"></td>
 					</tr>
 				</table>

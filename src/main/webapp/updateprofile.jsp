@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -32,24 +31,24 @@
 	<form action="updateprofile" method="post">
 		<table aria-describedby="update profile">
 			<tr>
-			    <td><label id="lable">Full Name : </label></td>
+			    <td><label id="lable" for="Full Name">Full Name : </label></td>
 				<td><input type="text" placeholder="FullName" name="FullName"
-					value="${user.getName()}" required autofocus
+					value="${user.getName()}" required autofocus aria-label="Full Name"
 					pattern="[A-Za-z]{2,}" title="must contain numbers only minimum 2 characters">
 				</td>
 			</tr>
 
 			<tr>
-			 <td><label id="lable">Mobile No : </label></td>
-				<td><input type="text" placeholder="Mobile No" name="regmobile"
+			 <td><label id="lable" for="Mobile No">Mobile No : </label></td>
+				<td><input type="text" placeholder="Mobile No" name="regmobile" aria-label="Mobile No"
 					value="${user.getMboNo()}" required pattern="[6-9][0-9]{9}"
 					title="Must contain 10 numbers only and starting with 6-9"></td>
 			</tr>
 			<tr></tr>
 			<tr>
-			     <td><label id="lable">Password : </label></td>
+			     <td><label id="lable" for="Password">Password : </label></td>
 				<td><input type="password" placeholder="Password" name="regpsw"
-					value="${user.getPassword()}" id="psw" required
+					value="${user.getPassword()}" id="psw" required aria-label="Password"
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
 					title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character">
 				</td>

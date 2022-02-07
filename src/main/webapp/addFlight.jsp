@@ -56,11 +56,11 @@
 					</tr>
 					<tr>
 						<td><label for="Departure Date And Time" >Departure Date And Time</label></td>
-						<td><input type="datetime-local" name="DepatureDate" id="date" required></td>
+						<td><input type="datetime-local" name="DepatureDate" id="date" required aria-label="Departure Date And Time"></td>
 					</tr>
 					<tr>
-						<td><label for="Arrival Date And Time" aria-label="Arrival Date And Time">Arrival Date	And Time</label></td>
-						<td><input type="datetime-local" name="ArrivalDate" id="date" required aria-label="Departure Date And Time"></td>
+						<td><label for="Arrival Date And Time" >Arrival Date	And Time</label></td>
+						<td><input type="datetime-local" name="ArrivalDate" id="date" required aria-label="Arrival Date And Time"></td>
 					</tr>
 					<tr>
 						<td><label for="Business Class Fare" >Business Class Fare :</label></td>

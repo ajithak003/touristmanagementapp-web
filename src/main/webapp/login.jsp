@@ -27,19 +27,19 @@
 			<h1>Login</h1>
 
 			<div class="textbox">
-				<input type="email" placeholder="Email" name="loginemail" value=""
+				<input type="email" placeholder="Email" name="loginemail" value="" id="email"
 					required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
-					autofocus onkeyup="remove()">
+					autofocus onkeyup="remove()" aria-label="email id">
 			</div>
 			<div class="textbox">
 				<input type="password" placeholder="Password" name="loginpsws"
-					id="psw" value="" required
+					id="psw" value="" required aria-label="password"
 					pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
 					title="Minimum eight and Minimum 8 and maximum 15 characters, at least one uppercase letter, one lowercase letter, one number and one special character">
 
 			</div>
 			<div class="show">
-				<input type="checkbox" onclick="showPassword()">Show
+				<input type="checkbox" onclick="showPassword()" aria-label="shoe password checkbox">Show
 				Password
 			</div>
 			<br>

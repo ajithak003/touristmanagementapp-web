@@ -21,12 +21,11 @@
 				detected</h4>
 
 			<h4>
-				<input type="checkbox" name="yes" id="yes" value="accept" required>accept
-				terms and policy
+				<input type="checkbox" name="yes" id="yes" value="accept" required aria-label="checkbox">
+				accept terms and policy
 			</h4>
 			<h3>
-				change Date : <input type="date" name="changedate" id="date"
-					required>
+				change Date : <input type="date" name="changedate" id="date" aria-label="changed date" required>
 			</h3>
 			<button class="btn" id="btn">OK</button>
 		</div>

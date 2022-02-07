@@ -82,11 +82,11 @@
 					<td><label for="no of night">No of days in night</label></td>
 				</tr>
 				<tr>
-					<td><input type="date" name="startdate" id="date"
+					<td><input type="date" name="startdate" id="date" aria-label="startdate"
 						class="data" required title="please enter the date"></td>
-					<td><input type="number" name="noofperson" class="data"
+					<td><input type="number" name="noofperson" class="data" id="" aria-label="noofperson"
 						required pattern="[0-9]" min="1" max="30" title="must contain number only minimum 1 and maximum 30"></td>
-					<td><select name="noofdays" id="select" class="data" required>
+					<td><select name="noofdays" id="select" class="data" required aria-label="noofdays">
 							<option value="2 days plan">2N</option>
 							<option value="3 days plan">3N</option>
 							<option value="4 days plan">4N</option>

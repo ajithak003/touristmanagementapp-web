@@ -73,8 +73,8 @@
 
 									<input type="radio" name="price" id="Business"
 										value="${flight.getBusinessClassFare()}" required
-										title="please select one">
-									<label for="">Business Class <span> Rs.
+										title="please select one" aria-label="Business Class">
+									<label for="Business Class">Business Class <span> Rs.
 											${flight.getBusinessClassFare()}</span>
 									</label>
 								</c:if>
@@ -83,8 +83,8 @@
 
 									<input type="radio" name="price" id="Economic"
 										value="${flight.getEconomicClassFare()}" required
-										title="please select one">
-									<label for="" id="Economic">Economic Class <span>
+										title="please select one" aria-label="Economic Class">
+									<label for="Economic Class" id="Economic">Economic Class <span>
 											Rs. ${flight.getEconomicClassFare()}</span>
 									</label>
 								</c:if>

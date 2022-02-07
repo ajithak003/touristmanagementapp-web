@@ -46,12 +46,12 @@
 						<p>
 
 							<input type="radio" name="hotelprice" id="Normal"
-								value="${hotel.getMidRangePrice()}" required><label
-								for="">Normal Room <span> Rs. ${hotel.getMidRangePrice()}</span></label>
+								value="${hotel.getMidRangePrice()}" required aria-label="Standard Room">
+								<label for="Standard Room">Standard Room <span> Rs. ${hotel.getMidRangePrice()}</span></label>
 
 							<input type="radio" name="hotelprice" id="Premium"
-								value="${hotel.getPremiumPrice()}" required><label
-								for="" id="Premium">Premium Room <span> Rs. ${hotel.getPremiumPrice()}</span></label>
+								value="${hotel.getPremiumPrice()}" required aria-label="Premium Room">
+								<label for="Premium Room" id="Premium">Premium Room <span> Rs. ${hotel.getPremiumPrice()}</span></label>
 
 						</p>
 					</div>

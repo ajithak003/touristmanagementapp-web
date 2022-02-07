@@ -57,8 +57,8 @@
             
             <c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()}">
 						<input type="radio" name="price" id="Business"
-							value="${flight.getBusinessClassFare()}" required><label
-							for="">Business Class <span>Rs. ${flight.getBusinessClassFare()}</span></label>
+							value="${flight.getBusinessClassFare()}" required title="please select" aria-label="Business Class">
+							<label for="Business Class">Business Class <span>Rs. ${flight.getBusinessClassFare()}</span></label>
 						</c:if>
 						</c:if>
 					</p>
@@ -67,9 +67,9 @@
 						<c:if test="${bookingpackage.getFlightClass().equalsIgnoreCase('economic class')}">
             
             <c:if test="${flight.getBusinessClassSeat()>=bookingpackage.getNoOfPerson()}">
-						<input type="radio" name="price" id="Business"
-							value="${flight.getEconomicClassFare()}" required><label
-							for="">Economic Class <span>Rs. ${flight.getEconomicClassFare()}</span></label>
+						<input type="radio" name="price" id="Economic"
+							value="${flight.getEconomicClassFare()}" required title="please select" aria-label="Economic Class">
+							<label for="Economic Class">Economic Class <span>Rs. ${flight.getEconomicClassFare()}</span></label>
 						</c:if>
 						</c:if>
 					</p>

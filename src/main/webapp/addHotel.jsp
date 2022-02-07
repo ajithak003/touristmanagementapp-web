@@ -37,33 +37,33 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 					<tr>
 						<td><label for="Hotel Name">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"
-							required autofocus pattern="[A-Za-z0-9]{2,}"
+							required aria-label="Hotel Name" autofocus pattern="[A-Za-z0-9]{2,}"
 							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers" >
 						</td>
 					</tr>
 
 					<tr>
 						<td><label for="Hotel Location">Hotel Location : </label></td>
-						<td><input type="text" name="hotellocation"
+						<td><input type="text" name="hotellocation" aria-label="Hotel Location"
 							id="hotellocation" required pattern="[A-Za-z]{2,}"
 							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>
 						<td><label for="Hotel Standard Room One Day Price">Standard Room One Day Price :</label></td>
-						<td><input type="number" name="standardprice" placeholder="Rs. "
-							id="standardprice" required min="600" max="200000"
+						<td><input type="number" name="standardprice" placeholder="Rs. " id="standardprice"
+						    aria-label="Hotel Standard Room One Day Price" required min="600" max="200000"
 							title="must contain numbers Rs. 500 minimum Rs. 100000 only"></td>
 					</tr>
 					<tr>
 						<td><label for="Hotel Premium Room One Day Price">Premium Room One Day Price :</label></td>
-						<td><input type="number" name="premiumprice" id="premiumprice"
-							required placeholder="Rs. " min="600" max="200000"
+						<td><input type="number" name="premiumprice" id="premiumprice" required
+							aria-label="Hotel Premium Room One Day Price" placeholder="Rs. " min="600" max="200000" 
 							title="must contain numbers maximum Rs. 500 minimum Rs. 100000  only"></td>
 					</tr>
 					<tr>
 						<td><label for="hotel image">Add Hotel Images :</label></td>
 						<td><input type="file" name="hotelimage" id="hotelimage"
-							required></td>
+							required aria-label="hotel image"></td>
 					</tr>
 				</table>
 				<button>Add hotel</button>

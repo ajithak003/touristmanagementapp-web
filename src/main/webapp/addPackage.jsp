@@ -34,41 +34,40 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 				<th id=""></th>
 				<tr>
 					<td><label for="location">package location : </label></td>
-					<td><input type="text" name="packagename" id="packagename"
-						required autofocus pattern="[A-Za-z]{2,}"
+					<td><input type="text" name="packagename" id="packagename" required
+						aria-label="location" autofocus pattern="[A-Za-z]{2,}"
 						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 
 				<tr>
 					<td><label for="Package one day night price">Package
 							one day night price/person : </label></td>
-					<td><input type="number" name="packageonedayprice"
-						placeholder="Rs" id="packageonedayprice" required min="500"
-						max="50000"
+					<td><input type="number" name="packageonedayprice" aria-label="Package one day night price"
+						placeholder="Rs" id="packageonedayprice" required min="500" max="50000"
 						title="must contain numbers only minimum Rs. 500 and maximum Rs. 50000"></td>
 				</tr>
 				<tr>
 					<td><label for="season">current season :</label></td>
 					<td><input type="text" name="season" id="season" required
-						pattern="[A-Za-z]{2,}"
+						aria-label="season" pattern="[A-Za-z]{2,}"
 						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 				<tr>
 					<td><label for="protocol">current tourist protocols :</label></td>
 					<td><textarea name="protocol" id="" cols="30" rows="3"
-							required pattern="[A-Za-z0-9]{5,}"
+							required aria-label="protocol" pattern="[A-Za-z0-9]{5,}"
 							title="must contain 5 characters and numbers only "></textarea></td>
 				</tr>
 				<tr>
 					<td><label for="description">Tourist Place Description :</label></td>
 					<td><textarea name="description" id="description" cols="30"
-							rows="3" required pattern="[A-Za-z0-9]{5,}"
+							rows="3" required aria-label="description" pattern="[A-Za-z0-9]{5,}"
 							title="must contain 5 characters and numbers only "></textarea></td>
 				</tr>
 				<tr>
-					<td><label for=" Tourist place image">Add Images : </label></td>
+					<td><label for="Tourist place image">Add Images : </label></td>
 					<td><input type="file" name="packageimage" id="packageimage"
-						required></td>
+						required aria-label="Tourist place image"></td>
 				</tr>
 			</table>
 			<button>Add Package</button>
