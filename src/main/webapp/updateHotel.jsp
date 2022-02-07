@@ -61,9 +61,9 @@
 					</tr>
 					
 					<tr>
-						<td><label for="hotel status" aria-label="hotel status">Status :</label></td>
+						<td><label for="hotel status" >Status :</label></td>
 						<td>
-						<select name="status">
+						<select name="status" aria-label="hotel status">
 						<option value="active">active</option>
 						<option value="inactive">inactive</option>
 						</select>

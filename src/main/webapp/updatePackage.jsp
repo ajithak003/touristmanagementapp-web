@@ -63,9 +63,9 @@
 				</tr>
 				
 				<tr>
-						<td><label for="package status" aria-label="package status">Status :</label></td>
+						<td><label for="package status" >Status :</label></td>
 						<td>
-						<select name="status">
+						<select name="status" aria-label="package status">
 						<option value="active">active</option>
 						<option value="inactive">inactive</option>
 						</select>
