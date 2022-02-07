@@ -33,7 +33,7 @@
 			<div class="container">
 				<div>
 					<img src="assets/images/${hotel.getImage()}"
-						alt="${hotel.getHotelName()}, ${hotel.getLocation()}">
+						alt="${hotel.getHotelName()}, ${hotel.getLocation()}" width = "400px" height = "350px">
 					<div class="name">
 						<h3>Hotel Name :</h3>
 						<h3 class="hotelname">${hotel.getHotelName()}</h3>

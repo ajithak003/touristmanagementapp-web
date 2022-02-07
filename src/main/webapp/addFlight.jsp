@@ -33,7 +33,7 @@
 					<th id=""></th>
 
 					<tr>
-						<td><label for="location">Flight Name : </label></td>
+						<td><label for="location" aria-label="location">Flight Name : </label></td>
 						<td><input type="text" name="flightname" id="flightname"
 							required autofocus pattern="[A-Za-z0-9]{2,}"
 							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
@@ -41,36 +41,36 @@
 					</tr>
 
 					<tr>
-						<td><label for="depature place">Departure Location :
+						<td><label for="depature place" aria-label="depature place">Departure Location :
 						</label></td>
 						<td><input type="text" name="Depature" id="Depature" required
 							pattern="[A-Za-z]{2,}"  title="must contain characters only minimum 2 characters">
 						</td>
 					</tr>
 					<tr>
-						<td><label for="destination place">destination
+						<td><label for="destination place" aria-label="destination place">destination
 								Location :</label></td>
 						<td><input type="text" name="destination" id="destination"
 							required pattern="[A-Za-z]{2,}"
 							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>
-						<td><label for="Departure Date And Time">Departure Date And Time</label></td>
+						<td><label for="Departure Date And Time" aria-label="Departure Date And Time">Departure Date And Time</label></td>
 						<td><input type="datetime-local" name="DepatureDate" id="date" required></td>
 					</tr>
 					<tr>
-						<td><label for="Arrival Date And Time">Arrival Date	And Time</label></td>
+						<td><label for="Arrival Date And Time" aria-label="Arrival Date And Time">Arrival Date	And Time</label></td>
 						<td><input type="datetime-local" name="ArrivalDate" id="date" required></td>
 					</tr>
 					<tr>
-						<td><label for="Business Class Fare">Business Class Fare :</label></td>
+						<td><label for="Business Class Fare" aria-label="Business Class Fare">Business Class Fare :</label></td>
 						<td><input type="number" name="businessclassfare"
 							placeholder="Rs" id="businessclassfare" min="600" max="200000"
 							required
 							title="must contain number only maximum Rs. 600 minimum Rs. 200000"></td>
 					</tr>
 					<tr>
-						<td><label for="Economic Class Fare">Economic Class Fare :</label></td>
+						<td><label for="Economic Class Fare" aria-label="Economic Class Fare">Economic Class Fare :</label></td>
 						<td><input type="number" name="economicclassfare"
 							placeholder="Rs" id="economicclassfare" min="600" max="200000"
 							title="must contain number only maximum Rs. 600 minimum Rs. 200000"
@@ -78,21 +78,21 @@
 					</tr>
 
 					<tr>
-						<td><label for="flight Status">Status : </label></td>
+						<td><label for="flight Status" aria-label="flight Status">Status : </label></td>
 						<td><select name="status">
 								<option value="available">available</option>
 								<option value="unavailable">unavailable</option>
 						</select></td>
 					</tr>
 					<tr>
-						<td><label for="Business Class Seats Count">Business
+						<td><label for="Business Class Seats Count" aria-label="Business Class Seats Count">Business
 								Class Seats Count :</label></td>
 						<td><input type="number" name="businessclassseat"
 							id="businessclassseatr" required min="50" max="350"
 							title="must contain number only maximum 50 minimum 350 number of seats"></td>
 					</tr>
 					<tr>
-						<td><label for="Economic Class Seats Count">Economic
+						<td><label for="Economic Class Seats Count" aria-label="Economic Class Seats Count">Economic
 								Class Seats Count :</label></td>
 						<td><input type="number" name="economicclassseat"
 							id="economicclassseat" required min="50" max="350"

@@ -33,7 +33,7 @@
 				<td>
 					<div class="firstrow">
 						<img class="firstrowimg" src="assets/images/${packages.getImage() }"
-							alt="${packages.getName()}">
+							alt="${packages.getName()}" width = "298px" height = "350px">
 
 
 						<h2 name="location">${packages.getName()}</h2>

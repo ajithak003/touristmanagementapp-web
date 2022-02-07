@@ -22,8 +22,7 @@ h1 {
 
 img {
 	position: relative;
-	height: 350px;
-	width: 400px;
+	
 }
 
 .name {
@@ -83,9 +82,8 @@ button {
 }
 
 .nohotel {
-	color: darkred;
+	color:blue;
 	text-align: center;
-	color: black;
 	font-size: 40px;
 	font-weight: bold;
 }

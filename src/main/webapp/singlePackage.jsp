@@ -25,7 +25,7 @@
 
 			<h1 name="place">${packages.getName()}</h1>
 			<br> <a href="#"> <img class="firstrowimg"
-				src="assets/images/${packages.getImage()}" alt="${packages.getName()}">
+				src="assets/images/${packages.getImage()}" alt="${packages.getName()}" width = "1000px">
 
 			</a> <br> <br>
 			<table class="details" aria-describedby="single place details">

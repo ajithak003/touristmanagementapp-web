@@ -1,8 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,7 +32,7 @@
 					<div class="firstrow">
 						<a href="singlePackage?location=${packages.getName()}"> <img
 							class="firstrowimg" src="assets/images/${packages.getImage() }"
-							alt="${packages.getName()}">
+							alt="${packages.getName()}" width = "298px" height = "350px">
 						</a>
 
 						<h2 name="location">${packages.getName()}</h2>

@@ -43,7 +43,7 @@
 						<h2>${flight.getFlightName()}</h2>
 						<div>
 							<img src="https://pngimg.com/uploads/plane/plane_PNG5248.png"
-								alt="">
+								alt="flight png" width = "300px" height = "100px">
 						</div>
 						<div class="depature">
 
