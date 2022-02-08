@@ -1,13 +1,11 @@
 package com.touristmgntapp.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.touristmgntapp.dao.Impl.PackageModeClassDaoImplement;
 import com.touristmgntapp.exception.UserDefineException;
@@ -17,7 +15,7 @@ import com.touristmgntapp.model.PackageModeClass;
 public class AddPackage extends HttpServlet {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -40,11 +38,10 @@ public class AddPackage extends HttpServlet {
 
 			String image = request.getParameter("packageimage");
 
-			PackageModeClass packages = new PackageModeClass(packagename.toLowerCase(), packageOneDayPrice, season, protocol,
-					description, image);
+			PackageModeClass packages = new PackageModeClass(packagename.toLowerCase(), packageOneDayPrice, season,
+					protocol, description, image);
 			boolean pack = packageDao.insertPackage(packages);
 
-			PrintWriter out = response.getWriter();
 			if (pack) {
 				response.sendRedirect("addPackage.jsp?infomsg=successfully added");
 
@@ -52,9 +49,9 @@ public class AddPackage extends HttpServlet {
 				throw new UserDefineException();
 			}
 		} catch (UserDefineException | NumberFormatException | IOException e) {
-			
+
 			try {
-				response.sendRedirect("addPackage.jsp?error="+((UserDefineException) e).addPackage());
+				response.sendRedirect("addPackage.jsp?error=" + ((UserDefineException) e).addPackage());
 			} catch (IOException e1) {
 				System.out.println(e1.getMessage());
 			}

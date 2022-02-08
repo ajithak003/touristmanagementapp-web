@@ -1,7 +1,6 @@
 package com.touristmgntapp.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -18,34 +17,30 @@ import com.touristmgntapp.model.HotelClass;
 public class DeleteHotel extends HttpServlet {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		try {
-		int hotelId = Integer.parseInt(request.getParameter("hotelid"));
-		HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
+			int hotelId = Integer.parseInt(request.getParameter("hotelid"));
+			HotelTableDaoImplement hotelDao = new HotelTableDaoImplement();
 
-		boolean hotel = hotelDao.deleteHotel(hotelId);
-		
-			PrintWriter out = response.getWriter();
-		
+			boolean hotel = hotelDao.deleteHotel(hotelId);
 
-		if (hotel) {
-            List<HotelClass> hotelsList = hotelDao.getAllHotel();
-			
-			request.setAttribute("showalladminhotel", hotelsList);
-			
-			RequestDispatcher rd = request.getRequestDispatcher("showAllHotel.jsp?deletehote=successfully deleted");
-			rd.forward(request, response);
-			
+			if (hotel) {
+				List<HotelClass> hotelsList = hotelDao.getAllHotel();
 
-		} else {
-			response.sendRedirect("showAllHotel.jsp?deleteerror=cannot be deleted");
+				request.setAttribute("showalladminhotel", hotelsList);
 
-		}
+				RequestDispatcher rd = request.getRequestDispatcher("showAllHotel.jsp?deletehote=successfully deleted");
+				rd.forward(request, response);
+
+			} else {
+				response.sendRedirect("showAllHotel.jsp?deleteerror=cannot be deleted");
+
+			}
 		} catch (IOException | NumberFormatException | ServletException e) {
 			System.out.println(e.getMessage());
 		}
