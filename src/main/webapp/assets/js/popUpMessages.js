@@ -1,7 +1,6 @@
 /**
  * restrict previous date and show only one month (current date to next 30 days) and disable future dates
  */
-src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"
 
 today();
 function today(){
