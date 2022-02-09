@@ -40,12 +40,12 @@ function checkpattern() {
 				document.getElementById("number").style.color = "black";
 			}
 
-			/*if (password.match(/(?=.*[!@#\$%\^&\*])/)) {
+			if (password.match(/(?=.*[!@#\$%\^&\*])/)) {
 				console.log("special")
 				document.getElementById("special").style.color = "rgb(31, 224, 31)";
 			} else {
 				document.getElementById("special").style.color = "black";
-			}*/
+			}
 
 			if (password.length > 7) {
 				console.log("character")
