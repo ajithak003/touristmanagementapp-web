@@ -7,7 +7,7 @@
 
 * Register
 * Login (user & Admin)
-* show papular places
+* show popular places
 * book single place
 * book flight
 * book hotel
@@ -16,14 +16,14 @@
 * show all booking
 * show single booking
 * show profile
-* wallet topup
+* wallet top up
 * update profile
 * show all ratings
 * ratings
 
 ## Admin Features
 
-* show papular places
+* show popular places
 * add tourist packages
 * update tourist packages
 * delete packages
@@ -42,7 +42,7 @@
 
 ## User Features
 
-* show papular places
+* show popular places
 * book single preparable tourist place
 * book preparable flight with seat class
 * book preparable hotel with room type
