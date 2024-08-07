@@ -20,6 +20,7 @@
 * update profile
 * show all ratings
 * ratings
+* Email Service
 
 ## Admin Features
 
@@ -55,13 +56,14 @@
 * update profile
 * see single booking depth details
 * wallet topup
+* Email Service
 
 ## Admin Login Credential
-UserName : ajith@admin.com
+**UserName :** ajith@admin.com
 
-password : Ajith@123
+**password :** Ajith@123
 
 ## User Login Credential
-UserName : ajith@gmail.com
+**UserName :** gsajithkumar2000@gmail.com
 
-password : Ajith@123
+**password :** Ajith@123
