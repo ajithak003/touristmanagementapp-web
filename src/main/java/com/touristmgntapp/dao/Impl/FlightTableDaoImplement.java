@@ -176,14 +176,14 @@ public class FlightTableDaoImplement implements FlightDaoInterface {
 
 		String query = "select flight_no,flight_name,depature,destination,depature_date_time,arrival_date_time,business_class_fare,economic_class_fare,"
 				+ "status,business_class_seat_status,economic_class_seat_status from flights_details "
-				+ "where destination=? and to_char(depature_date_time,'dd-mm-yyyy')=? and status=?";
+				+ "where upper(destination)=? and to_char(depature_date_time,'dd-mm-yyyy')=? and status=?";
 
 		try {
 			con = ConnectionUtil.getDBConnect();
 
 			pstmt = con.prepareStatement(query);
 
-			pstmt.setString(1, location);
+			pstmt.setString(1, location.toUpperCase());
 			pstmt.setDate(2, java.sql.Date.valueOf(startDate));
 			pstmt.setString(3, "available");
 

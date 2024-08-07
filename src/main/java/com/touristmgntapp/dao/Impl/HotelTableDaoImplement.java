@@ -148,13 +148,13 @@ public class HotelTableDaoImplement implements HotelDaoInterface {
 		List<HotelClass> hotels = new ArrayList<>();
 
 		String query = "select hotel_id, location, hotel_name, room_type_mid_range_price, room_type_premium_price,status, image from hotel_details "
-				+ "where location=? order by status desc";
+				+ "where upper(location)=? order by status desc";
 
 		try {
 			con = ConnectionUtil.getDBConnect();
 
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, location);
+			pstmt.setString(1, location.toUpperCase());
 
 			 rs = pstmt.executeQuery();
 

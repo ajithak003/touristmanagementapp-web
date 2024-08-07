@@ -188,8 +188,8 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			con = ConnectionUtil.getDBConnect();
 
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "cancel");
-			pstmt.setString(2, "payment refunded");
+			pstmt.setString(1, "canceled");
+			pstmt.setString(2, "Payment Refunded");
 			pstmt.setInt(3, userId);
 			pstmt.setDate(4, java.sql.Date.valueOf(startDate));
 			pstmt.setInt(5, bookinId);
@@ -381,7 +381,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 
 		String query = "select booking_id,user_id, package_id, flight_no, hotel_id,number_of_person,start_date,end_date,total_price,status,"
 				+ "booking_date,flight_class,hotel_room_type,days_in_night,package_name,payment_details,no_of_room from booking_details where booking_id=?";
-
 		try {
 
 			con = ConnectionUtil.getDBConnect();
@@ -404,7 +403,6 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 						rs.getTimestamp("booking_date").toLocalDateTime(), rs.getString("flight_class"),
 						rs.getString("hotel_room_type"), rs.getString("days_in_night"), rs.getString("package_name"),
 						rs.getString("payment_details"), rs.getDouble("no_of_room"));
-
 			}
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
@@ -412,6 +410,26 @@ public class BookingTableDaoImplement implements BookingDaoInterface {
 			ConnectionUtil.close(pstmt, con, rs);
 		}
 		return booking;
+	}
+	
+	public int fetchMaxOfBookingId(int userId) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int maxOfBookingId = 0;
+		String query = "select max(BOOKING_ID) as booking_id from booking_Details where user_id = ?";
+		try {
+			con = ConnectionUtil.getDBConnect();
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, userId);
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				maxOfBookingId = rs.getInt("booking_id");
+			}
+			
+		}catch (Exception e) {
+		}
+		return maxOfBookingId;
 	}
 
 	public boolean endDateCheck(LocalDate startDate, int bookingId) {
