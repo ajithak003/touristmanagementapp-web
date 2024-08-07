@@ -13,7 +13,7 @@ body {
 	background-color: cornsilk;
 	border-radius: 20px;
 	padding: 30px;
-	width: 290px;
+	width: 310px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -44,18 +44,18 @@ body {
 	background: none;
 	color: whiye;
 	font-size: 18px;
-	width: 80%;
+	width: 100%;
 	float: left;
-	margin: 10px;
 }
 
 .btn {
-	width: 100%;
+	width: 80%;
 	background: none;
 	border: 2px solid #1ef725;
 	color: blue;
 	padding: 5px;
 	font-size: 18px;
+	margin-left: 30px;
 }
 
 a {

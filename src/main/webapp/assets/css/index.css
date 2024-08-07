@@ -21,8 +21,10 @@ h1 {
 	color: crimson;
 	text-align: center;
 	font-weight: bold;
-	font-size: 100px;
-	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Georgia, 'Times New Roman', Times, serif;
+	font-size: 130px;
+	font-style: oblique;
+	font-stretch: extra-expanded;
 }
 
 ul {

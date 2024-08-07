@@ -13,7 +13,7 @@ body {
 	background-color: cornsilk;
 	border-radius: 20px;
 	padding: 30px;
-	width: 290px;
+	width: 350px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -52,10 +52,16 @@ body {
 }
 
 .btn {
-	width: 100%;
+	width: 80%;
 	background: none;
 	border: 2px solid #1ef725;
 	color: blue;
 	padding: 5px;
 	font-size: 18px;
+	margin-left: 30px;	
+}
+
+.error {
+    color: red;
+    font-size: 1.1em;
 }

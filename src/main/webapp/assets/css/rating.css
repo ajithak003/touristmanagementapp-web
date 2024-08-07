@@ -13,54 +13,40 @@ h1 {
 	margin-top: 20px;
 }
 
-.rate {
-	position: absolute;
-	margin-left: 500px;
-	margin-top: 100px;
-	height: 46px;
-	padding: 0 10px;
-	border: none;
-	border-radius: 20px;
+.rating {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+    display: inline-block;
+    margin-left: 490px;
+    margin-top : 20px;
 }
 
-.rate:not(:checked)>input {
-	position: absolute;
-	top: -9999px;
+.star {
+    font-size: 5rem;
+    cursor: pointer;
+    color: #ccc;
+    
 }
 
-.rate:not(:checked)>label {
-	float: right;
-	width: 1em;
-	overflow: hidden;
-	white-space: nowrap;
-	cursor: pointer;
-	font-size: 80px;
-	color: #ccc;
+.star:hover,
+.star:hover ~ .star,
+.star.selected,
+.star.selected ~ .star {
+/*    color: #f39c12;
+*/color: #ffeb3b;
 }
 
-.rate:not(:checked)>label:before {
-	content: '\2605';
+p{
+	   margin-left: 600px;
+	   font-size: 20px;
+	   font-family: sans-serif;
+	   font-weight: bold;
+	   
 }
-
-.rate>input:checked ~ label {
-	color: #15ff00;
-}
-
-.rate:not(:checked)>label:hover, .rate:not(:checked)>label:hover ~ label
-	{
-	color: #00e1ff;
-}
-
-.rate>input:checked+label:hover, .rate>input:checked+label:hover ~ label,
-	.rate>input:checked ~ label:hover, .rate>input:checked ~ label:hover ~
-	label, .rate>label:hover ~ input:checked ~ label {
-	color: #fffb00;
-}
-
 textarea {
 	position: relative;
-	margin-top: 230px;
-	margin-left: 490px;
+	margin-top: 50px;
+	margin-left: 480px;
 	height: 100px;
 	width: 450px;
 	border: 3px solid;
@@ -68,11 +54,12 @@ textarea {
 
 textarea, :placeholder-shown {
 	font-size: 25px;
+	
 }
 
 button {
 	position: absolute;
-	left: 900px;
+	left: 620px;
 	height: 40px;
 	width: 120px;
 	border: none;
