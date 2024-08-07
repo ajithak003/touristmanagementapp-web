@@ -338,6 +338,57 @@ function popupMessages(infoMessage) {
 			});
 
 			break;
+			
+			
+			case "Thanks For Your Rating":
+
+			var toastMixin = Swal.mixin({
+				toast: true,
+				icon: 'success',
+				title: 'General Title',
+				animation: false,
+				position: 'top',
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				didOpen: (toast) => {
+					toast.addEventListener('mouseenter', Swal.stopTimer)
+					toast.addEventListener('mouseleave', Swal.resumeTimer)
+				}
+			});
+
+
+			toastMixin.fire({
+				animation: true,
+				title: 'Thanks For Your valuable Rating'
+			});
+
+			break;
+
+		case "can not be rated ! please try again":
+
+			var toastMixin = Swal.mixin({
+				toast: true,
+				icon: 'error',
+				title: 'General Title',
+				animation: false,
+				position: 'top-right',
+				showConfirmButton: false,
+				timer: 3000,
+				timerProgressBar: true,
+				didOpen: (toast) => {
+					toast.addEventListener('mouseenter', Swal.stopTimer)
+					toast.addEventListener('mouseleave', Swal.resumeTimer)
+				}
+			});
+
+			toastMixin.fire({
+				title: 'can not be rated ! please try again',
+				icon: 'error'
+			});
+
+			break;
+
 	}
 
 }
