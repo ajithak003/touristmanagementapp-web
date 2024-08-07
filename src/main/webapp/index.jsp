@@ -22,7 +22,7 @@
 
 		</ul>
 	</div>
-	<h1>Tourist Management</h1>
+	<h1>Dream Trip</h1>
 
 
 </body>

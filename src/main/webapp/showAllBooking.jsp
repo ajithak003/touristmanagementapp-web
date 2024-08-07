@@ -34,7 +34,7 @@
 
 				<div class="box">
 					<div class="title">
-						<h3>${singlebooking.getPackageName().toUpperCase()}TRIP</h3>
+						<h3>${singlebooking.getPackageName().toUpperCase()} TRIP</h3>
 					</div>
 					<div class="status">
 						<h3>${singlebooking.getStatus()}</h3>

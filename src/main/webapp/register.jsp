@@ -8,6 +8,8 @@
 <title>register Form</title>
 <script
 	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel='stylesheet'
 	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
 
@@ -21,15 +23,20 @@
 			<h1>Register</h1>
 			<div class="textbox">
 				<input type="text" placeholder="FullName" name="FullName" value=""
-					id="" required autofocus onkeyup="remove()" pattern="[A-Za-z]{2,}"
-					title="must contain numbers only minimum 2 characters"
+					id="" required autofocus onkeyup="remove()"
+					pattern="^[a-zA-Z]*$*\s"
+					title="must contain text only minimum 2 characters"
 					aria-label="FullName">
 			</div>
 			<div class="textbox">
 				<input type="email" placeholder="Email" name="regemail" value=""
-					id="" required pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
-					title="follow this pattern 'abc@xyz.com'" aria-label="Email id">
+					id="email" required
+					pattern="[A-Za-z0-9]+[@][a-zA-Z]+[.][A-Za-z]{2,3}"
+					title="follow this pattern 'abc@xyz.com'" aria-label="Email id"
+					onChange='verifyEmail()'>
 			</div>
+			<span id="EmailError" class="error"></span>
+
 			<div class="textbox">
 				<input type="text" placeholder="Mobile No" name="regmobile" value=""
 					id="" required pattern="[6-9][0-9]{9}"

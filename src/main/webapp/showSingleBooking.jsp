@@ -19,7 +19,7 @@
 
 	<form action="">
 
-		<h1>Booking Details</h1>
+		<h1>Your Dream Trip Details</h1>
 
 		<c:set var="booking" scope="session" value="${singlebookingdetails}" />
 		<c:set var="flightfare" scope="session"
@@ -87,7 +87,7 @@
 				</tr>
 				<tr>
 					<td>destination place :</td>
-					<td>i${booking.getFlight().getDestination()}</td>
+					<td>${booking.getFlight().getDestination()}</td>
 				</tr>
 				<tr>
 					<td>Departure Date And Time Name :</td>

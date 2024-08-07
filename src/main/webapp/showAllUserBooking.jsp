@@ -87,7 +87,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 					<td>${booking.getPayment()}</td>
 					<td><c:if test="${booking.getStatus().equals('confirmed') }">
 							<span class="badge badge-pill badge-success">${booking.getStatus()}</span>
-						</c:if> <c:if test="${booking.getStatus().equals('cancel') }">
+						</c:if> <c:if test="${booking.getStatus().equals('canceled') }">
 							<span class="badge badge-pill badge-danger">${booking.getStatus()}</span>
 						</c:if></td>
 

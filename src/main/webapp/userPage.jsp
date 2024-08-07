@@ -10,6 +10,13 @@
 <link rel="icon" type="" href="Assets/logo.png">
 <title>user Page</title>
 
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.3.10/dist/sweetalert2.all.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel='stylesheet'
+	href='https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.min.css'>
+
 <link rel='stylesheet' href="assets/css/userPage.css">
 
 </head>
@@ -44,6 +51,21 @@
 
 	<br>
 	<br>
+	
+	<script src="assets/js/popUpMessages.js"></script>
+
+	<c:if test="${param.rated!=null}">
+		<script type="text/javascript">
+			popupMessages('Thanks For Your Rating')
+		</script>
+	</c:if>
+
+	<c:if test="${param.errormsg!=null}">
+		<script type="text/javascript">
+			popupMessages('can not be rated ! please try again')
+		</script>
+	</c:if>
+	
 
 </body>
 

@@ -38,7 +38,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 						<td><label for="Hotel Name">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"
 							required aria-label="Hotel Name" autofocus
-							pattern="[A-Za-z0-9]{2,}"
+							pattern="[A-Za-z0-9 ]{2,}"
 							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
 						</td>
 					</tr>
@@ -47,7 +47,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 						<td><label for="Hotel Location">Hotel Location : </label></td>
 						<td><input type="text" name="hotellocation"
 							aria-label="Hotel Location" id="hotellocation" required
-							pattern="[A-Za-z]{2,}"
+							pattern="[A-Za-z ]{2,}"
 							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>

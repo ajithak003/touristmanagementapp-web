@@ -14,7 +14,7 @@ s
 <body>
 
 	<h1>Booking Canceled !</h1>
-	<h2>Your Payment Refund within 3 working days</h2>
+	<h2>Your Payment Refund will be processed within 3 working days</h2>
 	<h2>
 		<a href="userPage.jsp">Go To Home</a>
 	</h2>

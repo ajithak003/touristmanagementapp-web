@@ -31,7 +31,7 @@
 			<h2 class="name">
 				<c:out value="${rating.getUserName()}"></c:out>
 			</h2>
-			<h3>${ rating.getPackageName()}Trip</h3>
+			<h3>${ rating.getPackageName()} Trip</h3>
 
 			<c:choose>
 				<c:when test="${rating.getRating()==5.0}">

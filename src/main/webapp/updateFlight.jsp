@@ -36,7 +36,7 @@
 						<td><label for="location">Flight Name : </label></td>
 						<td><input type="text" name="flightname" id="flightname"
 							autofocus aria-label="location" value="${flight.getFlightName()}"
-							required pattern="[A-Za-z0-9]{2,}"
+							required pattern="[A-Za-z0-9 ]{2,}"
 							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
 						</td>
 					</tr>
@@ -45,14 +45,14 @@
 						<td><label for="depature">Departure Location : </label></td>
 						<td><input type="text" name="Depature" id="Depature"
 							aria-label="depature" value="${flight.getDepature()}" required
-							pattern="[A-Za-z]{2,}"
+							pattern="[A-Za-z ]{2,}"
 							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>
-						<td><label for="destination">destination Location :</label></td>
+						<td><label for="destination">Destination Location :</label></td>
 						<td><input type="text" name="destination" id="destination"
 							value="${flight.getDestination()}" required
-							aria-label="destination" pattern="[A-Za-z]{2,}"
+							aria-label="destination" pattern="[A-Za-z ]{2,}"
 							title="must contain characters only minimum 2 characters">
 						</td>
 					</tr>

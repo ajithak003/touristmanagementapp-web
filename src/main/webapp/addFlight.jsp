@@ -36,7 +36,7 @@
 						<td><label for="location">Flight Name : </label></td>
 						<td><input type="text" name="flightname" id="flightname"
 							aria-label="location" required autofocus
-							pattern="[A-Za-z0-9]{2,}"
+							pattern="[A-Za-z0-9 ]{2,}"
 							title="must contain and character and numbers only not 
 							allowed special character and minimum 2 character or numbers">
 						</td>
@@ -46,7 +46,7 @@
 						<td><label for="depature place">Departure Location :
 						</label></td>
 						<td><input type="text" name="Depature" id="Depature" required
-							aria-label="depature place" pattern="[A-Za-z]{2,}"
+							aria-label="depature place" pattern="[A-Za-z ]{2,}"
 							title="must contain characters only minimum 2 characters">
 						</td>
 					</tr>
@@ -54,7 +54,7 @@
 						<td><label for="destination place">destination
 								Location :</label></td>
 						<td><input type="text" name="destination" id="destination"
-							required aria-label="destination place" pattern="[A-Za-z]{2,}"
+							required aria-label="destination place" pattern="[A-Za-z ]{2,}"
 							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>

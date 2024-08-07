@@ -34,7 +34,7 @@
 					<td><label for="location">package location : </label></td>
 					<td><input type="text" name="packagename" id="packagename"
 						aria-label="location" value="${packages.getName()}" required
-						pattern="[A-Za-z]{2,}"
+						pattern="[A-Za-z ]{2,}"
 						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 
@@ -51,14 +51,14 @@
 					<td><label for="season">current season :</label></td>
 					<td><input type="text" name="season" id="season"
 						aria-label="season" value="${packages.getSeason()}" required
-						pattern="[A-Za-z]{2,}"
+						pattern="[A-Za-z ]{2,}"
 						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 				<tr>
 					<td><label for="protocol">current tourist protocols :</label></td>
 					<td><textarea name="protocols" id="protocols" cols="30"
 							rows="3" aria-label="protocol" value="${packages.getProtocols()}"
-							required pattern="[A-Za-z0-9]{5,}"
+							required pattern="[A-Za-z0-9 ]{5,}"
 							title="must contain 5 characters and numbers only ">${packages.getProtocols()}</textarea></td>
 				</tr>
 				<tr>

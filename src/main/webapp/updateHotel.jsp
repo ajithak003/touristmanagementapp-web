@@ -39,7 +39,7 @@
 						<td><label for="Hotel Name">Hotel Name : </label></td>
 						<td><input type="text" name="hotelname" id="hotelname"
 							aria-label="Hotel Name" value="${hotel.getHotelName()}" required
-							autofocus pattern="[A-Za-z 0-9]{2,}"
+							autofocus pattern="[A-Za-z 0-9 ]{2,}"
 							title="must contain and character and numbers only not allowed special character and minimum 2 character or numbers">
 						</td>
 					</tr>
@@ -48,7 +48,7 @@
 						<td><label for="Hotel Location">Hotel Location : </label></td>
 						<td><input type="text" name="hotellocation"
 							aria-label="Hotel Location" id="hotellocation"
-							value="${hotel.getLocation()}" required pattern="[A-Za-z]{2,}"
+							value="${hotel.getLocation()}" required pattern="[A-Za-z ]{2,}"
 							title="must contain characters only minimum 2 characters"></td>
 					</tr>
 					<tr>

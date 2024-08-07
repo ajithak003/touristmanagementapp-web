@@ -35,7 +35,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 				<tr>
 					<td><label for="location">package location : </label></td>
 					<td><input type="text" name="packagename" id="packagename"
-						required aria-label="location" autofocus pattern="[A-Za-z]{2,}"
+						required aria-label="location" autofocus pattern="[A-Za-z ]{2,}"
 						title="must contain characters only minimum 2 characters"></td>
 				</tr>
 
@@ -56,7 +56,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 				<tr>
 					<td><label for="protocol">current tourist protocols :</label></td>
 					<td><textarea name="protocol" id="" cols="30" rows="3"
-							required aria-label="protocol" pattern="[A-Za-z0-9]{5,}"
+							required aria-label="protocol" pattern="[A-Za-z0-9 ]{5,}"
 							title="must contain 5 characters and numbers only "></textarea></td>
 				</tr>
 				<tr>
@@ -64,7 +64,7 @@ response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
 							:</label></td>
 					<td><textarea name="description" id="description" cols="30"
 							rows="3" required aria-label="description"
-							pattern="[A-Za-z0-9]{5,}"
+							pattern="[A-Za-z0-9 ]{5,}"
 							title="must contain 5 characters and numbers only "></textarea></td>
 				</tr>
 				<tr>
