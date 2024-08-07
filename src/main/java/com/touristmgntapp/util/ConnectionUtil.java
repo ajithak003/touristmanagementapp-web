@@ -31,11 +31,13 @@ Connection con=null;
 		{
 			
 			e.getMessage();
+			e.printStackTrace();
 			System.out.println("Driver Jar doesn't there");
 			
 		} catch (SQLException e) {
 			
 			e.getMessage();
+			e.printStackTrace();
 			System.out.println("url or uasername or password may wrong");
 		} catch (Exception e) {
 			e.getMessage();
