@@ -10,7 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public class EncryptPassword {
 
-	static String plainText = "oracle";
+	static String plainText = "system";
     public static final int AES_KEY_SIZE = 256;
     public static final int GCM_IV_LENGTH = 12;
     public static final int GCM_TAG_LENGTH = 16;
@@ -47,7 +47,7 @@ private EncryptPassword() {
           byte[] iv = new byte[GCM_IV_LENGTH];
           SecureRandom random = new SecureRandom();
           random.nextBytes(iv);
-          byte[] cipherText = encrypt("oracle".getBytes(), key, iv);
+          byte[] cipherText = encrypt("Ajith@123".getBytes(), key, iv);
         // Get Cipher Instance
         Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
         
