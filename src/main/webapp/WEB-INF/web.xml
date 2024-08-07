@@ -2,12 +2,13 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="https://jakarta.ee/xml/ns/jakartaee"
 	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
-	id="WebApp_ID" version="2.4">
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd http://xmlns.jcp.org/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="5.0">
+
 	<display-name>TouristManagementSystems</display-name>
+
 	<servlet>
-		<description>
-		</description>
+		<description> </description>
 		<display-name>ShowAllUserList</display-name>
 		<servlet-name>ShowAllUserList</servlet-name>
 		<servlet-class>com.ajith.controler.ShowAllUserList</servlet-class>
@@ -20,6 +21,7 @@
 		<servlet-name>AdminRating</servlet-name>
 		<servlet-class>com.ajith.controler.AdminRating</servlet-class>
 	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>ShowAllUserList</servlet-name>
 		<url-pattern>/ShowAllUserList</url-pattern>
@@ -29,6 +31,7 @@
 		<servlet-name>AdminRating</servlet-name>
 		<url-pattern>/AdminRating</url-pattern>
 	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
