@@ -30,7 +30,7 @@ public class SinglePlace extends HttpServlet {
 			String location = request.getParameter("location");
 
 			PackageModeClassDaoImplement packageDao = new PackageModeClassDaoImplement();
-			PackageModeClass packages = packageDao.getSinglePackage(location.toLowerCase());
+			PackageModeClass packages = packageDao.getSinglePackage(location);
 
 			HttpSession session = request.getSession();
 			session.setAttribute("singlepackages", packages);

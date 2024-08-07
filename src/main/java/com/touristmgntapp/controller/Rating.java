@@ -22,9 +22,11 @@ public class Rating extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) {
 		
 		try{
+			
+			String rating = request.getParameter("rate");
 						
 			RatingDaoImplement ratingDao = new RatingDaoImplement();
 			
@@ -33,24 +35,28 @@ public class Rating extends HttpServlet {
 			BookingTableDaoImplement bookingDao = new BookingTableDaoImplement();
 			BookingClass booking = bookingDao.getSingleBookingById(bookingId);
 			
-			float rating = Float.parseFloat(request.getParameter("rate"));
+			int ratings = Integer.parseInt(rating);
 			
 			String describrion = request.getParameter("describe");
 			
-			UserFeedbackClass userRating = new UserFeedbackClass(bookingId,booking.getUser().getId(),booking.getPackages().getPackageId(),booking.getUser().getName(),booking.getPackageName(),rating,describrion);
+			UserFeedbackClass userRating = new UserFeedbackClass(bookingId,booking.getUser().getId(),booking.getPackages().getPackageId(),booking.getUser().getName(),booking.getPackageName(),ratings,describrion);
 			boolean rate  = ratingDao.insertFeedback(userRating);
-			PrintWriter out = response.getWriter();
+			//PrintWriter out = response.getWriter();
 			if(rate) {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('Thanks For Your Rating');");
-				out.println("location='userPage.jsp';");
-				out.println("</script>");
+				/*
+				 * out.println("<script type=\"text/javascript\">");
+				 * out.println("alert('Thanks For Your Rating');");
+				 * out.println("location='userPage.jsp';"); out.println("</script>");
+				 */
+				response.sendRedirect("userPage.jsp?rated=Thanks For Your Rating");
 			}
 			else {
-				out.println("<script type=\"text/javascript\">");
-				out.println("alert('can not be rated ! please try again');");
-				out.println("location='userPage.jsp';");
-				out.println("</script>");
+				/*
+				 * out.println("<script type=\"text/javascript\">");
+				 * out.println("alert('can not be rated ! please try again');");
+				 * out.println("location='userPage.jsp';"); out.println("</script>");
+				 */
+				response.sendRedirect("userPage.jsp?errormsg=can not be rated ! please try again");
 			}
 			
 		}catch(Exception e) {

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.mail.MessagingException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,6 +56,11 @@ public class BookingSuccess extends HttpServlet {
 				userDao.addWalletAmount(user.getId(), wallet);
 				if (book) {
 					response.sendRedirect("bookingsus.jsp");
+					int bookingId = bookDao.fetchMaxOfBookingId(user.getId());
+					EmailContent emailContent = new EmailContent(); 
+					String htmlContent = emailContent.getEmailContent(bookingId);
+					EmailService email = new EmailService();
+					email.sentEmail(user.getEmail(),htmlContent);
 				}
 
 			} else {
@@ -62,13 +68,14 @@ public class BookingSuccess extends HttpServlet {
 			     UserClass newUser;
 					
 				 newUser = userDao.getSingleUserById(user.getId());
-		         System.out.println(newUser);
 
 			    session.setAttribute("user", newUser);
 			        	
 				response.sendRedirect("wallet.jsp?infomsg=Insufficient balance !");
 			}
 			} catch (IOException | ClassNotFoundException | SQLException e) {
+				e.printStackTrace();
+			} catch (MessagingException e) {
 				e.printStackTrace();
 			}
 

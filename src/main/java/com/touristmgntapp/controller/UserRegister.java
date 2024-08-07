@@ -14,9 +14,6 @@ import com.touristmgntapp.model.UserClass;
 @WebServlet("/register")
 public class UserRegister extends HttpServlet {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
@@ -53,6 +50,7 @@ public class UserRegister extends HttpServlet {
 					UserClass userinsert = new UserClass(name, email, mboilNo, password);
 					boolean boo = userDao.insertUser(userinsert);
 					if (boo) {
+						EmailVerificationServlet.sendVerificationEmail(email); 
 
 						response.sendRedirect("login.jsp?infomsg=successfully registered");
 
@@ -70,4 +68,5 @@ public class UserRegister extends HttpServlet {
 		}
 
 	}
+	
 }
